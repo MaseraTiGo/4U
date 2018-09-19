@@ -5,16 +5,15 @@
 # file author: ds
 # file   date: 2018-09-18
 
-import time
 import datetime
-import re
 import os
-from selenium import webdriver
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-
+import re
 import requests
+import time
 from requests.cookies import RequestsCookieJar
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.wait import WebDriverWait
 from seleniumrequests import Chrome
 
 '''
