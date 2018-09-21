@@ -180,6 +180,7 @@ class WorkTimeCal(object):
         e_second = time.mktime(time.strptime(e, '%Y-%m-%d %H:%M'))
         r_seconds = e_second - s_second
         # the time between 6:00 pm and 6:30 pm can't be calculated
+        e = e.split()[-1]
         non_mins = 90 if e >= '13:30' else 0
         if e > '18:00':
             non_mins += 30 if e >= '18:30' else int(e.split(':')[-1])
