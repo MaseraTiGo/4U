@@ -165,13 +165,12 @@ class WorkTimeCal(object):
             this_month = per_data[4] + ' '
             s_time = per_data[5]
             e_time = per_data[6]
-            start_time = s_time if s_time else '08:30'
+            start_time = s_time if s_time and s_time > '08:30' else '08:30'
             t_start_time = this_month + start_time
             end_time = e_time if e_time else '18:00'
             t_end_time = this_month + end_time
             total_seconds += cls.get_seconds(t_start_time, t_end_time)
-            print(this_month, 'work time: %.2f' % ((cls.get_seconds(t_start_time, t_end_time) / 3600) - 1.5))
-        total_seconds = total_seconds - cls._user_work_days * 1.5 * 3600
+            print(this_month, 'work time: %.2f' % (cls.get_seconds(t_start_time, t_end_time) / 3600))
         cls.print_result(total_seconds)
 
     @classmethod
@@ -179,7 +178,13 @@ class WorkTimeCal(object):
         """format datetime and get the seconds"""
         s_second = time.mktime(time.strptime(s, '%Y-%m-%d %H:%M'))
         e_second = time.mktime(time.strptime(e, '%Y-%m-%d %H:%M'))
-        return e_second - s_second
+        r_seconds = e_second - s_second
+        # the time between 6:00 pm and 6:30 pm can't be calculated
+        non_mins = 90 if e >= '13:30' else 0
+        if e > '18:00':
+            non_mins += 30 if e >= '18:30' else int(e.split(':')[-1])
+        r_seconds -= non_mins * 60
+        return r_seconds
 
     @classmethod
     def print_result(cls, seconds):
