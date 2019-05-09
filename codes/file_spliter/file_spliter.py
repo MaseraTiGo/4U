@@ -32,7 +32,7 @@ def get_big_file(threshold, f_type, f_path):
 
 def split_files(fucking_big_file):
     file_name = fucking_big_file.split(os.sep)[-1].split('.')
-    with open(fucking_big_file) as fucking_damn_work:
+    with open(fucking_big_file, 'rb') as fucking_damn_work:
         write_to_fucking_little(fucking_damn_work, *file_name)
 
 
@@ -41,7 +41,7 @@ def write_to_fucking_little(big_obj, name, kind):
     nums = int(ceil(len(lines) / single_size))
     for i in range(nums):
         new_file_name = os.sep.join([output, name + '_%d.%s' % (i, kind)])
-        with open(new_file_name, 'w') as f:
+        with open(new_file_name, 'wb') as f:
             f.writelines(lines[single_size * i:single_size * (i + 1)])
 
 
@@ -65,7 +65,8 @@ if __name__ == '__main__':
     split_threshold, file_type, single_size, path_file, output = parser_parser()
     if not os.path.exists(output):
         os.makedirs(output)
-    file_list = get_big_file(split_threshold, file_type, path_file)
+    file_list = get_big_file(split_threshold * 1024 * 1024, file_type, path_file)
+    print(file_list)
     with ThreadPoolExecutor() as pool:
         pool.map(split_files, file_list)
     print('total cost %s' % (time.time() - s,))
