@@ -1,0 +1,98 @@
+version: '3.1'
+
+services:
+
+  web:
+    restart: always
+    build: ./web
+    ports:
+      - 8000:8000
+    links:
+      - mysql:mysql
+      - redis:redis
+    environment:
+      - SECRET_KEY=5(15ds+i2+%ik6z&!yer+ga9m=e%jcqiz_5wszg)r-z!2--b2d
+      - DB_NAME=crm
+      - DB_USER=root
+      - DB_PASS=zxcde321BQ
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_POOL_SIZE=500
+      - FILE_HOST=file
+      - FILE_PORT=9000
+      - FILE_PATH=/file/store
+    volumes:
+      - /data/web/log:/var/log/app:Z
+      - /etc/localtime:/etc/localtime 
+
+  file:
+    restart: always
+    build: ./web
+    ports:
+      - 9000:8000
+    links:
+      - mysql:mysql
+      - redis:redis
+    environment:
+      - SECRET_KEY=5(15ds+i2+%ik6z&!yer+ga9m=e%jcqiz_5wszg)r-z!2--b2d
+      - DB_NAME=crm
+      - DB_USER=root
+      - DB_PASS=zxcde321BQ
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_POOL_SIZE=500
+      - FILE_HOST=file
+      - FILE_PORT=9000
+      - FILE_PATH=/file/store
+    volumes:
+      - /data/file/log:/var/log/app:Z
+      - /etc/localtime:/etc/localtime 
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - /data/nginx/cdn:/nginx/cdn:Z
+      - /data/nginx/logs:/var/log/nginx:Z
+      - /etc/localtime:/etc/localtime 
+    links:
+      - web:web
+  
+  redis:
+    restart: always
+    build: ./redis
+    command:
+      - --loglevel warning
+    volumes:
+      - /data/redis/data:/var/lib/redis/data:Z
+      - /data/redis/logs:/var/lib/redis/logs:Z
+      - /etc/localtime:/etc/localtime 
+    ports:
+      - 6379:6379
+
+  mysql:
+    restart: always
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=zxcde321BQ
+      - DEBUG_COMPOSE_ENTRYPOINT=1
+      - MYSQL_GENERAL_LOG=1
+      - TIMEZONE=Asia/Shanghai
+    volumes:
+      - /data/mysql/db:/var/lib/mysql:Z
+      - /data/mysql/backup:/var/lib/backup:Z
+      - /data/mysql/log:/var/log/mysql:Z
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

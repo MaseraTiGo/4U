@@ -1,0 +1,9 @@
+Django==1.9.8
+pymysql==0.7.5
+redis==2.10.5
+oss2
+xlrd
+
+# Fabric==1.10.1
+# supervisor==3.1.3
+

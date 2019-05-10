@@ -1,0 +1,7 @@
+<uwsgi>
+    <socket>:8080</socket>
+    <chdir>/deploy/tuoen</chdir>
+    <module>wsgi</module>
+    <processes>9</processes> <!-- 进程数 -->
+    <daemonize>/deploy/logs/tuoen_uwsgi.log</daemonize>
+</uwsgi>
