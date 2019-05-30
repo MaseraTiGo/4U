@@ -4,7 +4,7 @@
 | ------------ | --------------- | ------------------ | -------- | ----      | ---- |
 | file_spliter | split big files | relative powerfull | 20190508 | python  file_spliter.py -t 10 -f txt -l 10000 -p . -o .\output      | not all args are needed, they all have default value which means u even can use it like this: python file_spliter.py     |
 
-| ProjectName | Function     | Author    | Date       | What's more | Other |
-| ----------- | ------------ | --------- | ---------- | ----------- | ----- |
-| Video_share | share videos | Johnathan | 2019-05-21 | Nope        | Nope  |
+| ProjectName | Function     | Author    | Date       | What's more          | Other       |
+| ----------- | ------------ | --------- | ---------- | -------------------- | ----------- |
+| Video_share | share videos | Johnathan | 2019-05-21 | delete at 05-30-2019 | time slight |
 
