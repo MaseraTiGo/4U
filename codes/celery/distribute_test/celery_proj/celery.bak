@@ -1,0 +1,9 @@
+#from celery import Celery
+from __future__ import absolute_import
+from celery import Celery
+app = Celery('celery_proj', backend='redis://localhost', broker='amqp://localhost', include=['celery_proj.tasks', 'celery_proj.schedule'])
+
+app.conf.update(result_expire=3600)
+
+if __name__ == '__main__':
+    app.start()
