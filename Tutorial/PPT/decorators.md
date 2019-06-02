@@ -8,9 +8,20 @@
   - [内部函数](#内部函数)
   
   - [把函数作为返回值](#把函数作为返回值)
-
-- [一个简单的计时装饰器](#一个简单的计时装饰器)
+- [简单的装饰器](#简单的装饰器)
   - [语法糖](#语法糖)
+  - [带参数的装饰器](#带参数的装饰器)
+  - [从装饰器中返回值](#从装饰器中返回值)
+- [练练手](#练练手)
+  - [参数校验](#参数校验)
+  - [缓存结果](#缓存结果)
+  - [插件注册](#插件注册)
+- [高级一点的装饰器](#高级一点的装饰器)
+  - [装饰类](#装饰类)
+  - [类装饰器](#类装饰器)
+  - [多层装饰器](#多层装饰器)
+  - [带参数的装饰器](#带参数的装饰器)
+- [总结](#总结)
 
 
 
@@ -108,7 +119,7 @@ Out[25]: <function __main__.operator.<locals>.add(x, y)>
 
 
 
-#### 一个简单的计时装饰器
+#### 简单的装饰器
 
 现在我们有一个函数， 它从1一直加到10,000， 我们来统计一下它所花费的时间。
 
@@ -519,11 +530,38 @@ woo...
 
 这个例子我们定义了一个Test类， 它有一个实例方法lazy， 这个lazy方法随机sleep1-5 s，这里使用了之前的计时装饰器。
 
-根据结果， 不难看出， 这个装饰器只在类实例化的时候起作用了， 但是我们调用lazy方法时候， 它却无动于衷了......
+根据结果， 不难看出， 这个装饰器在类实例化的时候起作用了，也就是说， 类也是可以被装饰的。下面我们来写一个单例模式（简单点来说就是一个类只能实例化出一个实例）加深一下印象。
 
-怎么办呢？
+```python
+def singleton(cls):
+    cls._instance = None
+    def wrapper_singleton(*args, **kwargs):
+    	if not cls._instance:
+            cls._instance = cls(*args, **kwargs)
+        return cls._instance
+    return wrapper_singleton
 
-让我们用装饰器直接装饰lazy方法吧！
+@singleton
+class A(object):
+    ...
+```
+
+本例中， 我们定义了一个类A， 并实现了一个singleton的装饰器，逻辑很简单， 先给传入的类挂上一个\_instances属性并赋值None， 然后在内部函数中判断， 如果这个属性为None， 说明未实例化过， 那就实例化并赋值给\_instance属性然后返回， 不为None的话就直接返回， 从而保证了实例的唯一性。
+
+你可能注意到传入的参数由func变成了cls， 这是因为我们装饰类的时候传入的是一个类。 依然写成func也不会有功能上的问题， 但是会让人感到困惑。cls是一个约定的写法。
+
+我们来实例化一下这个类， 并比较是否确实是一个单例。
+
+```python
+In [3]: a = A()
+In [4]: b = A()
+In [5]: a is b
+Out[5]: True
+```
+
+这里我们用的是is来比较， 它可以对比两个对象的引用是否一样。
+
+装饰类还有一种方式是装饰类的方法。让我们用计时装饰器装饰本小结开始例子中的lazy方法吧！
 
 ```python
 class Test(object):
@@ -547,21 +585,221 @@ time costs: 3.00124057000005, the result is:     None
 
 
 
+#### 类装饰器
+
+我们前面写的装饰器都是基于函数的， 那么类可不可以作为装饰器呢？一起来尝试一下。
+
+首先让我们再回顾一下装饰器是怎么工作的：它接收一个函数或者类， 然后在对传入的类或者函数进行处理，并返回一个新的对象或原对象（还记得我们那个register装饰器吧）。
+
+好了， 让我开始吧。
+
+```python
+class FakeLog(object):
+    def __init__(self, func):
+        self.func = func
+        self.fake_log()
+        
+    def fake_log(self):
+        print('start--------------------')
+        print(f'excuting func is: {self.func.__name__}')
+        self.func()
+        print('end----------------------')
+
+@FakeLog
+def run():
+    print('I am running!')
+```
+
+当你在敲完上面的代码的时候会立马得到一下输出：
+
+```python
+start--------------------
+excuting func is: run
+I am running!
+end----------------------
+```
+
+而且， 当你调用run()的时候，错误出现了：
+
+```python
+>>> run()
+>>> TypeError: 'FakeLog' object is not callable
+```
+
+先思考一下为什么。
+
+立马得到输出是因为， 当我们用类做装饰器的时候， 默认会调用\__init__方法进行初始化（实例化一个类的时候总是会如此），并返回一个实例。 在这个初始化函数中我们调用了fake_log，所以便立马有了上面那些信息。
+
+至于调用run()的时候报错， 那是因为此时的run已经变成FakeLog的一个实例对象， 这个是无法调用的。
+
+这虽然说明了类可以作为装饰器， 但结果并不是我们想要的。我们想要的是自行调用run()。
+
+那么问题来了， 此时run是一个实例对象， 我们想要的是一个可调用的对象，怎么办呢？能不能把实例对象变成可调用对象呢？
+
+是时候让\__call__出场了！
+
+\__call__是一个魔法函数， 它能让一个类的实例变的可调用。
+
+```python
+class Test(object):
+    def __call__(self, name: str):
+        print(f'hello, {name}')
+
+In [26]: t = Test()
+# output----------------------------------
+In [27]: t('Johnathan')
+hello, Johnathan        
+```
+
+对开始的例子我们做一下更改：
+
+```python
+class FakeLog(object):
+    def __init__(self, func):
+        self.func = func
+        
+    def __call__(self, *args, **kwargs):
+        print('start--------------------')
+        print(f'excuting func is: {self.func.__name__}')
+        self.func()
+        print('end----------------------')
+@FakeLog
+def run():
+    print('I am running!')
+```
+
+代码敲完了， 并没有直接运行， 送了一口气......
+
+这里我们把fake_log换成了\__call__并增加了参数（既然可调用，能接受参数自然是应该的吧）。
+
+检验的时候到了，敲入run():
+
+```python
+In [23]: run()
+start--------------------
+excuting func is: run
+I am running!
+end----------------------
+```
+
+嗯哼， Done！
+
+小结一下\__init__方法用来存储传入的引用和做一些必要的初始化工作， 而\_\_call\_\_方法让实例对象变得可调用， 功能和之前内部函数wrapper\_xxx一样。
 
 
- 
+
+#### 多层装饰器
+
+讲了这么多， 我们所做的一直是给一个函数或者类添加单一的装饰器， 那么可不可以添加多个呢？答案很简单， 必须可以，结合我们开篇讲的那些知识， 很好理解。
+
+那么我们就来试试吧。
+
+```python
+def fake_log(func):
+    def wrapper_fake_log(*args, **kwargs):
+        print('start--------------------')
+        print(f'excuting func is: {func.__name__}')
+        func(*args, **kwargs)
+        print('end----------------------')
+    return wrapper_fake_log
+
+@fake_log
+@time_cost
+def count_num(num=10_000):
+    ...
+```
+
+本例中， 我们写了一个伪日志记录装饰器， 它只是简单的打印开始与结束， 然后结合之前的计时装饰器和count_num函数， 来测试一下。
+
+```python
+In [8]: count_num()
+start--------------------
+excuting func is: wrapper_time_cost
+time costs: 0.007424178000064785, the result is:     5100550500
+end----------------------
+```
+
+毫无意外的正常。可以看到我还在fake_log中打印了一个执行函数的名字， 这个是为了了解当有多个装饰器的时候， 它们的执行顺序：依次往下。这个很好理解， 不再赘述。
 
 
 
+#### 带参数的装饰器
+
+上面讲了那么多， 但是我们所写的装饰器默认都是不带参数的， 实际上， 装饰器也是可以带上参数的。
+
+这有什么用呢？
+
+当然有用， 譬如我们有很多请求函数， 当失败后， 有些我们希望重新尝试两次， 有些三次等等， 这个时候参数就有了用处，。
+
+这里我们只是介绍一下如何加参数， 就只写一个简单的例子。 
+
+```python
+def repeat(num_times):
+	def decorator_repeat(func):
+        def wrapper_decorator_repeat(*args, **kwargs):
+            for _ in range(num_times):
+                func(*args, **kwargs)
+        return wrapper_decorator_repeat
+    return decorator_repeat
+
+@repeat(3)
+def say_love():
+    print('i love u')
+```
+
+我们给之前熟悉的装饰器又加了一层，用来接收参数。 原理还是一样。
+
+运行一下：
+
+```python
+In [32]: say_love()
+i love u
+i love u
+i love u
+```
 
 
 
+既然已经讲过类装饰器， 不放我们也改一改这个repeat。
+
+先自己试试，在看下面的例子。
+
+小提示， 我们在\_\_init\_\_中完成初始化工作。
+
+```python
+class Repeat(object):
+    def __init__(self, num_times):
+        self.num_times = num_times
+    
+    def __call__(self, func):
+        def wrapper_repeat(*args, **kwargs):
+            for _ in range(self.num_times):
+                func(*args, **kwargs)
+        return wrapper_repeat
+
+@Repeat(4)
+def say_hate():
+    print('go , I do not hate u')
+    
+```
+
+走一个：
+
+```python
+In [46]: say_hate()
+go , I do not hate u
+go , I do not hate u
+go , I do not hate u
+go , I do not hate u
+```
+
+简要的说一下， 当我们给say_hate加上@Repeat(4),它首先实例化出了一个Repeat对象， 我们且称为r，并给r的num_times赋值为4，然后执行r(say_hate)得到wrapper_repeat对象， 接着调用wrapper_repeat并将say_hate的参数传入（此处没有传参）。便有了上面的结果。
 
 
 
+#### 总结
 
-
-
+好了， 洋洋洒洒啰里啰嗦了这么多， 总算是要结束了， 篇幅较长， 可能对于初次接触的人员来说， 有那么点点不容易， 没事， 相信自己， 多看一看、写一写、思考思考， 终会发现其实也就是那么点事。
 
 
 
