@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71eeaf65-9488-4cf3-b54d-bcdd483fe57a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/codes/celery/distribute_test/celery_dis_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/video_share/templates/registration/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/video_share/users/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/video_share/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codes/personal_backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/personal_backend/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codes/video_share/video_share/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/video_share/video_share/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codes/video_share/video_share/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/video_share/video_share/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tutorial/PPT/holdplace.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,43 +14,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2640">
-              <caret line="123" column="40" selection-start-line="123" selection-start-column="40" selection-end-line="123" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/personal_backend/wsgi.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/agile/apis/merchant/transaction/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="924">
-              <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/abs/service/merchant/info/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/abs/middleware/department/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/abs/middleware/role/__init__.py">
           <provider selected="true" editor-type-id="text-editor" />
@@ -66,10 +22,91 @@
       <file leaf-file-name="celery_dis_test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/codes/celery/distribute_test/celery_dis_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="311">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="e#107#145#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/logging/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="1360" selection-start-line="1360" selection-end-line="1360" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ntpath.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/ntpath.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="handlers_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/Temp/logging/handlers_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/logging/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="374" column="39" selection-start-line="374" selection-start-column="39" selection-end-line="374" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="builtins.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1229051315/builtins.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-175">
+              <caret line="4661" column="8" selection-start-line="4661" selection-start-column="8" selection-end-line="4661" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config_test_001.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/Temp/logging/config_test_001.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" selection-start-line="5" selection-end-line="9" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_logging.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/test/test_logging.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="611" column="40" selection-start-line="611" selection-start-column="21" selection-end-line="611" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config_test_002.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/Temp/logging/config_test_002.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,6 +125,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Bot|Bot</find>
+      <find>asctime</find>
+      <find>FileHandler</find>
+      <find>qualname</find>
+      <find>dictConfig</find>
+      <find>logging.FileHandler</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,12 +148,16 @@
         <option value="$PROJECT_DIR$/codes/video_share/users/views.py" />
         <option value="$PROJECT_DIR$/codes/video_share/users/templates/registration/signup.html" />
         <option value="$PROJECT_DIR$/codes/video_share/users/forms.py" />
+        <option value="D:/Temp/logging/handlers_test.py" />
+        <option value="D:/Temp/logging/config_test_001.py" />
+        <option value="$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/logging/config.py" />
+        <option value="D:/Temp/logging/config_test_002.py" />
         <option value="$PROJECT_DIR$/codes/celery/distribute_test/celery_dis_test.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="762" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-7" />
     <option name="width" value="783" />
     <option name="height" value="907" />
   </component>
@@ -126,6 +172,16 @@
             <path>
               <item name="4U" type="b2602c69:ProjectViewProjectNode" />
               <item name="4U" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4U" type="462c0819:PsiDirectoryNode" />
+              <item name="codes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4U" type="462c0819:PsiDirectoryNode" />
+              <item name="Tutorial" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -156,7 +212,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.config_test_001">
+    <configuration name="config_test_001" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="4U" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="D:/Temp/logging" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:/Temp/logging/config_test_001.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="decorator_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -175,8 +249,33 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="handlers_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="4U" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="D:/Temp/logging" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:/Temp/logging/handlers_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.decorator_test" />
+      <item itemvalue="Python.handlers_test" />
+      <item itemvalue="Python.config_test_001" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.config_test_001" />
+        <item itemvalue="Python.handlers_test" />
         <item itemvalue="Python.decorator_test" />
       </list>
     </recent_temporary>
@@ -198,24 +297,24 @@
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17425227" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1723017" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.4082397" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.27590513" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.29338327" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.24594258" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.38701624" />
       <window_info anchor="right" id="leetcode" order="3" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -223,66 +322,22 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Temp/logging/handlers_test.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Temp/logging/config_test_001.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/codes/auto_wechat/wechat_ai.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/file_spliter/file_spliter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/auto_wechat/wechat_ai.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/auto_wechat/wechat_ai.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/auto_wechat/wechat_ai.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/auto_wechat/wechat_ai.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/auto_wechat/wechat_ai.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/auto_wechat/wechat_ai.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codes/auto_wechat/wechat_ai.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -411,23 +466,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codes/video_share/video_share/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2860">
-          <caret line="130" selection-start-line="130" selection-end-line="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/video_share/users/apps.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/video_share/users/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/codes/video_share/video_share/settings.py" />
+    <entry file="file://$PROJECT_DIR$/codes/video_share/users/apps.py" />
+    <entry file="file://$PROJECT_DIR$/codes/video_share/users/models.py" />
     <entry file="file://$PROJECT_DIR$/codes/personal_backend/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -445,41 +486,11 @@
         <state relative-caret-position="-187" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codes/video_share/video_share/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/video_share/templates/registration/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/video_share/users/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/video_share/users/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="45" selection-start-column="45" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/video_share/users/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/codes/video_share/video_share/urls.py" />
+    <entry file="file://$PROJECT_DIR$/codes/video_share/templates/registration/signup.html" />
+    <entry file="file://$PROJECT_DIR$/codes/video_share/users/urls.py" />
+    <entry file="file://$PROJECT_DIR$/codes/video_share/users/views.py" />
+    <entry file="file://$PROJECT_DIR$/codes/video_share/users/forms.py" />
     <entry file="file://$PROJECT_DIR$/codes/personal_backend/settings_local.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -513,10 +524,75 @@
     <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/abs/middleware/role/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/ntpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/logging/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="1360" selection-start-line="1360" selection-end-line="1360" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Temp/logging/handlers_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/test/test_logging.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="611" column="40" selection-start-line="611" selection-start-column="21" selection-end-line="611" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Temp/logging/config_test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" selection-start-line="5" selection-end-line="9" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/logging/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="374" column="39" selection-start-line="374" selection-start-column="39" selection-end-line="374" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1229051315/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-175">
+          <caret line="4661" column="8" selection-start-line="4661" selection-start-column="8" selection-end-line="4661" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Temp/logging/config_test_002.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/codes/celery/distribute_test/celery_dis_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        <state relative-caret-position="311">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="e#107#145#0" expanded="true" />
           </folding>
