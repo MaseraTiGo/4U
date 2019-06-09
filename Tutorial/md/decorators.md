@@ -215,7 +215,7 @@ def time_cost(func):
     return wrapper_time_cost
 @time_cost
 def count_num(num=10_000):    
-	return sum((i for i in range(1, 10_1000 + 1)))
+    return sum((i for i in range(1, 10_1000 + 1)))
 ```
 
 如此一来， 我们运行count_num 不再需要那么繁琐了， 简单的直接调用就可以了：
