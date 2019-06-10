@@ -177,4 +177,4 @@ Out[25]: 'clouder'
 
 在内存中， 它看起来应该是这个样子的：
 
-![bro_clouder_001](/bro_clouder_001.png)
+![bro_clouder_001](./asset/pic/bro_clouder_001.png)
