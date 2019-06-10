@@ -23,3 +23,8 @@ if __name__ == '__main__':
         p2.join(timeout=2)
     c = time.perf_counter() - s
     print('time taken in seconds - >:', c)
+
+
+from concurrent.futures import ThreadPoolExecutor
+with ThreadPoolExecutor(max_workers=4) as tpe:
+    tpe.map()

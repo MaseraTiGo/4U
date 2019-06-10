@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71eeaf65-9488-4cf3-b54d-bcdd483fe57a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Tutorial/PPT/decorators.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tutorial/PPT/logging.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_process_cpu_bound.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_process_cpu_bound.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,7 +16,7 @@
       <file leaf-file-name="celery_dis_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codes/celery/distribute_test/celery_dis_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
+            <state relative-caret-position="484">
               <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="e#107#145#0" expanded="true" />
@@ -29,7 +28,7 @@
       <file leaf-file-name="mem_leak_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/mem_leak_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="198">
               <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
               <folding>
                 <element signature="e#52#63#0" expanded="true" />
@@ -42,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_cpu_bound.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
-              <caret line="14" column="23" lean-forward="true" selection-end-line="21" />
+              <caret line="14" column="23" selection-end-line="21" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -50,14 +49,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="multi_process_cpu_bound.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="multi_process_cpu_bound.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_process_cpu_bound.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="638">
+              <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/_base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="578" column="27" selection-start-line="578" selection-start-column="12" selection-end-line="578" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thread.py" pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/thread.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/Temp/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="519">
+              <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -74,20 +109,8 @@
       <file leaf-file-name="test_logging.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/test/test_logging.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
+            <state relative-caret-position="12694">
               <caret line="611" column="40" selection-start-line="611" selection-start-column="21" selection-end-line="611" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config_test_002.py" pinned="false" current-in-tab="false">
-        <entry file="file://D:/Temp/logging/config_test_002.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="924">
-              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -136,11 +159,13 @@
         <option value="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/mem_leak_test.py" />
         <option value="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/single_cpu_bound.py" />
         <option value="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_cpu_bound.py" />
+        <option value="D:/Temp/test.py" />
+        <option value="$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/__init__.py" />
         <option value="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_process_cpu_bound.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1554" />
@@ -151,6 +176,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -172,7 +198,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -280,7 +305,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0929779" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -295,11 +319,11 @@
       <window_info anchor="right" id="leetcode" order="3" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -323,26 +347,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/deploy/nginx/conf/sites-available/default">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1960" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/deploy/nginx/conf/nginx.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1649" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/deploy/nginx/conf/sites-enabled/django_project">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/deploy/README.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/codes/personal_backend/deploy/online_deploy.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -544,7 +548,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/codes/celery/distribute_test/celery_dis_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
+        <state relative-caret-position="484">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="e#107#145#0" expanded="true" />
@@ -561,14 +565,14 @@
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/test/test_logging.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
+        <state relative-caret-position="12694">
           <caret line="611" column="40" selection-start-line="611" selection-start-column="21" selection-end-line="611" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/mem_leak_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
+        <state relative-caret-position="198">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
           <folding>
             <element signature="e#52#63#0" expanded="true" />
@@ -586,20 +590,48 @@
     <entry file="file://$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_cpu_bound.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
-          <caret line="14" column="23" lean-forward="true" selection-end-line="21" />
+          <caret line="14" column="23" selection-end-line="21" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Temp/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_process_cpu_bound.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        <state relative-caret-position="638">
+          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="578" column="27" selection-start-line="578" selection-start-column="12" selection-end-line="578" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
         </state>
       </provider>
     </entry>
