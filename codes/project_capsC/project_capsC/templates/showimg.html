@@ -1,0 +1,8 @@
+{% load static %}
+<!--<img src="{% static '1.jpg' %}" alt="My image">-->
+<img src="{% static '1.jpg' %}" alt="My image">
+<!--<img src="{% static 'wallpaper_5225925.jpg' %}" alt="My image">-->
+<!--<img src="/static/1.jpg">-->
+{% for img in img_s %}
+<img src="{{ img.img.url }}" />
+{% endfor %}

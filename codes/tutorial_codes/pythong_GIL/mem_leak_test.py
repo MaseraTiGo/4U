@@ -23,3 +23,6 @@ if __name__ == '__main__':
     t2.join(timeout=3)
 
     print('--------end-------------')
+
+from threading import Lock
+with Lock.acquire():
