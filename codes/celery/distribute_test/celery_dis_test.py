@@ -6,7 +6,7 @@
 from __future__ import absolute_import
 from celery import Celery
 
-app = Celery('celery_dis_test', backend='redis://192.168.1.134', broker='amqp://aston:123918@192.168.1.134//')
+app = Celery('celery_dis_test', backend='redis://192.168.199.209', broker='amqp://aston:123918@192.168.199.209//')
 
 
 @app.on_after_configure.connect
