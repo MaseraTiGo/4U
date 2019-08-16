@@ -2,127 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71eeaf65-9488-4cf3-b54d-bcdd483fe57a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/codes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/dynamic_programming/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/dynamic_programming/change.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/dynamic_programming/climb_stairs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/dynamic_programming/deepfirstsearch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/dynamic_programming/get_integer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/dynamic_programming/permutations.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/dynamic_programming/sort_algorithm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/dynamic_programming/stock_problem.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/common/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/interview/leetcode/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/interview/temp/dynamicprogram.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tutorial/md/django/codes/signal001.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/4U.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/4U.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tutorial/md/centerDjango框架漫谈系列之一：Python web 框架的本质.md" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dynamicprogram.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/interview/temp/dynamicprogram.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1232">
-              <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="get_integer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/get_integer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1100">
-              <caret line="51" selection-start-line="51" selection-end-line="52" selection-end-column="52" />
-              <folding>
-                <element signature="e#107#120#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stock_problem.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/stock_problem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1606">
-              <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="climb_stairs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/climb_stairs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="permutations.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/permutations.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sort_algorithm.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/sort_algorithm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-              <folding>
-                <element signature="e#106#119#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/interview/leetcode/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deepfirstsearch.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/deepfirstsearch.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="209" column="20" selection-start-line="209" selection-start-column="20" selection-end-line="209" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="change.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/change.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" column="76" selection-start-line="17" selection-start-column="76" selection-end-line="17" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="copy.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/copy.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2970">
-              <caret line="137" selection-start-line="137" selection-end-line="137" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -132,157 +22,18 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Bot|Bot</find>
-      <find>asctime</find>
-      <find>FileHandler</find>
-      <find>qualname</find>
-      <find>dictConfig</find>
-      <find>logging.FileHandler</find>
-      <find>INT</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/codes/video_share/users/forms.py" />
-        <option value="D:/Temp/logging/handlers_test.py" />
-        <option value="D:/Temp/logging/config_test_001.py" />
-        <option value="$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/logging/config.py" />
-        <option value="D:/Temp/logging/config_test_002.py" />
-        <option value="$PROJECT_DIR$/codes/celery/distribute_test/celery_dis_test.py" />
-        <option value="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/single_cpu_bound.py" />
-        <option value="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_cpu_bound.py" />
-        <option value="D:/Temp/test.py" />
-        <option value="$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/__init__.py" />
-        <option value="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/multi_process_cpu_bound.py" />
-        <option value="$PROJECT_DIR$/codes/tutorial_codes/pythong_GIL/mem_leak_test.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/views/views.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/interface/__init__.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/views/__init__.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/template/index.html" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/models.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/models/__init__.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/templates/uploading.html" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/templates/showing.html" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/templates/showimg.html" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/interface/urls.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/settings.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/views/interface.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/urls.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/middle_ware/index_hanlder.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/models/basemodel.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/models/pic_models.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/views/common.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/middle_ware/index_handler.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/api/index.py" />
-        <option value="$PROJECT_DIR$/codes/project_capsC/project_capsC/templates/index.html" />
-        <option value="$PROJECT_DIR$/codes/sqlalchemy/generatestaff.py" />
-        <option value="$PROJECT_DIR$/codes/interview/zingfront.py" />
-        <option value="$PROJECT_DIR$/codes/interview/zingfront - Copy.py" />
-        <option value="$PROJECT_DIR$/codes/interview/temp/zingfront.py" />
-        <option value="$PROJECT_DIR$/codes/interview/test_cases.py" />
-        <option value="$PROJECT_DIR$/codes/interview/temp/test_cases.py" />
-        <option value="$PROJECT_DIR$/codes/interview/temp/dynamicprogram.py" />
-        <option value="$PROJECT_DIR$/codes/common/__init__.py" />
-        <option value="$PROJECT_DIR$/codes/__init__.py" />
-        <option value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/__init__.py" />
-        <option value="$PROJECT_DIR$/codes/algorithm/__init__.py" />
-        <option value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/get_integer.py" />
-        <option value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/change.py" />
-        <option value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/stock_problem.py" />
-        <option value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/climb_stairs.py" />
-        <option value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/permutations.py" />
-        <option value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/sort_algorithm.py" />
-        <option value="$PROJECT_DIR$/codes/interview/leetcode/__init__.py" />
-        <option value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/deepfirstsearch.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="762" />
-    <option name="width" value="783" />
-    <option name="height" value="907" />
-  </component>
+  <component name="ProjectId" id="1P1sx05LisKs89d8z2ymimcwSxm" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4U" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4U" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4U" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4U" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithm" type="462c0819:PsiDirectoryNode" />
-              <item name="dynamic_programming" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4U" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4U" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-              <item name="interview" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4U" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-              <item name="interview" type="462c0819:PsiDirectoryNode" />
-              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4U" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-              <item name="interview" type="462c0819:PsiDirectoryNode" />
-              <item name="temp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4U" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4U" type="462c0819:PsiDirectoryNode" />
-              <item name="Tutorial" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Project_X" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -308,7 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.deepfirstsearch">
+  <component name="RunManager" selected="Python.signal001">
     <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -326,24 +77,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="climb_stairs" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="4U" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/algorithm/dynamic_programming" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/climb_stairs.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="deepfirstsearch" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
@@ -362,8 +98,11 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <configuration name="permutations" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="signal001" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -371,15 +110,18 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/algorithm/dynamic_programming" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tutorial/md/django/codes" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/permutations.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tutorial/md/django/codes/signal001.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="sort_algorithm" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
@@ -398,21 +140,45 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="wsgi_001" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="4U" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tutorial/md/django/codes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tutorial/md/django/codes/wsgi_001.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.climb_stairs" />
-      <item itemvalue="Python.permutations" />
       <item itemvalue="Python.sort_algorithm" />
       <item itemvalue="Python.__init__" />
       <item itemvalue="Python.deepfirstsearch" />
+      <item itemvalue="Python.wsgi_001" />
+      <item itemvalue="Python.signal001" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.signal001" />
+        <item itemvalue="Python.wsgi_001" />
         <item itemvalue="Python.deepfirstsearch" />
         <item itemvalue="Python.__init__" />
         <item itemvalue="Python.sort_algorithm" />
-        <item itemvalue="Python.permutations" />
-        <item itemvalue="Python.climb_stairs" />
       </list>
     </recent_temporary>
   </component>
@@ -429,31 +195,18 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.64524424" visible="true" weight="0.18931398" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.37789202" />
-      <window_info id="Structure" order="1" sideWeight="0.3547558" side_tool="true" visible="true" weight="0.18931398" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.28791773" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.22750643" />
-      <window_info anchor="right" id="leetcode" order="3" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Message" order="0" />
-    </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -499,330 +252,6 @@
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="17" />
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/abs/service/equipment/equipmentin/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/abs/service/account/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2046" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/abs/service/account/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/agile/apis/account/staff/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1848" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/agile/apis/account/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/model/models.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/model/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="47" column="21" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/db/models/query.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="929" column="8" selection-start-line="929" selection-start-column="8" selection-end-line="929" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/personal_backend/tuoen/model/store/model_order.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/middle_ware/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/interface/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/api/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/models/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/views/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/interface/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/models/basemodel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/models/pic_models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="24" column="77" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/views/common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/middle_ware/index_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/api/index.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/templates/showimg.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/project_capsC/project_capsC/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/pymysql/cursors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="169" selection-start-line="169" selection-end-line="169" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/builtins.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="253" column="33" selection-start-line="253" selection-start-column="32" selection-end-line="253" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/test/test_yield_from.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5962">
-          <caret line="274" column="31" selection-start-line="274" selection-start-column="31" selection-end-line="274" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/sqlalchemy/sql/sqltypes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="123" column="25" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/sqlalchemy/sql/schema.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="1017" column="8" selection-start-line="1017" selection-start-column="8" selection-end-line="1017" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1229051315/itertools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="463" column="6" selection-start-line="463" selection-start-column="6" selection-end-line="463" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/interview/test_cases.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="77" column="35" lean-forward="true" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/interview/zingfront - Copy.py" />
-    <entry file="file://$PROJECT_DIR$/codes/interview/zingfront.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="146" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/sqlalchemy/generatestaff.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/interview/temp/zingfront.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="144" column="7" lean-forward="true" selection-start-line="144" selection-start-column="7" selection-end-line="144" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/random.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="343" column="8" selection-start-line="343" selection-start-column="8" selection-end-line="343" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/interview/temp/test_cases.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/algorithm/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/common/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" selection-start-line="10" selection-end-line="11" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/interview/temp/dynamicprogram.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1232">
-          <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/change.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="76" selection-start-line="17" selection-start-column="76" selection-end-line="17" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1229051315/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="2967" column="6" selection-start-line="2967" selection-start-column="6" selection-end-line="2967" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/copy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2970">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/permutations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/climb_stairs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/stock_problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1606">
-          <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/get_integer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="51" selection-start-line="51" selection-end-line="52" selection-end-column="52" />
-          <folding>
-            <element signature="e#107#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/sort_algorithm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-          <folding>
-            <element signature="e#106#119#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/interview/leetcode/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/deepfirstsearch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="209" column="20" selection-start-line="209" selection-start-column="20" selection-end-line="209" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>
