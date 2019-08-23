@@ -89,5 +89,5 @@ ITEM_PIPELINES = {
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-IMAGES_STORE = 'fuck you'
+IMAGES_STORE = 'fuck'
 IMAGES_URLS_FIELD = 'pics'
