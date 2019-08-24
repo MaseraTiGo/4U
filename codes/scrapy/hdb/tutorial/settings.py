@@ -18,7 +18,7 @@ NEWSPIDER_MODULE = 'tutorial.spiders'
 # USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
@@ -64,8 +64,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    # 'tutorial.pipelines.TutorialPipeline': 1,
-    'scrapy.pipelines.images.ImagesPipeline': 1,
+    'tutorial.pipelines.TutorialPipeline': 1,
+    # 'scrapy.pipelines.images.ImagesPipeline': 1,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

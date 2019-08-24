@@ -19,3 +19,4 @@ class TutorialItem(scrapy.Item):
 
 class HDBItem(scrapy.Item):
     pics = scrapy.Field()
+    category = scrapy.Field()
