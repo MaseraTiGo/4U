@@ -21,5 +21,4 @@ from django.urls import path, include, re_path
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path('plugins/(?P<version>[v1|v2]+)/', include('restful.urls'))
-
 ]

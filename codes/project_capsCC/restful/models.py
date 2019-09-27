@@ -1,9 +1,22 @@
 from django.db import models
+from django.db.models import CharField, TextField, DateTimeField, BooleanField, IntegerField, FloatField, \
+    ImageField, FilePathField
+from django.utils import timezone
+from random import randint
+
 
 # Create your models here.
 class User(models.Model):
+    ROLE = (
+        (0, 'admin'),
+        (1, 'svip'),
+        (2, 'vip'),
+        (3, 'poor'),
+    )
     username = models.CharField(max_length=32, unique=True)
     password = models.CharField(max_length=16, default='123456')
+    user_type = models.IntegerField(choices=ROLE, default=3)
+
 
 class Token(models.Model):
     tuser = models.OneToOneField(to='User', on_delete=models.CASCADE)
@@ -15,11 +28,6 @@ class Token(models.Model):
 # file_author: 'Johnathan.Wick'
 # file_date  : '7/26/2019 3:30 PM'
 
-from random import randint
-
-from django.db.models import CharField, TextField, DateTimeField, BooleanField, IntegerField, FloatField, \
-    ImageField, FilePathField
-from django.utils import timezone
 
 # from project_x.model_store.base_model import BaseModel
 
@@ -52,4 +60,3 @@ class Plugins(models.Model):
 
     class Meta:
         db_table = 'PluginsAlpha'
-
