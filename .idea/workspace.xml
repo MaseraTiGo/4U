@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="71eeaf65-9488-4cf3-b54d-bcdd483fe57a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codes/project_capsCC/restful/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/project_capsCC/restful/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
