@@ -5,4 +5,7 @@ class RestfulConfig(AppConfig):
     name = 'restful'
 
     def ready(self):
-        print("I am not fucking ready")
+        """
+        place holder
+        :return:
+        """

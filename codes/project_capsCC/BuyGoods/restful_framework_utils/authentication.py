@@ -45,7 +45,7 @@ def certify_token(key, token):
 
 class UserAuthentication(BaseAuthentication):
     def authenticate(self, request):
-        user = request.query_params.get('user', None)
+        user = request.query_params.get('username', None)
         print('in authentication current user is', user)
         if request.method == 'GET':
             token = request.query_params.get('token', None)
@@ -56,6 +56,7 @@ class UserAuthentication(BaseAuthentication):
         password = request.query_params.get('password', None)
         if user:
             user_obj = Users.objects.filter(username=user, password=password)
+            print('user_is', user, user_obj, 'login success!')
             if user_obj:
                 return user, user_obj
         raise AuthenticationFailed('user is not exist!')

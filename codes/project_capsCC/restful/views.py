@@ -146,9 +146,9 @@ class MyUserPermission(BasePermission):
 
 class UserView(APIView):
     versioning_class = URLPathVersioning
-    authentication_classes = [MyUserAuthentication]
+    # authentication_classes = [MyUserAuthentication]
     throttle_classes = [MyUserThrottle]
-    permission_classes = [MyUserPermission]
+    # permission_classes = [MyUserPermission]
 
     # parser_classes = [JSONParser, FormParser]
 
@@ -165,3 +165,47 @@ class UserView(APIView):
         r = redis.Redis(connection_pool=pool)
         r.set(request.user, token, ex=60)
         return Response(token)
+
+
+from django.http.response import HttpResponse
+from restful.forms import FileUpload
+
+# def file_upload(request, *args, **kwargs):
+#     if request.method == 'POST':
+#         form = FileUpload(request.POST, request.FILES)
+#         if form.is_valid():
+#             handle_uploaded_file(request.FILES['file'])
+#             return HttpResponse('success!!!')
+#     else:
+#         form = FileUpload()
+#     return HttpResponse('failed!!!')
+#
+#
+# def handle_uploaded_file(f):
+#     with open(r'E:\temp\fuck.jpg', 'wb+') as destination:
+#         for chunk in f.chunks():
+#             destination.write(chunk)
+
+from django.views.generic import FormView
+
+
+class FileUpload(FormView):
+    form_class = FileUpload
+    template_name = 'upload.html'
+    success_url = 'user'
+
+    def post(self, request, *args, **kwargs):
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        files = request.FILES.getlist('file')
+        print(len(files), form.fields, form.files)
+        if form.is_valid():
+            c = 0
+            for f in files:
+                with open(r'E:\temp\fuck_%d.jpg' % c, 'wb+') as d:
+                    for chunk in f.chunks():
+                        d.write(chunk)
+                c += 1
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)

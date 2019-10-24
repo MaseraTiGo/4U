@@ -9,6 +9,7 @@ from BuyGoods.views_store.goods import goods
 from rest_framework.routers import DefaultRouter
 from BuyGoods.views_store.users import UsersViewSet
 
+app_name = 'buy_goods'
 router = DefaultRouter()
 # router.register(r'goods/', goods, basename='buy_goods')
 router.register('user', UsersViewSet, base_name='buy_user')

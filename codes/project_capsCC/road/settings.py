@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '0_wni26w=*(9$rq#56+2hs_o&0gdx6@13)1%v+8o51+6#+bfje'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -40,13 +38,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'BuyGoods.apps.BuygoodsConfig',
     'restful.apps.RestfulConfig',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-#    'django.middleware.csrf.CsrfViewMiddleware',
+    #    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -72,16 +71,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'road.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #    }
-#}
+# }
 
 DATABASES = {
     'default': {
@@ -94,6 +92,39 @@ DATABASES = {
     }
 }
 
+# use memcached as default cache
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',#'django_redis.cache.RedisCache',
+#         'LOCATION': '127.0.0.1:11211',
+#         # "OPTIONS": {
+#         #             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#         #             },
+#     },
+# }
+
+# use database as cache backend
+# CACHES = {
+#     'default':
+#         {
+#             'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#             'LOCATION': 'my_test_cache_table',
+#         }
+#
+# }
+
+# use filesystem as cache backend
+
+CACHES = {
+    'default':
+        {
+            'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+            'LOCATION': 'E:/FUCK'
+         }
+}
+
+
+# CACHE_BACKEND = 'redis://127.0.0.1:6379/'
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -112,7 +143,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -126,13 +156,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 REST_FRAMEWORK = {
-        'DEFAULT_VERSION': 'v1',
-        'ALLOWED_VERSION': ['v1', 'v2'],
-        'VERSION_PARAM': 'version',
-        }
+    'DEFAULT_VERSION': 'v1',
+    'ALLOWED_VERSION': ['v1', 'v2'],
+    'VERSION_PARAM': 'version',
+}

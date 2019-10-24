@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-
+app_name = 'road'
 urlpatterns = [
     path('buy/', include('BuyGoods.urls')),
     path('admin/', admin.site.urls),

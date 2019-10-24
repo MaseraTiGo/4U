@@ -13,7 +13,7 @@ class BuygoodsConfig(AppConfig):
         # from BuyGoods.restful_framework_utils.signals import notification_register_email_test
         # post_save.connect(notification_register_email_test, sender='BuyGoods.Users')
         from BuyGoods.restful_framework_utils.signals import notification_register_email
-
+        print('Buygoods app is ready ro use!')
         # print('fuck you')
         # # notification_register_email()
         print("=" * 33)

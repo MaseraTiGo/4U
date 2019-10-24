@@ -16,11 +16,11 @@ class Keywords(BaseModel):
 
     @property
     def goods_list(self):
-        return (good for good in self.goods_set.all())
+        return (good for good in self.goods_kw.all())
 
     @property
     def shops_list(self):
-        return (shop for shop in self.shop_set.all())
+        return (shop for shop in self.shop_kw.all())
 
 
 class Goods(BaseModel):
