@@ -16,7 +16,6 @@ length = 1000
 src_data = [[i for i in range(12)]] * length + [[i for i in range(12, 24)]]
 
 
-
 def time_wrapper(times=1):
     def fuck(fn):
         def inner(*args, **kwargs):
@@ -75,28 +74,32 @@ openpyxl_path = r'e:\openpyxl.xlsx'
 def write_by_pandas(file_path):
     writer = pd.ExcelWriter(file_path, engine='xlsxwriter')
     df = DataFrame(src_data)
-    df.to_excel(writer, 'fucking_test', index=False, header=False)
-    worksheet = writer.sheets['fucking_test']
     workbook = writer.book
-    # fmt = workbook.add_format({"font_name": u"微软雅黑"})
-    # percent_fmt = workbook.add_format({'num_format': '0.00%'})
-    # amt_fmt = workbook.add_format({'num_format': '#,##0'})
-    note_fmt = workbook.add_format(
+    title_fmt = workbook.add_format(
         {'bold': True, 'font_name': '宋体', 'font_color': 'black', 'align': 'center', 'valign': 'vcenter',
          'font_size': 18, 'bg_color': '#9FC3D1'})
-    fmt = workbook.add_format({'font_name': '宋体', 'font_color': 'black', 'align': 'center',
-                               'font_size': 12})
-    worksheet.set_column('A:L', 25, fmt)
-    worksheet.merge_range('K1:L3', '中文测试', note_fmt)
-    # worksheet.set_row('A:L', 20, fmt)
+    content_fmt = workbook.add_format({'font_name': '宋体', 'font_color': 'black', 'align': 'center',
+                                       'font_size': 12})
+    link_fmt = workbook.add_format({'font_name': '宋体', 'font_color': 'blue', 'align': 'center',
+                                    'font_size': 12})
     border_format = workbook.add_format({'border': 1})
-    for col_num, value in enumerate(df.columns.values):
-        worksheet.write(0, col_num, value, note_fmt)
-    worksheet.conditional_format('A1:L%d' % len(df.index), {'type': 'no_blanks', 'format': border_format})
-    # worksheet.add_table('K1:K%d' % 10, {'autofilter': True})
-    worksheet.autofilter('K1:K1')
-    df.to_excel(writer, 'fucking_test001', index=False, header=False)
-    worksheet.write_url('A2',  'internal:fucking_test001!A1', string='fucking_test001', cell_format=note_fmt)
+    for i in range(12):
+        sheet_name = f'fucking_test{i}'
+        df.to_excel(writer, sheet_name, index=False, header=False)
+        worksheet = writer.sheets[sheet_name]
+        worksheet.set_column('A:L', 25, content_fmt)
+        worksheet.set_default_row(20)
+        for col_num, value in enumerate(df.columns.values):
+            worksheet.write(0, col_num, value, title_fmt)
+        worksheet.merge_range('K1:L3', u'中文测试', title_fmt)
+        worksheet.conditional_format('A1:L%d' % len(df.index), {'type': 'no_blanks', 'format': border_format})
+        worksheet.autofilter('K1:K1')
+        worksheet.autofilter('A1:A1')
+        if not i:
+            for j in range(1, 12):
+                worksheet.write_url('A%d' % (j + 1), f'internal:fucking_test{j}!A1', string=f'fucking_test{j}',
+                                    cell_format=link_fmt)
+            # print(worksheet.filter_column(0, 'x = 0'))
     writer.save()
 
 
