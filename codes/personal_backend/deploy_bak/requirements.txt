@@ -1,4 +1,4 @@
-Django==1.9.8
+Django==1.11.28
 pymysql==0.7.5
 redis==2.10.5
 oss2
