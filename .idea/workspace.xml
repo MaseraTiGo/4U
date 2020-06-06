@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71eeaf65-9488-4cf3-b54d-bcdd483fe57a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/codes/common/exec_big_json.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codes/project_capsCC/restful/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/project_capsCC/restful/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tutorial/codes/context_manager_codes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tutorial/codes/context_manager_codes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tutorial/md/contextmanager.md" beforeDir="false" afterPath="$PROJECT_DIR$/Tutorial/md/contextmanager.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codes/flask/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/codes/flask/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codes/interview/temp/pyautotest.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/interview/temp/pyautotest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codes/js/Nodejs/nodejsserials.js" beforeDir="false" afterPath="$PROJECT_DIR$/codes/js/Nodejs/nodejsserials.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codes/utilities/data_format.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/utilities/data_format.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,8 +62,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.signal001">
-    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.exec_big_json">
+    <configuration name="dangdang" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -65,11 +71,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/interview/leetcode" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/common" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/interview/leetcode/__init__.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/common/dangdang.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -78,7 +84,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="deepfirstsearch" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="data_format" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -86,11 +92,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/algorithm/dynamic_programming" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/utilities" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/deepfirstsearch.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/utilities/data_format.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -99,7 +105,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="signal001" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="excel_write" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -107,11 +113,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tutorial/md/django/codes" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/common" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tutorial/md/django/codes/signal001.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/common/excel_write.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -120,7 +126,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sort_algorithm" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="exec_big_json" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -128,11 +134,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/algorithm/dynamic_programming" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/common" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/algorithm/dynamic_programming/sort_algorithm.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/common/exec_big_json.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -141,7 +147,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="wsgi_001" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="pyautotest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="4U" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -149,11 +155,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tutorial/md/django/codes" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codes/interview/temp" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tutorial/md/django/codes/wsgi_001.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codes/interview/temp/pyautotest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -163,19 +169,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.sort_algorithm" />
-      <item itemvalue="Python.__init__" />
-      <item itemvalue="Python.deepfirstsearch" />
-      <item itemvalue="Python.wsgi_001" />
-      <item itemvalue="Python.signal001" />
+      <item itemvalue="Python.pyautotest" />
+      <item itemvalue="Python.data_format" />
+      <item itemvalue="Python.excel_write" />
+      <item itemvalue="Python.dangdang" />
+      <item itemvalue="Python.exec_big_json" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.signal001" />
-        <item itemvalue="Python.wsgi_001" />
-        <item itemvalue="Python.deepfirstsearch" />
-        <item itemvalue="Python.__init__" />
-        <item itemvalue="Python.sort_algorithm" />
+        <item itemvalue="Python.exec_big_json" />
+        <item itemvalue="Python.excel_write" />
+        <item itemvalue="Python.dangdang" />
+        <item itemvalue="Python.data_format" />
+        <item itemvalue="Python.pyautotest" />
       </list>
     </recent_temporary>
   </component>
@@ -247,6 +253,11 @@
           <url>file://$PROJECT_DIR$/codes/algorithm/dynamic_programming/deepfirstsearch.py</url>
           <line>83</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/codes/common/exec_big_json.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

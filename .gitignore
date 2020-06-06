@@ -5,5 +5,9 @@ codes/**/__pycache__/
 *.pyc
 .idea
 codes/**/.idea
+<<<<<<< Updated upstream
 codes/**/venv
 codes/**/env
+=======
+codes/**/venv
+>>>>>>> Stashed changes

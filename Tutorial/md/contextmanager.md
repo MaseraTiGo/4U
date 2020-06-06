@@ -35,11 +35,11 @@ def read_file_to_lines(path):
 假如我们传入了一个不存在的文件（实际环境中一点也不奇怪）， 就会出现下面这中情况：
 
 ```python
-In [3]: read_file_to_lines('test.txt')
+In [3]: read_file_to_lines('lover.txt')
 ----------------------------------------------------------
 FileNotFoundError                         Traceback (most recent call last)
 <ipython-input-3-aec0faf6aec7> in <module>()
-----> 1 read_file_to_lines('test.txt')
+----> 1 read_file_to_lines('lover.txt')
 
 <ipython-input-2-03319421d830> in read_file_to_lines(path)
       1 def read_file_to_lines(path):
@@ -47,7 +47,7 @@ FileNotFoundError                         Traceback (most recent call last)
       3     lines = f.readlines()
       4     return lines
 
-FileNotFoundError: [Errno 2] No such file or directory: 'test.txt'
+FileNotFoundError: [Errno 2] No such file or directory: 'lover.txt'
 ```
 
 它说文件找不到。
@@ -75,6 +75,8 @@ def read_file_to_lines(path):
 但是，此处应有但是， 不然这篇文章咋办......
 
 我们完全可以用更简洁的方式来实现它，也就是我们本篇要讲的上下文管理器。
+
+
 
 #### 什么是上下文管理器
 
