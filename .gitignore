@@ -1,5 +1,9 @@
-/codes/project_capsCC/venv
-/codes/project_capsCC/BuyGoods/migrations
-/codes/project_capsCC/restful/migrations
-/codes/**/__pycache__/
+codes/project_capsCC/venv
+codes/project_capsCC/BuyGoods/migrations
+codes/project_capsCC/restful/migrations
+codes/**/__pycache__/
 *.pyc
+.idea
+codes/**/.idea
+codes/**/venv
+codes/**/env
