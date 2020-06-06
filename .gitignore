@@ -3,11 +3,9 @@ codes/project_capsCC/BuyGoods/migrations
 codes/project_capsCC/restful/migrations
 codes/**/__pycache__/
 *.pyc
-.idea
+*.xml
+.idea/
 codes/**/.idea
-<<<<<<< Updated upstream
 codes/**/venv
 codes/**/env
-=======
 codes/**/venv
->>>>>>> Stashed changes
