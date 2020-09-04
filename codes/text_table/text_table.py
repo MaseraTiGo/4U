@@ -12,17 +12,19 @@ final_str = new_string.replace('=', ' == ').replace('&&', ' and ').replace('||',
 print(final_str)
 args = {
     'name': "dante",
-    "age": '44',
-    'sex_gender': 'Ff',
+    "age": '22',
+    'sex_gender': 'F',
     'female': "female",
-    'info': "shit",
+    'info': "fuck shit",
     'msg': "motherfucker",
 }
 logic_str = final_str.format(**args)
 print(logic_str)
-if_str = 'if ' + logic_str + ':\r\n    print("fuck you")'
+pass_flag = False
+if_str = 'if ' + logic_str + ':pass_flag = True'
 print(if_str)
 print(exec(if_str))
+print(pass_flag)
 # if "dante" == "asshole" and "22" == "33" or "22" == "22" and (
 #         "F" == "F" or "female" == "F") or "fuck" in "fuck shit" and "you" in "motherfucker":
 #     print("fuck you=========")
