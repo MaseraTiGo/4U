@@ -1,0 +1,27 @@
+h2 {
+    color: black;
+    font: 18px/2em FangSong;
+}
+
+.abstract::before {
+    content: "abstract";
+    color: red;
+    font-style: oblique;
+}
+
+hr {
+    width: 50%;
+    margin-left: 0px;
+    solid-color: beige;
+}
+
+.content::after {
+    content: "......hope for more";
+    color: aquamarine;
+}
+
+div[class=picsBg] {
+    background-image: url("../pics/39.jpg");
+    width: 800px;
+    height: 533px;
+}

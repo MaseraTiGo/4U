@@ -1,0 +1,207 @@
+hr {
+    height: 3px;
+    background-color: brown;
+}
+
+#para1 {
+    text-align: center;
+    color: blueviolet;
+    margin: 0;
+    border: red thin solid;
+    /*padding: 0;*/
+    /*padding-bottom: 10px;*/
+    /*line-height: 30px;*/
+    /*height: 10px;*/
+    /*line-height: 10px;*/
+}
+
+#para2 {
+    /*margin: -8px;*/
+    text-align: center;
+    color: red;
+    border: blueviolet thin solid;
+    position: relative;
+    /*top: -60px;*/
+}
+
+#para3 {
+    font-size: 33px;
+    text-align: center;
+    border: aquamarine thin solid;
+    position: relative;
+    /*top: -120px;*/
+    /*text-decoration-line: overline;*/
+    text-decoration: blue line-through dotted;
+    /*text-decoration-style: dotted;*/
+    /*display: none;*/
+    visibility: collapse;
+}
+
+body {
+    /*background-image: url("../10.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: top right;*/
+}
+
+.unorder_list {
+    /*background-image: url("../10.jpg");*/
+    /*list-style: url("../10.jpg") circle;*/
+    line-snap: baseline ;
+    /*list-style-type: square;*/
+    /*list-style-image: url("../10.jpg");*/
+    outline: red solid 1px;
+
+}
+
+.unorder_list2 {
+    border: red solid 1px;
+    outline: blue solid 1px;
+}
+
+table {
+    border-collapse:collapse;
+    background-color: aquamarine;
+    overflow: scroll;
+}
+
+table tr td {
+    color: red;
+    position: relative;
+    /*top: 30px;*/
+
+}
+
+#overflowTest {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    width: 80%;
+    height: 100px;
+    overflow: auto;
+    border: 10px solid #ccc;
+    outline: blue solid 3px;
+    margin: auto;
+}
+
+#floatTest {
+
+    text-align: justify;
+}
+
+/*#floatTest:first-line {*/
+/*    !*color: #4CAF50;*!*/
+/*}*/
+
+#floatTest:before {
+    content: "fuck";
+    font-size: 50px;
+    color: brown;
+}
+
+#overflowTest p:first-child {
+    color: blueviolet;
+}
+
+#forty_p {
+    float: right;
+    width: 300px;
+    height: 200px;
+}
+
+.images img {
+    clear: both;
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    display: block;
+}
+
+.span001 {
+    text-align: center;
+}
+.superLink001 {
+    /*margin: auto;*/
+    text-decoration-line: line-through;
+    font-size: 30px;
+}
+
+a.superLink001:link {
+    color: #4CAF50;
+}
+
+a.superLink001:visited {
+    color: aquamarine;
+}
+
+a.superLink001:hover {
+    color: blue;
+}
+
+a.superLink001:active {
+    color: red;
+}
+
+.nav001 li {
+    height: 30px;
+    display: block;
+    background-color: aquamarine;
+    font-size: 13px;
+}
+
+.nav001 li:first-child {
+    background-color: green;
+}
+.nav001 li a {
+    text-decoration-line: none;
+}
+
+.nav001 li a:link {
+    color: aquamarine;
+}
+
+.nav001 li a:hover {
+    background-color: #cccccc;
+}
+
+.showPic37 {
+    display: inline-block;
+    position: relative;
+    /*height: 500px;*/
+}
+
+.hidePic37 a{
+    /*display: none;*/
+    /*position: absolute;*/
+    /*background-color: #f9f9f9;*/
+    /*min-width: 160px;*/
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+    /*padding: 12px 16px;*/
+    height: 500px;
+    display: block;
+    background-repeat: no-repeat;
+
+}
+
+.hidePic37 {
+    left: 0px;
+    width: 800px;
+    background: url("../../pics/10.jpg") 0 0;
+}
+
+.showPic37:hover .hidePic37 {
+    display: block;
+    opacity: 1;
+}
+
+.newCss001 {
+    text-align: center;
+    width:100px;
+    height:75px;
+    background-color:red;
+    border:1px solid black;
+    border-radius: 25px;
+    box-shadow: 20px 20px 15px red;
+    /*transform: rotate(90deg);*/
+    /*transform: scale(3);*/
+    /*-webkit-transform:rotate(30deg);*/
+}

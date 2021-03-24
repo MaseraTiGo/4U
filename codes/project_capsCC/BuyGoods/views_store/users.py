@@ -14,6 +14,7 @@ from BuyGoods.restful_framework_utils.pagination import UserPagination
 from BuyGoods.restful_framework_utils.authentication import UserAuthentication
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
+from django.contrib.auth.middleware import AuthenticationMiddleware
 
 
 class UsersViewSet(ModelViewSet):

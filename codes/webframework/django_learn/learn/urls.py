@@ -1,4 +1,4 @@
-"""xinghu URL Configuration
+"""learn URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -15,11 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.urls import include
-
-app_name = 'xinghu'
 
 urlpatterns = [
-    path('user/', include('user_info.urls', namespace='user_info')),
     path('admin/', admin.site.urls),
 ]
