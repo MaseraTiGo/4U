@@ -10,6 +10,25 @@
 # ===================================
 
 
+# ================================================= 1313. Decompress Run-Length Encoded List ===========================
+
+class Solution1313:
+    def decompressRLElist(self, nums: list) -> list:
+        process = [nums[2 * i: 2 * (i + 1)] for i in range(len(nums) // 2)]
+        print(f'dong --------------->{process}')
+        temp = []
+        for item in process:
+            temp.extend([item[1]] * item[0])
+        return temp
+
+
+nums = [1, 2, 3, 4]
+
+print(Solution1313().decompressRLElist(nums))
+
+# ================================================= 1313. Decompress Run-Length Encoded List ===========================
+
+
 # ================================================= 1480. Running Sum of 1d Array ======================================
 
 class Solution1480:
@@ -44,5 +63,5 @@ class Solution1365:
         return [ans.get(i) for i in origin]
 
 
-print(Solution1365().smallerNumbersThanCurrent([8, 1, 2, 2, 3]))
+# print(Solution1365().smallerNumbersThanCurrent([8, 1, 2, 2, 3]))
 # ================================================= 1480. Running Sum of 1d Array ======================================

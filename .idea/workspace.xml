@@ -60,33 +60,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71eeaf65-9488-4cf3-b54d-bcdd483fe57a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/arrays.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/basics/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/trees.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/algorithm/two_points/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/fullstackroad/frontend/base_test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/fullstackroad/frontend/practice/wechatreading.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/fullstackroad/frontend/resource/css/test001.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/fullstackroad/frontend/resource/pics/10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/fullstackroad/frontend/resource/pics/37.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/fullstackroad/frontend/resource/pics/39.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/fullstackroad/frontend/resource/pics/40.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/fullstackroad/frontend/resource/pics/wechat/wechat.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/tutorial_codes/descriptor/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/tutorial_codes/descriptor/samples.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/xinghu/user_info/authentication.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/xinghu/user_info/data_processor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/xinghu/user_info/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codes/xinghu/user_info/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/4U.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/4U.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codes/project_capsCC/BuyGoods/views_store/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/project_capsCC/BuyGoods/views_store/users.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codes/xinghu/user_info/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/xinghu/user_info/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codes/xinghu/user_info/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/xinghu/user_info/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codes/xinghu/xinghu/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/xinghu/xinghu/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codes/xinghu/xinghu/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/xinghu/xinghu/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codes/algorithm/arrays.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/algorithm/arrays.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +118,7 @@
       <recent name="D:\Gits\4U\codes\project_capsC\project_capsC\media\img" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.change">
+  <component name="RunManager" selected="Python.arrays">
     <configuration name="__init__ (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="4U" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -262,8 +238,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.change" />
         <item itemvalue="Python.arrays" />
+        <item itemvalue="Python.change" />
         <item itemvalue="Python.trees" />
         <item itemvalue="Python.__init__ (2)" />
         <item itemvalue="Python.search" />
@@ -322,7 +298,7 @@
       <workItem from="1616308275074" duration="18000" />
       <workItem from="1616308305839" duration="650000" />
       <workItem from="1616371799753" duration="3732000" />
-      <workItem from="1616586151786" duration="335000" />
+      <workItem from="1616586151786" duration="1451000" />
     </task>
     <servers />
   </component>
@@ -388,13 +364,13 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/4U$arrays.coverage" NAME="arrays Coverage Results" MODIFIED="1616374715652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/algorithm" />
+    <SUITE FILE_PATH="coverage/4U$arrays.coverage" NAME="arrays Coverage Results" MODIFIED="1616588936732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/algorithm" />
     <SUITE FILE_PATH="coverage/4U$__init____2_.coverage" NAME="__init__ (2) Coverage Results" MODIFIED="1615598917962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/algorithm/two_points" />
     <SUITE FILE_PATH="coverage/4U$search.coverage" NAME="search Coverage Results" MODIFIED="1615518263861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/algorithm" />
     <SUITE FILE_PATH="coverage/4U$samples.coverage" NAME="samples Coverage Results" MODIFIED="1608433685047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/tutorial_codes/descriptor" />
     <SUITE FILE_PATH="coverage/4U$trees.coverage" NAME="trees Coverage Results" MODIFIED="1616372066695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/algorithm" />
     <SUITE FILE_PATH="coverage/4U$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1608379027052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/tutorial_codes/descriptor" />
     <SUITE FILE_PATH="coverage/4U$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1608378847876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/algorithm/basics" />
-    <SUITE FILE_PATH="coverage/4U$change.coverage" NAME="change Coverage Results" MODIFIED="1616378122598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/algorithm/dynamic_programming" />
+    <SUITE FILE_PATH="coverage/4U$change.coverage" NAME="change Coverage Results" MODIFIED="1616588895501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codes/algorithm/dynamic_programming" />
   </component>
 </project>

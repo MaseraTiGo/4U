@@ -5,6 +5,7 @@ codes/**/__pycache__/
 *.pyc
 *.xml
 .idea/**/*.xml
+.idea/*.xml
 codes/**/.idea
 codes/**/venv
 codes/**/env
