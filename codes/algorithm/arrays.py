@@ -9,6 +9,8 @@
 # project_name  : 4U
 # ===================================
 
+from typing import List, Optional
+
 
 # ================================================= 1313. Decompress Run-Length Encoded List ===========================
 
@@ -24,9 +26,28 @@ class Solution1313:
 
 nums = [1, 2, 3, 4]
 
-print(Solution1313().decompressRLElist(nums))
+
+# print(Solution1313().decompressRLElist(nums))
 
 # ================================================= 1313. Decompress Run-Length Encoded List ===========================
+
+
+# ================================================= 1389. Create Target Array in the Given Order =======================
+
+class Solution1389:
+    def createTargetArray(self, nums: List[int], index: List[int]) -> List[int]:
+        target = []
+        for i, value in enumerate(nums):
+            target.insert(index[i], value)
+        return target
+
+
+nums = [1, 2, 3, 4, 0]
+index = [0, 1, 2, 3, 0]
+print(Solution1389().createTargetArray(nums, index))
+
+
+# ================================================= 1389. Create Target Array in the Given Order =======================
 
 
 # ================================================= 1480. Running Sum of 1d Array ======================================
@@ -61,7 +82,6 @@ class Solution1365:
             if item not in ans:
                 ans[item] = index
         return [ans.get(i) for i in origin]
-
 
 # print(Solution1365().smallerNumbersThanCurrent([8, 1, 2, 2, 3]))
 # ================================================= 1480. Running Sum of 1d Array ======================================
