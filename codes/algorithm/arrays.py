@@ -32,6 +32,23 @@ nums = [1, 2, 3, 4]
 # ================================================= 1313. Decompress Run-Length Encoded List ===========================
 
 
+# ================================================= 1365. How Many Numbers Are Smaller Than the Current Number =========
+
+class Solution1365:
+    def smallerNumbersThanCurrent(self, nums: list) -> list:
+
+        origin = nums[:]
+        nums = sorted(nums)
+        ans = {}
+        for index, item in enumerate(nums):
+            if item not in ans:
+                ans[item] = index
+        return [ans.get(i) for i in origin]
+
+# print(Solution1365().smallerNumbersThanCurrent([8, 1, 2, 2, 3]))
+# ================================================= 1365. How Many Numbers Are Smaller Than the Current Number =========
+
+
 # ================================================= 1389. Create Target Array in the Given Order =======================
 
 class Solution1389:
@@ -42,9 +59,9 @@ class Solution1389:
         return target
 
 
-nums = [1, 2, 3, 4, 0]
-index = [0, 1, 2, 3, 0]
-print(Solution1389().createTargetArray(nums, index))
+# nums = [1, 2, 3, 4, 0]
+# index = [0, 1, 2, 3, 0]
+# print(Solution1389().createTargetArray(nums, index))
 
 
 # ================================================= 1389. Create Target Array in the Given Order =======================
@@ -70,18 +87,20 @@ class Solution1480:
 # ================================================= 1480. Running Sum of 1d Array ======================================
 
 
-# ================================================= 1480. Running Sum of 1d Array ======================================
+# ================================================= 1486. XOR Operation in an Array ====================================
 
-class Solution1365:
-    def smallerNumbersThanCurrent(self, nums: list) -> list:
+class Solution1486:
+    def xorOperation(self, n: int, start: int) -> int:
+        if not n:
+            return 0
+        gen_list = [start + 2 * i for i in range(n)]
 
-        origin = nums[:]
-        nums = sorted(nums)
-        ans = {}
-        for index, item in enumerate(nums):
-            if item not in ans:
-                ans[item] = index
-        return [ans.get(i) for i in origin]
+        ans = gen_list[0]
+        for item in gen_list[1:]:
+            ans = ans ^ item
 
-# print(Solution1365().smallerNumbersThanCurrent([8, 1, 2, 2, 3]))
-# ================================================= 1480. Running Sum of 1d Array ======================================
+        return ans
+# ================================================= 1486. XOR Operation in an Array ====================================
+
+
+
