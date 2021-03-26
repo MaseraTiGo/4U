@@ -9,6 +9,8 @@
 # project_name  : 4U
 # ===================================
 
+from typing import List, Optional
+
 def dfs(tree):
     if tree:
         yield tree.val
@@ -392,6 +394,22 @@ class Solution404:
 
 
 # ================================================= 404. Sum of Left Leaves ============================================
+
+
+# ================================================= 429. N-ary Tree Level Order Traversal ==============================
+
+class Solution429:
+    def levelOrder(self, root: 'Node') -> List[List[int]]:
+        if not root:
+            return root
+        temp = []
+        l = [root]
+
+        while l:
+            temp.append([node.val for node in l])
+            l = [leaf for node in l for leaf in node.children if leaf]
+        return temp
+# ================================================= 429. N-ary Tree Level Order Traversal ==============================
 
 
 # ================================================= 501. Find Mode in Binary Search Tree ===============================
@@ -1472,6 +1490,23 @@ class Solution1261:
 
 
 # ================================================= 1261. Find Elements in a Contaminated Binary Tree ==================
+
+
+# ================================================= 1130. Minimum Cost Tree From Leaf Values ===========================
+
+class Solution1130:
+    def mctFromLeafValues(self, arr: List[int]) -> int:
+        sorted_arr = sorted(arr)
+        counter = 0
+        for index in range(len(sorted_arr) - 1):
+            temp = sorted_arr[index] * sorted_arr[index+1]
+            counter += temp
+        return counter
+
+
+print(Solution1130().mctFromLeafValues([6, 2, 4]))
+
+# ================================================= 1130. Minimum Cost Tree From Leaf Values ===========================
 
 
 # ================================================= 1305. All Elements in Two Binary Search Trees ======================
