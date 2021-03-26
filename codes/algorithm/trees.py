@@ -808,6 +808,29 @@ class Solution654:
 # ================================================= 654. Maximum Binary Tree ===========================================
 
 
+# ================================================= 669. Trim a Binary Search Tree =====================================
+
+# todo: dong to be further more thinking about it.
+
+
+class Solution669:
+    def trimBST(self, root: TreeNode, low: int, high: int) -> TreeNode:
+        def rec(root):
+            if root:
+                if not (low <= root.val <= high):
+                    if root.val < low:
+                        return rec(root.right)
+                    return rec(root.left)
+                else:
+                    root.left, root.right = rec(root.left), rec(root.right)
+                    return root
+
+        return rec(root)
+
+
+# ================================================= 669. Trim a Binary Search Tree =====================================
+
+
 # ================================================= 671. Second Minimum Node In a Binary Tree ==========================
 
 class Solution671:
@@ -1123,11 +1146,11 @@ class Solution951:
 
 # root1 = [1, 2, 3, 4, 5, 6, None, None, None, 7, 8]
 # root2 = [1, 3, 2, None, 6, 4, 5, None, None, None, None, 8, 7]
-root1 = [0, None, 1]
-root2 = [0, 1, None]
-root_951_1 = GenTree(root1).tree
-root_951_2 = GenTree(root2).tree
-print(Solution951().flipEquiv(root_951_1, root_951_2))
+# root1 = [0, None, 1]
+# root2 = [0, 1, None]
+# root_951_1 = GenTree(root1).tree
+# root_951_2 = GenTree(root2).tree
+# print(Solution951().flipEquiv(root_951_1, root_951_2))
 
 
 # ================================================= 951. Flip Equivalent Binary Trees ==================================
