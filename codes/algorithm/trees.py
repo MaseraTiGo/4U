@@ -103,6 +103,26 @@ node_9.children = [node_13]
 node_11.children = [node_14]
 
 
+# ================================================= 94. Binary Tree Inorder Traversal ==================================
+
+class Solution94:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        temp = []
+
+        def dfs_helper(node):
+            if node:
+                dfs_helper(node.left)
+                temp.append(node.val)
+                dfs_helper(node.right)
+
+        dfs_helper(root)
+        return temp
+# ================================================= 94. Binary Tree Inorder Traversal ==================================
+
+
 # ================================================= 100. Same Tree =====================================================
 class Solution100:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
