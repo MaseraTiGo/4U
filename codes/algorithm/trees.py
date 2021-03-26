@@ -11,6 +11,7 @@
 
 from typing import List, Optional
 
+
 def dfs(tree):
     if tree:
         yield tree.val
@@ -120,6 +121,8 @@ class Solution94:
 
         dfs_helper(root)
         return temp
+
+
 # ================================================= 94. Binary Tree Inorder Traversal ==================================
 
 
@@ -429,6 +432,8 @@ class Solution429:
             temp.append([node.val for node in l])
             l = [leaf for node in l for leaf in node.children if leaf]
         return temp
+
+
 # ================================================= 429. N-ary Tree Level Order Traversal ==============================
 
 
@@ -961,6 +966,7 @@ class Solution889:
     def constructFromPrePost(self, pre: list, post: list) -> TreeNode:
         pass
 
+
 # ================================================= 889. Construct Binary Tree from Preorder and Postorder Traversal ===
 
 
@@ -1080,6 +1086,52 @@ class Solution938:
 # root = TreeNode(10, TreeNode(5, TreeNode(3), TreeNode(7)), TreeNode(15, right=TreeNode(18)))
 # print(Solution938.range_sum_bst(root, low=7, high=15))
 # ================================================= 938. Range Sum of BST ==============================================
+
+
+# ================================================= 951. Flip Equivalent Binary Trees ==================================
+
+# todo: dong---should exist a much better solution.
+
+
+class Solution951:
+    def flipEquiv(self, root1: TreeNode, root2: TreeNode) -> bool:
+        if not root1 and not root2:
+            return True
+        if not all([root1, root2]):
+            return False
+
+        l = [(root1, root2)]
+
+        while l:
+            node1, node2 = l.pop(0)
+            if node1.val != node2.val:
+                return False
+            else:
+                node1_sons = [leaf for leaf in (node1.left, node1.right) if leaf]
+                node2_sons = [leaf for leaf in (node2.left, node2.right) if leaf]
+                value_1 = [leaf.val for leaf in node1_sons]
+                value_2 = [leaf.val for leaf in node2_sons]
+
+                if value_1 == value_2:
+                    l.extend(list(zip(node1_sons, node2_sons)))
+                elif value_1 == value_2[::-1]:
+                    l.extend(list(zip(node1_sons, node2_sons[::-1])))
+                else:
+                    return False
+        return True
+
+
+# root1 = [1, 2, 3, 4, 5, 6, None, None, None, 7, 8]
+# root2 = [1, 3, 2, None, 6, 4, 5, None, None, None, None, 8, 7]
+root1 = [0, None, 1]
+root2 = [0, 1, None]
+root_951_1 = GenTree(root1).tree
+root_951_2 = GenTree(root2).tree
+print(Solution951().flipEquiv(root_951_1, root_951_2))
+
+
+# ================================================= 951. Flip Equivalent Binary Trees ==================================
+
 
 # ================================================= 965. Univalued Binary Tree =========================================
 
@@ -1519,12 +1571,13 @@ class Solution1130:
         sorted_arr = sorted(arr)
         counter = 0
         for index in range(len(sorted_arr) - 1):
-            temp = sorted_arr[index] * sorted_arr[index+1]
+            temp = sorted_arr[index] * sorted_arr[index + 1]
             counter += temp
         return counter
 
 
-print(Solution1130().mctFromLeafValues([6, 2, 4]))
+# print(Solution1130().mctFromLeafValues([6, 2, 4]))
+
 
 # ================================================= 1130. Minimum Cost Tree From Leaf Values ===========================
 
