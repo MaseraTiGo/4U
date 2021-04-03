@@ -612,6 +612,32 @@ class Solution530:
 # ================================================= 530|783. Minimum Absolute Difference in BST ========================
 
 
+# ================================================= 538. Convert BST to Greater Tree ===================================
+
+# Runtime: 72 ms, faster than 97.83% of Python3 online submissions for Convert BST to Greater Tree.
+# Memory Usage: 16.7 MB, less than 51.12% of Python3 online submissions for Convert BST to Greater Tree.
+class Solution538:
+    def convertBST(self, root: TreeNode) -> TreeNode:
+        self.counter = 0
+
+        def dfs_postorder(node):
+            if node:
+                dfs_postorder(node.right)
+                self.counter += node.val
+                node.val = self.counter
+                dfs_postorder(node.left)
+
+        dfs_postorder(root)
+        return root
+
+
+# root_538 = GenTree([4, 1, 6, 0, 2, 5, 7, None, None, None, 3, None, None, None, 8]).tree
+# print(bfs(Solution538().convertBST(root_538)))
+
+
+# ================================================= 538. Convert BST to Greater Tree ===================================
+
+
 # ================================================= 543. Diameter of Binary Tree =======================================
 
 # todo: dong, not understand well
