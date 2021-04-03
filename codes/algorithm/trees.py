@@ -321,9 +321,9 @@ class Solution230:
         return 0
 
 
-root_230 = GenTree([5, 3, 6, 2, 4, None, None, 1, None]).tree
-
-print(Solution230().kthSmallest(root_230, 3))
+# root_230 = GenTree([5, 3, 6, 2, 4, None, None, 1, None]).tree
+#
+# print(Solution230().kthSmallest(root_230, 3))
 
 
 # ================================================= 230. Kth Smallest Element in a BST =================================
@@ -503,6 +503,25 @@ class Solution501:
 
 
 # ================================================= 501. Find Mode in Binary Search Tree ===============================
+
+
+# ================================================= 513. Find Bottom Left Tree Value ===================================
+
+# Runtime: 28 ms, faster than 99.92% of Python3 online submissions for Find Bottom Left Tree Value.
+# Memory Usage: 16.3 MB, less than 80.59% of Python3 online submissions for Find Bottom Left Tree Value.
+class Solution513:
+    def findBottomLeftValue(self, root: TreeNode) -> int:
+        if not root:
+            return -1
+
+        node_l = [root]
+
+        while node_l:
+            next_node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+            if not next_node_l:
+                return node_l[0].val
+            node_l = next_node_l
+# ================================================= 513. Find Bottom Left Tree Value ===================================
 
 
 # ================================================= 530|783. Minimum Absolute Difference in BST ========================
