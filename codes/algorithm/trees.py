@@ -524,6 +524,27 @@ class Solution513:
 # ================================================= 513. Find Bottom Left Tree Value ===================================
 
 
+# ================================================= 515. Find Largest Value in Each Tree Row ===========================
+
+# Runtime: 40 ms, faster than 93.71% of Python3 online submissions for Find Largest Value in Each Tree Row.
+# Memory Usage: 16.6 MB, less than 33.67% of Python3 online submissions for Find Largest Value in Each Tree Row.
+class Solution515:
+    def largestValues(self, root: TreeNode) -> List[int]:
+        ans = []
+
+        if not root:
+            return ans
+
+        node_l = [root]
+
+        while node_l:
+            ans.append(max([node.val for node in node_l]))
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+
+        return ans
+# ================================================= 515. Find Largest Value in Each Tree Row ===========================
+
+
 # ================================================= 530|783. Minimum Absolute Difference in BST ========================
 
 class Solution530:
