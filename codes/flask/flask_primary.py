@@ -1,6 +1,16 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, abort
 
 app = Flask(__name__)
+
+
+@app.route('/404')
+def test_abort():
+    abort(404)
+
+
+@app.route('/')
+def fucking_index():
+    return "fucking idiots all of you!"
 
 
 @app.route('/admin')

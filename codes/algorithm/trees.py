@@ -14,9 +14,9 @@ from typing import List, Optional
 
 def dfs(tree):
     if tree:
-        yield tree.val
-        yield from dfs(tree.left)
-        yield from dfs(tree.right)
+        dfs(tree.left)
+        print(tree.val)
+        dfs(tree.right)
 
 
 def bfs(root):
@@ -1238,6 +1238,50 @@ class Solution993:
 
 
 # ================================================= 993. Cousins in Binary Tree ========================================
+
+
+# ================================================= 998. Maximum Binary Tree II ========================================
+
+class Solution998:
+    def insertIntoMaxTree(self, root: TreeNode, val: int) -> TreeNode:
+        if not root:
+            return root
+
+        print(f'dong -------------> current node: {root.val}')
+        if root.val > val:
+            if not root.right and not root.left:
+                val_node = TreeNode(val)
+                root.right = val_node
+            elif root.right and root.right.val < val:
+                val_node = TreeNode(val)
+                root.right = val_node
+                val_node.left = root
+
+
+            # return root
+
+        if root.val < val:
+            val_node = TreeNode(val)
+            val_node.left = root
+            root = val_node
+            # return val_node
+
+        # self.insertIntoMaxTree(root.left, val)
+        self.insertIntoMaxTree(root.right, val)
+
+        return root
+
+
+# root_list = [4, 1, 3, None, None, 2, None]
+# root_list = [5, 2, 4, None, 1]
+root_list = [5, 2, 3, None, 1]
+root_998 = GenTree(root_list).tree
+# print(bfs(root_998))
+src_val = 4
+print(dfs(Solution998().insertIntoMaxTree(root_998, src_val)))
+
+
+# ================================================= 998. Maximum Binary Tree II ========================================
 
 
 # ================================================= 1008. Construct Binary Search Tree from Preorder Traversal =========
