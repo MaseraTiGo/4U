@@ -299,6 +299,36 @@ class Solution112:
 # ================================================= 112. Path Sum ======================================================
 
 
+# ================================================= 230. Kth Smallest Element in a BST =================================
+
+class Solution230:
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        if not root:
+            return 0
+
+        c = 0
+
+        def dfs_helper(node):
+            if node:
+                yield from dfs_helper(node.left)
+                yield node.val
+                yield from dfs_helper(node.right)
+
+        for v in dfs_helper(root):
+            c += 1
+            if c == k:
+                return v
+        return 0
+
+
+root_230 = GenTree([5, 3, 6, 2, 4, None, None, 1, None]).tree
+
+print(Solution230().kthSmallest(root_230, 3))
+
+
+# ================================================= 230. Kth Smallest Element in a BST =================================
+
+
 # ================================================= 235. Lowest Common Ancestor of a Binary Search Tree ================
 
 class Solution235:
@@ -1257,7 +1287,6 @@ class Solution998:
                 root.right = val_node
                 val_node.left = root
 
-
             # return root
 
         if root.val < val:
@@ -1274,11 +1303,11 @@ class Solution998:
 
 # root_list = [4, 1, 3, None, None, 2, None]
 # root_list = [5, 2, 4, None, 1]
-root_list = [5, 2, 3, None, 1]
-root_998 = GenTree(root_list).tree
-# print(bfs(root_998))
-src_val = 4
-print(dfs(Solution998().insertIntoMaxTree(root_998, src_val)))
+# root_list = [5, 2, 3, None, 1]
+# root_998 = GenTree(root_list).tree
+# # print(bfs(root_998))
+# src_val = 4
+# print(dfs(Solution998().insertIntoMaxTree(root_998, src_val)))
 
 
 # ================================================= 998. Maximum Binary Tree II ========================================
