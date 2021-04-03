@@ -538,6 +538,54 @@ class Solution501:
 # ================================================= 501. Find Mode in Binary Search Tree ===============================
 
 
+# ================================================= 508. Most Frequent Subtree Sum =====================================
+
+# Runtime: 40 ms, faster than 96.41% of Python3 online submissions for Most Frequent Subtree Sum.
+# Memory Usage: 17.9 MB, less than 22.41% of Python3 online submissions for Most Frequent Subtree Sum.
+class Solution508:
+    def findFrequentTreeSum(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        cache_mapping = {}
+
+        def dfs_postorder(node):
+            if not node:
+                return 0
+            if node and node in cache_mapping:
+                return cache_mapping[node]
+            else:
+                cur_left = dfs_postorder(node.left) if node.left else 0
+                cur_right = dfs_postorder(node.right) if node.right else 0
+                cur_sum = cur_right + cur_left + node.val
+                cache_mapping[node] = cur_sum
+                return cur_sum
+
+        dfs_postorder(root)
+
+        temp = {}
+        for v in cache_mapping.values():
+            if v in temp:
+                temp[v] += 1
+            else:
+                temp[v] = 1
+        vals = sorted(temp, key=lambda x: temp[x], reverse=True)
+        ans = [vals[0]]
+        for val in vals[1:]:
+            if temp[val] == temp[ans[0]]:
+                ans.append(val)
+            else:
+                break
+        return ans
+
+
+# root_508 = GenTree([3, 1, 5, 0, 2, 4, 6, None, None, None, 3]).tree
+# print(Solution508().findFrequentTreeSum(root_508))
+
+
+# ================================================= 508. Most Frequent Subtree Sum =====================================
+
+
 # ================================================= 513. Find Bottom Left Tree Value ===================================
 
 # Runtime: 28 ms, faster than 99.92% of Python3 online submissions for Find Bottom Left Tree Value.
