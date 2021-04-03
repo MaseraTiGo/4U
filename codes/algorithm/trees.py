@@ -521,6 +521,8 @@ class Solution513:
             if not next_node_l:
                 return node_l[0].val
             node_l = next_node_l
+
+
 # ================================================= 513. Find Bottom Left Tree Value ===================================
 
 
@@ -542,6 +544,8 @@ class Solution515:
             node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
 
         return ans
+
+
 # ================================================= 515. Find Largest Value in Each Tree Row ===========================
 
 
@@ -1949,7 +1953,34 @@ class Solution1457:
                     return False
         return True
 
+
 # root_1457 = TreeNode(2, TreeNode(3, TreeNode(3), TreeNode(1)), TreeNode(1, right=TreeNode(1)))
 # root_1457_2 = TreeNode(2, TreeNode(1, TreeNode(1), TreeNode(3, right=TreeNode(1))), TreeNode(1))
 # print(Solution1457().pseudoPalindromicPaths(root_1457_2))
 # ================================================= 1457. Pseudo-Palindromic Paths in a Binary Tree ====================
+
+
+# ================================================= 1466. Reorder Routes to Make All Paths Lead to the City Zero =======
+# todo: dong not really understand.
+# Runtime: 708 ms, faster than 96.13% of Python3 online submissions for Reorder Routes to Make
+# All Paths Lead to the City Zero.
+# Memory Usage: 37.7 MB, less than 97.54% of Python3 online submissions for Reorder Routes to Make
+# All Paths Lead to the City Zero.
+class Solution1466:
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        backwardEdges = 0
+        seen = [False] * n
+        seen[0] = True
+        nseen = 1
+
+        while nseen < n:
+            for u, v in connections:
+                if seen[v] and not seen[u]:
+                    seen[u] = True
+                    nseen += 1
+                elif seen[u] and not seen[v]:
+                    seen[v] = True
+                    nseen += 1
+                    backwardEdges += 1
+        return backwardEdges
+# ================================================= 1466. Reorder Routes to Make All Paths Lead to the City Zero =======
