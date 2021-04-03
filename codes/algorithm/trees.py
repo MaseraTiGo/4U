@@ -299,6 +299,39 @@ class Solution112:
 # ================================================= 112. Path Sum ======================================================
 
 
+# ================================================= 173. Binary Search Tree Iterator ===================================
+
+# Runtime: 72 ms, faster than 76.68% of Python3 online submissions for Binary Search Tree Iterator.
+# Memory Usage: 20.3 MB, less than 69.07% of Python3 online submissions for Binary Search Tree Iterator.
+class BSTIterator173:
+
+    def __init__(self, root: TreeNode):
+        self.node = None
+        self.res = []
+        self.c = 0
+
+        def dfs(node):
+            if node:
+                dfs(node.left)
+                self.res.append(node.val)
+                dfs(node.right)
+
+        dfs(root)
+        self.r_len = len(self.res)
+
+    def next(self) -> int:
+        self.c += 1
+        return self.res[self.c - 1]
+
+    def hasNext(self) -> bool:
+        if self.c < self.r_len:
+            return True
+        return False
+
+
+# ================================================= 173. Binary Search Tree Iterator ===================================
+
+
 # ================================================= 230. Kth Smallest Element in a BST =================================
 
 class Solution230:
