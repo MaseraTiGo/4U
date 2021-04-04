@@ -1119,6 +1119,68 @@ class Solution814:
 # ================================================= 814. Binary Tree Pruning ===========================================
 
 
+# ================================================= 863. All Nodes Distance K in Binary Tree ===========================
+
+# Runtime: 16 ms, faster than 100.00% of Python3 online submissions for All Nodes Distance K in Binary Tree.
+# Memory Usage: 15 MB, less than 8.66% of Python3 online submissions for All Nodes Distance K in Binary Tree.
+class Solution863:
+    def distanceK(self, root: TreeNode, target: TreeNode, K: int) -> List[int]:
+        if not K:
+            return [target.val]
+        root.far = None
+        node_l = [root]
+
+        while node_l:
+            temp = []
+            for node in node_l:
+                if node.left:
+                    node.left.far = node
+                    temp.append(node.left)
+                if node.right:
+                    node.right.far = node
+                    temp.append(node.right)
+            node_l = temp
+
+        ans = []
+        cur_node = target.far
+        exclude = target
+        c = 1
+        while cur_node:
+            ans.extend(self.helper(cur_node, K - c, exclude))
+            if not cur_node.far:
+                break
+            exclude = cur_node
+            cur_node = cur_node.far
+            c += 1
+            if c == K:
+                ans.append(cur_node.val)
+                break
+
+        ans.extend(self.helper(target, K))
+
+        return list(set(ans))
+
+    def helper(self, node, k, exclude=None):
+        if not node:
+            return []
+        node_l = [node]
+        dept = 0
+        while node_l:
+            if dept == k:
+                return [node.val for node in node_l]
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf and leaf != exclude]
+            dept += 1
+        return []
+
+
+# root_863 = GenTree([0, 1, None, 3, 2, 6, None, 5, 4]).tree
+# target = root_863.left.left
+# print(Solution863().distanceK(root_863, target, 1))
+
+
+# ================================================= 863. All Nodes Distance K in Binary Tree ===========================
+
+
 # ================================================= 872. Leaf-Similar Trees ============================================
 
 class Solution872:
