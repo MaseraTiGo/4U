@@ -397,6 +397,26 @@ class BSTIterator173:
 # ================================================= 173. Binary Search Tree Iterator ===================================
 
 
+# ================================================= 199. Binary Tree Right Side View ===================================
+
+class Solution199:
+    def __init__(self):
+        self.ans = []
+
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        node_l = [root]
+
+        while node_l:
+            self.ans.append([node.val for node in node_l][-1])
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+
+        return self.ans
+# ================================================= 199. Binary Tree Right Side View ===================================
+
+
 # ================================================= 230. Kth Smallest Element in a BST =================================
 
 class Solution230:
