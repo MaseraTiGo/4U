@@ -189,6 +189,25 @@ class Solution101:
 # ================================================= 101. Symmetric Tree ================================================
 
 
+# ================================================= 102. Binary Tree Level Order Traversal =============================
+
+class Solution102:
+    def __init__(self):
+        self.ans = []
+
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+
+        node_l = [root]
+        while node_l:
+            self.ans.append([node.val for node in node_l])
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+
+        return self.ans
+# ================================================= 102. Binary Tree Level Order Traversal =============================
+
+
 # ================================================= 110. Balanced Binary Tree ==========================================
 
 class Solution110:
