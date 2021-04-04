@@ -299,6 +299,30 @@ class Solution112:
 # ================================================= 112. Path Sum ======================================================
 
 
+# ================================================= 144. Binary Tree Preorder Traversal ================================
+
+# Runtime: 28 ms, faster than 82.49% of Python3 online submissions for Binary Tree Preorder Traversal.
+# Memory Usage: 14.2 MB, less than 75.71% of Python3 online submissions for Binary Tree Preorder Traversal.
+class Solution144:
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        ans = []
+
+        def preorder(node):
+            if node:
+                ans.append(node.val)
+                preorder(node.left)
+                preorder(node.right)
+
+        preorder(root)
+        return ans
+
+
+# ================================================= 144. Binary Tree Preorder Traversal ================================
+
+
 # ================================================= 145. Binary Tree Postorder Traversal ===============================
 
 class Solution145:
@@ -316,6 +340,8 @@ class Solution145:
 
         postorder(root)
         return ans
+
+
 # ================================================= 145. Binary Tree Postorder Traversal ===============================
 
 
