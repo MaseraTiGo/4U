@@ -299,6 +299,26 @@ class Solution112:
 # ================================================= 112. Path Sum ======================================================
 
 
+# ================================================= 145. Binary Tree Postorder Traversal ===============================
+
+class Solution145:
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        ans = []
+
+        def postorder(node):
+            if node:
+                postorder(node.left)
+                postorder(node.right)
+                ans.append(node.val)
+
+        postorder(root)
+        return ans
+# ================================================= 145. Binary Tree Postorder Traversal ===============================
+
+
 # ================================================= 173. Binary Search Tree Iterator ===================================
 
 # Runtime: 72 ms, faster than 76.68% of Python3 online submissions for Binary Search Tree Iterator.
