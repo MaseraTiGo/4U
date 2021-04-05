@@ -179,7 +179,7 @@ class Solution101:
 
 # root_101 = TreeNode(1, TreeNode(2, TreeNode(3), TreeNode(4)), TreeNode(2, TreeNode(4), TreeNode(3)))
 # root_101_2 = TreeNode(1, TreeNode(2, TreeNode(3), TreeNode(4)), TreeNode(2, TreeNode(4), TreeNode(3)))
-# [2,3,3,4,5,5,4,null,null,8,9,null,null,9,8]
+# [2,3,3,4,5,5,4,None,None,8,9,None,None,9,8]
 # root_101_3 = TreeNode(2, TreeNode(3, TreeNode(4), TreeNode(5, TreeNode(8), TreeNode(9))),
 #                       TreeNode(3, TreeNode(5), TreeNode(4, TreeNode(9), TreeNode(8))))
 #
@@ -205,6 +205,8 @@ class Solution102:
             node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
 
         return self.ans
+
+
 # ================================================= 102. Binary Tree Level Order Traversal =============================
 
 
@@ -414,6 +416,8 @@ class Solution199:
             node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
 
         return self.ans
+
+
 # ================================================= 199. Binary Tree Right Side View ===================================
 
 
@@ -1709,10 +1713,10 @@ class Solution1026:
 # root_1026_2 = TreeNode(8, TreeNode(3, TreeNode(1), TreeNode(6, TreeNode(4), TreeNode(7))),
 #                        TreeNode(10, right=TreeNode(14, TreeNode(13))))
 #
-# # [2,5,0,null,null,4,null,null,6,1,null,3]
+# # [2,5,0,None,None,4,None,None,6,1,None,3]
 # root_1026_3 = TreeNode(2, TreeNode(5), TreeNode(0, TreeNode(4, right=TreeNode(6, TreeNode(1, right=TreeNode(3))))))
 #
-# # [8,null,1,5,6,2,4,0,null,7,3]
+# # [8,None,1,5,6,2,4,0,None,7,3]
 # root_1026_4 = TreeNode(8, right=TreeNode(1, TreeNode(5, TreeNode(2, TreeNode(7), TreeNode(3)), TreeNode(4)),
 #                                          TreeNode(6, TreeNode(0))))
 # print(Solution1026().maxAncestorDiff(root_1026_3))
@@ -2237,4 +2241,63 @@ class Solution1466:
                     nseen += 1
                     backwardEdges += 1
         return backwardEdges
+
+
 # ================================================= 1466. Reorder Routes to Make All Paths Lead to the City Zero =======
+
+
+# ================================================= 1530. Number of Good Leaf Nodes Pairs ==============================
+
+class Solution1530:
+    def countPairs(self, root: TreeNode, distance: int) -> int:
+        if not root or distance == 1:
+            return 0
+
+        ans = 0
+        routes = []
+
+        def dfs_helper(node, temp=[]):
+            if node:
+                temp.append(node.val)
+                if (not node.left) and (not node.right):
+                    yield temp
+                yield from dfs_helper(node.left, temp)
+                yield from dfs_helper(node.right, temp)
+                temp.pop()
+
+        for item in dfs_helper(root):
+            print(item)
+            routes.append(item[:])
+        r_len = len(routes)
+        for i in range(r_len - 1):
+            for j in range(i + 1, r_len):
+
+                same_father = routes[i][-2]
+                for index, v in enumerate(routes[i]):
+                    if v == routes[j][index]:
+                        continue
+                    else:
+                        same_father = routes[i][index - 1]
+                        break
+
+                dis_1 = len(routes[i]) - routes[i].index(same_father) - 1
+                dis_2 = len(routes[j]) - routes[j].index(same_father) - 1
+                if dis_1 + dis_2 <= distance:
+                    ans += 1
+                # else:
+                #     print(f'dong ------------> {routes[i]}')
+                #     print(f'dong ------------> {routes[j]}')
+                #     print(f'dong ------------> {same_father}')
+
+        return ans
+
+
+root_1530 = GenTree(
+    [72, 8, 92, 62, 25, 92, 5, 82, 9, 30, 26, 52, 40, 49, 19, 70, 73, 27, 59, 30, 55, 94, 47, 41, 13, 78, 9, 29, 78, 47,
+     36, 33, 18, 57, 26, 58, 20, 76, 29, 35, 62, 37, 47, 26, None]).tree
+# root_1530 = GenTree(
+#     [80, 62, 99, 36, 45, 39, 76, 81, 44, 23, 58, 8, 14, 1, 94, 100, 10, 8, 30, 75, 7, 33, 80, 44, 2, 67, 78, 64, 30, 98,
+#      100, 24, 48, 42, 31, 91, 37, 81, 45, 30, 77, 28, None]).tree
+print(Solution1530().countPairs(root_1530, 3))
+
+# ================================================= 1530. Number of Good Leaf Nodes Pairs ==============================
