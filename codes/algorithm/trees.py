@@ -989,6 +989,43 @@ class Solution654:
 # ================================================= 654. Maximum Binary Tree ===========================================
 
 
+# ================================================= 655. Print Binary Tree =============================================
+
+# Runtime: 32 ms, faster than 79.39% of Python3 online submissions for Print Binary Tree.
+# Memory Usage: 14.5 MB, less than 18.74% of Python3 online submissions for Print Binary Tree.
+class Solution655:
+    def printTree(self, root: TreeNode) -> List[List[str]]:
+        dept = 0
+        node_l = [root]
+        while node_l:
+            dept += 1
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+        ans_initial = [[''] * ((2 ** dept) - 1) for _ in range(dept)]
+
+        depth = 2 ** dept - 2
+
+        def helper(node, start=0, end=depth, layer=0):
+            if not node:
+                return
+            nonlocal dept
+
+            mid = int((start + end) / 2)
+            ans_initial[layer][mid] = node.val
+            helper(node.left, start=start, end=mid, layer=layer + 1)
+            helper(node.right, start=mid + 1, end=end, layer=layer + 1)
+            dept += 1
+
+        helper(root)
+        return ans_initial
+
+
+# root_655 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# Solution655().printTree(root_655)
+
+
+# ================================================= 655. Print Binary Tree =============================================
+
+
 # ================================================= 669. Trim a Binary Search Tree =====================================
 
 # todo: dong to be further more thinking about it.
