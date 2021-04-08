@@ -189,6 +189,26 @@ class Solution101:
 # ================================================= 101. Symmetric Tree ================================================
 
 
+# ================================================= 107. Binary Tree Level Order Traversal II ==========================
+
+# Runtime: 24 ms, faster than 99.16% of Python3 online submissions for Binary Tree Level Order Traversal II.
+# Memory Usage: 14.8 MB, less than 25.60% of Python3 online submissions for Binary Tree Level Order Traversal II.
+class Solution107:
+    def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+
+        ans = []
+
+        node_l = [root]
+        while node_l:
+            ans.insert(0, [node.val for node in node_l])
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+
+        return ans
+# ================================================= 107. Binary Tree Level Order Traversal II ==========================
+
+
 # ================================================= 110. Balanced Binary Tree ==========================================
 
 class Solution110:
