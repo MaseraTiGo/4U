@@ -206,6 +206,8 @@ class Solution107:
             node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
 
         return ans
+
+
 # ================================================= 107. Binary Tree Level Order Traversal II ==========================
 
 
@@ -2032,6 +2034,40 @@ class Solution1325:
 # bfs(rr)
 
 # ================================================= 1325. Delete Leaves With a Given Value =============================
+
+
+# ================================================= 1372. Longest ZigZag Path in a Binary Tree =========================
+
+
+# todo: dong need further understanding
+class Solution1372:
+    def longestZigZag(self, root: TreeNode):
+        res = 0
+
+        cache_mapping = {}
+
+        def helper(node):
+            nonlocal res
+            if not node:
+                return [-1, -1]
+            if node in cache_mapping:
+                return cache_mapping[node]
+            left, right = helper(node.left), helper(node.right)
+            res = max(res, left[1] + 1, right[0] + 1)
+            step = [left[1] + 1, right[0] + 1]
+            cache_mapping[node] = step
+            return step
+
+        helper(root)
+        return res
+
+
+# root_1372 = GenTree([1, 1, 1, None, 1, None, None, 1, 1, None, 1]).tree
+#
+# print(Solution1372().longestZigZag(root_1372))
+
+
+# ================================================= 1372. Longest ZigZag Path in a Binary Tree =========================
 
 
 # ================================================= 1448. Count Good Nodes in Binary Tree ==============================
