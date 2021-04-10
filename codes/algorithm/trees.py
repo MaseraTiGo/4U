@@ -210,6 +210,28 @@ class Solution102:
 # ================================================= 102. Binary Tree Level Order Traversal =============================
 
 
+# ================================================= 107. Binary Tree Level Order Traversal II ==========================
+
+# Runtime: 24 ms, faster than 99.16% of Python3 online submissions for Binary Tree Level Order Traversal II.
+# Memory Usage: 14.8 MB, less than 25.60% of Python3 online submissions for Binary Tree Level Order Traversal II.
+class Solution107:
+    def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+
+        ans = []
+
+        node_l = [root]
+        while node_l:
+            ans.insert(0, [node.val for node in node_l])
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+
+        return ans
+
+
+# ================================================= 107. Binary Tree Level Order Traversal II ==========================
+
+
 # ================================================= 110. Balanced Binary Tree ==========================================
 
 class Solution110:
@@ -1076,6 +1098,43 @@ class Solution654:
 
 
 # ================================================= 654. Maximum Binary Tree ===========================================
+
+
+# ================================================= 655. Print Binary Tree =============================================
+
+# Runtime: 32 ms, faster than 79.39% of Python3 online submissions for Print Binary Tree.
+# Memory Usage: 14.5 MB, less than 18.74% of Python3 online submissions for Print Binary Tree.
+class Solution655:
+    def printTree(self, root: TreeNode) -> List[List[str]]:
+        dept = 0
+        node_l = [root]
+        while node_l:
+            dept += 1
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+        ans_initial = [[''] * ((2 ** dept) - 1) for _ in range(dept)]
+
+        depth = 2 ** dept - 2
+
+        def helper(node, start=0, end=depth, layer=0):
+            if not node:
+                return
+            nonlocal dept
+
+            mid = int((start + end) / 2)
+            ans_initial[layer][mid] = node.val
+            helper(node.left, start=start, end=mid, layer=layer + 1)
+            helper(node.right, start=mid + 1, end=end, layer=layer + 1)
+            dept += 1
+
+        helper(root)
+        return ans_initial
+
+
+# root_655 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# Solution655().printTree(root_655)
+
+
+# ================================================= 655. Print Binary Tree =============================================
 
 
 # ================================================= 669. Trim a Binary Search Tree =====================================
@@ -2126,6 +2185,40 @@ class Solution1325:
 # bfs(rr)
 
 # ================================================= 1325. Delete Leaves With a Given Value =============================
+
+
+# ================================================= 1372. Longest ZigZag Path in a Binary Tree =========================
+
+
+# todo: dong need further understanding
+class Solution1372:
+    def longestZigZag(self, root: TreeNode):
+        res = 0
+
+        cache_mapping = {}
+
+        def helper(node):
+            nonlocal res
+            if not node:
+                return [-1, -1]
+            if node in cache_mapping:
+                return cache_mapping[node]
+            left, right = helper(node.left), helper(node.right)
+            res = max(res, left[1] + 1, right[0] + 1)
+            step = [left[1] + 1, right[0] + 1]
+            cache_mapping[node] = step
+            return step
+
+        helper(root)
+        return res
+
+
+# root_1372 = GenTree([1, 1, 1, None, 1, None, None, 1, 1, None, 1]).tree
+#
+# print(Solution1372().longestZigZag(root_1372))
+
+
+# ================================================= 1372. Longest ZigZag Path in a Binary Tree =========================
 
 
 # ================================================= 1448. Count Good Nodes in Binary Tree ==============================
