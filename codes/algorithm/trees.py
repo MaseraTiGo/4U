@@ -2636,6 +2636,7 @@ class Solution1530:
 
         return ans
 
+
 # root_1530 = GenTree(
 #     [72, 8, 92, 62, 25, 92, 5, 82, 9, 30, 26, 52, 40, 49, 19, 70, 73, 27, 59, 30, 55, 94, 47, 41, 13, 78, 9, 29, 78, 47,
 #      36, 33, 18, 57, 26, 58, 20, 76, 29, 35, 62, 37, 47, 26, None]).tree
@@ -2645,3 +2646,40 @@ class Solution1530:
 # print(Solution1530().countPairs(root_1530, 3))
 
 # ================================================= 1530. Number of Good Leaf Nodes Pairs ==============================
+
+
+# ================================================= 1609. Even Odd Tree ================================================
+
+# Runtime: 532 ms, faster than 47.94% of Python3 online submissions for Even Odd Tree.
+# Memory Usage: 41.2 MB, less than 57.80% of Python3 online submissions for Even Odd Tree.
+class Solution1609:
+    def isEvenOddTree(self, root: TreeNode) -> bool:
+        def is_the_fucking_order(l_data: list, order=1):
+            if len(l_data) == 1:
+                return True
+            for i in range(len(l_data) - 1):
+                if order:
+                    if l_data[i] >= l_data[i + 1]:
+                        return False
+                else:
+                    if l_data[i] <= l_data[i + 1]:
+                        return False
+
+            return True
+
+        node_l = [root]
+        depth = 1
+
+        while node_l:
+            val = depth % 2
+            values = [node.val for node in node_l if node.val % 2 == val]
+            if len(values) != len(node_l) or not is_the_fucking_order(values, val):
+                return False
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+            depth += 1
+        return True
+
+
+# root_1609 = GenTree([11, 8, 6, 1, 3, 9, 11, 30, 20, 18, 16, 12, 10, 4, 2, 17, None]).tree
+# print(Solution1609().isEvenOddTree(root_1609))
+# ================================================= 1609. Even Odd Tree ================================================
