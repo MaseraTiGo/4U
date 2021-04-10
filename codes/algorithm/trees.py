@@ -1086,8 +1086,6 @@ class Solution623:
         while node_l:
             if dept == depth - 1:
                 for node in node_l:
-                    # if not node.left and not node.right:
-                    #     continue
                     temp_node_left = node.left
                     temp_node_right = node.right
                     node.left = TreeNode(val)
@@ -1104,9 +1102,9 @@ class Solution623:
         return root
 
 
-root_623 = GenTree([1, 2, 3, 4, None]).tree
-
-bfs(Solution623().addOneRow(root_623, 5, 4))
+# root_623 = GenTree([1, 2, 3, 4, None]).tree
+#
+# bfs(Solution623().addOneRow(root_623, 5, 4))
 
 
 # ================================================= 623. Add One Row to Tree ===========================================
@@ -1125,6 +1123,38 @@ class Solution637:
 
 
 # ================================================= 637. Average of Levels in Binary Tree ==============================
+
+
+# ================================================= 652. Find Duplicate Subtrees =======================================
+
+# Runtime: 60 ms, faster than 72.90% of Python3 online submissions for Find Duplicate Subtrees.
+# Memory Usage: 23.6 MB, less than 39.66% of Python3 online submissions for Find Duplicate Subtrees.
+class Solution652:
+
+    def findDuplicateSubtrees(self, root: TreeNode):
+        ans = []
+        results = {}
+
+        def helper(node):
+            if not node:
+                return
+            str_s = (node.val, helper(node.left), helper(node.right))
+            results[str_s] = results.get(str_s, 0) + 1
+            if results[str_s] == 2:
+                ans.append(node)
+            return str_s
+
+        helper(root)
+        return ans
+
+
+# root_652 = GenTree([1, 2, 3, 4, 5, 6, 6]).tree
+# root_652_1 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# print(Solution652().is_node_base_same(root_652, root_652_1))
+# print(Solution652().findDuplicateSubtrees(root_652))
+
+
+# ================================================= 652. Find Duplicate Subtrees =======================================
 
 
 # ================================================= 653. Two Sum IV - Input is a BST ===================================
