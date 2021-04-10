@@ -1148,6 +1148,9 @@ class Solution637:
 # Memory Usage: 23.6 MB, less than 39.66% of Python3 online submissions for Find Duplicate Subtrees.
 class Solution652:
 
+    def __init__(self):
+        self.cache = {}
+
     def findDuplicateSubtrees(self, root: TreeNode):
         ans = []
         results = {}
@@ -1155,11 +1158,15 @@ class Solution652:
         def helper(node):
             if not node:
                 return
-            str_s = (node.val, helper(node.left), helper(node.right))
-            results[str_s] = results.get(str_s, 0) + 1
-            if results[str_s] == 2:
-                ans.append(node)
-            return str_s
+            if node in self.cache:
+                return self.cache[node]
+            else:
+                str_s = (node.val, helper(node.left), helper(node.right))
+                self.cache[node] = str_s
+                results[str_s] = results.get(str_s, 0) + 1
+                if results[str_s] == 2:
+                    ans.append(node)
+                return str_s
 
         helper(root)
         return ans
@@ -1688,6 +1695,38 @@ class Solution951:
 
 
 # ================================================= 951. Flip Equivalent Binary Trees ==================================
+
+
+# ================================================= 958. Check Completeness of a Binary Tree ===========================
+
+# Runtime: 28 ms, faster than 96.23% of Python3 online submissions for Check Completeness of a Binary Tree.
+# Memory Usage: 14.1 MB, less than 81.42% of Python3 online submissions for Check Completeness of a Binary Tree.
+class Solution958:
+    def isCompleteTree(self, root: TreeNode) -> bool:
+        import collections
+        end = False
+        queue = collections.deque([root])
+
+        while queue:
+            node = queue.popleft()
+
+            if not node:
+                end = True
+            else:
+                if end:
+                    return False
+                else:
+                    queue.append(node.left)
+                    queue.append(node.right)
+
+        return True
+
+
+# root_958 = GenTree([1, 2, 3, None, None, 7, 8]).tree
+# print(Solution958().isCompleteTree(root_958))
+
+
+# ================================================= 958. Check Completeness of a Binary Tree ===========================
 
 
 # ================================================= 965. Univalued Binary Tree =========================================
