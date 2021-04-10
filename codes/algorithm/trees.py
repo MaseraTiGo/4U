@@ -227,6 +227,32 @@ class Solution102:
 # ================================================= 102. Binary Tree Level Order Traversal =============================
 
 
+# ================================================= 105. Construct Binary Tree from Preorder and Inorder Traversal =====
+
+
+# Runtime: 132 ms, faster than 52.95% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder
+# Traversal.
+# Memory Usage: 52.8 MB, less than 50.54% of Python3 online submissions for Construct Binary Tree from Preorder and
+# Inorder Traversal.
+class Solution105:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        if inorder:
+            root = TreeNode(preorder[0])
+            mid = inorder.index(preorder.pop(0))
+            root.left = self.buildTree(preorder, inorder[: mid])
+            root.right = self.buildTree(preorder, inorder[mid + 1:])
+            return root
+
+
+# list_105_1 = [3, 9, 20, 15, 7]
+# list_105_2 = [9, 3, 15, 20, 7]
+#
+# print(bfs(Solution105().buildTree(list_105_1, list_105_2)))
+
+
+# ================================================= 105. Construct Binary Tree from Preorder and Inorder Traversal =====
+
+
 # ================================================= 107. Binary Tree Level Order Traversal II ==========================
 
 # Runtime: 24 ms, faster than 99.16% of Python3 online submissions for Binary Tree Level Order Traversal II.
