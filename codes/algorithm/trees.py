@@ -611,6 +611,58 @@ class Solution429:
 # ================================================= 429. N-ary Tree Level Order Traversal ==============================
 
 
+# ================================================= 449. Serialize and Deserialize BST =================================
+
+# Runtime: 68 ms, faster than 90.53% of Python3 online submissions for Serialize and Deserialize BST.
+# Memory Usage: 18.4 MB, less than 64.98% of Python3 online submissions for Serialize and Deserialize BST.
+class Solution449:
+
+    def serialize(self, root: TreeNode) -> str:
+        """Encodes a tree to a single string.
+        """
+        if not root:
+            return ""
+        values = []
+
+        def dfs(node):
+            if node:
+                values.append(str(node.val))
+                dfs(node.left)
+                dfs(node.right)
+            else:
+                values.append("")
+
+        dfs(root)
+        return ",".join(values)
+
+    def deserialize(self, data: str) -> TreeNode:
+        """Decodes your encoded data to tree.
+        """
+        if not data:
+            return []
+        queue = data.split(",")
+
+        def dfs():
+            val = queue.pop(0)
+            if queue and val:
+                return TreeNode(int(val), dfs(), dfs())
+
+        return dfs()
+
+
+# Your Codec object w
+
+
+# Your Codec object will be instantiated and called as such:
+# Your Codec object will be instantiated and called as such:
+# ser = Codec()
+# deser = Codec()
+# tree = ser.serialize(root)
+# ans = deser.deserialize(tree)
+# return ans
+# ================================================= 449. Serialize and Deserialize BST =================================
+
+
 # ================================================= 501. Find Mode in Binary Search Tree ===============================
 
 class Solution501:
