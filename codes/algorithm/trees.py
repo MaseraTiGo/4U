@@ -30,6 +30,23 @@ def bfs(root):
             l.append(node.right)
 
 
+fibonacci_cache = {}
+
+
+def fibonacci(n):
+    if not n:
+        return 0
+    if n == 1 or n == 2:
+        return 1
+    # return fibonacci(n-1) + fibonacci(n-2)
+    if n in fibonacci_cache:
+        return fibonacci_cache[n]
+    else:
+        ans = fibonacci(n - 1) + fibonacci(n - 2)
+        fibonacci_cache[n] = ans
+    return fibonacci_cache[n]
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
