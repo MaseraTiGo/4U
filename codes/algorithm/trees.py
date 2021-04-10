@@ -1068,6 +1068,50 @@ root606 = TreeNode(1, TreeNode(2, TreeNode(4, right=TreeNode(7))), TreeNode(3, r
 # ================================================= 606. Construct String from Binary Tree =============================
 
 
+# ================================================= 623. Add One Row to Tree ===========================================
+
+# Runtime: 52 ms, faster than 81.38% of Python3 online submissions for Add One Row to Tree.
+# Memory Usage: 16.5 MB, less than 58.33% of Python3 online submissions for Add One Row to Tree.
+class Solution623:
+    def addOneRow(self, root: TreeNode, val: int, depth: int) -> TreeNode:
+        node_l = [root]
+
+        if depth == 1:
+            new_root = TreeNode(val)
+            new_root.left = root
+            return new_root
+
+        dept = 1
+
+        while node_l:
+            if dept == depth - 1:
+                for node in node_l:
+                    # if not node.left and not node.right:
+                    #     continue
+                    temp_node_left = node.left
+                    temp_node_right = node.right
+                    node.left = TreeNode(val)
+                    node.right = TreeNode(val)
+                    if temp_node_left:
+                        node.left.left = temp_node_left
+                    if temp_node_right:
+                        node.right.right = temp_node_right
+                break
+
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+            dept += 1
+
+        return root
+
+
+root_623 = GenTree([1, 2, 3, 4, None]).tree
+
+bfs(Solution623().addOneRow(root_623, 5, 4))
+
+
+# ================================================= 623. Add One Row to Tree ===========================================
+
+
 # ================================================= 637. Average of Levels in Binary Tree ==============================
 class Solution637:
     def averageOfLevels(self, root: TreeNode) -> list:
@@ -2436,13 +2480,12 @@ class Solution1530:
 
         return ans
 
-
-root_1530 = GenTree(
-    [72, 8, 92, 62, 25, 92, 5, 82, 9, 30, 26, 52, 40, 49, 19, 70, 73, 27, 59, 30, 55, 94, 47, 41, 13, 78, 9, 29, 78, 47,
-     36, 33, 18, 57, 26, 58, 20, 76, 29, 35, 62, 37, 47, 26, None]).tree
+# root_1530 = GenTree(
+#     [72, 8, 92, 62, 25, 92, 5, 82, 9, 30, 26, 52, 40, 49, 19, 70, 73, 27, 59, 30, 55, 94, 47, 41, 13, 78, 9, 29, 78, 47,
+#      36, 33, 18, 57, 26, 58, 20, 76, 29, 35, 62, 37, 47, 26, None]).tree
 # root_1530 = GenTree(
 #     [80, 62, 99, 36, 45, 39, 76, 81, 44, 23, 58, 8, 14, 1, 94, 100, 10, 8, 30, 75, 7, 33, 80, 44, 2, 67, 78, 64, 30, 98,
 #      100, 24, 48, 42, 31, 91, 37, 81, 45, 30, 77, 28, None]).tree
-print(Solution1530().countPairs(root_1530, 3))
+# print(Solution1530().countPairs(root_1530, 3))
 
 # ================================================= 1530. Number of Good Leaf Nodes Pairs ==============================
