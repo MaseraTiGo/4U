@@ -385,6 +385,50 @@ class Solution112:
 # ================================================= 112. Path Sum ======================================================
 
 
+# ================================================= 114. Flatten Binary Tree to Linked List ============================
+
+# Runtime: 32 ms, faster than 92.20% of Python3 online submissions for Flatten Binary Tree to Linked List.
+# Memory Usage: 15.3 MB, less than 14.64% of Python3 online submissions for Flatten Binary Tree to Linked List.
+class Solution114:
+    def flatten(self, root: TreeNode) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        nodes = []
+
+        def dfs_preorder(node):
+            if node:
+                nodes.append(node)
+                dfs_preorder(node.left)
+                dfs_preorder(node.right)
+
+        def dfs_yield(node):
+            if node:
+                yield nodes.append(node)
+                yield from dfs_preorder(node.left)
+                yield from dfs_preorder(node.right)
+
+        # nodes = list(dfs_preorder(root))
+
+        dfs_preorder(root)
+
+        if not nodes:
+            return root
+        root = temp_node = nodes[0]
+        for node in nodes[1:]:
+            temp_node.left = None
+            temp_node.right = node
+            temp_node = node
+        # print(bfs(root))
+
+
+# root_114 = GenTree([1, 2, 5, 3, 4, None, 6]).tree
+# Solution114().flatten(root_114)
+
+
+# ================================================= 114. Flatten Binary Tree to Linked List ============================
+
+
 # ================================================= 144. Binary Tree Preorder Traversal ================================
 
 # Runtime: 28 ms, faster than 82.49% of Python3 online submissions for Binary Tree Preorder Traversal.
