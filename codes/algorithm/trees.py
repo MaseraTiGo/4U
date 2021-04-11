@@ -650,6 +650,56 @@ class Solution257:
 # ================================================= 257. Binary Tree Paths =============================================
 
 
+# ================================================= 337. House Robber III ==============================================
+
+class Solution337:
+    def rob(self, root: TreeNode) -> int:
+        rob_saved = {}
+        not_rob_saved = {}
+
+        def helper(node, parent_robbed):
+            if not node:
+                return 0
+
+            if parent_robbed:
+                if node in rob_saved:
+                    return rob_saved[node]
+                result = helper(node.left, False) + helper(node.right, False)
+                rob_saved[node] = result
+                return result
+            else:
+                if node in not_rob_saved:
+                    return not_rob_saved[node]
+                rob = node.val + helper(node.left, True) + helper(node.right, True)
+                not_rob = helper(node.left, False) + helper(node.right, False)
+                result = max(rob, not_rob)
+                not_rob_saved[node] = result
+                return result
+
+        return helper(root, False)
+
+        # no caching
+        # def helper(node, parent_rob=True):
+        #     if not node:
+        #         return 0
+        #     if parent_rob:
+        #         result = helper(node.left, False) + helper(node.right, False)
+        #         return result
+        #     else:
+        #         rob = node.val + helper(node.left, True) + helper(node.right, True)
+        #         not_rob = helper(node.left, False) + helper(node.right, False)
+        #         result = max(rob, not_rob)
+        #         return result
+        # return helper(root, False)
+
+
+# root_337 = GenTree([3, 4, 5, 1, 3, None, 1]).tree
+# print(Solution337().rob(root_337))
+
+
+# ================================================= 337. House Robber III ==============================================
+
+
 # ================================================= 404. Sum of Left Leaves ============================================
 
 class Solution404:
@@ -2678,7 +2728,6 @@ class Solution1609:
             node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
             depth += 1
         return True
-
 
 # root_1609 = GenTree([11, 8, 6, 1, 3, 9, 11, 30, 20, 18, 16, 12, 10, 4, 2, 17, None]).tree
 # print(Solution1609().isEvenOddTree(root_1609))
