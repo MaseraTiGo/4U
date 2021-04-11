@@ -280,7 +280,7 @@ class Solution105:
 
 # ================================================= 106. Construct Binary Tree from Inorder and Postorder Traversal ====
 
-class Solution105:
+class Solution106:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
         if inorder:
             node = TreeNode(postorder[-1])
@@ -472,6 +472,59 @@ class Solution114:
 
 
 # ================================================= 114. Flatten Binary Tree to Linked List ============================
+
+
+# ================================================= 116. Populating Next Right Pointers in Each Node ===================
+
+# Runtime: 72 ms, faster than 14.74% of Python3 online submissions for Populating Next Right Pointers in Each Node.
+# Memory Usage: 15.6 MB, less than 90.78% of Python3 online submissions for Populating Next Right Pointers in Each Node.
+class Solution116:
+    def connect(self, root: 'Node') -> 'Node':
+        node_l = [root]
+        depth = 0
+        c = 1
+        while node_l:
+            node = node_l[0]
+            while 1:
+                if c < 2 ** depth:
+                    next_node = node_l[c]
+                    node.next = next_node
+                    node = next_node
+                    c += 1
+                else:
+                    node.next = None
+                    break
+            c = 1
+            depth += 1
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+        return root
+
+        # if not root:
+        #     return root
+        #
+        # def dfs(node):
+        #     if not node:
+        #         return
+        #     if node.left:
+        #         node.left.next = node.right
+        #         dfs(node.left)
+        #     if node.right:
+        #         if not node.next:
+        #             node.right.next = None
+        #         else:
+        #             node.right.next = node.next.left
+        #         dfs(node.right)
+        #
+        # dfs(root)
+        # return root
+
+
+root_116 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+root_116_res = Solution116().connect(root_116)
+print(root_116_res.right.left.val)
+print(root_116_res.right.left.next.val)
+
+# ================================================= 116. Populating Next Right Pointers in Each Node ===================
 
 
 # ================================================= 129. Sum Root to Leaf Numbers ======================================
