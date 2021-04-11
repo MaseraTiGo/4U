@@ -430,6 +430,36 @@ class Solution112:
 # ================================================= 112. Path Sum ======================================================
 
 
+# ================================================= 113. Path Sum II ===================================================
+
+# Runtime: 48 ms, faster than 43.14% of Python3 online submissions for Path Sum II.
+# Memory Usage: 15.7 MB, less than 63.24% of Python3 online submissions for Path Sum II.
+class Solution113:
+    def pathSum(self, root: TreeNode, targetSum: int) -> List[List[int]]:
+        ans = []
+        temp = []
+
+        def dfs_helper(node):
+            if node:
+                temp.append(node.val)
+
+                if not node.left and not node.right and sum(temp) == targetSum:
+                    ans.append(temp[:])
+                dfs_helper(node.left)
+                dfs_helper(node.right)
+                temp.pop()
+
+        dfs_helper(root)
+        return ans
+
+
+# root_113 = GenTree([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1]).tree
+# print(Solution113().pathSum(root_113, 22))
+
+
+# ================================================= 113. Path Sum II ===================================================
+
+
 # ================================================= 114. Flatten Binary Tree to Linked List ============================
 
 # Runtime: 32 ms, faster than 92.20% of Python3 online submissions for Flatten Binary Tree to Linked List.
@@ -519,10 +549,11 @@ class Solution116:
         # return root
 
 
-root_116 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
-root_116_res = Solution116().connect(root_116)
-print(root_116_res.right.left.val)
-print(root_116_res.right.left.next.val)
+# root_116 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# root_116_res = Solution116().connect(root_116)
+# print(root_116_res.right.left.val)
+# print(root_116_res.right.left.next.val)
+
 
 # ================================================= 116. Populating Next Right Pointers in Each Node ===================
 
@@ -684,6 +715,8 @@ class Solution222:
 
         dfs(root)
         return ans
+
+
 # ================================================= 222. Count Complete Tree Nodes =====================================
 
 
