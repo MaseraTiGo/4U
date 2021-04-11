@@ -810,6 +810,53 @@ root_235 = TreeNode(6, TreeNode(2, TreeNode(0), TreeNode(4, TreeNode(3, TreeNode
 # ================================================= 235. Lowest Common Ancestor of a Binary Search Tree ================
 
 
+# ================================================= 236. Lowest Common Ancestor of a Binary Tree =======================
+
+
+class Solution236:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        # ans = []
+        # temp = []
+        #
+        # def dfs_helper(node):
+        #     if node:
+        #         temp.append(node.val)
+        #         if node.val in [p, q]:
+        #             yield temp
+        #         yield from dfs_helper(node.left)
+        #         yield from dfs_helper(node.right)
+        #         temp.pop()
+        #
+        # for item in dfs_helper(root):
+        #     ans.append(item[:])
+        # if len(ans) == 1:
+        #     return ans[0][min(ans[0].index(p), ans[0].index(q))]
+        # res_1, res_2 = ans
+        # end = min(len(res_1), len(res_2))
+        # for i in range(end):
+        #     if res_1[i] != res_2[i]:
+        #         return res_1[i - 1]
+        # return res_1[end - 1]
+
+        def dfs_helper(node):
+            if node in (None, p, q):
+                return node
+            llca = dfs_helper(node.left)
+            rlca = dfs_helper(node.right)
+            return node if llca and rlca else llca or rlca
+
+        return dfs_helper(root)
+
+
+# root_236 = GenTree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4]).tree
+# root_5 = root_236.left
+# root_1 = root_236.right.left
+# print(Solution236().lowestCommonAncestor(root_236, root_5, root_1))
+
+
+# ================================================= 236. Lowest Common Ancestor of a Binary Tree =======================
+
+
 # ================================================= 257. Binary Tree Paths =============================================
 
 class Solution257:
