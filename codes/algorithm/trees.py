@@ -659,6 +659,34 @@ class Solution199:
 # ================================================= 199. Binary Tree Right Side View ===================================
 
 
+# ================================================= 222. Count Complete Tree Nodes =====================================
+
+# Runtime: 84 ms, faster than 40.61% of Python3 online submissions for Count Complete Tree Nodes.
+# Memory Usage: 21.6 MB, less than 50.39% of Python3 online submissions for Count Complete Tree Nodes.
+class Solution222:
+    def countNodes(self, root: TreeNode) -> int:
+        ans = 0
+        if not root:
+            return ans
+
+        # node_l = [root]
+        # while node_l:
+        #     ans += len(node_l)
+        #     node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+        # return ans
+
+        def dfs(node):
+            nonlocal ans
+            if node:
+                ans += 1
+                dfs(node.left)
+                dfs(node.right)
+
+        dfs(root)
+        return ans
+# ================================================= 222. Count Complete Tree Nodes =====================================
+
+
 # ================================================= 230. Kth Smallest Element in a BST =================================
 
 class Solution230:
