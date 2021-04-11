@@ -247,6 +247,8 @@ class Solution103:
             node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
             depth += 1
         return ans
+
+
 # ================================================= 103. Binary Tree Zigzag Level Order Traversal ======================
 
 
@@ -274,6 +276,26 @@ class Solution105:
 
 
 # ================================================= 105. Construct Binary Tree from Preorder and Inorder Traversal =====
+
+
+# ================================================= 106. Construct Binary Tree from Inorder and Postorder Traversal ====
+
+class Solution105:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
+        if inorder:
+            node = TreeNode(postorder[-1])
+            index = inorder.index(postorder.pop())
+            node.right = self.buildTree(inorder[index + 1:], postorder)
+            node.left = self.buildTree(inorder[:index], postorder)
+            return node
+
+
+# inorder = [9, 3, 15, 20, 7]
+# postorder = [9, 15, 7, 20, 3]
+# bfs(Solution105().buildTree(inorder, postorder))
+
+
+# ================================================= 106. Construct Binary Tree from Inorder and Postorder Traversal ====
 
 
 # ================================================= 107. Binary Tree Level Order Traversal II ==========================
