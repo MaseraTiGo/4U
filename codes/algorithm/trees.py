@@ -227,6 +227,29 @@ class Solution102:
 # ================================================= 102. Binary Tree Level Order Traversal =============================
 
 
+# ================================================= 103. Binary Tree Zigzag Level Order Traversal ======================
+
+# Runtime: 32 ms, faster than 65.19% of Python3 online submissions for Binary Tree Zigzag Level Order Traversal.
+# Memory Usage: 14.6 MB, less than 45.03% of Python3 online submissions for Binary Tree Zigzag Level Order Traversal.
+class Solution103:
+    def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+
+        ans = []
+        depth = 1
+        node_l = [root]
+        while node_l:
+            values = [node.val for node in node_l]
+            if not depth % 2:
+                values = values[::-1]
+            ans.append(values)
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+            depth += 1
+        return ans
+# ================================================= 103. Binary Tree Zigzag Level Order Traversal ======================
+
+
 # ================================================= 105. Construct Binary Tree from Preorder and Inorder Traversal =====
 
 
