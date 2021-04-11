@@ -429,6 +429,37 @@ class Solution114:
 # ================================================= 114. Flatten Binary Tree to Linked List ============================
 
 
+# ================================================= 129. Sum Root to Leaf Numbers ======================================
+
+# Runtime: 32 ms, faster than 58.40% of Python3 online submissions for Sum Root to Leaf Numbers.
+# Memory Usage: 14.2 MB, less than 57.78% of Python3 online submissions for Sum Root to Leaf Numbers.
+class Solution129:
+    def sumNumbers(self, root: TreeNode) -> int:
+
+        all_nums = []
+        temp = []
+
+        def helper(node):
+            if node:
+                temp.append(str(node.val))
+                if not node.left and not node.right:
+                    yield temp
+                yield from helper(node.left)
+                yield from helper(node.right)
+                temp.pop()
+
+        for item in helper(root):
+            all_nums.append(int(''.join(item)))
+        return sum(all_nums)
+
+
+# root_129 = GenTree([1, 2, 3]).tree
+# print(Solution129().sumNumbers(root_129))
+
+
+# ================================================= 129. Sum Root to Leaf Numbers ======================================
+
+
 # ================================================= 144. Binary Tree Preorder Traversal ================================
 
 # Runtime: 28 ms, faster than 82.49% of Python3 online submissions for Binary Tree Preorder Traversal.
