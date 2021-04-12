@@ -7,13 +7,25 @@ from typing import List, Optional
 # selection sort
 def selection_sort(src_list):
     minimum = float('inf')
-    for i in range(len(src_list) - 1):
-        for item in src_list[i:]:
+    maximum = float('-inf')
+    l_len = len(src_list) - 1
+    for i in range(len(src_list)):
+        e = l_len - i
+        if i == e:
+            break
+        for item in src_list[i:e+1]:
             minimum = min(minimum, item)
+            maximum = max(maximum, item)
         j = src_list.index(minimum)
+        m = src_list.index(maximum)
         src_list[i], src_list[j] = src_list[j], src_list[i]
+        src_list[e], src_list[m] = src_list[m], src_list[e]
         minimum = float('inf')
+        maximum = float('-inf')
     return src_list
+
+
+print(selection_sort([1, 4, 3, 5, 2, 7, 9, 6, 8]))
 
 
 # insert sort
@@ -29,7 +41,13 @@ def insertion_sort(src_list):
     return src_list
 
 
-print(insertion_sort([1, 4, 3, 5, 2, 7, 9, 6, 8]))
+# bubble sort
+def bubble_sort(src_list):
+    for i, item in enumerate(src_list):
+        for j in range(i + 1, len(src_list)):
+            if item > src_list[j]:
+                src_list[i], src_list[j] = src_list[j], src_list[i]
+    return src_list
 
 
 # ================================================= common funcs =======================================================
