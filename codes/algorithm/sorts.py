@@ -13,7 +13,7 @@ def selection_sort(src_list):
         e = l_len - i
         if i == e:
             break
-        for item in src_list[i:e+1]:
+        for item in src_list[i:e + 1]:
             minimum = min(minimum, item)
             maximum = max(maximum, item)
         j = src_list.index(minimum)
@@ -25,7 +25,7 @@ def selection_sort(src_list):
     return src_list
 
 
-print(selection_sort([1, 4, 3, 5, 2, 7, 9, 6, 8]))
+# print(selection_sort([1, 4, 3, 5, 2, 7, 9, 6, 8]))
 
 
 # insert sort
@@ -48,6 +48,26 @@ def bubble_sort(src_list):
             if item > src_list[j]:
                 src_list[i], src_list[j] = src_list[j], src_list[i]
     return src_list
+
+
+# shell sort
+def shell_sort(src_list):
+    n = len(src_list)
+    gap = int(n / 2)
+    while gap > 0:
+        for i in range(gap, n):
+            temp = src_list[i]
+            j = i - gap
+            print(f'dong ------------>{i, j, gap}')
+            while j >= 0 and src_list[j] > temp:
+                src_list[j + gap] = src_list[j]
+                j = j - gap
+            src_list[j + gap] = temp
+        gap = int(gap / 2)
+    return src_list
+
+
+print(shell_sort([1, 4, 3, 5, 2, 7, 9, 6, 8]))
 
 
 # ================================================= common funcs =======================================================
