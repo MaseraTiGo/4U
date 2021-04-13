@@ -247,6 +247,8 @@ class Solution103:
             node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
             depth += 1
         return ans
+
+
 # ================================================= 103. Binary Tree Zigzag Level Order Traversal ======================
 
 
@@ -1956,6 +1958,43 @@ class Solution979:
 
 
 # ================================================= 979. Distribute Coins in Binary Tree ===============================
+
+
+# ================================================= 988. Smallest String Starting From Leaf ============================
+
+# Runtime: 44 ms, faster than 82.23% of Python3 online submissions for Smallest String Starting From Leaf.
+# Memory Usage: 15.4 MB, less than 87.90% of Python3 online submissions for Smallest String Starting From Leaf.
+class Solution988:
+    def smallestFromLeaf(self, root: TreeNode) -> str:
+        ans = []
+        temp = []
+
+        def convert_2_str(l_list):
+            temp_ = l_list[:]
+            temp_.reverse()
+            return ''.join([chr(num + 97) for num in temp_])
+
+        def dfs_helper(node):
+            if node:
+                temp.append(node.val)
+                if not node.left and not node.right:
+                    ans.append(convert_2_str(temp))
+                dfs_helper(node.left)
+                dfs_helper(node.right)
+                temp.pop()
+
+        dfs_helper(root)
+        base = ans[0]
+        for item in ans[1:]:
+            base = min(item, base)
+        return base
+
+
+# root_988 = GenTree([2, 2, 1, None, 1, 0, None, 0, None]).tree
+# print(Solution988().smallestFromLeaf(root_988))
+
+
+# ================================================= 988. Smallest String Starting From Leaf ============================
 
 
 # ================================================= 993. Cousins in Binary Tree ========================================
