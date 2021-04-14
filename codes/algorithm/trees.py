@@ -48,10 +48,11 @@ def fibonacci(n):
 
 
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
+    def __init__(self, val=0, left=None, right=None, next=None):
         self.val = val
         self.left = left
         self.right = right
+        self.next = next
 
 
 class GenTree(object):
@@ -484,6 +485,75 @@ class Solution114:
 
 
 # ================================================= 114. Flatten Binary Tree to Linked List ============================
+
+
+# ================================================= 117. Populating Next Right Pointers in Each Node II ================
+
+# Runtime: 40 ms, faster than 96.62% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
+# Memory Usage: 15.4 MB, less than 49.93% of Python3 online submissions for Populating Next Right Pointers in Each
+# Node II.
+class Solution117:
+    def connect(self, root: 'Node') -> 'Node':
+        if not root:
+            return root
+
+        node_l = [root]
+        while node_l:
+            l_len = len(node_l)
+            for i in range(l_len - 1):
+                node_l[i].next = node_l[i + 1]
+            node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+        return root
+
+    def connect2(self, root: 'Node') -> 'Node':
+        if not root:
+            return root
+
+        from collections import deque
+        node_l = deque()
+        node_l.append(root)
+
+        while node_l:
+            l_len = len(node_l)
+            for i in range(l_len):
+                node = node_l.popleft()
+                if i + 1 < l_len:
+                    node.next = node_l[0]
+                if node.left:
+                    node_l.append(node.left)
+                if node.right:
+                    node_l.append(node.right)
+
+    def connect3(self, root: 'Node') -> 'Node':
+        first, curr = root, None
+
+        while first:
+            first, curr, last = None, first, None
+
+            while curr:
+                if not first:
+                    first = curr.left or curr.right
+
+                if curr.left:
+                    if last:
+                        last.next = curr.left
+                    last = curr.left
+
+                if curr.right:
+                    if last:
+                        last.next = curr.right
+                    last = curr.right
+
+                curr = curr.next
+        return root
+
+
+# root_117 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# root_117 = Solution117().connect(root_117)
+# print(root_117.left.right.next.val)
+
+
+# ================================================= 117. Populating Next Right Pointers in Each Node II ================
 
 
 # ================================================= 129. Sum Root to Leaf Numbers ======================================
