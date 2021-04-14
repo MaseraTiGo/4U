@@ -47,12 +47,39 @@ def fibonacci(n):
     return fibonacci_cache[n]
 
 
+class ListNode:
+    def __init__(self, val=0, next_=None):
+        self.val = val
+        self.next = next_
+
+
+class GenList(object):
+    def __init__(self, values):
+        if not isinstance(values, (list, tuple)):
+            raise Exception('give me fucking right type ok?')
+        if not values:
+            raise Exception('it is fucking empty')
+        self.values = values
+
+    @property
+    def list_(self):
+        root_ = ListNode(self.values[0])
+        src = root_
+        len_ = len(self.values)
+
+        for i in range(1, len_):
+            curr = ListNode(self.values[i])
+            root_.next = curr
+            root_ = root_.next
+        return src
+
+
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None, next=None):
+    def __init__(self, val=0, left=None, right=None, next_=None):
         self.val = val
         self.left = left
         self.right = right
-        self.next = next
+        self.next = next_
 
 
 class GenTree(object):
@@ -2704,6 +2731,72 @@ class Solution1325:
 # bfs(rr)
 
 # ================================================= 1325. Delete Leaves With a Given Value =============================
+
+
+# ================================================= 1367. Linked List in Binary Tree ===================================
+
+class Solution1367:
+    # Runtime: 116 ms, faster than 45.90% of Python3 online submissions for Linked List in Binary Tree.
+    # Memory Usage: 16.7 MB, less than 50.22% of Python3 online submissions for Linked List in Binary Tree.
+    def isSubPath_one(self, head: ListNode, root: TreeNode) -> bool:
+        l_values = ''
+        l_len = 0
+        while head:
+            l_len += 1
+            l_values += str(head.val)
+            head = head.next
+
+        temp = []
+        ans = False
+
+        def dfs_helper(node):
+            nonlocal ans
+            if node:
+                temp.append(str(node.val))
+                if len(temp) >= l_len:
+                    if l_values in ''.join(temp):
+                        ans = True
+                        raise Exception('find it')
+
+                dfs_helper(node.left)
+                dfs_helper(node.right)
+                temp.pop()
+
+        try:
+            dfs_helper(root)
+        except:
+            pass
+        return ans
+
+    def isSubPath(self, head: ListNode, root: TreeNode) -> bool:
+
+        linked = []
+        while head:
+            linked += head.val,
+            head = head.next
+        n = len(linked)
+
+        def dfs(node, path):
+            if not node:
+                return False
+            path += [node.val]
+            if path[-n:] == linked:
+                return True
+            return dfs(node.left, path[:]) or dfs(node.right, path[:])
+
+        return dfs(root, [])
+
+
+# head_1367 = GenList([10, 10, 4, 9, 9, 4, 2, 2, 9, 9, 5]).list_
+# root_1367 = GenTree(
+#     [10, 10, 9, 4, 7, 6, 10, 10, 9, 6, 4, 8, 8, 9, 2, None, 2, None, 9, None, None, None, None, None, 9, 1, 7, None,
+#      None, None, None, 7, 4, 4, 6, None, None, 6, None, None, None, None, None, 9, 6, None, 2, 4, 8, None, 5, 2, None,
+#      None, None, 2, None, None, None, None, 3, 8, 2, None, 5, 4, 9, None, None, 6, None, 1, 3, None, None, 8, 9, None,
+#      9, None, None, None, 5, None, None, 1, 1, None, None, 5, None, None, None, None, None, None, None, 7, None]).tree
+# print(Solution1367().isSubPath(head_1367, root_1367))
+
+
+# ================================================= 1367. Linked List in Binary Tree ===================================
 
 
 # ================================================= 1372. Longest ZigZag Path in a Binary Tree =========================
