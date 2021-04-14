@@ -143,6 +143,38 @@ class Solution94:
 # ================================================= 94. Binary Tree Inorder Traversal ==================================
 
 
+# ================================================= 95. Unique Binary Search Trees II ==================================
+
+
+# Runtime: 48 ms, faster than 97.36% of Python3 online submissions for Unique Binary Search Trees II.
+# Memory Usage: 15.2 MB, less than 85.56% of Python3 online submissions for Unique Binary Search Trees II.
+class Solution95:
+    def generateTrees(self, n: int) -> List[TreeNode]:
+        from functools import lru_cache
+
+        @lru_cache(None)
+        def solve(s, e):
+            if s > e:
+                return (None,)
+
+            if s == e:
+                return (TreeNode(s),)
+
+            return [TreeNode(node, left, right)
+                    for node in range(s, e + 1)
+                    for left in solve(s, node - 1)
+                    for right in solve(node + 1, e)]
+
+        return solve(1, n)
+
+
+# root_95 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# print(Solution95().generateTrees(8))
+
+
+# ================================================= 95. Unique Binary Search Trees II ==================================
+
+
 # ================================================= 100. Same Tree =====================================================
 class Solution100:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
@@ -854,6 +886,28 @@ class Solution449:
 # ans = deser.deserialize(tree)
 # return ans
 # ================================================= 449. Serialize and Deserialize BST =================================
+
+
+# ================================================= 450. Delete Node in a BST ==========================================
+
+
+class Solution450:
+    def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
+        if not root:
+            return root
+
+        node = root
+
+        while 1:
+            if node.val > key:
+                node = node.left
+            elif node.val < key:
+                node = node.right
+            else:
+                return node
+
+
+# ================================================= 450. Delete Node in a BST ==========================================
 
 
 # ================================================= 501. Find Mode in Binary Search Tree ===============================
