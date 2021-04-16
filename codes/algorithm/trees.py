@@ -203,6 +203,45 @@ class Solution95:
 # ================================================= 95. Unique Binary Search Trees II ==================================
 
 
+# ================================================= 98. Validate Binary Search Tree ====================================
+
+# Runtime: 36 ms, faster than 96.74% of Python3 online submissions for Validate Binary Search Tree.
+# Memory Usage: 17 MB, less than 23.14% of Python3 online submissions for Validate Binary Search Tree.
+class Solution98:
+    def isValidBST(self, root: TreeNode) -> bool:
+
+        def dfs_inorder(node):
+            if node:
+                yield from dfs_inorder(node.left)
+                yield node.val
+                yield from dfs_inorder(node.right)
+
+        minimum = float("-inf")
+
+        for item in dfs_inorder(root):
+            if item > minimum:
+                minimum = item
+            else:
+                return False
+        return True
+
+    # def isValidBST2(self, root):
+    #     node_l = [root]
+    #     while node_l:
+    #         for node in node_l:
+    #             if (node.left and node.left.val >= node.val) or (node.right and node.right.val <= node.val):
+    #                 return False
+    #         node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+    #     return True
+
+
+# root_98 = GenTree([5, 4, 6, None, None, 3, 7]).tree
+# print(Solution98().isValidBST(root_98))
+
+
+# ================================================= 98. Validate Binary Search Tree ====================================
+
+
 # ================================================= 100. Same Tree =====================================================
 class Solution100:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
@@ -1614,6 +1653,68 @@ class Solution655:
 # ================================================= 655. Print Binary Tree =============================================
 
 
+# ================================================= 662. Maximum Width of Binary Tree ==================================
+
+# todo: dong not solved.
+class Solution662:
+    def widthOfBinaryTree(self, root: TreeNode) -> int:
+        node_l = [root]
+        depth = 0
+        root_flag = True
+        maximum = float('-inf')
+        while node_l:
+            c = 0
+            temp = []
+            if root_flag:
+                root_flag = False
+                depth += 1
+                maximum = max(maximum, 1)
+                continue
+            start = end = None
+            for node in node_l:
+                if node:
+                    if node.left:
+                        if start is None:
+                            start = c
+                        end = c
+                    c += 1
+                    if node.right:
+                        if start is None:
+                            start = c
+                        end = c
+                    c += 1
+                    temp.extend([node.left, node.right])
+                else:
+                    c += 2
+                    temp.extend([None, None])
+            node_l = temp
+            if not any(node_l):
+                break
+            maximum = max(maximum, end + 1 - start)
+
+            depth += 1
+        return maximum
+
+
+# root_662 = GenTree(
+#     [0, 0, 0, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0,
+#      None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None,
+#      None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None,
+#      0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0,
+#      None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None,
+#      None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None,
+#      0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0,
+#      None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None,
+#      None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None,
+#      0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0,
+#      None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None]).tree
+# # print(f'dong ---------------->root: {root_662.right.right.right.val}')
+# print(Solution662().widthOfBinaryTree(root_662))
+
+
+# ================================================= 662. Maximum Width of Binary Tree ==================================
+
+
 # ================================================= 669. Trim a Binary Search Tree =====================================
 
 # todo: dong to be further more thinking about it.
@@ -1661,6 +1762,46 @@ class Solution671:
 
 
 # ================================================= 671. Second Minimum Node In a Binary Tree ==========================
+
+
+# ================================================= 687. Longest Univalue Path =========================================
+
+# todo: dong not solved.
+class Solution687:
+    def longestUnivaluePath(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+
+        # caching = {}
+        minimum = float("-inf")
+
+        def dfs_helper(node, cur_value, nums=0):
+            nonlocal minimum
+            if not node:
+                return nums
+            if node.val == cur_value:
+                nums += 1
+            else:
+                cur_value = node.val
+                minimum = max(minimum, nums)
+                # nums = 0
+
+            left = dfs_helper(node.left, cur_value, nums)
+            right = dfs_helper(node.right, cur_value, nums)
+            minimum = max(minimum, nums, left + right)
+            # nums = 0
+            return left + right - 1
+
+        cur = -1
+        dfs_helper(root, cur)
+        return minimum
+
+
+# root_687 = GenTree([1, 2, 3, 2, 2, 3, 4]).tree
+# print(Solution687().longestUnivaluePath(root_687))
+
+
+# ================================================= 687. Longest Univalue Path =========================================
 
 
 # ================================================= 700. Search in a Binary Search Tree ================================
