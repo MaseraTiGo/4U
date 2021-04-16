@@ -11,6 +11,8 @@
 
 from typing import List, Optional
 
+import pysnooper
+
 
 def dfs(tree):
     if tree:
@@ -872,6 +874,131 @@ class Solution257:
 
 
 # ================================================= 257. Binary Tree Paths =============================================
+
+
+# ================================================= 297. Serialize and Deserialize Binary Tree =========================
+
+
+# todo: dong not solved.
+class Solution297:
+
+    # def serialize(self, root):
+    #     """Encodes a tree to a single string.
+    #
+    #     :type root: TreeNode
+    #     :rtype: str
+    #     """
+    #     if not root:
+    #         return ""
+    #     node_l = [root]
+    #
+    #     ans = []
+    #
+    #     while node_l:
+    #         temp = []
+    #         for node in node_l:
+    #             ans.append(str(node.val) if node else "-")
+    #             if not node:
+    #                 temp.extend([None, None])
+    #                 continue
+    #             temp.append(node.left)
+    #             temp.append(node.right)
+    #         if not any(temp):
+    #             break
+    #         node_l = temp
+    #
+    #     return ",".join(ans)
+    #
+    # def deserialize(self, data):
+    #     """Decodes your encoded data to tree.
+    #
+    #     :type data: str
+    #     :rtype: TreeNode
+    #     """
+    #     data = data.split(",")
+    #     if not data:
+    #         return None
+    #     anchor = 0
+    #     root = root_ = TreeNode(data[0])
+    #     cur_nodes = [root_]
+    #
+    #     while 1:
+    #         anchor += 1
+    #         for index, node in enumerate(cur_nodes):
+    #             if not node:
+    #                 continue
+    #             base_index = 2 ** anchor - 1 + index * 2
+    #             if base_index >= len(data):
+    #                 break
+    #             left_data = data[base_index]
+    #             left_data = TreeNode(int(left_data)) if left_data != "-" else None
+    #             node.left = left_data
+    #             right_data = data[base_index + 1]
+    #             right_data = TreeNode(int(right_data)) if right_data != "-" else None
+    #             node.right = right_data
+    #         temp = []
+    #         for node in cur_nodes:
+    #             if not node:
+    #                 temp.extend([None, None])
+    #             else:
+    #                 temp.append(node.left)
+    #                 temp.append(node.right)
+    #         if not any(temp):
+    #             break
+    #         cur_nodes = temp
+    #     return root
+
+    def serialize(self, root):
+        if not root:
+            return ""
+        preorder = []
+        inorder = []
+
+        def dfs_preorder(node):
+            if node:
+                preorder.append(str(node.val))
+                dfs_preorder(node.left)
+                dfs_preorder(node.right)
+
+        def dfs_inorder(node):
+            if node:
+                dfs_inorder(node.left)
+                inorder.append(str(node.val))
+                dfs_inorder(node.right)
+
+        dfs_preorder(root)
+        dfs_inorder(root)
+        preorder = ",".join(preorder)
+        inorder = ",".join(inorder)
+        return preorder + "|" + inorder
+
+    def deserialize(self, data):
+        if not data:
+            return None
+
+        preorder, inorder = data.split("|")
+        preorder = preorder.split(",")
+        inorder = inorder.split(",")
+
+        def build_tree(preorder_, inorder_):
+            if inorder_:
+                root = TreeNode(preorder_[0])
+                mid = inorder_.index(preorder_.pop(0))
+                root.left = build_tree(preorder_, inorder_[: mid])
+                root.right = build_tree(preorder_, inorder_[mid + 1:])
+                return root
+
+        return build_tree(preorder, inorder)
+
+
+root_297 = GenTree([3, 2, 4, 3, None]).tree
+
+root_297_str = Solution297().serialize(root_297)
+print(f'dong -------->serialize: {root_297_str}')
+bfs(Solution297().deserialize(root_297_str))
+
+
+# ================================================= 297. Serialize and Deserialize Binary Tree =========================
 
 
 # ================================================= 337. House Robber III ==============================================
@@ -2469,6 +2596,45 @@ class Solution1026:
 
 
 # ================================================= 1026. Maximum Difference Between Node and Ancestor =================
+
+
+# ================================================= 1028. Recover a Tree From Preorder Traversal =======================
+
+# todo: dong not solved.
+class Solution1028:
+    # @staticmethod
+    # def preorder_2_str(root):
+    #
+    #     depth = []
+    #     dash = "-"
+    #
+    #     def dfs_preorder(node):
+    #         nonlocal depth
+    #         if node:
+    #             depth.append(node.val)
+    #             yield (len(depth)-1) * dash + str(node.val)
+    #             yield from dfs_preorder(node.left)
+    #             yield from dfs_preorder(node.right)
+    #             depth.pop()
+    #
+    #     dfs_preorder(root)
+    #
+    #     pivot = ""
+    #
+    #     for item in dfs_preorder(root):
+    #         pivot += item
+    #
+    #     return pivot
+
+    def recoverFromPreorder(self, S: str) -> TreeNode:
+        pass
+
+
+# root_1028 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# print(Solution1028().recoverFromPreorder(root_1028))
+
+
+# ================================================= 1028. Recover a Tree From Preorder Traversal =======================
 
 
 # ================================================= 1038. Binary Search Tree to Greater Sum Tree =======================
