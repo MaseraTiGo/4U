@@ -11,6 +11,8 @@
 
 from typing import List, Optional
 
+import pysnooper
+
 
 def dfs(tree):
     if tree:
@@ -20,14 +22,16 @@ def dfs(tree):
 
 
 def bfs(root):
+    temp = []
     l = [root]
     while l:
         node = l.pop(0)
-        print(node.val)
+        temp.append(node.val)
         if node.left:
             l.append(node.left)
         if node.right:
             l.append(node.right)
+    print(f'dong -----------> bfs: {temp}')
 
 
 fibonacci_cache = {}
@@ -47,11 +51,39 @@ def fibonacci(n):
     return fibonacci_cache[n]
 
 
+class ListNode:
+    def __init__(self, val=0, next_=None):
+        self.val = val
+        self.next = next_
+
+
+class GenList(object):
+    def __init__(self, values):
+        if not isinstance(values, (list, tuple)):
+            raise Exception('give me fucking right type ok?')
+        if not values:
+            raise Exception('it is fucking empty')
+        self.values = values
+
+    @property
+    def list_(self):
+        root_ = ListNode(self.values[0])
+        src = root_
+        len_ = len(self.values)
+
+        for i in range(1, len_):
+            curr = ListNode(self.values[i])
+            root_.next = curr
+            root_ = root_.next
+        return src
+
+
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
+    def __init__(self, val=0, left=None, right=None, next_=None):
         self.val = val
         self.left = left
         self.right = right
+        self.next = next_
 
 
 class GenTree(object):
@@ -141,6 +173,176 @@ class Solution94:
 
 
 # ================================================= 94. Binary Tree Inorder Traversal ==================================
+
+
+# ================================================= 95. Unique Binary Search Trees II ==================================
+
+
+# Runtime: 48 ms, faster than 97.36% of Python3 online submissions for Unique Binary Search Trees II.
+# Memory Usage: 15.2 MB, less than 85.56% of Python3 online submissions for Unique Binary Search Trees II.
+class Solution95:
+    def generateTrees(self, n: int) -> List[TreeNode]:
+        from functools import lru_cache
+
+        @lru_cache(None)
+        def solve(s, e):
+            if s > e:
+                return (None,)
+
+            if s == e:
+                return (TreeNode(s),)
+
+            return [TreeNode(node, left, right)
+                    for node in range(s, e + 1)
+                    for left in solve(s, node - 1)
+                    for right in solve(node + 1, e)]
+
+        return solve(1, n)
+
+
+# root_95 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# print(Solution95().generateTrees(8))
+
+
+# ================================================= 95. Unique Binary Search Trees II ==================================
+
+
+# ================================================= 98. Validate Binary Search Tree ====================================
+
+# Runtime: 36 ms, faster than 96.74% of Python3 online submissions for Validate Binary Search Tree.
+# Memory Usage: 17 MB, less than 23.14% of Python3 online submissions for Validate Binary Search Tree.
+class Solution98:
+    def isValidBST(self, root: TreeNode) -> bool:
+
+        def dfs_inorder(node):
+            if node:
+                yield from dfs_inorder(node.left)
+                yield node.val
+                yield from dfs_inorder(node.right)
+
+        minimum = float("-inf")
+
+        for item in dfs_inorder(root):
+            if item > minimum:
+                minimum = item
+            else:
+                return False
+        return True
+
+    # def isValidBST2(self, root):
+    #     node_l = [root]
+    #     while node_l:
+    #         for node in node_l:
+    #             if (node.left and node.left.val >= node.val) or (node.right and node.right.val <= node.val):
+    #                 return False
+    #         node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
+    #     return True
+
+
+# root_98 = GenTree([5, 4, 6, None, None, 3, 7]).tree
+# print(Solution98().isValidBST(root_98))
+
+
+# ================================================= 98. Validate Binary Search Tree ====================================
+
+
+# ================================================= 99. Recover Binary Search Tree =====================================
+
+
+# Runtime: 60 ms, faster than 98.10% of Python3 online submissions for Recover Binary Search Tree.
+# Memory Usage: 14.7 MB, less than 22.75% of Python3 online submissions for Recover Binary Search Tree.
+class Solution99:
+    # def recoverTree(self, root: TreeNode) -> None:
+    #     """
+    #     Do not return anything, modify root in-place instead.
+    #     """
+    #
+    #     inorder = []
+    #
+    #     def dfs_inorder(node):
+    #         if node:
+    #             dfs_inorder(node.left)
+    #             inorder.append(node)
+    #             dfs_inorder(node.right)
+    #
+    #     dfs_inorder(root)
+    #     temp = sorted([node.val for node in inorder])
+    #     indexies = []
+    #     for index, item in enumerate(temp):
+    #
+    #         if item != inorder[index].val:
+    #             indexies.append(index)
+    #
+    #     inorder[indexies[0]].val, inorder[indexies[1]].val = inorder[indexies[1]].val, inorder[indexies[0]].val
+    #
+    #     bfs(root)
+
+    # def recoverTree(self, root: TreeNode) -> None:
+    #     """
+    #     Do not return anything, modify root in-place instead.
+    #     """
+    #
+    #     def dfs_inorder(node):
+    #         if node:
+    #             yield from dfs_inorder(node.left)
+    #             yield node
+    #             yield from dfs_inorder(node.right)
+    #
+    #     def dfs_inorder_rf(node):
+    #         if node:
+    #             yield from dfs_inorder_rf(node.right)
+    #             yield node
+    #             yield from dfs_inorder_rf(node.left)
+    #
+    #     pivot_1 = float("-inf")
+    #     pivot_2 = float("inf")
+    #     base_1 = None
+    #     base_2 = None
+    #
+    #     for node in dfs_inorder(root):
+    #         if node.val < pivot_1:
+    #             break
+    #         pivot_1 = node.val
+    #         base_1 = node
+    #
+    #     bfs(root)
+    #
+    #     for node in dfs_inorder_rf(root):
+    #         if node.val > pivot_2:
+    #             break
+    #         pivot_2 = node.val
+    #         base_2 = node
+    #     base_1.val, base_2.val = base_2.val, base_1.val
+    #
+    #     bfs(root)
+
+    def recoverTree(self, root: TreeNode) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+
+        points, prev = [None] * 2, None
+
+        def inorder(node):
+            nonlocal prev
+            if node:
+                inorder(node.left)
+                if prev is not None and prev.val > node.val:
+                    points[1] = node
+                    if points[0] is None:
+                        points[0] = prev
+                prev = node
+                inorder(node.right)
+
+        inorder(root)
+        points[0].val, points[1].val = points[1].val, points[0].val
+
+
+# root_99 = GenTree([4, 2, 6, 1, 7, 5, 3]).tree
+# Solution99().recoverTree(root_99)
+
+
+# ================================================= 99. Recover Binary Search Tree =====================================
 
 
 # ================================================= 100. Same Tree =====================================================
@@ -278,26 +480,6 @@ class Solution105:
 # ================================================= 105. Construct Binary Tree from Preorder and Inorder Traversal =====
 
 
-# ================================================= 106. Construct Binary Tree from Inorder and Postorder Traversal ====
-
-class Solution106:
-    def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
-        if inorder:
-            node = TreeNode(postorder[-1])
-            index = inorder.index(postorder.pop())
-            node.right = self.buildTree(inorder[index + 1:], postorder)
-            node.left = self.buildTree(inorder[:index], postorder)
-            return node
-
-
-# inorder = [9, 3, 15, 20, 7]
-# postorder = [9, 15, 7, 20, 3]
-# bfs(Solution105().buildTree(inorder, postorder))
-
-
-# ================================================= 106. Construct Binary Tree from Inorder and Postorder Traversal ====
-
-
 # ================================================= 107. Binary Tree Level Order Traversal II ==========================
 
 # Runtime: 24 ms, faster than 99.16% of Python3 online submissions for Binary Tree Level Order Traversal II.
@@ -430,36 +612,6 @@ class Solution112:
 # ================================================= 112. Path Sum ======================================================
 
 
-# ================================================= 113. Path Sum II ===================================================
-
-# Runtime: 48 ms, faster than 43.14% of Python3 online submissions for Path Sum II.
-# Memory Usage: 15.7 MB, less than 63.24% of Python3 online submissions for Path Sum II.
-class Solution113:
-    def pathSum(self, root: TreeNode, targetSum: int) -> List[List[int]]:
-        ans = []
-        temp = []
-
-        def dfs_helper(node):
-            if node:
-                temp.append(node.val)
-
-                if not node.left and not node.right and sum(temp) == targetSum:
-                    ans.append(temp[:])
-                dfs_helper(node.left)
-                dfs_helper(node.right)
-                temp.pop()
-
-        dfs_helper(root)
-        return ans
-
-
-# root_113 = GenTree([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1]).tree
-# print(Solution113().pathSum(root_113, 22))
-
-
-# ================================================= 113. Path Sum II ===================================================
-
-
 # ================================================= 114. Flatten Binary Tree to Linked List ============================
 
 # Runtime: 32 ms, faster than 92.20% of Python3 online submissions for Flatten Binary Tree to Linked List.
@@ -504,58 +656,73 @@ class Solution114:
 # ================================================= 114. Flatten Binary Tree to Linked List ============================
 
 
-# ================================================= 116. Populating Next Right Pointers in Each Node ===================
+# ================================================= 117. Populating Next Right Pointers in Each Node II ================
 
-# Runtime: 72 ms, faster than 14.74% of Python3 online submissions for Populating Next Right Pointers in Each Node.
-# Memory Usage: 15.6 MB, less than 90.78% of Python3 online submissions for Populating Next Right Pointers in Each Node.
-class Solution116:
+# Runtime: 40 ms, faster than 96.62% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
+# Memory Usage: 15.4 MB, less than 49.93% of Python3 online submissions for Populating Next Right Pointers in Each
+# Node II.
+class Solution117:
     def connect(self, root: 'Node') -> 'Node':
+        if not root:
+            return root
+
         node_l = [root]
-        depth = 0
-        c = 1
         while node_l:
-            node = node_l[0]
-            while 1:
-                if c < 2 ** depth:
-                    next_node = node_l[c]
-                    node.next = next_node
-                    node = next_node
-                    c += 1
-                else:
-                    node.next = None
-                    break
-            c = 1
-            depth += 1
+            l_len = len(node_l)
+            for i in range(l_len - 1):
+                node_l[i].next = node_l[i + 1]
             node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
         return root
 
-        # if not root:
-        #     return root
-        #
-        # def dfs(node):
-        #     if not node:
-        #         return
-        #     if node.left:
-        #         node.left.next = node.right
-        #         dfs(node.left)
-        #     if node.right:
-        #         if not node.next:
-        #             node.right.next = None
-        #         else:
-        #             node.right.next = node.next.left
-        #         dfs(node.right)
-        #
-        # dfs(root)
-        # return root
+    def connect2(self, root: 'Node') -> 'Node':
+        if not root:
+            return root
+
+        from collections import deque
+        node_l = deque()
+        node_l.append(root)
+
+        while node_l:
+            l_len = len(node_l)
+            for i in range(l_len):
+                node = node_l.popleft()
+                if i + 1 < l_len:
+                    node.next = node_l[0]
+                if node.left:
+                    node_l.append(node.left)
+                if node.right:
+                    node_l.append(node.right)
+
+    def connect3(self, root: 'Node') -> 'Node':
+        first, curr = root, None
+
+        while first:
+            first, curr, last = None, first, None
+
+            while curr:
+                if not first:
+                    first = curr.left or curr.right
+
+                if curr.left:
+                    if last:
+                        last.next = curr.left
+                    last = curr.left
+
+                if curr.right:
+                    if last:
+                        last.next = curr.right
+                    last = curr.right
+
+                curr = curr.next
+        return root
 
 
-# root_116 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
-# root_116_res = Solution116().connect(root_116)
-# print(root_116_res.right.left.val)
-# print(root_116_res.right.left.next.val)
+# root_117 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# root_117 = Solution117().connect(root_117)
+# print(root_117.left.right.next.val)
 
 
-# ================================================= 116. Populating Next Right Pointers in Each Node ===================
+# ================================================= 117. Populating Next Right Pointers in Each Node II ================
 
 
 # ================================================= 129. Sum Root to Leaf Numbers ======================================
@@ -690,36 +857,6 @@ class Solution199:
 # ================================================= 199. Binary Tree Right Side View ===================================
 
 
-# ================================================= 222. Count Complete Tree Nodes =====================================
-
-# Runtime: 84 ms, faster than 40.61% of Python3 online submissions for Count Complete Tree Nodes.
-# Memory Usage: 21.6 MB, less than 50.39% of Python3 online submissions for Count Complete Tree Nodes.
-class Solution222:
-    def countNodes(self, root: TreeNode) -> int:
-        ans = 0
-        if not root:
-            return ans
-
-        # node_l = [root]
-        # while node_l:
-        #     ans += len(node_l)
-        #     node_l = [leaf for node in node_l for leaf in (node.left, node.right) if leaf]
-        # return ans
-
-        def dfs(node):
-            nonlocal ans
-            if node:
-                ans += 1
-                dfs(node.left)
-                dfs(node.right)
-
-        dfs(root)
-        return ans
-
-
-# ================================================= 222. Count Complete Tree Nodes =====================================
-
-
 # ================================================= 230. Kth Smallest Element in a BST =================================
 
 class Solution230:
@@ -810,53 +947,6 @@ root_235 = TreeNode(6, TreeNode(2, TreeNode(0), TreeNode(4, TreeNode(3, TreeNode
 # ================================================= 235. Lowest Common Ancestor of a Binary Search Tree ================
 
 
-# ================================================= 236. Lowest Common Ancestor of a Binary Tree =======================
-
-
-class Solution236:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        # ans = []
-        # temp = []
-        #
-        # def dfs_helper(node):
-        #     if node:
-        #         temp.append(node.val)
-        #         if node.val in [p, q]:
-        #             yield temp
-        #         yield from dfs_helper(node.left)
-        #         yield from dfs_helper(node.right)
-        #         temp.pop()
-        #
-        # for item in dfs_helper(root):
-        #     ans.append(item[:])
-        # if len(ans) == 1:
-        #     return ans[0][min(ans[0].index(p), ans[0].index(q))]
-        # res_1, res_2 = ans
-        # end = min(len(res_1), len(res_2))
-        # for i in range(end):
-        #     if res_1[i] != res_2[i]:
-        #         return res_1[i - 1]
-        # return res_1[end - 1]
-
-        def dfs_helper(node):
-            if node in (None, p, q):
-                return node
-            llca = dfs_helper(node.left)
-            rlca = dfs_helper(node.right)
-            return node if llca and rlca else llca or rlca
-
-        return dfs_helper(root)
-
-
-# root_236 = GenTree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4]).tree
-# root_5 = root_236.left
-# root_1 = root_236.right.left
-# print(Solution236().lowestCommonAncestor(root_236, root_5, root_1))
-
-
-# ================================================= 236. Lowest Common Ancestor of a Binary Tree =======================
-
-
 # ================================================= 257. Binary Tree Paths =============================================
 
 class Solution257:
@@ -885,6 +975,131 @@ class Solution257:
 
 
 # ================================================= 257. Binary Tree Paths =============================================
+
+
+# ================================================= 297. Serialize and Deserialize Binary Tree =========================
+
+
+# todo: dong not solved.
+class Solution297:
+
+    # def serialize(self, root):
+    #     """Encodes a tree to a single string.
+    #
+    #     :type root: TreeNode
+    #     :rtype: str
+    #     """
+    #     if not root:
+    #         return ""
+    #     node_l = [root]
+    #
+    #     ans = []
+    #
+    #     while node_l:
+    #         temp = []
+    #         for node in node_l:
+    #             ans.append(str(node.val) if node else "-")
+    #             if not node:
+    #                 temp.extend([None, None])
+    #                 continue
+    #             temp.append(node.left)
+    #             temp.append(node.right)
+    #         if not any(temp):
+    #             break
+    #         node_l = temp
+    #
+    #     return ",".join(ans)
+    #
+    # def deserialize(self, data):
+    #     """Decodes your encoded data to tree.
+    #
+    #     :type data: str
+    #     :rtype: TreeNode
+    #     """
+    #     data = data.split(",")
+    #     if not data:
+    #         return None
+    #     anchor = 0
+    #     root = root_ = TreeNode(data[0])
+    #     cur_nodes = [root_]
+    #
+    #     while 1:
+    #         anchor += 1
+    #         for index, node in enumerate(cur_nodes):
+    #             if not node:
+    #                 continue
+    #             base_index = 2 ** anchor - 1 + index * 2
+    #             if base_index >= len(data):
+    #                 break
+    #             left_data = data[base_index]
+    #             left_data = TreeNode(int(left_data)) if left_data != "-" else None
+    #             node.left = left_data
+    #             right_data = data[base_index + 1]
+    #             right_data = TreeNode(int(right_data)) if right_data != "-" else None
+    #             node.right = right_data
+    #         temp = []
+    #         for node in cur_nodes:
+    #             if not node:
+    #                 temp.extend([None, None])
+    #             else:
+    #                 temp.append(node.left)
+    #                 temp.append(node.right)
+    #         if not any(temp):
+    #             break
+    #         cur_nodes = temp
+    #     return root
+
+    def serialize(self, root):
+        if not root:
+            return ""
+        preorder = []
+        inorder = []
+
+        def dfs_preorder(node):
+            if node:
+                preorder.append(str(node.val))
+                dfs_preorder(node.left)
+                dfs_preorder(node.right)
+
+        def dfs_inorder(node):
+            if node:
+                dfs_inorder(node.left)
+                inorder.append(str(node.val))
+                dfs_inorder(node.right)
+
+        dfs_preorder(root)
+        dfs_inorder(root)
+        preorder = ",".join(preorder)
+        inorder = ",".join(inorder)
+        return preorder + "|" + inorder
+
+    def deserialize(self, data):
+        if not data:
+            return None
+
+        preorder, inorder = data.split("|")
+        preorder = preorder.split(",")
+        inorder = inorder.split(",")
+
+        def build_tree(preorder_, inorder_):
+            if inorder_:
+                root = TreeNode(preorder_[0])
+                mid = inorder_.index(preorder_.pop(0))
+                root.left = build_tree(preorder_, inorder_[: mid])
+                root.right = build_tree(preorder_, inorder_[mid + 1:])
+                return root
+
+        return build_tree(preorder, inorder)
+
+
+# root_297 = GenTree([3, 2, 4, 3, None]).tree
+#
+# root_297_str = Solution297().serialize(root_297)
+# print(f'dong -------->serialize: {root_297_str}')
+# bfs(Solution297().deserialize(root_297_str))
+
+
+# ================================================= 297. Serialize and Deserialize Binary Tree =========================
 
 
 # ================================================= 337. House Robber III ==============================================
@@ -1035,6 +1250,28 @@ class Solution449:
 # ans = deser.deserialize(tree)
 # return ans
 # ================================================= 449. Serialize and Deserialize BST =================================
+
+
+# ================================================= 450. Delete Node in a BST ==========================================
+
+
+class Solution450:
+    def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
+        if not root:
+            return root
+
+        node = root
+
+        while 1:
+            if node.val > key:
+                node = node.left
+            elif node.val < key:
+                node = node.right
+            else:
+                return node
+
+
+# ================================================= 450. Delete Node in a BST ==========================================
 
 
 # ================================================= 501. Find Mode in Binary Search Tree ===============================
@@ -1644,6 +1881,68 @@ class Solution655:
 # ================================================= 655. Print Binary Tree =============================================
 
 
+# ================================================= 662. Maximum Width of Binary Tree ==================================
+
+# todo: dong not solved.
+class Solution662:
+    def widthOfBinaryTree(self, root: TreeNode) -> int:
+        node_l = [root]
+        depth = 0
+        root_flag = True
+        maximum = float('-inf')
+        while node_l:
+            c = 0
+            temp = []
+            if root_flag:
+                root_flag = False
+                depth += 1
+                maximum = max(maximum, 1)
+                continue
+            start = end = None
+            for node in node_l:
+                if node:
+                    if node.left:
+                        if start is None:
+                            start = c
+                        end = c
+                    c += 1
+                    if node.right:
+                        if start is None:
+                            start = c
+                        end = c
+                    c += 1
+                    temp.extend([node.left, node.right])
+                else:
+                    c += 2
+                    temp.extend([None, None])
+            node_l = temp
+            if not any(node_l):
+                break
+            maximum = max(maximum, end + 1 - start)
+
+            depth += 1
+        return maximum
+
+
+# root_662 = GenTree(
+#     [0, 0, 0, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0,
+#      None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None,
+#      None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None,
+#      0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0,
+#      None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None,
+#      None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None,
+#      0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0,
+#      None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None,
+#      None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None,
+#      0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0,
+#      None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None, None, 0, 0, None]).tree
+# # print(f'dong ---------------->root: {root_662.right.right.right.val}')
+# print(Solution662().widthOfBinaryTree(root_662))
+
+
+# ================================================= 662. Maximum Width of Binary Tree ==================================
+
+
 # ================================================= 669. Trim a Binary Search Tree =====================================
 
 # todo: dong to be further more thinking about it.
@@ -1691,6 +1990,46 @@ class Solution671:
 
 
 # ================================================= 671. Second Minimum Node In a Binary Tree ==========================
+
+
+# ================================================= 687. Longest Univalue Path =========================================
+
+# todo: dong not solved.
+class Solution687:
+    def longestUnivaluePath(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+
+        # caching = {}
+        minimum = float("-inf")
+
+        def dfs_helper(node, cur_value, nums=0):
+            nonlocal minimum
+            if not node:
+                return nums
+            if node.val == cur_value:
+                nums += 1
+            else:
+                cur_value = node.val
+                minimum = max(minimum, nums)
+                # nums = 0
+
+            left = dfs_helper(node.left, cur_value, nums)
+            right = dfs_helper(node.right, cur_value, nums)
+            minimum = max(minimum, nums, left + right)
+            # nums = 0
+            return left + right - 1
+
+        cur = -1
+        dfs_helper(root, cur)
+        return minimum
+
+
+# root_687 = GenTree([1, 2, 3, 2, 2, 3, 4]).tree
+# print(Solution687().longestUnivaluePath(root_687))
+
+
+# ================================================= 687. Longest Univalue Path =========================================
 
 
 # ================================================= 700. Search in a Binary Search Tree ================================
@@ -2141,6 +2480,43 @@ class Solution979:
 # ================================================= 979. Distribute Coins in Binary Tree ===============================
 
 
+# ================================================= 988. Smallest String Starting From Leaf ============================
+
+# Runtime: 44 ms, faster than 82.23% of Python3 online submissions for Smallest String Starting From Leaf.
+# Memory Usage: 15.4 MB, less than 87.90% of Python3 online submissions for Smallest String Starting From Leaf.
+class Solution988:
+    def smallestFromLeaf(self, root: TreeNode) -> str:
+        ans = []
+        temp = []
+
+        def convert_2_str(l_list):
+            temp_ = l_list[:]
+            temp_.reverse()
+            return ''.join([chr(num + 97) for num in temp_])
+
+        def dfs_helper(node):
+            if node:
+                temp.append(node.val)
+                if not node.left and not node.right:
+                    ans.append(convert_2_str(temp))
+                dfs_helper(node.left)
+                dfs_helper(node.right)
+                temp.pop()
+
+        dfs_helper(root)
+        base = ans[0]
+        for item in ans[1:]:
+            base = min(item, base)
+        return base
+
+
+# root_988 = GenTree([2, 2, 1, None, 1, 0, None, 0, None]).tree
+# print(Solution988().smallestFromLeaf(root_988))
+
+
+# ================================================= 988. Smallest String Starting From Leaf ============================
+
+
 # ================================================= 993. Cousins in Binary Tree ========================================
 class Solution993:
     def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
@@ -2321,6 +2697,45 @@ class Solution1026:
 
 
 # ================================================= 1026. Maximum Difference Between Node and Ancestor =================
+
+
+# ================================================= 1028. Recover a Tree From Preorder Traversal =======================
+
+# todo: dong not solved.
+class Solution1028:
+    # @staticmethod
+    # def preorder_2_str(root):
+    #
+    #     depth = []
+    #     dash = "-"
+    #
+    #     def dfs_preorder(node):
+    #         nonlocal depth
+    #         if node:
+    #             depth.append(node.val)
+    #             yield (len(depth)-1) * dash + str(node.val)
+    #             yield from dfs_preorder(node.left)
+    #             yield from dfs_preorder(node.right)
+    #             depth.pop()
+    #
+    #     dfs_preorder(root)
+    #
+    #     pivot = ""
+    #
+    #     for item in dfs_preorder(root):
+    #         pivot += item
+    #
+    #     return pivot
+
+    def recoverFromPreorder(self, S: str) -> TreeNode:
+        pass
+
+
+# root_1028 = GenTree([1, 2, 3, 4, 5, 6, 7]).tree
+# print(Solution1028().recoverFromPreorder(root_1028))
+
+
+# ================================================= 1028. Recover a Tree From Preorder Traversal =======================
 
 
 # ================================================= 1038. Binary Search Tree to Greater Sum Tree =======================
@@ -2724,6 +3139,72 @@ class Solution1325:
 # bfs(rr)
 
 # ================================================= 1325. Delete Leaves With a Given Value =============================
+
+
+# ================================================= 1367. Linked List in Binary Tree ===================================
+
+class Solution1367:
+    # Runtime: 116 ms, faster than 45.90% of Python3 online submissions for Linked List in Binary Tree.
+    # Memory Usage: 16.7 MB, less than 50.22% of Python3 online submissions for Linked List in Binary Tree.
+    def isSubPath_one(self, head: ListNode, root: TreeNode) -> bool:
+        l_values = ''
+        l_len = 0
+        while head:
+            l_len += 1
+            l_values += str(head.val)
+            head = head.next
+
+        temp = []
+        ans = False
+
+        def dfs_helper(node):
+            nonlocal ans
+            if node:
+                temp.append(str(node.val))
+                if len(temp) >= l_len:
+                    if l_values in ''.join(temp):
+                        ans = True
+                        raise Exception('find it')
+
+                dfs_helper(node.left)
+                dfs_helper(node.right)
+                temp.pop()
+
+        try:
+            dfs_helper(root)
+        except:
+            pass
+        return ans
+
+    def isSubPath(self, head: ListNode, root: TreeNode) -> bool:
+
+        linked = []
+        while head:
+            linked += head.val,
+            head = head.next
+        n = len(linked)
+
+        def dfs(node, path):
+            if not node:
+                return False
+            path += [node.val]
+            if path[-n:] == linked:
+                return True
+            return dfs(node.left, path[:]) or dfs(node.right, path[:])
+
+        return dfs(root, [])
+
+
+# head_1367 = GenList([10, 10, 4, 9, 9, 4, 2, 2, 9, 9, 5]).list_
+# root_1367 = GenTree(
+#     [10, 10, 9, 4, 7, 6, 10, 10, 9, 6, 4, 8, 8, 9, 2, None, 2, None, 9, None, None, None, None, None, 9, 1, 7, None,
+#      None, None, None, 7, 4, 4, 6, None, None, 6, None, None, None, None, None, 9, 6, None, 2, 4, 8, None, 5, 2, None,
+#      None, None, 2, None, None, None, None, 3, 8, 2, None, 5, 4, 9, None, None, 6, None, 1, 3, None, None, 8, 9, None,
+#      9, None, None, None, 5, None, None, 1, 1, None, None, 5, None, None, None, None, None, None, None, 7, None]).tree
+# print(Solution1367().isSubPath(head_1367, root_1367))
+
+
+# ================================================= 1367. Linked List in Binary Tree ===================================
 
 
 # ================================================= 1372. Longest ZigZag Path in a Binary Tree =========================
