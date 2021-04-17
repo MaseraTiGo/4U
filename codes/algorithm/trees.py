@@ -2480,6 +2480,61 @@ class Solution979:
 # ================================================= 979. Distribute Coins in Binary Tree ===============================
 
 
+# ================================================= 987. Vertical Order Traversal of a Binary Tree =====================
+
+
+# Runtime: 28 ms, faster than 93.91% of Python3 online submissions for Vertical Order Traversal of a Binary Tree.
+# Memory Usage: 14.6 MB, less than 34.02% of Python3 online submissions for Vertical Order Traversal of a Binary Tree.
+class Solution987:
+    def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
+        ans_mapping = {}
+
+        def dfs_inorder(node, row=0, col=0):
+            if node:
+                node.pos = (row, col)
+                row += 1
+                dfs_inorder(node.left, row, col - 1)
+                cur_col = node.pos[-1]
+                if cur_col not in ans_mapping:
+                    ans_mapping[cur_col] = [node]
+                else:
+                    ans_mapping[cur_col].append(node)
+
+                dfs_inorder(node.right, row, col + 1)
+                row -= 1
+
+        def compare(x, y):
+            if x.pos[0] < y.pos[0]:
+                return -1
+            elif x.pos[0] > y.pos[0]:
+                return 1
+            else:
+                if x.val < y.val:
+                    return -1
+                elif x.val == y.val:
+                    return 0
+                else:
+                    return 1
+
+        dfs_inorder(root)
+        temp = sorted(ans_mapping.values(), key=lambda x: x[0].pos[-1])
+        ans = []
+        from functools import cmp_to_key
+        for value in temp:
+            ans.append([node.val for node in sorted(value, key=cmp_to_key(compare))])
+        return ans
+
+
+# root_987 = GenTree([0, 5, 1, 9, None, 2, None, None, None, None, 3, 4, 8, 6, None, None, None, 7, None]).tree
+root_987 = GenTree(
+    [0, 10, 1, None, None, 2, 4, 3, 5, None, None, 6, None, 7, 9, 8, None, None, None, None, 11, None, None, 12, None]).tree
+# root_987 = GenTree([3, 1, 4, 0, 2, 2, None]).tree
+print(Solution987().verticalTraversal(root_987))
+
+
+# ================================================= 987. Vertical Order Traversal of a Binary Tree =====================
+
+
 # ================================================= 988. Smallest String Starting From Leaf ============================
 
 # Runtime: 44 ms, faster than 82.23% of Python3 online submissions for Smallest String Starting From Leaf.
