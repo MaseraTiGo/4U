@@ -2494,6 +2494,36 @@ class Solution965:
 # ================================================= 965. Univalued Binary Tree =========================================
 
 
+# ================================================= 968. Binary Tree Cameras ===========================================
+
+# todo: dong not solved.
+class Solution968:
+    def minCameraCover(self, root: TreeNode) -> int:
+
+        mini_num = float("inf")
+
+        def dfs_helper(node, par_camera=None, paint=0):
+            nonlocal mini_num
+            if not node:
+                return paint
+            if node:
+                fuck_it = dfs_helper(node.left, par_camera=True, paint=paint + 1) + dfs_helper(
+                    node.right, par_camera=True, paint=paint + 1)
+                fuck_it_p = dfs_helper(node, par_camera=False, paint=paint + 1)
+                mini_num = min(fuck_it_p, fuck_it)
+                return mini_num
+
+        dfs_helper(root)
+        return mini_num
+
+
+root_978 = GenTree([[0, 0, None, 0, None, 0, None, None, 0]]).tree
+print(Solution968().minCameraCover(root_978))
+
+
+# ================================================= 968. Binary Tree Cameras ===========================================
+
+
 # ================================================= 979. Distribute Coins in Binary Tree ===============================
 
 class Solution979:
