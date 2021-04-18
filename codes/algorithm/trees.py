@@ -22,6 +22,9 @@ def dfs(tree):
 
 
 def bfs(root):
+    if not root:
+        print(f'dong --------------> empty!')
+        return
     temp = []
     l = [root]
     while l:
@@ -1254,27 +1257,63 @@ class Solution449:
 
 # ================================================= 450. Delete Node in a BST ==========================================
 
-
+# Runtime: 72 ms, faster than 78.04% of Python3 online submissions for Delete Node in a BST.
+# Memory Usage: 18.5 MB, less than 62.54% of Python3 online submissions for Delete Node in a BST.
 class Solution450:
     def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
         if not root:
             return root
 
-        node = root
+        def find_the_fucking_node(node, direct=None, far=None):
+            if node:
+                if node.val == key:
+                    if far is None and not node.left and not node.right:
+                        return None,
+                    if node.left:
+                        temp = node.left
+                        while 1:
+                            if temp.right:
+                                temp = temp.right
+                            else:
+                                temp.right = node.right
+                                if not far:
+                                    return node.left,
+                                if not direct:
+                                    far.left = node.left
+                                else:
+                                    far.right = node.left
+                                return None
+                    if node.right:
+                        if not far:
+                            return node.right,
+                        if not direct:
+                            far.left = node.right
+                        else:
+                            far.right = node.right
+                        return None
+                    if not direct:
+                        far.left = None
+                    else:
+                        far.right = None
+                    return None
+                elif node.val < key:
+                    find_the_fucking_node(node.right, 1, node)
+                else:
+                    find_the_fucking_node(node.left, 0, node)
 
-        while 1:
-            if node.val > key:
-                node = node.left
-            elif node.val < key:
-                node = node.right
-            else:
-                return node
+        ans = find_the_fucking_node(root)
+        return ans[0] if ans else root
 
+
+# root_450 = GenTree([5, 3, 6, 2, 4, None, 7]).tree
+# root_450 = GenTree([0, 1, None]).tree
+# bfs(Solution450().deleteNode(root_450, 0))
+# bfs(Solution450().deleteNode(root_450, 7))
 
 # ================================================= 450. Delete Node in a BST ==========================================
 
-
 # ================================================= 501. Find Mode in Binary Search Tree ===============================
+
 
 class Solution501:
     def findMode(self, root: TreeNode):
@@ -2526,10 +2565,10 @@ class Solution987:
 
 
 # root_987 = GenTree([0, 5, 1, 9, None, 2, None, None, None, None, 3, 4, 8, 6, None, None, None, 7, None]).tree
-root_987 = GenTree(
-    [0, 10, 1, None, None, 2, 4, 3, 5, None, None, 6, None, 7, 9, 8, None, None, None, None, 11, None, None, 12, None]).tree
-# root_987 = GenTree([3, 1, 4, 0, 2, 2, None]).tree
-print(Solution987().verticalTraversal(root_987))
+# root_987 = GenTree(
+#     [0, 10, 1, None, None, 2, 4, 3, 5, None, None, 6, None, 7, 9, 8, None, None, None, None, 11, None, None, 12, None]).tree
+# # root_987 = GenTree([3, 1, 4, 0, 2, 2, None]).tree
+# print(Solution987().verticalTraversal(root_987))
 
 
 # ================================================= 987. Vertical Order Traversal of a Binary Tree =====================
