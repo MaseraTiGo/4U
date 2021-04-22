@@ -73,3 +73,30 @@ class Solution64:
 
 # print(Solution64().solve([[1, 2, 3], [4, 5, 6]]))
 # ================================================= 64. Minimum Path Sum ===============================================
+
+
+# ================================================= 72. Edit Distance ==================================================
+
+# Runtime: 160 ms, faster than 75.75% of Python3 online submissions for Edit Distance.
+# Memory Usage: 17.8 MB, less than 43.70% of Python3 online submissions for Edit Distance.
+class Solution72:
+    def solve(self, word1, word2):
+        len_1 = len(word1)
+        len_2 = len(word2)
+        dp = [[None for _ in range(len_2+1)] for _ in range(len_1+1)]
+        dp[0][0] = 0
+        for i in range(1, len_1+1):
+            dp[i][0] = dp[i - 1][0] + 1
+        for j in range(1, len_2+1):
+            dp[0][j] = dp[0][j - 1] + 1
+        for i in range(len_1):
+            for j in range(len_2):
+                if word1[i] == word2[j]:
+                    dp[i+1][j+1] = dp[i][j]
+                else:
+                    dp[i+1][j+1] = min(dp[i][j+1], dp[i][j], dp[i+1][j]) + 1
+        return dp[len_1][len_2]
+
+
+print_(Solution72().solve("intention", "execution"))
+# ================================================= 72. Edit Distance ==================================================
