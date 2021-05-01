@@ -192,6 +192,45 @@ class Solution303:
 # ================================================= 303. Range Sum Query - Immutable ===================================
 
 
+# ================================================= 392. Is Subsequence ================================================
+
+# Runtime: 24 ms, faster than 95.66% of Python3 online submissions for Is Subsequence.
+# Memory Usage: 14.2 MB, less than 73.55% of Python3 online submissions for Is Subsequence.
+class Solution392:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if not t and s:
+            return False
+        if not s:
+            return True
+        start, end = 0, len(t)
+        if s[0] not in t[start: end]:
+            return False
+        pre_bool = True
+        for i in range(1, len(s)):
+            try:
+                start = t.index(s[i - 1])
+            except ValueError as _:
+                return False
+            t = t[start + 1: end]
+            pre_bool = pre_bool and s[i] in t
+        return pre_bool
+
+    def approach_two(self, s, t):
+        i = 0
+        j = 0
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i = i + 1
+            j = j + 1
+        return i == len(s)
+
+
+# print(Solution392().isSubsequence("aaaaaa", "bbaaaa"))
+
+
+# ================================================= 392. Is Subsequence ================================================
+
+
 # ================================================= 1025. Divisor Game =================================================
 
 class Solution1025:
