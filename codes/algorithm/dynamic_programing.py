@@ -18,6 +18,28 @@ def get_my_dp(m, n):
     return [[None for _ in range(n)] for _ in range(m)]
 
 
+# ================================================= 53. Maximum Subarray ===============================================
+
+# Runtime: 64 ms, faster than 72.43% of Python3 online submissions for Maximum Subarray.
+# Memory Usage: 14.9 MB, less than 79.49% of Python3 online submissions for Maximum Subarray.
+class Solution53:
+    def maxSubArray(self, nums: List[int]) -> int:
+        maximum = nums[0]
+        cur_max = nums[0]
+        if len(nums) == 1:
+            return maximum
+        for i in range(1, len(nums)):
+            cur_max = max(nums[i], nums[i] + cur_max)
+            maximum = max(maximum, cur_max)
+        return maximum
+
+
+# print(Solution53().maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+
+
+# ================================================= 53. Maximum Subarray ===============================================
+
+
 # ================================================= 62. Unique Paths ===================================================
 
 # Runtime: 28 ms, faster than 84.82% of Python3 online submissions for Unique Paths.
@@ -154,14 +176,14 @@ class Solution303:
         self.nums = nums
         self.dp = [0 for _ in range(len(nums) + 1)]
         for i in range(1, len(nums) + 1):
-            self.dp[i] = self.dp[i-1] + self.nums[i-1]
+            self.dp[i] = self.dp[i - 1] + self.nums[i - 1]
 
     def sumRange(self, left: int, right: int) -> int:
-        return self.dp[right+1] - self.dp[left]
+        return self.dp[right + 1] - self.dp[left]
 
 
-obj = Solution303([-2, 0, 3, -5, 2, -1])
-print(obj.sumRange(0, 5))
+# obj = Solution303([-2, 0, 3, -5, 2, -1])
+# print(obj.sumRange(0, 5))
 
 
 # Your NumArray object will be instantiated and called as such:
