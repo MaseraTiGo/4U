@@ -144,6 +144,32 @@ class Solution121:
 # ================================================= 121. Best Time to Buy and Sell Stock ===============================
 
 
+# ================================================= 303. Range Sum Query - Immutable ===================================
+
+# Runtime: 68 ms, faster than 97.89% of Python3 online submissions for Range Sum Query - Immutable.
+# Memory Usage: 17.9 MB, less than 20.74% of Python3 online submissions for Range Sum Query - Immutable.
+class Solution303:
+
+    def __init__(self, nums: List[int]):
+        self.nums = nums
+        self.dp = [0 for _ in range(len(nums) + 1)]
+        for i in range(1, len(nums) + 1):
+            self.dp[i] = self.dp[i-1] + self.nums[i-1]
+
+    def sumRange(self, left: int, right: int) -> int:
+        return self.dp[right+1] - self.dp[left]
+
+
+obj = Solution303([-2, 0, 3, -5, 2, -1])
+print(obj.sumRange(0, 5))
+
+
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# param_1 = obj.sumRange(left,right)
+# ================================================= 303. Range Sum Query - Immutable ===================================
+
+
 # ================================================= 1025. Divisor Game =================================================
 
 class Solution1025:
