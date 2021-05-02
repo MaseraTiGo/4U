@@ -153,13 +153,14 @@ class Solution72:
 # Memory Usage: 25.1 MB, less than 52.84% of Python3 online submissions for Best Time to Buy and Sell Stock.
 class Solution121:
     def maxProfit(self, prices: List[int]) -> int:
-        max_value = 0
-        dp = [0] * len(prices)
-        dp[0] = 0
-        for i in range(1, len(prices)):
-            dp[i] = max(0, dp[i - 1] + prices[i], -prices[i])
-        print(dp)
-        return max(dp)
+        buy = prices[0]
+        maximum = 0
+
+        for price in prices[1:]:
+            if price < buy:
+                buy = price
+            maximum = max(maximum, price - buy)
+        return maximum
 
 
 # print(Solution121().maxProfit([7, 1, 5, 3, 6, 4]))
@@ -192,6 +193,30 @@ class Solution303:
 # obj = NumArray(nums)
 # param_1 = obj.sumRange(left,right)
 # ================================================= 303. Range Sum Query - Immutable ===================================
+
+
+# ================================================= 338. Counting Bits =================================================
+
+# Runtime: 216 ms, faster than 10.68% of Python3 online submissions for Counting Bits.
+# Memory Usage: 20.8 MB, less than 74.21% of Python3 online submissions for Counting Bits.
+class Solution338:
+    def countBits(self, num: int) -> List[int]:
+        from collections import Counter
+        src = []
+
+        def counter(n):
+            return [Counter(bin(n)).get("1", 0)]
+
+        for i in range(num + 1):
+            src += counter(i)
+
+        return src
+
+
+# print(Solution338().countBits(5))
+
+
+# ================================================= 338. Counting Bits =================================================
 
 
 # ================================================= 392. Is Subsequence ================================================
@@ -240,4 +265,22 @@ class Solution1025:
         if n < 2:
             return False
 
+
 # ================================================= 1025. Divisor Game =================================================
+
+
+# ================================================= 1641. Count Sorted Vowel Strings ===================================
+
+class Solution1641:
+    def __init__(self):
+        self.dp = None
+
+    def countVowelStrings(self, n: int) -> int:
+        if n == 1:
+            return 5
+        res = self.countVowelStrings(n - 1) + (n - 1) * 10
+        return res
+
+# print(Solution1641().countVowelStrings(4))
+
+# ================================================= 1641. Count Sorted Vowel Strings ===================================
