@@ -18,6 +18,32 @@ def get_my_dp(m, n):
     return [[None for _ in range(n)] for _ in range(m)]
 
 
+# ================================================= get my fucking target===============================================
+
+class SolutionFucking001:
+    def solve(self, n):
+        dp = [None for _ in range(n + 1)]
+        dp[0] = 0
+        dp[1] = 1
+        dp[2] = 1
+        dp[3] = 2
+        dp[4] = 3
+        dp[5] = 5
+
+        if dp[n] is not None:
+            return dp[n]
+
+        for i in range(6, n + 1):
+            dp[i] = dp[i - 1] + dp[i - 3] + dp[i - 5]
+        return dp[n]
+
+
+print(f'dong --------------->{SolutionFucking001().solve(5)}')
+
+
+# ================================================= get my fucking target===============================================
+
+
 # ================================================= 53. Maximum Subarray ===============================================
 
 # Runtime: 64 ms, faster than 72.43% of Python3 online submissions for Maximum Subarray.
@@ -267,6 +293,21 @@ class Solution1025:
 
 
 # ================================================= 1025. Divisor Game =================================================
+
+
+# ================================================= 1043. Partition Array for Maximum Sum ==============================
+
+class Solution1043:
+    def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
+        if k == 1:
+            return sum(arr)
+        if k == len(arr):
+            return k * max(arr)
+
+        ...
+
+
+# ================================================= 1043. Partition Array for Maximum Sum ==============================
 
 
 # ================================================= 1641. Count Sorted Vowel Strings ===================================
