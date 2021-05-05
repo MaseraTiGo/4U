@@ -71,5 +71,42 @@ class Solution21:
         return root.next
 
 
-iterate_list_node(Solution21().mergeTwoLists(GenList([1, 2, 4]).list_, GenList([1, 3, 4]).list_))
+# iterate_list_node(Solution21().mergeTwoLists(GenList([1, 2, 4]).list_, GenList([1, 3, 4]).list_))
+
+
 # ================================================= 21. Merge Two Sorted Lists==========================================
+
+
+# ================================================= 1137. N-th Tribonacci Number========================================
+
+# Runtime: 28 ms, faster than 77.35% of Python3 online submissions for N-th Tribonacci Number.
+# Memory Usage: 14.3 MB, less than 43.12% of Python3 online submissions for N-th Tribonacci Number.
+class Solution1137:
+    def tribonacci(self, n: int) -> int:
+        caching = [0, 1, 1]
+
+        if n <= 2:
+            return caching[n]
+        for n in range(3, n + 1):
+            temp = caching[0] + caching[1] + caching[2]
+            caching = caching[1:] + [temp]
+
+        return caching[-1]
+
+    def tribonacci_dict(self, n: int) -> int:
+        caching = {
+            0: 0,
+            1: 1,
+            2: 1
+        }
+
+        if n in caching:
+            return caching[n]
+        for n in range(3, n + 1):
+            caching[n] = caching[n - 3] + caching[n - 2] + caching[n - 1]
+
+        return caching[n]
+
+
+# print(Solution1137().tribonacci(25))
+# ================================================= 1137. N-th Tribonacci Number========================================

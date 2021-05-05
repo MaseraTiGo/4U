@@ -310,6 +310,14 @@ class Solution1043:
 # ================================================= 1043. Partition Array for Maximum Sum ==============================
 
 
+# ================================================= 1130. Minimum Cost Tree From Leaf Values ===========================
+
+class Solution1130:
+    def mctFromLeafValues(self, arr: List[int]) -> int:
+        return 0
+# ================================================= 1130. Minimum Cost Tree From Leaf Values ===========================
+
+
 # ================================================= 1641. Count Sorted Vowel Strings ===================================
 
 class Solution1641:
