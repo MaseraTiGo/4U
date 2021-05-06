@@ -48,9 +48,17 @@ class Solution1379:
 
 # ======================================= 1780. Check if Number is a Sum of Powers of Three ============================
 
-
+# Runtime: 32 ms, faster than 72.98% of Python3 online submissions for Check if Number is a Sum of Powers of Three.
+# Memory Usage: 14.4 MB, less than 22.30% of Python3 online submissions for Check if Number is a Sum of Powers of Three.
 class Solution1780:
     def checkPowersOfThree(self, n: int) -> bool:
-        return False
+        while n > 0:
+            n, res = divmod(n, 3)
+            if res != 0 and res != 1:
+                return False
 
+        return True
+
+
+print(Solution1780().checkPowersOfThree(91))
 # ======================================= 1780. Check if Number is a Sum of Powers of Three ============================
