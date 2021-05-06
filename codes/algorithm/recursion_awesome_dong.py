@@ -21,7 +21,74 @@ class TreeNode:
         self.right = None
 
 
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+class GenList(object):
+    def __init__(self, values):
+        if not isinstance(values, (list, tuple)):
+            raise Exception('give me fucking right type ok?')
+        if not values:
+            raise Exception('it is fucking empty')
+        self.values = values
+
+    @property
+    def list_(self):
+        root_ = ListNode(self.values[0])
+        src = root_
+        len_ = len(self.values)
+
+        for i in range(1, len_):
+            curr = ListNode(self.values[i])
+            root_.next = curr
+            root_ = root_.next
+        return src
+
+
 # ========================================== public area ===== =========================================================
+
+
+# ======================================= 24. Swap Nodes in Pairs ======================================================
+
+# Runtime: 24 ms, faster than 95.37% of Python3 online submissions for Swap Nodes in Pairs.
+# Memory Usage: 14.4 MB, less than 16.10% of Python3 online submissions for Swap Nodes in Pairs.
+class Solution24:
+    def swapPairs_self(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
+        list_vars = []
+        while head:
+            list_vars.append(head.val)
+            head = head.next
+        from math import ceil
+        root = head = ListNode(-1)
+        for i in range(ceil((len(list_vars) / 2))):
+            for item in list_vars[2 * i: 2 * (i + 1)][::-1]:
+                root.next = root = ListNode(item)
+        return head.next
+
+    def swapPairs(self, head: ListNode) -> ListNode:
+        p1 = head
+        p2 = head.next if head else None
+
+        while p1 and p2:
+            p1.val, p2.val = p2.val, p1.val
+            p1 = p2.next
+            p2 = p1.next if p1 else None
+        return head
+
+
+# rs = Solution24().swapPairs(GenList([1, 2, 3, 4]).list_)
+# while rs:
+#     print(rs.val, end="->")
+#     rs = rs.next
+
+
+# ======================================= 24. Swap Nodes in Pairs ======================================================
 
 
 # ======================================= 1379. Find a Corresponding Node of a Binary Tree in a Clone of That Tree =====
@@ -59,6 +126,5 @@ class Solution1780:
 
         return True
 
-
-print(Solution1780().checkPowersOfThree(91))
+# print(Solution1780().checkPowersOfThree(91))
 # ======================================= 1780. Check if Number is a Sum of Powers of Three ============================
