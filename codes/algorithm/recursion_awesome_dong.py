@@ -128,6 +128,26 @@ class Solution24:
 
 # ======================================= 24. Swap Nodes in Pairs ======================================================
 
+
+# ======================================= 779. K-th Symbol in Grammar ==================================================
+from math import log2
+
+# todo: dong not understand.
+class Solution779:
+    def kthGrammar(self, N: int, K: int) -> int:
+        if K <= 2:
+            return abs(K - 1)
+
+        u = 1 << int(log2(K - 1))
+
+        return 1 - self.kthGrammar(N - 1, K - u)
+
+
+# print(Solution779().kthGrammar(30, 434991989))
+
+
+# ======================================= 779. K-th Symbol in Grammar ==================================================
+
 # ================================================= 1137. N-th Tribonacci Number========================================
 
 # Runtime: 28 ms, faster than 77.35% of Python3 online submissions for N-th Tribonacci Number.
