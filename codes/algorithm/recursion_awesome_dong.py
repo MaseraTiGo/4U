@@ -17,6 +17,8 @@
                                                 |/
 """
 
+from typing import List
+
 
 # ========================================== public area ===== =========================================================
 
@@ -132,6 +134,7 @@ class Solution24:
 # ======================================= 779. K-th Symbol in Grammar ==================================================
 from math import log2
 
+
 # todo: dong not understand.
 class Solution779:
     def kthGrammar(self, N: int, K: int) -> int:
@@ -147,6 +150,36 @@ class Solution779:
 
 
 # ======================================= 779. K-th Symbol in Grammar ==================================================
+
+# ======================================= 967. Numbers With Same Consecutive Differences ===============================
+
+class Solution967:
+    def numsSameConsecDiff(self, n: int, k: int) -> List[int]:
+        ans = []
+
+        for j in range(1, 10):
+            temp = [str(j)]
+            for _ in range(n):
+                temp_2 = []
+                for item in temp:
+                    i = int(item[-1])
+                    if i - k >= 0:
+                        temp_2.append(item + str(i - k))
+                    if i + k < 10:
+                        num = item + str(i + k)
+                        if num not in temp_2:
+                            temp_2.append(num)
+                temp = temp_2
+            ans.extend(temp)
+
+        return list(set([int(item) for item in ans]))
+
+
+print(Solution967().numsSameConsecDiff(2, 0))
+
+
+# ======================================= 967. Numbers With Same Consecutive Differences ===============================
+
 
 # ================================================= 1137. N-th Tribonacci Number========================================
 
