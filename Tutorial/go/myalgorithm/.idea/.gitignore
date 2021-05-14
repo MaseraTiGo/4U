@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../../../../../:\root\own\codes\4U\Tutorial\go\algorithmPrj\.idea/dataSources/
+/../../../../../../:\root\public\codes\myalgorithm\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/

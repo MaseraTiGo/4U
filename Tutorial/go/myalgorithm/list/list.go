@@ -10,23 +10,23 @@
 // ======================================================
 package list
 
-type LNode struct {
+type ListNode struct {
 	Val  int
-	Next *LNode
+	Next *ListNode
 }
 
-func GenerateListNode(nums []int) *LNode {
-	lNode := &LNode{-1, nil}
+func GenerateListNode(nums []int) *ListNode {
+	lNode := &ListNode{-1, nil}
 	origin := lNode
 	for _, num := range nums {
-		lNode.Next = &LNode{num, nil}
+		lNode.Next = &ListNode{num, nil}
 		lNode = lNode.Next
 	}
 
 	return origin.Next
 }
 
-func IterateListNode(l *LNode) []int {
+func IterateListNode(l *ListNode) []int {
 	var ans []int
 	for l != nil {
 		ans = append(ans, l.Val)

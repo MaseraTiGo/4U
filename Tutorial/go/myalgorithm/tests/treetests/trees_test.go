@@ -11,7 +11,7 @@
 package treetests
 
 import "testing"
-import "Johnathan.strong/algorithm/algorithmbygo/tree"
+import "jundong.dong/myalgorithm/tree"
 
 func TestGenerateTreeByArray(t *testing.T) {
 	nums := []int{1, 2, 3, 4, 5, 6, 7}

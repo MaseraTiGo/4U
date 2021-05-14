@@ -1,6 +1,6 @@
-// @File    : main
-// @Project : go
-// @Time    : 2021/5/13 14:20
+// @File    : myalgorithm
+// @Project : myalgorithm
+// @Time    : 2021/5/13 17:09
 // ======================================================
 //                                        /
 //   __.  , , , _  _   __ ______  _    __/  __ ____  _,
@@ -11,12 +11,11 @@
 package main
 
 import "fmt"
-import "Johnathan.strong/algorithm/algorithmbygo/list"
 
 func main() {
-	fmt.Println("this is the fucking dream starts!")
-	test := []int{1, 2, 3, 4}
-	ll := list.GenerateListNode(test)
-	ans := list.IterateListNode(ll)
-	fmt.Println(ans)
+	fmt.Println("this is where the fucking dream starts!")
+	a := 7
+	b := 8
+	c := a%2
+	fmt.Println(int(a/2), int(b/2), c)
 }
