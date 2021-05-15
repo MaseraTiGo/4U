@@ -10,7 +10,10 @@
 // ======================================================
 package treetests
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 import "jundong.dong/myalgorithm/tree"
 import "jundong.dong/myalgorithm/utils/common"
 
@@ -50,4 +53,14 @@ func TestMergeTwoBinaryTree(t *testing.T) {
 		t.Fatal("test is not passing ------------>", ans)
 	}
 
+}
+
+func TestIncreasingOrderSearchTree(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{5, 3, 6, 2, 4, -1, 8, 1, -1, -1, -1, 7, 9})
+	fmt.Println(tree.IterateTreeDFSInorder(root))
+	root = tree.IncreasingBST897(root)
+	ans := tree.IterateTreeDFSInorder(root)
+	expectation := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	flag := common.JudgeTheResult(expectation, ans, 1)
+	fmt.Println("dong ------------------>", flag, ans)
 }

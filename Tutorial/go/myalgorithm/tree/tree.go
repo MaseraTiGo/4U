@@ -90,6 +90,26 @@ func MergeTrees617(root1 *TreeNode, root2 *TreeNode) *TreeNode {
 	return current
 }
 
+func helper897(node *TreeNode, current *TreeNode) *TreeNode {
+	if node == nil {
+		return current
+	}
+	current = helper897(node.Left, current)
+	node.Left = nil
+	current.Right, current = node, node
+	current = helper897(node.Right, current)
+	return current
+}
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Increasing Order Search Tree.
+// Memory Usage: 2.5 MB, less than 54.55% of Go online submissions for Increasing Order Search Tree.
+func IncreasingBST897(root *TreeNode) *TreeNode {
+	head := &TreeNode{}
+	current := head
+	helper897(root, current)
+	return head.Right
+}
+
 func helper938(node *TreeNode, ans *int, low int, high int) {
 	if node != nil {
 		if low <= node.Val && node.Val <= high {
