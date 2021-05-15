@@ -13,9 +13,18 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("this is where the fucking dream starts!")
-	a := 7
-	b := 8
-	c := a%2
-	fmt.Println(int(a/2), int(b/2), c)
+	//ans := []string{"cao", "ni", "ma"}
+	//expectation := []string{"cao", "ni", "ma"}
+	//flag := common.JudgeTheResult(ans, expectation, 0)
+	//fmt.Println("fucking result is ----------------->", flag)
+	a := 3
+	b := 0
+	if a < 5 {
+		b := 6
+		fmt.Println("dong --------------->", b)
+	} else {
+		//b := 7
+		fmt.Println("dong --------------->", b)
+	}
+	fmt.Println("dong --------------->", b)
 }

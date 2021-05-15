@@ -77,3 +77,16 @@ func TestMediaOfTwo(t *testing.T) {
 	ans := list.FindMedianSortedArrays(nums1, nums2)
 	fmt.Println("dong --------------->", ans == 2.5, ans)
 }
+
+func TestReverseSeven(t *testing.T) {
+	testNums := []int{123, 321, 1, 10, 100, 333}
+	expectation := []int{321, 123, 1, 1, 1, 333}
+	var ans []int
+	for _, value := range testNums {
+		ans = append(ans, list.ReverseSeven(value))
+	}
+	if !common.CompareSlice(ans, expectation) {
+		t.Fatal("test is not passing......", ans)
+	}
+
+}
