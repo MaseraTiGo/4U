@@ -1,0 +1,133 @@
+# coding=UTF-8
+
+from tuoen.sys.core.exception.access_error import AccessLimitError, AccountForbiddenError
+from tuoen.sys.core.exception.api_error import ApiError
+from tuoen.sys.core.exception.authorization_error import AuthorizationError
+from tuoen.sys.core.exception.business_error import BusinessError
+from tuoen.sys.core.exception.debug_error import DebugError
+from tuoen.sys.core.exception.pro_error import ProtocolError, pro_errors, ProtocolCodes
+from tuoen.sys.core.exception.system_error import SysError
+from tuoen.sys.utils.common.dictwrapper import DictWrapper
+from tuoen.sys.utils.common.single import Single
+
+
+class IService(object):
+    _service_mapping = None
+
+    def add(self, service, *services):
+        if self._service_mapping is None:
+            self._service_mapping = {}
+        iter_list = [service]
+        iter_list.extend(services)
+        for cur_service in iter_list:
+            self._service_mapping[cur_service.get_flag()] = cur_service
+            cur_service.set_protocols(self)
+
+    def get_service(self, flag):
+        service = self._service_mapping.get(flag)
+        if service:
+            return service
+        raise NotImplementedError('agent_service is not exist')
+
+    def get_services(self):
+        return self._service_mapping.values()
+
+
+class IChecker(object):
+
+    @classmethod
+    def get_check_funcs(cls):
+        if not hasattr(cls, "_check_funcs"):
+            cls._check_funcs = {key: function for key, function in cls.__dict__.items() \
+                                if key.startswith("_check_")}
+        return cls._check_funcs
+
+    @classmethod
+    def exec_check(cls, parms, all_parms):
+        for check_func in cls.get_check_funcs().values():
+            check_func(cls, parms, all_parms)
+
+
+class BaseProtocol(Single, IService, IChecker):
+    parser = None
+    responser = None
+
+    @classmethod
+    def get_name(cls):
+        raise NotImplementedError('Please implement this interface in subclass')
+
+    @classmethod
+    def get_desc(cls):
+        raise NotImplementedError('Please implement this interface in subclass')
+
+    def parse(self, all_parms):
+        data = all_parms.copy()
+        pro_parms = {}
+        fields = self.parser.get_fields()
+        for field, helper in fields.items():
+            if field in data:
+                value = data.pop(field)
+                try:
+                    pro_parms[field] = helper.execute(value)
+                except Exception as e:
+                    raise pro_errors(ProtocolCodes.PROTOCOL_FORMAT_ERROR, field,
+                                     helper.get_field().__class__.__name__)
+            else:
+                raise pro_errors(ProtocolCodes.PROTOCOL_LOST_PARAM, field)
+        return DictWrapper(pro_parms), DictWrapper(data)
+
+    def extract_parms(self, pro):
+        raise NotImplementedError('Please implement this interface in subclass')
+
+    def get_service_flag(self, pro_params):
+        raise NotImplementedError('Please implement this interface in subclass')
+
+    def get_api_flag(self, pro_params):
+        raise NotImplementedError('Please implement this interface in subclass')
+
+    def get_success_parms(self, result):
+        raise NotImplementedError('Please implement this interface in subclass')
+
+    def get_fail_parms(self, e):
+        raise NotImplementedError('Please implement this interface in subclass')
+
+    def succeed(self, result):
+        parms = self.get_success_parms(result)
+        return self.responser.succeed(parms, result)
+
+    def failed(self, e):
+        parms = self.get_fail_parms(e)
+        return self.responser.failed(parms)
+
+    def run(self, pro):
+        try:
+            # print(f'dong ------------->\n{pro.POST}')
+            import datetime
+            print(f'dong url------------->: {pro.path} | ', datetime.datetime.now())
+            base_parms, data = self.extract_parms(pro)
+            pro_parms, api_parms = self.parse(data)
+            self.exec_check(pro_parms, data)
+            service_str = self.get_service_flag(pro_parms)
+            api_str = api_parms.api
+            api_parms.update(base_parms)
+            result = self.get_service(service_str).run(api_str, api_parms)
+            response = self.succeed(result)
+            return response
+        except DebugError as e:
+            return self.failed(e)
+        except ApiError as e:
+            return self.failed(e)
+        except ProtocolError as e:
+            return self.failed(e)
+        except BusinessError as e:
+            return self.failed(e)
+        except AccessLimitError as e:
+            return self.failed(e)
+        except AccountForbiddenError as e:
+            return self.failed(e)
+        except AuthorizationError as e:
+            return self.failed(e)
+        except Exception as e:
+            system_error = SysError(e)
+            print(e)
+            return self.failed(system_error)
