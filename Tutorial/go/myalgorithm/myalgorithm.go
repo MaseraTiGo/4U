@@ -10,21 +10,12 @@
 // ======================================================
 package main
 
-import "fmt"
+import "jundong.dong/myalgorithm/stringmonitor"
 
 func main() {
 	//ans := []string{"cao", "ni", "ma"}
 	//expectation := []string{"cao", "ni", "ma"}
 	//flag := common.JudgeTheResult(ans, expectation, 0)
 	//fmt.Println("fucking result is ----------------->", flag)
-	a := 3
-	b := 0
-	if a < 5 {
-		b := 6
-		fmt.Println("dong --------------->", b)
-	} else {
-		//b := 7
-		fmt.Println("dong --------------->", b)
-	}
-	fmt.Println("dong --------------->", b)
+	stringmonitor.IterString("你就是一个人渣")
 }

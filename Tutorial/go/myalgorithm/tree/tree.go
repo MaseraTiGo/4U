@@ -69,6 +69,33 @@ func IterateTreeDFSInorder(tree *TreeNode) []int {
 	return ans
 }
 
+type Node struct {
+	Val      int
+	Children []*Node
+}
+
+func helper589(node *Node, ans *[]int) {
+	if node != nil {
+		*ans = append(*ans, node.Val)
+		for _, n := range node.Children {
+			helper589(n, ans)
+		}
+	}
+}
+
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for N-ary Tree Preorder Traversal.
+// Memory Usage: 4 MB, less than 31.50% of Go online submissions for N-ary Tree Preorder Traversal.
+func Preorder589(root *Node) []int {
+	if root == nil {
+		return nil
+	}
+	var ans []int
+	helper589(root, &ans)
+
+	return ans
+}
+
 // Runtime: 24 ms, faster than 90.05% of Go online submissions for Merge Two Binary Trees.
 //Memory Usage: 8.4 MB, less than 38.74% of Go online submissions for Merge Two Binary Trees.
 func MergeTrees617(root1 *TreeNode, root2 *TreeNode) *TreeNode {
