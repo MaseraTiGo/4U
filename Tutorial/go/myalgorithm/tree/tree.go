@@ -92,6 +92,24 @@ func convertBinaryToDecimal(number int) int {
 	return decimal
 }
 
+// ---------------------------- invertTree226 ---------------------------------
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Invert Binary Tree.
+// Memory Usage: 2.2 MB, less than 6.62% of Go online submissions for Invert Binary Tree.
+func InvertTree226(root *TreeNode) *TreeNode {
+	if root == nil {
+		return nil
+	}
+
+	temp := root.Left
+	root.Left = root.Right
+	root.Right = temp
+	InvertTree226(root.Left)
+	InvertTree226(root.Right)
+	return root
+}
+// ---------------------------- invertTree226 ---------------------------------
+
+
 // ---------------------------- maxDepth559 ---------------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Maximum Depth of N-ary Tree.
 // Memory Usage: 3.5 MB, less than 28.95% of Go online submissions for Maximum Depth of N-ary Tree.

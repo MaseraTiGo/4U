@@ -76,3 +76,10 @@ func TestIsUnivalTree(t *testing.T) {
 	ans := tree.IsUnivalTree(root)
 	fmt.Println("dong -------------->ans", ans)
 }
+
+func TestInvertTree226(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{4,2,7,1,3,6,9})
+	root = tree.InvertTree226(root)
+	ans := tree.IterateTreeDFSInorder(root)
+	fmt.Println("dong -------------->226", ans)
+}
