@@ -70,3 +70,9 @@ func TestIterTreeFromRoot(t *testing.T) {
 	ans := tree.IterTreePathFromRoot(root, 0)
 	fmt.Println("dong ------------->fucking paths is ------>", ans)
 }
+
+func TestIsUnivalTree(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{1, 1, 1, 1, 1, 1, 1})
+	ans := tree.IsUnivalTree(root)
+	fmt.Println("dong -------------->ans", ans)
+}
