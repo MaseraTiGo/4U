@@ -92,6 +92,29 @@ func convertBinaryToDecimal(number int) int {
 	return decimal
 }
 
+// ---------------------------- InorderTraversal94 ---------------------------------
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Binary Tree Inorder Traversal.
+// Memory Usage: 2 MB, less than 24.28% of Go online submissions for Binary Tree Inorder Traversal.
+
+func helper94(node *TreeNode, ans *[]int) {
+	if node != nil {
+		helper94(node.Left, ans)
+		*ans = append(*ans, node.Val)
+		helper94(node.Right, ans)
+	}
+}
+
+func InorderTraversal(root *TreeNode) []int {
+	if root == nil {
+		return nil
+	}
+
+	var ans []int
+	helper94(root, &ans)
+	return ans
+}
+// ---------------------------- InorderTraversal94 ---------------------------------
+
 // ---------------------------- invertTree226 ---------------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Invert Binary Tree.
 // Memory Usage: 2.2 MB, less than 6.62% of Go online submissions for Invert Binary Tree.
@@ -107,8 +130,8 @@ func InvertTree226(root *TreeNode) *TreeNode {
 	InvertTree226(root.Right)
 	return root
 }
-// ---------------------------- invertTree226 ---------------------------------
 
+// ---------------------------- invertTree226 ---------------------------------
 
 // ---------------------------- maxDepth559 ---------------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Maximum Depth of N-ary Tree.
@@ -121,8 +144,8 @@ func maxDepth(root *Node) int {
 
 	nodeArray := []*Node{root}
 	depth := 0
-	for len(nodeArray) !=0 {
-		depth ++
+	for len(nodeArray) != 0 {
+		depth++
 		var temp []*Node
 		for _, node := range nodeArray {
 			if len(node.Children) != 0 {
@@ -133,8 +156,8 @@ func maxDepth(root *Node) int {
 	}
 	return depth
 }
-// ---------------------------- maxDepth559 ---------------------------------
 
+// ---------------------------- maxDepth559 ---------------------------------
 
 // ---------------------------- Preorder589 ---------------------------------
 func helper589(node *Node, ans *[]int) {
@@ -281,7 +304,6 @@ func RangeSumBST938(root *TreeNode, low int, high int) int {
 
 // ---------------------------- RangeSumBST938 ------------------------------
 
-
 // ---------------------------- IsUnivalTree965 ------------------------------
 
 func CoolDown() bool {
@@ -292,7 +314,7 @@ func CoolDown() bool {
 	return true
 }
 
-func helper965(node *TreeNode, flag *int)  {
+func helper965(node *TreeNode, flag *int) {
 	defer CoolDown()
 	if node != nil {
 		if node.Val != *flag {
@@ -314,6 +336,7 @@ func IsUnivalTree(root *TreeNode) bool {
 	}
 	return true
 }
+
 // ---------------------------- IsUnivalTree965 ------------------------------
 
 // ---------------------------- IterTreePathFromRoot1022 ------------------------------
@@ -336,4 +359,5 @@ func IterTreePathFromRoot(root *TreeNode, Val int) int {
 	}
 	return 0
 }
+
 // ---------------------------- IterTreePathFromRoot1022 ------------------------------
