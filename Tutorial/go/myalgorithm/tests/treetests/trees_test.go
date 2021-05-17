@@ -64,3 +64,9 @@ func TestIncreasingOrderSearchTree(t *testing.T) {
 	flag := common.JudgeTheResult(expectation, ans, 1)
 	fmt.Println("dong ------------------>", flag, ans)
 }
+
+func TestIterTreeFromRoot(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{1, 1, 0, 0, 1, 1, 1})
+	ans := tree.IterTreePathFromRoot(root, 0)
+	fmt.Println("dong ------------->fucking paths is ------>", ans)
+}

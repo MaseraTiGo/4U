@@ -10,6 +10,8 @@
 // ======================================================
 package tree
 
+import "math"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -74,6 +76,20 @@ type Node struct {
 	Children []*Node
 }
 
+func convertBinaryToDecimal(number int) int {
+	decimal := 0
+	counter := 0.0
+	remainder := 0
+
+	for number != 0 {
+		remainder = number % 10
+		decimal += remainder * int(math.Pow(2.0, counter))
+		number = number / 10
+		counter++
+	}
+	return decimal
+}
+
 // ---------------------------- Preorder589 ---------------------------------
 func helper589(node *Node, ans *[]int) {
 	if node != nil {
@@ -83,7 +99,6 @@ func helper589(node *Node, ans *[]int) {
 		}
 	}
 }
-
 
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for N-ary Tree
 // Preorder Traversal.
@@ -98,8 +113,8 @@ func Preorder589(root *Node) []int {
 
 	return ans
 }
-// ---------------------------- Preorder589 ---------------------------------
 
+// ---------------------------- Preorder589 ---------------------------------
 
 // ---------------------------- Postorder590 --------------------------------
 func helper590(node *Node, ans *[]int) {
@@ -124,8 +139,8 @@ func Postorder(root *Node) []int {
 	helper590(root, &ans)
 	return ans
 }
-// ---------------------------- Postorder590 --------------------------------
 
+// ---------------------------- Postorder590 --------------------------------
 
 // ---------------------------- MergeTrees617 -------------------------------
 // Runtime: 24 ms, faster than 90.05% of Go online submissions for Merge Two
@@ -150,8 +165,8 @@ func MergeTrees617(root1 *TreeNode, root2 *TreeNode) *TreeNode {
 	}
 	return current
 }
-// ---------------------------- MergeTrees617 -------------------------------
 
+// ---------------------------- MergeTrees617 -------------------------------
 
 // ---------------------------- IncreasingBST897 ----------------------------
 func helper897(node *TreeNode, current *TreeNode) *TreeNode {
@@ -175,8 +190,8 @@ func IncreasingBST897(root *TreeNode) *TreeNode {
 	helper897(root, current)
 	return head.Right
 }
-// ---------------------------- IncreasingBST897 ----------------------------
 
+// ---------------------------- IncreasingBST897 ----------------------------
 
 // ---------------------------- RangeSumBST938 ------------------------------
 func helper938(node *TreeNode, ans *int, low int, high int) {
@@ -217,4 +232,28 @@ func RangeSumBST938(root *TreeNode, low int, high int) int {
 	helper938(root, &ans, low, high)
 	return ans
 }
+
 // ---------------------------- RangeSumBST938 ------------------------------
+
+
+// ---------------------------- IterTreePathFromRoot1022 ------------------------------
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Sum of Root To Leaf Binary Numbers.
+// Memory Usage: 3.1 MB, less than 71.79% of Go online submissions for Sum of Root To Leaf Binary Numbers.
+func IterTreePathFromRoot(root *TreeNode, Val int) int {
+	if root != nil {
+		Val = Val<<1 | root.Val
+		if root.Left == nil && root.Right == nil {
+			return Val
+		}
+		total := 0
+		if root.Left != nil {
+			total += IterTreePathFromRoot(root.Left, Val)
+		}
+		if root.Right != nil {
+			total += IterTreePathFromRoot(root.Right, Val)
+		}
+		return total
+	}
+	return 0
+}
+// ---------------------------- IterTreePathFromRoot1022 ------------------------------
