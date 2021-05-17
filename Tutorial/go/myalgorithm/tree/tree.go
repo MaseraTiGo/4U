@@ -90,6 +90,32 @@ func convertBinaryToDecimal(number int) int {
 	return decimal
 }
 
+// ---------------------------- maxDepth559 ---------------------------------
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Maximum Depth of N-ary Tree.
+// Memory Usage: 3.5 MB, less than 28.95% of Go online submissions for Maximum Depth of N-ary Tree.
+func maxDepth(root *Node) int {
+
+	if root == nil {
+		return 0
+	}
+
+	nodeArray := []*Node{root}
+	depth := 0
+	for len(nodeArray) !=0 {
+		depth ++
+		var temp []*Node
+		for _, node := range nodeArray {
+			if len(node.Children) != 0 {
+				temp = append(temp, node.Children...)
+			}
+		}
+		nodeArray = temp
+	}
+	return depth
+}
+// ---------------------------- maxDepth559 ---------------------------------
+
+
 // ---------------------------- Preorder589 ---------------------------------
 func helper589(node *Node, ans *[]int) {
 	if node != nil {
