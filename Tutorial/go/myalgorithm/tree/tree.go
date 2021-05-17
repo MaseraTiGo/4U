@@ -10,7 +10,9 @@
 // ======================================================
 package tree
 
-import "math"
+import (
+	"math"
+)
 
 type TreeNode struct {
 	Val   int
@@ -261,6 +263,40 @@ func RangeSumBST938(root *TreeNode, low int, high int) int {
 
 // ---------------------------- RangeSumBST938 ------------------------------
 
+
+// ---------------------------- IsUnivalTree965 ------------------------------
+
+func CoolDown() bool {
+	ans := recover()
+	if ans != nil {
+		return false
+	}
+	return true
+}
+
+func helper965(node *TreeNode, flag *int)  {
+	defer CoolDown()
+	if node != nil {
+		if node.Val != *flag {
+			*flag = -1
+		} else {
+			helper965(node.Left, flag)
+			helper965(node.Right, flag)
+		}
+	}
+}
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Univalued Binary Tree.
+// Memory Usage: 2.3 MB, less than 100.00% of Go online submissions for Univalued Binary Tree.
+func IsUnivalTree(root *TreeNode) bool {
+	ans := root.Val
+	helper965(root, &ans)
+	if ans == -1 {
+		return false
+	}
+	return true
+}
+// ---------------------------- IsUnivalTree965 ------------------------------
 
 // ---------------------------- IterTreePathFromRoot1022 ------------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Sum of Root To Leaf Binary Numbers.
