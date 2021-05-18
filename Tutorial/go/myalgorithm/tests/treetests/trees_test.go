@@ -78,8 +78,14 @@ func TestIsUnivalTree(t *testing.T) {
 }
 
 func TestInvertTree226(t *testing.T) {
-	root := tree.GenerateTreeByArray([]int{4,2,7,1,3,6,9})
+	root := tree.GenerateTreeByArray([]int{4, 2, 7, 1, 3, 6, 9})
 	root = tree.InvertTree226(root)
 	ans := tree.IterateTreeDFSInorder(root)
 	fmt.Println("dong -------------->226", ans)
+}
+
+func TestAverageOfLevels(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{3, 9, 20, -1, 15, 7})
+	ans := tree.AverageOfLevels637(root)
+	fmt.Println("dong ------------------>637", ans)
 }

@@ -17,5 +17,6 @@ func main() {
 	//expectation := []string{"cao", "ni", "ma"}
 	//flag := common.JudgeTheResult(ans, expectation, 0)
 	//fmt.Println("fucking result is ----------------->", flag)
-	fmt.Print("dong ------------->", 3 << 1 | 0)
+	//fmt.Print("dong ------------->", 3 << 1 | 0)
+	fmt.Println("dong ------------------> ", 15 / float64(2))
 }
