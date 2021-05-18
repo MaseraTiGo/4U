@@ -237,6 +237,34 @@ func MergeTrees617(root1 *TreeNode, root2 *TreeNode) *TreeNode {
 
 // ---------------------------- MergeTrees617 -------------------------------
 
+
+// ---------------------------- AverageOfLevels637 -------------------------------
+// Runtime: 8 ms, faster than 88.00% of Go online submissions for Average of Levels in Binary Tree.
+// Memory Usage: 6.2 MB, less than 90.00% of Go online submissions for Average of Levels in Binary Tree.
+func AverageOfLevels637(root *TreeNode) []float64 {
+	var ans []float64
+	nodeList := []*TreeNode{root}
+	for len(nodeList) !=0 {
+		var temp []*TreeNode
+		total := 0.0
+		for _, node := range nodeList {
+			total += float64(node.Val)
+			if node.Left != nil {
+				temp = append(temp, node.Left)
+			}
+			if node.Right != nil{
+				temp = append(temp, node.Right)
+			}
+		}
+		ans = append(ans, total/float64(len(nodeList)))
+		nodeList = temp
+	}
+	return ans
+
+}
+// ---------------------------- AverageOfLevels637 -------------------------------
+
+
 // ---------------------------- IncreasingBST897 ----------------------------
 func helper897(node *TreeNode, current *TreeNode) *TreeNode {
 	if node == nil {
