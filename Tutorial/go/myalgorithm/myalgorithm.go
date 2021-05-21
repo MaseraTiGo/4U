@@ -10,13 +10,43 @@
 // ======================================================
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"runtime"
+	"runtime/trace"
+)
+
+func a() {
+	for i := 1; i < 10; i++ {
+		runtime.Gosched()
+		fmt.Println("A:", i)
+	}
+}
+
+func b() {
+
+	for i := 1; i < 10; i++ {
+		runtime.Gosched()
+		fmt.Println("B:", i)
+	}
+}
 
 func main() {
-	//ans := []string{"cao", "ni", "ma"}
-	//expectation := []string{"cao", "ni", "ma"}
-	//flag := common.JudgeTheResult(ans, expectation, 0)
-	//fmt.Println("fucking result is ----------------->", flag)
-	//fmt.Print("dong ------------->", 3 << 1 | 0)
-	fmt.Println("dong ------------------> ", 15 / float64(2))
+	f, err := os.Create("trace.out")
+	if err != nil {
+		panic(err)
+	}
+
+	defer f.Close()
+
+	//启动trace goroutine
+	err = trace.Start(f)
+	if err != nil {
+		panic(err)
+	}
+	defer trace.Stop()
+
+	//main
+	fmt.Println("Hello World")
 }
