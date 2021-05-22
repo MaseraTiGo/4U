@@ -92,7 +92,7 @@ func convertBinaryToDecimal(number int) int {
 	return decimal
 }
 
-// ---------------------------- InorderTraversal94 ---------------------------------
+// ---------------------------- InorderTraversal94 --------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Binary Tree Inorder Traversal.
 // Memory Usage: 2 MB, less than 24.28% of Go online submissions for Binary Tree Inorder Traversal.
 
@@ -113,9 +113,10 @@ func InorderTraversal(root *TreeNode) []int {
 	helper94(root, &ans)
 	return ans
 }
-// ---------------------------- InorderTraversal94 ---------------------------------
 
-// ---------------------------- invertTree226 ---------------------------------
+// ---------------------------- InorderTraversal94 --------------------------
+
+// ---------------------------- invertTree226 -------------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Invert Binary Tree.
 // Memory Usage: 2.2 MB, less than 6.62% of Go online submissions for Invert Binary Tree.
 func InvertTree226(root *TreeNode) *TreeNode {
@@ -131,7 +132,7 @@ func InvertTree226(root *TreeNode) *TreeNode {
 	return root
 }
 
-// ---------------------------- invertTree226 ---------------------------------
+// ---------------------------- invertTree226 -------------------------------
 
 // ---------------------------- maxDepth559 ---------------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Maximum Depth of N-ary Tree.
@@ -237,14 +238,13 @@ func MergeTrees617(root1 *TreeNode, root2 *TreeNode) *TreeNode {
 
 // ---------------------------- MergeTrees617 -------------------------------
 
-
-// ---------------------------- AverageOfLevels637 -------------------------------
+// ---------------------------- AverageOfLevels637 --------------------------
 // Runtime: 8 ms, faster than 88.00% of Go online submissions for Average of Levels in Binary Tree.
 // Memory Usage: 6.2 MB, less than 90.00% of Go online submissions for Average of Levels in Binary Tree.
 func AverageOfLevels637(root *TreeNode) []float64 {
 	var ans []float64
 	nodeList := []*TreeNode{root}
-	for len(nodeList) !=0 {
+	for len(nodeList) != 0 {
 		var temp []*TreeNode
 		total := 0.0
 		for _, node := range nodeList {
@@ -252,7 +252,7 @@ func AverageOfLevels637(root *TreeNode) []float64 {
 			if node.Left != nil {
 				temp = append(temp, node.Left)
 			}
-			if node.Right != nil{
+			if node.Right != nil {
 				temp = append(temp, node.Right)
 			}
 		}
@@ -262,8 +262,8 @@ func AverageOfLevels637(root *TreeNode) []float64 {
 	return ans
 
 }
-// ---------------------------- AverageOfLevels637 -------------------------------
 
+// ---------------------------- AverageOfLevels637 --------------------------
 
 // ---------------------------- IncreasingBST897 ----------------------------
 func helper897(node *TreeNode, current *TreeNode) *TreeNode {
@@ -332,7 +332,7 @@ func RangeSumBST938(root *TreeNode, low int, high int) int {
 
 // ---------------------------- RangeSumBST938 ------------------------------
 
-// ---------------------------- IsUnivalTree965 ------------------------------
+// ---------------------------- IsUnivalTree965 -----------------------------
 
 func CoolDown() bool {
 	ans := recover()
@@ -365,9 +365,9 @@ func IsUnivalTree(root *TreeNode) bool {
 	return true
 }
 
-// ---------------------------- IsUnivalTree965 ------------------------------
+// ---------------------------- IsUnivalTree965 -----------------------------
 
-// ---------------------------- IterTreePathFromRoot1022 ------------------------------
+// ---------------------------- IterTreePathFromRoot1022 --------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Sum of Root To Leaf Binary Numbers.
 // Memory Usage: 3.1 MB, less than 71.79% of Go online submissions for Sum of Root To Leaf Binary Numbers.
 func IterTreePathFromRoot(root *TreeNode, Val int) int {
@@ -388,4 +388,24 @@ func IterTreePathFromRoot(root *TreeNode, Val int) int {
 	return 0
 }
 
-// ---------------------------- IterTreePathFromRoot1022 ------------------------------
+// ---------------------------- IterTreePathFromRoot1022 --------------------
+
+// ---------------------------- sumRootToLeaf1022 ---------------------------
+func walk(node *TreeNode, sum int) int {
+	if node == nil {
+		return 0
+	}
+
+	sum = (sum << 1) | node.Val
+	if node.Left == nil && node.Right == nil {
+		return sum
+	}
+
+	return walk(node.Left, sum) + walk(node.Right, sum)
+}
+
+func sumRootToLeaf(root *TreeNode) int {
+	return walk(root, 0)
+}
+
+// ---------------------------- sumRootToLeaf1022 ---------------------------
