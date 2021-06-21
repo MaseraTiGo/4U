@@ -12,9 +12,9 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"net"
 	"runtime"
-	"runtime/trace"
+	"strings"
 )
 
 func a() {
@@ -32,21 +32,64 @@ func b() {
 	}
 }
 
+func connHandler(conn net.Conn) {
+	if conn == nil {
+		return
+	}
+
+	buf := make([]byte, 4096)
+	for {
+		cnt, err := conn.Read(buf)
+		if err != nil || cnt == 0 {
+			conn.Close()
+			break
+		}
+		inStr := strings.TrimSpace(string(buf[0:cnt]))
+		inputs := strings.Split(inStr, " ")
+		fmt.Print("get msg------------->", inputs)
+	}
+}
+
+func arrayStringsAreEqual(word1 []string, word2 []string) bool {
+	return strings.Join(word1, "") == strings.Join(word2, "")
+}
+
 func main() {
-	f, err := os.Create("trace.out")
-	if err != nil {
-		panic(err)
-	}
+	//fmt.Fprint(os.Stdout, "motherfucker!")
+	//fuck, err := os.OpenFile("fuck.txt", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
+	//if err != nil {
+	//	fmt.Println("fucking err happened!", err)
+	//}
+	//
+	//fmt.Fprint(fuck, "ai you fuck you!")
+	//
+	//ss := []string{"fuck you"}
+	//var ii interface{}
+	//ii = ss
+	//fmt.Println(ii)
+	//http.Client{}
+	//testSlice := []int{1, 2, 3, 4}
+	//testSlice = append(testSlice, 0)
+	//x := copy(testSlice[1:], testSlice[:])
+	//testSlice[0] = 0
+	//fmt.Println("dong ----------------->", testSlice, x)
+	//server, err := net.Listen("tcp", ":31046")
+	//if err != nil {
+	//	fmt.Printf("fail 2 start server, %s\n", err)
+	//}
+	//
+	//fmt.Print("server is starting")
+	//
+	//for {
+	//	conn, err := server.Accept()
+	//	if err != nil{
+	//		fmt.Printf("fail to connect, %s\n", err)
+	//	}
+	//	go connHandler(conn)
+	//}
 
-	defer f.Close()
-
-	//启动trace goroutine
-	err = trace.Start(f)
-	if err != nil {
-		panic(err)
-	}
-	defer trace.Stop()
-
-	//main
-	fmt.Println("Hello World")
+	word1 := []string {"abc", "d", "defg"}
+	word2 := []string {"abcddefg"}
+	res := arrayStringsAreEqual(word1, word2)
+	fmt.Print("dong ---------------->", res)
 }
