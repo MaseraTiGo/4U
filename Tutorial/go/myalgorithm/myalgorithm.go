@@ -12,7 +12,7 @@ package main
 
 import (
 	"fmt"
-	"jundong.dong/myalgorithm/list"
+	"jundong.dong/myalgorithm/tree"
 	"net"
 	"runtime"
 	"strings"
@@ -94,18 +94,22 @@ func main() {
 	//res := arrayStringsAreEqual(word1, word2)
 	//fmt.Print("dong ---------------->", res)
 
-	// 1656
-	obj := list.Constructor(5)
-	res := obj.Insert(3, "ccccc")
-	fmt.Print("dong -------------->", res)
-	res = obj.Insert(1, "aaaaa")
-	fmt.Print("dong -------------->", res)
-	res = obj.Insert(2, "bbbbb")
-	fmt.Print("dong -------------->", res)
-	res = obj.Insert(5, "eeeee")
-	fmt.Print("dong -------------->", res)
-	res = obj.Insert(4, "ddddd")
-	fmt.Print("dong -------------->", res)
-	// 1656
+	//// 1656
+	//obj := list.Constructor(5)
+	//res := obj.Insert(3, "ccccc")
+	//fmt.Print("dong -------------->", res)
+	//res = obj.Insert(1, "aaaaa")
+	//fmt.Print("dong -------------->", res)
+	//res = obj.Insert(2, "bbbbb")
+	//fmt.Print("dong -------------->", res)
+	//res = obj.Insert(5, "eeeee")
+	//fmt.Print("dong -------------->", res)
+	//res = obj.Insert(4, "ddddd")
+	//fmt.Print("dong -------------->", res)
+	//// 1656
+
+	root := tree.GenerateTreeByArray([]int{})
+	ans := tree.MaxDepth104(root)
+	fmt.Println("dong ------------------>104", ans)
 
 }
