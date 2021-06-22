@@ -89,3 +89,9 @@ func TestAverageOfLevels(t *testing.T) {
 	ans := tree.AverageOfLevels637(root)
 	fmt.Println("dong ------------------>637", ans)
 }
+
+func TestMaximumDepthOfBinaryTree104(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{3, 9, 20, -1, -1, 15, 7})
+	ans := tree.MaxDepth104(root)
+	fmt.Println("dong ------------------>104", ans)
+}

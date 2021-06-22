@@ -92,6 +92,38 @@ func convertBinaryToDecimal(number int) int {
 	return decimal
 }
 
+// ---------------------------- 104. Maximum Depth of Binary Tree -----------
+// Runtime: 4 ms, faster than 93.06% of Go online submissions for Maximum Depth of Binary Tree.
+//Memory Usage: 4.9 MB, less than 9.48% of Go online submissions for Maximum Depth of Binary Tree.
+func helper104(root []*TreeNode, maxD *int) {
+	var temp []*TreeNode
+	for _, node := range root {
+		if node.Left != nil {
+			temp = append(temp, node.Left)
+		}
+		if node.Right != nil {
+			temp = append(temp, node.Right)
+		}
+	}
+	if len(temp) != 0 {
+		*maxD++
+		helper104(temp, maxD)
+	}
+}
+
+func MaxDepth104(root *TreeNode) int {
+	maxDepth := 0
+	if root == nil {
+		return maxDepth
+	}
+
+	helper104([]*TreeNode{root}, &maxDepth)
+	return maxDepth + 1
+
+}
+
+// ---------------------------- 104. Maximum Depth of Binary Tree -----------
+
 // ---------------------------- InorderTraversal94 --------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Binary Tree Inorder Traversal.
 // Memory Usage: 2 MB, less than 24.28% of Go online submissions for Binary Tree Inorder Traversal.
