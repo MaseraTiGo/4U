@@ -12,7 +12,6 @@ package main
 
 import (
 	"fmt"
-	"jundong.dong/myalgorithm/tree"
 	"net"
 	"runtime"
 	"strings"
@@ -56,6 +55,8 @@ func arrayStringsAreEqual(word1 []string, word2 []string) bool {
 }
 
 func main() {
+	// go test example: go test ./... -v -test.run 104
+
 	//fmt.Fprint(os.Stdout, "motherfucker!")
 	//fuck, err := os.OpenFile("fuck.txt", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
 	//if err != nil {
@@ -108,8 +109,19 @@ func main() {
 	//fmt.Print("dong -------------->", res)
 	//// 1656
 
-	root := tree.GenerateTreeByArray([]int{})
-	ans := tree.MaxDepth104(root)
-	fmt.Println("dong ------------------>104", ans)
+	//root := tree.GenerateTreeByArray([]int{})
+	//ans := tree.MaxDepth104(root)
+	//fmt.Println("dong ------------------>104", ans)
+
+	//var res int
+	//fmt.Println("dong -------------->", res)
+	//
+	//var a []int
+	//fmt.Println("dong ------------>", a)
+	//aa := make([]int, 2, 5)
+	//fmt.Println("dong ------------>", aa, len(aa))
+	//
+	//aaa := make([]int, 5)
+	//fmt.Println("dong ------------>", aaa)
 
 }
