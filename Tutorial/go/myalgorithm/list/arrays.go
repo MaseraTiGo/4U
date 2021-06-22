@@ -160,3 +160,47 @@ func ReverseSeven(x int) int {
 
 	return ans
 }
+
+// ---------------------- 1656. Design an Ordered Stream --------------------
+
+type OrderedStream struct {
+	//size int
+	val  []string
+	ptr  int
+}
+
+func Constructor(n int) OrderedStream {
+	return OrderedStream{make([]string, n), 1}
+}
+
+func (this *OrderedStream) Insert(idKey int, value string) []string {
+	if idKey < 0 || idKey >= len(this.val) {
+		panic("illegal idKey!")
+	}
+
+	this.val = append(this.val, "")
+	copy(this.val[idKey:], this.val[idKey-1:])
+	this.val[idKey] = value
+
+	if idKey != this.ptr {
+		return []string{}
+	} else {
+		this.ptr++
+		end := idKey
+		for idKey <= len(this.val) {
+			if this.val[idKey] != "" {
+				end++
+			}
+		}
+		return this.val[idKey-1 : end]
+	}
+
+}
+
+/**
+ * Your OrderedStream object will be instantiated and called as such:
+ * obj := Constructor(n);
+ * param_1 := obj.Insert(idKey,value);
+ */
+
+// ---------------------- 1656. Design an Ordered Stream --------------------

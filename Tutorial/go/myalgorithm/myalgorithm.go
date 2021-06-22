@@ -12,6 +12,7 @@ package main
 
 import (
 	"fmt"
+	"jundong.dong/myalgorithm/list"
 	"net"
 	"runtime"
 	"strings"
@@ -88,8 +89,23 @@ func main() {
 	//	go connHandler(conn)
 	//}
 
-	word1 := []string {"abc", "d", "defg"}
-	word2 := []string {"abcddefg"}
-	res := arrayStringsAreEqual(word1, word2)
-	fmt.Print("dong ---------------->", res)
+	//word1 := []string {"abc", "d", "defg"}
+	//word2 := []string {"abcddefg"}
+	//res := arrayStringsAreEqual(word1, word2)
+	//fmt.Print("dong ---------------->", res)
+
+	// 1656
+	obj := list.Constructor(5)
+	res := obj.Insert(3, "ccccc")
+	fmt.Print("dong -------------->", res)
+	res = obj.Insert(1, "aaaaa")
+	fmt.Print("dong -------------->", res)
+	res = obj.Insert(2, "bbbbb")
+	fmt.Print("dong -------------->", res)
+	res = obj.Insert(5, "eeeee")
+	fmt.Print("dong -------------->", res)
+	res = obj.Insert(4, "ddddd")
+	fmt.Print("dong -------------->", res)
+	// 1656
+
 }
