@@ -297,6 +297,55 @@ func AverageOfLevels637(root *TreeNode) []float64 {
 
 // ---------------------------- AverageOfLevels637 --------------------------
 
+// ---------------------------- 872. Leaf-Similar Trees ---------------------
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Leaf-Similar Trees.
+//Memory Usage: 2.6 MB, less than 56.06% of Go online submissions for Leaf-Similar Trees.
+func helper872(node *TreeNode, a *[]int) {
+	if node.Left == nil && node.Right == nil {
+		*a = append(*a, node.Val)
+	}
+	if node.Left != nil {
+		helper872(node.Left, a)
+	}
+
+	if node.Right != nil {
+		helper872(node.Right, a)
+	}
+}
+
+
+func LeafSimilar872(root1 *TreeNode, root2 *TreeNode) bool {
+	if root1 == nil && root2 == nil {
+		return true
+	}
+
+	if root1 == nil && root2 != nil {
+		return false
+	}
+
+	if root1 != nil && root2 == nil {
+		return false
+	}
+
+	var a1, a2 []int
+
+	helper872(root1, &a1)
+	helper872(root2, &a2)
+
+	if len(a1) != len(a2) {
+		return false
+	}
+
+	for i, item := range a1 {
+		if item != a2[i] {
+			return false
+		}
+	}
+	return true
+
+}
+// ---------------------------- 872. Leaf-Similar Trees ---------------------
+
 // ---------------------------- IncreasingBST897 ----------------------------
 func helper897(node *TreeNode, current *TreeNode) *TreeNode {
 	if node == nil {

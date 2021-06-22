@@ -95,3 +95,10 @@ func TestMaximumDepthOfBinaryTree104(t *testing.T) {
 	ans := tree.MaxDepth104(root)
 	fmt.Println("dong ------------------>104", ans)
 }
+
+func TestLeafSimilarTrees872(t *testing.T) {
+	root1 := tree.GenerateTreeByArray([]int{3,5,1,6,2,9,8,-1,-1,7,4})
+	root2 := tree.GenerateTreeByArray([]int{3,5,1,6,7,4,2,-1,-1,-1,-1,-1,-1,9,8})
+	ans := tree.LeafSimilar872(root1, root2)
+	fmt.Println("dong ------------------>872", ans)
+}
