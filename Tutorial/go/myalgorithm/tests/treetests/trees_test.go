@@ -120,3 +120,9 @@ func TestTree2str606(t *testing.T) {
 	ans := tree.Tree2str606(root)
 	fmt.Println("dong --------------->test 606", ans)
 }
+
+func TestGetMinimumDifference530(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{5,1,48,-1,-1,12,53})
+	ans := tree.GetMinimumDifference530(root)
+	fmt.Println("dong ---------------->test 530", ans)
+}
