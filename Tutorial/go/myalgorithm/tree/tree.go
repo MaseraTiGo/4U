@@ -124,6 +124,31 @@ func MaxDepth104(root *TreeNode) int {
 
 // ---------------------------- 104. Maximum Depth of Binary Tree -----------
 
+// ---------------------------- 108. Convert Sorted Array to Binary Search Tree -----------
+
+// Runtime: 72 ms, faster than 67.05% of Go online submissions for Convert Sorted Array to Binary Search Tree.
+//Memory Usage: 11.6 MB, less than 48.30% of Go online submissions for Convert Sorted Array to Binary Search Tree.
+
+func helper108(nums []int) *TreeNode {
+	if len(nums) <= 0 {
+		return nil
+	}
+	mid := len(nums) / 2
+	node := TreeNode{nums[mid], nil, nil}
+	node.Left = helper108(nums[:mid])
+	node.Right = helper108(nums[mid+1:])
+	return &node
+}
+
+func SortedArrayToBST108(nums []int) *TreeNode {
+	if nums == nil {
+		return nil
+	}
+	root := helper108(nums)
+	return root
+}
+// ---------------------------- 108. Convert Sorted Array to Binary Search Tree -----------
+
 // ---------------------------- InorderTraversal94 --------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Binary Tree Inorder Traversal.
 // Memory Usage: 2 MB, less than 24.28% of Go online submissions for Binary Tree Inorder Traversal.
