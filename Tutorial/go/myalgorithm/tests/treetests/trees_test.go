@@ -114,3 +114,9 @@ func TestFindTarget653(t *testing.T) {
 	ans := tree.FindTarget653(root, 4)
 	fmt.Println("dong ------------------>test 653", ans)
 }
+
+func TestTree2str606(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{1, 2, 3, -1, 4})
+	ans := tree.Tree2str606(root)
+	fmt.Println("dong --------------->test 606", ans)
+}
