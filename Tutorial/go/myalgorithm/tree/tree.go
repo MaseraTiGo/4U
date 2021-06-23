@@ -11,7 +11,9 @@
 package tree
 
 import (
+	"bytes"
 	"math"
+	"strconv"
 )
 
 type TreeNode struct {
@@ -298,6 +300,27 @@ func Postorder(root *Node) []int {
 
 // ---------------------------- Postorder590 --------------------------------
 
+// ---------------------------- 606. Construct String from Binary Tree ---------
+
+// Runtime: 8 ms, faster than 92.98% of Go online submissions for Construct String from Binary Tree.
+//Memory Usage: 7.6 MB, less than 35.09% of Go online submissions for Construct String from Binary Tree.
+func Tree2str606(root *TreeNode) string {
+	var ans bytes.Buffer
+	if root == nil {
+		return ""
+	}
+	ans.WriteString(strconv.Itoa(root.Val))
+	if root.Left != nil || root.Right != nil {
+		ans.WriteString("(" + Tree2str606(root.Left) + ")")
+	}
+	if root.Right != nil {
+		ans.WriteString("(" + Tree2str606(root.Right) + ")")
+	}
+	return ans.String()
+}
+
+// ---------------------------- 606. Construct String from Binary Tree ---------
+
 // ---------------------------- MergeTrees617 -------------------------------
 // Runtime: 24 ms, faster than 90.05% of Go online submissions for Merge Two
 // Binary Trees.
@@ -351,7 +374,6 @@ func AverageOfLevels637(root *TreeNode) []float64 {
 
 // ---------------------------- AverageOfLevels637 --------------------------
 
-
 // ---------------------------- 653. Two Sum IV - Input is a BST ---------------
 
 //Runtime: 28 ms, faster than 46.73% of Go online submissions for Two Sum IV - Input is a BST.
@@ -363,7 +385,6 @@ func inorder653(node *TreeNode, ans map[int]int) {
 		inorder653(node.Right, ans)
 	}
 }
-
 
 func FindTarget653(root *TreeNode, k int) bool {
 	if root == nil {
@@ -381,6 +402,7 @@ func FindTarget653(root *TreeNode, k int) bool {
 	}
 	return false
 }
+
 // ---------------------------- 653. Two Sum IV - Input is a BST ---------------
 
 // ---------------------------- 872. Leaf-Similar Trees ---------------------
