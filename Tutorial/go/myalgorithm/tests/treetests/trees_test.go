@@ -132,3 +132,10 @@ func TestBinaryTreePath257(t *testing.T) {
 	ans := tree.BinaryTreePaths257(root)
 	fmt.Println("dong ---------------->test 257", ans)
 }
+
+func TestIsSameTree100(t *testing.T) {
+	p := tree.GenerateTreeByArray([]int{1, 2, 3})
+	q := tree.GenerateTreeByArray([]int{1, 2, 3})
+	ans := tree.IsSameTree100(p, q)
+	fmt.Println("dong -------------->test 100", ans)
+}
