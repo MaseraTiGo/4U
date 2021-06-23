@@ -13,6 +13,7 @@ package main
 import (
 	"fmt"
 	"net"
+	"reflect"
 	"runtime"
 	"strings"
 )
@@ -123,5 +124,9 @@ func main() {
 	//
 	//aaa := make([]int, 5)
 	//fmt.Println("dong ------------>", aaa)
+
+	a := []int {1, 2, 3, 4}
+	b := []int {1, 2, 3}
+	fmt.Println("dong ---------------->", reflect.DeepEqual(a, b))
 
 }
