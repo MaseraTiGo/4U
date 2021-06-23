@@ -14,6 +14,7 @@ import (
 	"bytes"
 	"math"
 	"strconv"
+	"strings"
 )
 
 type TreeNode struct {
@@ -221,6 +222,31 @@ func InvertTree226(root *TreeNode) *TreeNode {
 }
 
 // ---------------------------- invertTree226 -------------------------------
+
+// ---------------------------- 257. Binary Tree Paths -------------------------
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Binary Tree Paths.
+// Memory Usage: 2.4 MB, less than 56.69% of Go online submissions for Binary Tree Paths.
+func helper257(node *TreeNode, ans *[]string, temp *[]string) {
+	if node != nil {
+		*temp = append(*temp, strconv.Itoa(node.Val))
+		if node.Left == nil && node.Right == nil {
+			*ans = append(*ans, strings.Join(*temp, "->"))
+		}
+		helper257(node.Left, ans, temp)
+		helper257(node.Right, ans, temp)
+		*temp = (*temp)[:len(*temp)-1]
+	}
+}
+
+
+func BinaryTreePaths257(root *TreeNode) []string {
+	var ans []string
+	helper257(root, &ans, &[]string{})
+	return ans
+}
+// ---------------------------- 257. Binary Tree Paths -------------------------
+
 
 // ---------------------------- 530. Minimum Absolute Difference in BST --------
 
