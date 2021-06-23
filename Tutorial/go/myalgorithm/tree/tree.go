@@ -351,6 +351,38 @@ func AverageOfLevels637(root *TreeNode) []float64 {
 
 // ---------------------------- AverageOfLevels637 --------------------------
 
+
+// ---------------------------- 653. Two Sum IV - Input is a BST ---------------
+
+//Runtime: 28 ms, faster than 46.73% of Go online submissions for Two Sum IV - Input is a BST.
+//Memory Usage: 7.8 MB, less than 31.78% of Go online submissions for Two Sum IV - Input is a BST.
+func inorder653(node *TreeNode, ans map[int]int) {
+	if node != nil {
+		inorder653(node.Left, ans)
+		ans[node.Val] = node.Val
+		inorder653(node.Right, ans)
+	}
+}
+
+
+func FindTarget653(root *TreeNode, k int) bool {
+	if root == nil {
+		return false
+	}
+
+	ans := make(map[int]int)
+	inorder653(root, ans)
+	for _, value := range ans {
+		rest := k - value
+		_, err := ans[rest]
+		if err == true && rest != value {
+			return true
+		}
+	}
+	return false
+}
+// ---------------------------- 653. Two Sum IV - Input is a BST ---------------
+
 // ---------------------------- 872. Leaf-Similar Trees ---------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Leaf-Similar Trees.
 //Memory Usage: 2.6 MB, less than 56.06% of Go online submissions for Leaf-Similar Trees.
