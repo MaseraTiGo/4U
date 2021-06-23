@@ -108,3 +108,9 @@ func TestPostOrderTraversal145(t *testing.T) {
 	ans := tree.PostorderTraversal145(root)
 	fmt.Println("dong ------------------->145", ans)
 }
+
+func TestFindTarget653(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{2, 1, 3})
+	ans := tree.FindTarget653(root, 4)
+	fmt.Println("dong ------------------>test 653", ans)
+}
