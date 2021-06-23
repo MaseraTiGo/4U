@@ -95,6 +95,27 @@ func convertBinaryToDecimal(number int) int {
 	return decimal
 }
 
+// ---------------------------- 100. Same Tree ---------------------------------
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Same Tree.
+// Memory Usage: 2.1 MB, less than 16.71% of Go online submissions for Same Tree.
+func IsSameTree100(p *TreeNode, q *TreeNode) bool {
+	var a, b bool
+	if (p != nil && q == nil) || (p ==nil && q != nil) {
+		return false
+	}
+	if p == nil && q == nil {
+		return true
+	}
+	if p.Val == q.Val {
+		a = IsSameTree100(p.Left, q.Left)
+		b = IsSameTree100(p.Right, q.Right)
+	}
+	return a && b
+}
+
+// ---------------------------- 100. Same Tree ---------------------------------
+
 // ---------------------------- 104. Maximum Depth of Binary Tree -----------
 // Runtime: 4 ms, faster than 93.06% of Go online submissions for Maximum Depth of Binary Tree.
 //Memory Usage: 4.9 MB, less than 9.48% of Go online submissions for Maximum Depth of Binary Tree.
