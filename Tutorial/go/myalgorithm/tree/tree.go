@@ -222,6 +222,45 @@ func InvertTree226(root *TreeNode) *TreeNode {
 
 // ---------------------------- invertTree226 -------------------------------
 
+// ---------------------------- 530. Minimum Absolute Difference in BST --------
+
+
+// Runtime: 8 ms, faster than 93.55% of Go online submissions for Minimum Absolute Difference in BST.
+//Memory Usage: 7 MB, less than 12.90% of Go online submissions for Minimum Absolute Difference in BST.
+func helper530(node *TreeNode, s *float64, e *float64, pivot *float64) float64{
+	if node != nil {
+		helper530(node.Left, s, e, pivot)
+		*e = float64(node.Val)
+		*pivot = math.Min(math.Abs(*e-*s), *pivot)
+		*s = *e
+		helper530(node.Right, s, e, pivot)
+	}
+	return *pivot
+}
+
+func GetMinimumDifference530(root *TreeNode) int {
+	//var ans []int
+	//
+	//helper530(root, &ans)
+	//
+	//pivot := math.Pow10(5) + 1
+	//for i, v := range ans {
+	//	if i == 0 {
+	//		continue
+	//	} else {
+	//		pivot = math.Min(math.Abs(float64(v - ans[i-1])), pivot)
+	//	}
+	//}
+	//return int(pivot)
+
+
+	pivot := math.Pow10(5) + 1
+	a, b  := -pivot, 0.0
+	return int(helper530(root, &a, &b, &pivot))
+}
+// ---------------------------- 530. Minimum Absolute Difference in BST --------
+
+
 // ---------------------------- maxDepth559 ---------------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Maximum Depth of N-ary Tree.
 // Memory Usage: 3.5 MB, less than 28.95% of Go online submissions for Maximum Depth of N-ary Tree.
