@@ -147,7 +147,36 @@ func SortedArrayToBST108(nums []int) *TreeNode {
 	root := helper108(nums)
 	return root
 }
+
 // ---------------------------- 108. Convert Sorted Array to Binary Search Tree -----------
+
+// --------------- 145. Binary Tree Postorder Traversal ------------------------
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Binary
+// Tree Postorder Traversal.
+//Memory Usage: 2.1 MB, less than 65.85% of Go online submissions for Binary
+// Tree Postorder Traversal.
+func helper145(root *TreeNode, res *[]int) {
+	if root != nil {
+		helper145(root.Left, res)
+		helper145(root.Right, res)
+		*res = append(*res, root.Val)
+	}
+}
+
+func PostorderTraversal145(root *TreeNode) []int {
+
+	var res []int
+
+	if root == nil {
+		return res
+	}
+
+	helper145(root, &res)
+	return res
+}
+
+// --------------- 145. Binary Tree Postorder Traversal ------------------------
 
 // ---------------------------- InorderTraversal94 --------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Binary Tree Inorder Traversal.
@@ -338,7 +367,6 @@ func helper872(node *TreeNode, a *[]int) {
 	}
 }
 
-
 func LeafSimilar872(root1 *TreeNode, root2 *TreeNode) bool {
 	if root1 == nil && root2 == nil {
 		return true
@@ -369,6 +397,7 @@ func LeafSimilar872(root1 *TreeNode, root2 *TreeNode) bool {
 	return true
 
 }
+
 // ---------------------------- 872. Leaf-Similar Trees ---------------------
 
 // ---------------------------- IncreasingBST897 ----------------------------
