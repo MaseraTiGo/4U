@@ -302,6 +302,28 @@ func BinaryTreePaths257(root *TreeNode) []string {
 
 // ---------------------------- 257. Binary Tree Paths -------------------------
 
+// ---------------------------- 404. Sum of Left Leaves ---------------------
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Sum of Left Leaves.
+//Memory Usage: 2.7 MB, less than 86.81% of Go online submissions for Sum of Left Leaves.
+func helper404(node *TreeNode, source int, total *int) {
+	if node != nil {
+		if node.Left == nil && node.Right == nil && source == 1 {
+			*total += node.Val
+		}
+		helper404(node.Left, 1, total)
+		helper404(node.Right, 0, total)
+	}
+
+}
+
+func SumOfLeftLeaves404(root *TreeNode) int {
+	var ans int
+	helper404(root, 0, &ans)
+	return ans
+}
+// ---------------------------- 404. Sum of Left Leaves ---------------------
+
 // ---------------------------- 530. Minimum Absolute Difference in BST --------
 
 // Runtime: 8 ms, faster than 93.55% of Go online submissions for Minimum Absolute Difference in BST.

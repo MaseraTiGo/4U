@@ -153,3 +153,9 @@ func TestLowestCommonAncestor235(t *testing.T) {
 	ans := tree.LowestCommonAncestor235(root, p, q)
 	fmt.Println("dong ----------------> test 235", ans.Val)
 }
+
+func TestSumOfLeftLeaves404(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{1})
+	ans := tree.SumOfLeftLeaves404(root)
+	fmt.Println("dong ----------------> test 404", ans)
+}
