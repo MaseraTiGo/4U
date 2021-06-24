@@ -725,6 +725,54 @@ func IsUnivalTree(root *TreeNode) bool {
 
 // ---------------------------- IsUnivalTree965 -----------------------------
 
+
+// ---------------------------- 993. Cousins in Binary Tree -----------------
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Cousins in Binary Tree.
+//Memory Usage: 2.6 MB, less than 13.64% of Go online submissions for Cousins in Binary Tree.
+type ExTreeNode struct {
+	Node *TreeNode
+	Father *TreeNode
+
+}
+
+func IsCousins993(root *TreeNode, x int, y int) bool {
+	nodeList := []*ExTreeNode{&ExTreeNode{root, nil}}
+
+	var xFlag, yFlag *ExTreeNode
+
+	for len(nodeList) !=0 {
+		var temp []*ExTreeNode
+		for _, node := range nodeList {
+			if node.Node.Left != nil {
+				temp = append(temp, &ExTreeNode{node.Node.Left, node.Node})
+			}
+			if node.Node.Right != nil {
+				temp = append(temp, &ExTreeNode{node.Node.Right, node.Node})
+			}
+			if node.Node.Val == x {
+				xFlag = node
+			}
+			if node.Node.Val == y {
+				yFlag = node
+			}
+		}
+		if xFlag != nil && yFlag != nil {
+			if xFlag.Father.Val != yFlag.Father.Val {
+				return true
+			} else {
+				return false
+			}
+		} else if xFlag == nil && yFlag == nil{
+			nodeList = temp
+		} else {
+			return false
+		}
+	}
+	return false
+}
+// ---------------------------- 993. Cousins in Binary Tree -----------------
+
 // ---------------------------- IterTreePathFromRoot1022 --------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Sum of Root To Leaf Binary Numbers.
 // Memory Usage: 3.1 MB, less than 71.79% of Go online submissions for Sum of Root To Leaf Binary Numbers.

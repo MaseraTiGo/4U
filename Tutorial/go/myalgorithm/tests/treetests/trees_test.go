@@ -159,3 +159,9 @@ func TestSumOfLeftLeaves404(t *testing.T) {
 	ans := tree.SumOfLeftLeaves404(root)
 	fmt.Println("dong ----------------> test 404", ans)
 }
+
+func TestIsCousin993(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{1,2,3,-1,4})
+	ans := tree.IsCousins993(root, 3, 2)
+	fmt.Println("dong ----------------->test 993", ans)
+}
