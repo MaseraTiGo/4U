@@ -17,6 +17,12 @@ import (
 import "jundong.dong/myalgorithm/tree"
 import "jundong.dong/myalgorithm/utils/common"
 
+func print(num int, ans interface{}) {
+	fmt.Println("*******************************************")
+	fmt.Println("dong-------------------------------------->", num, ans)
+	fmt.Println("*******************************************")
+}
+
 func TestGenerateTreeByArray(t *testing.T) {
 	nums := []int{1, 2, 3, 4, 5, 6, 7}
 	expectedAns := []int{4, 2, 5, 1, 6, 3, 7}
@@ -141,13 +147,13 @@ func TestIsSameTree100(t *testing.T) {
 }
 
 func TestFindTilt563(t *testing.T) {
-	root := tree.GenerateTreeByArray([]int{21,7,14,1,1,2,2,3,3})
+	root := tree.GenerateTreeByArray([]int{21, 7, 14, 1, 1, 2, 2, 3, 3})
 	ans := tree.FindTilt563(root)
 	fmt.Println("dong ------------------>test 563", ans)
 }
 
 func TestLowestCommonAncestor235(t *testing.T) {
-	root := tree.GenerateTreeByArray([]int{6,2,8,0,4,7,9,-1,-1,3,5})
+	root := tree.GenerateTreeByArray([]int{6, 2, 8, 0, 4, 7, 9, -1, -1, 3, 5})
 	p := tree.GenerateTreeByArray([]int{7})
 	q := tree.GenerateTreeByArray([]int{5})
 	ans := tree.LowestCommonAncestor235(root, p, q)
@@ -161,7 +167,13 @@ func TestSumOfLeftLeaves404(t *testing.T) {
 }
 
 func TestIsCousin993(t *testing.T) {
-	root := tree.GenerateTreeByArray([]int{1,2,3,-1,4})
+	root := tree.GenerateTreeByArray([]int{1, 2, 3, -1, 4})
 	ans := tree.IsCousins993(root, 3, 2)
 	fmt.Println("dong ----------------->test 993", ans)
+}
+
+func TestDiameterOfBinaryTree543(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{1,2, 3, 4})
+	ans := tree.DiameterOfBinaryTree543(root)
+	print(543, ans)
 }

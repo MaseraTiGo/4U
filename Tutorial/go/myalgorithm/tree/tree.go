@@ -322,6 +322,7 @@ func SumOfLeftLeaves404(root *TreeNode) int {
 	helper404(root, 0, &ans)
 	return ans
 }
+
 // ---------------------------- 404. Sum of Left Leaves ---------------------
 
 // ---------------------------- 530. Minimum Absolute Difference in BST --------
@@ -360,6 +361,29 @@ func GetMinimumDifference530(root *TreeNode) int {
 }
 
 // ---------------------------- 530. Minimum Absolute Difference in BST --------
+
+// ---------------------------- 543. Diameter of Binary Tree ----------------
+
+// Runtime: 4 ms, faster than 94.74% of Go online submissions for Diameter of Binary Tree.
+//Memory Usage: 4.5 MB, less than 89.85% of Go online submissions for Diameter of Binary Tree.
+func helper543(node *TreeNode, max *float64) float64 {
+	if node == nil {
+		return 0
+	}
+	left := helper543(node.Left, max)
+	right := helper543(node.Right, max)
+	*max = math.Max(*max, left + right + 1)
+	return math.Max(left, right) + 1
+}
+
+func DiameterOfBinaryTree543(root *TreeNode) int {
+
+	var max float64
+	helper543(root, &max)
+	return int(max) - 1
+}
+
+// ---------------------------- 543. Diameter of Binary Tree ----------------
 
 // ---------------------------- maxDepth559 ---------------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Maximum Depth of N-ary Tree.
@@ -725,15 +749,13 @@ func IsUnivalTree(root *TreeNode) bool {
 
 // ---------------------------- IsUnivalTree965 -----------------------------
 
-
 // ---------------------------- 993. Cousins in Binary Tree -----------------
 
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Cousins in Binary Tree.
 //Memory Usage: 2.6 MB, less than 13.64% of Go online submissions for Cousins in Binary Tree.
 type ExTreeNode struct {
-	Node *TreeNode
+	Node   *TreeNode
 	Father *TreeNode
-
 }
 
 func IsCousins993(root *TreeNode, x int, y int) bool {
@@ -741,7 +763,7 @@ func IsCousins993(root *TreeNode, x int, y int) bool {
 
 	var xFlag, yFlag *ExTreeNode
 
-	for len(nodeList) !=0 {
+	for len(nodeList) != 0 {
 		var temp []*ExTreeNode
 		for _, node := range nodeList {
 			if node.Node.Left != nil {
@@ -763,7 +785,7 @@ func IsCousins993(root *TreeNode, x int, y int) bool {
 			} else {
 				return false
 			}
-		} else if xFlag == nil && yFlag == nil{
+		} else if xFlag == nil && yFlag == nil {
 			nodeList = temp
 		} else {
 			return false
@@ -771,6 +793,7 @@ func IsCousins993(root *TreeNode, x int, y int) bool {
 	}
 	return false
 }
+
 // ---------------------------- 993. Cousins in Binary Tree -----------------
 
 // ---------------------------- IterTreePathFromRoot1022 --------------------
