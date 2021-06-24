@@ -101,7 +101,7 @@ func convertBinaryToDecimal(number int) int {
 // Memory Usage: 2.1 MB, less than 16.71% of Go online submissions for Same Tree.
 func IsSameTree100(p *TreeNode, q *TreeNode) bool {
 	var a, b bool
-	if (p != nil && q == nil) || (p ==nil && q != nil) {
+	if (p != nil && q == nil) || (p == nil && q != nil) {
 		return false
 	}
 	if p == nil && q == nil {
@@ -260,21 +260,19 @@ func helper257(node *TreeNode, ans *[]string, temp *[]string) {
 	}
 }
 
-
 func BinaryTreePaths257(root *TreeNode) []string {
 	var ans []string
 	helper257(root, &ans, &[]string{})
 	return ans
 }
-// ---------------------------- 257. Binary Tree Paths -------------------------
 
+// ---------------------------- 257. Binary Tree Paths -------------------------
 
 // ---------------------------- 530. Minimum Absolute Difference in BST --------
 
-
 // Runtime: 8 ms, faster than 93.55% of Go online submissions for Minimum Absolute Difference in BST.
 //Memory Usage: 7 MB, less than 12.90% of Go online submissions for Minimum Absolute Difference in BST.
-func helper530(node *TreeNode, s *float64, e *float64, pivot *float64) float64{
+func helper530(node *TreeNode, s *float64, e *float64, pivot *float64) float64 {
 	if node != nil {
 		helper530(node.Left, s, e, pivot)
 		*e = float64(node.Val)
@@ -300,13 +298,12 @@ func GetMinimumDifference530(root *TreeNode) int {
 	//}
 	//return int(pivot)
 
-
 	pivot := math.Pow10(5) + 1
-	a, b  := -pivot, 0.0
+	a, b := -pivot, 0.0
 	return int(helper530(root, &a, &b, &pivot))
 }
-// ---------------------------- 530. Minimum Absolute Difference in BST --------
 
+// ---------------------------- 530. Minimum Absolute Difference in BST --------
 
 // ---------------------------- maxDepth559 ---------------------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Maximum Depth of N-ary Tree.
@@ -333,6 +330,36 @@ func maxDepth(root *Node) int {
 }
 
 // ---------------------------- maxDepth559 ---------------------------------
+
+// ---------------------------- 563. Binary Tree Tilt -----------------------
+
+// Runtime: 20 ms, faster than 13.51% of Go online submissions for Binary Tree Tilt.
+//Memory Usage: 6.5 MB, less than 10.81% of Go online submissions for Binary Tree Tilt.
+//func helper563T(node *TreeNode) float64 {
+//	if node == nil {
+//		return 0.0
+//	}
+//	return float64(node.Val) + helper563T(node.Left) + helper563T(node.Right)
+//}
+
+func helper563(node *TreeNode, tilt *int) int  {
+	if node == nil {
+		return 0
+	}
+	left, right := helper563(node.Left, tilt), helper563(node.Right, tilt)
+	*tilt += int(math.Abs(float64(left - right)))
+	return node.Val + left + right
+
+}
+
+func FindTilt563(root *TreeNode) int {
+	var ans int
+	helper563(root, &ans)
+
+	return ans
+}
+
+// ---------------------------- 563. Binary Tree Tilt -----------------------
 
 // ---------------------------- Preorder589 ---------------------------------
 func helper589(node *Node, ans *[]int) {

@@ -139,3 +139,9 @@ func TestIsSameTree100(t *testing.T) {
 	ans := tree.IsSameTree100(p, q)
 	fmt.Println("dong -------------->test 100", ans)
 }
+
+func TestFindTilt563(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{21,7,14,1,1,2,2,3,3})
+	ans := tree.FindTilt563(root)
+	fmt.Println("dong ------------------>test 563", ans)
+}
