@@ -244,6 +244,40 @@ func InvertTree226(root *TreeNode) *TreeNode {
 
 // ---------------------------- invertTree226 -------------------------------
 
+// -------- 235. Lowest Common Ancestor of a Binary Search Tree -------------
+
+// Runtime: 12 ms, faster than 100.00% of Go online submissions for Lowest Common Ancestor of a Binary Search Tree.
+//Memory Usage: 7.1 MB, less than 48.82% of Go online submissions for Lowest Common Ancestor of a Binary Search Tree.
+func helper235(node, target *TreeNode, nodePath *[]*TreeNode) {
+	*nodePath = append(*nodePath, node)
+	if node.Val > target.Val {
+		helper235(node.Left, target, nodePath)
+	} else if node.Val < target.Val {
+		helper235(node.Right, target, nodePath)
+	}
+}
+
+func LowestCommonAncestor235(root, p, q *TreeNode) *TreeNode {
+	var pNodePath, qNodePath []*TreeNode
+	helper235(root, p, &pNodePath)
+	helper235(root, q, &qNodePath)
+
+	ran := len(pNodePath)
+	if len(pNodePath) > len(qNodePath) {
+		ran = len(qNodePath)
+	}
+	num := 0
+	for ; num < int(ran); num++ {
+		if pNodePath[num].Val != qNodePath[num].Val {
+			break
+		}
+	}
+
+	return pNodePath[num-1]
+}
+
+// -------- 235. Lowest Common Ancestor of a Binary Search Tree -------------
+
 // ---------------------------- 257. Binary Tree Paths -------------------------
 
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Binary Tree Paths.
@@ -342,7 +376,7 @@ func maxDepth(root *Node) int {
 //	return float64(node.Val) + helper563T(node.Left) + helper563T(node.Right)
 //}
 
-func helper563(node *TreeNode, tilt *int) int  {
+func helper563(node *TreeNode, tilt *int) int {
 	if node == nil {
 		return 0
 	}

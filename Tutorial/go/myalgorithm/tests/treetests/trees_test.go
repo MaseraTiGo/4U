@@ -145,3 +145,11 @@ func TestFindTilt563(t *testing.T) {
 	ans := tree.FindTilt563(root)
 	fmt.Println("dong ------------------>test 563", ans)
 }
+
+func TestLowestCommonAncestor235(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{6,2,8,0,4,7,9,-1,-1,3,5})
+	p := tree.GenerateTreeByArray([]int{7})
+	q := tree.GenerateTreeByArray([]int{5})
+	ans := tree.LowestCommonAncestor235(root, p, q)
+	fmt.Println("dong ----------------> test 235", ans.Val)
+}
