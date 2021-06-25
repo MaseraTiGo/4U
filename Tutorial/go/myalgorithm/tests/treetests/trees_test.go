@@ -183,3 +183,9 @@ func TestIsSymmetric101(t *testing.T) {
 	ans := tree.IsSymmetric101(root)
 	print(101, ans)
 }
+
+func TestIsBalanced110(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{3,9,20,-1,-1,15,7})
+	ans := tree.IsBalanced110(root)
+	print(110, ans)
+}

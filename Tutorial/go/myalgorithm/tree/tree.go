@@ -161,8 +161,8 @@ func IsSameTree100(p *TreeNode, q *TreeNode) bool {
 func IsSymmetric101(root *TreeNode) bool {
 	return IsSameTree100(InvertTree226(root.Left), root.Right)
 }
-// ---------------------------- 101. Symmetric Tree -------------------------
 
+// ---------------------------- 101. Symmetric Tree -------------------------
 
 // ---------------------------- 104. Maximum Depth of Binary Tree -----------
 // Runtime: 4 ms, faster than 93.06% of Go online submissions for Maximum Depth of Binary Tree.
@@ -221,6 +221,70 @@ func SortedArrayToBST108(nums []int) *TreeNode {
 }
 
 // ---------------------------- 108. Convert Sorted Array to Binary Search Tree -----------
+
+// ---------------------------- 110. Balanced Binary Tree -------------------
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Balanced Binary Tree.
+//Memory Usage: 5.9 MB, less than 16.67% of Go online submissions for Balanced Binary Tree.
+func helper110(node *TreeNode) (int, bool) {
+	if node == nil {
+		return 0, true
+	} else {
+		left, bleft := helper110(node.Left)
+		right, bright := helper110(node.Right)
+		if math.Abs(float64(left-right)) > 1 {
+			return -1, false
+		}
+		return int(math.Max(float64(left), float64(right)) + 1), bleft && bright
+	}
+
+}
+
+func IsBalanced110(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	_, ans := helper110(root)
+	return ans
+}
+
+//func helper110T()  {
+//	recover()
+//}
+//
+//func helper110(node *TreeNode, ans *bool) int{
+//	defer helper110T()
+//	if node == nil {
+//		return 0
+//	} else {
+//		left := helper110(node.Left, ans)
+//		//if err != nil {
+//		//	return -1, errors.New("error")
+//		//}
+//		right := helper110(node.Right, ans)
+//		//if err != nil {
+//		//	return -1, errors.New("error")
+//		//}
+//		if math.Abs(float64(left-right)) > 1 {
+//			//return -1, errors.New("error")
+//			*ans = false
+//			panic("")
+//		}
+//		return int(math.Max(float64(left), float64(right)) + 1)
+//	}
+//
+//}
+//
+//func IsBalanced110(root *TreeNode) bool {
+//	ans := true
+//	if root == nil {
+//		return ans
+//	}
+//	helper110(root, &ans)
+//	return ans
+//}
+
+// ---------------------------- 110. Balanced Binary Tree -------------------
 
 // --------------- 145. Binary Tree Postorder Traversal ------------------------
 
@@ -420,7 +484,7 @@ func helper543(node *TreeNode, max *float64) float64 {
 	}
 	left := helper543(node.Left, max)
 	right := helper543(node.Right, max)
-	*max = math.Max(*max, left + right + 1)
+	*max = math.Max(*max, left+right+1)
 	return math.Max(left, right) + 1
 }
 
