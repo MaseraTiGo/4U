@@ -173,7 +173,13 @@ func TestIsCousin993(t *testing.T) {
 }
 
 func TestDiameterOfBinaryTree543(t *testing.T) {
-	root := tree.GenerateTreeByArray([]int{1,2, 3, 4})
+	root := tree.GenerateTreeByArray([]int{1, 2, 3, 4})
 	ans := tree.DiameterOfBinaryTree543(root)
 	print(543, ans)
+}
+
+func TestIsSymmetric101(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{1,2,2,-1,3,-1,3})
+	ans := tree.IsSymmetric101(root)
+	print(101, ans)
 }

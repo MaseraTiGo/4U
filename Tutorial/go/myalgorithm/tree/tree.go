@@ -116,6 +116,54 @@ func IsSameTree100(p *TreeNode, q *TreeNode) bool {
 
 // ---------------------------- 100. Same Tree ---------------------------------
 
+// ---------------------------- 101. Symmetric Tree -------------------------
+
+// Runtime: 4 ms, faster than 17.17% of Go online submissions for Symmetric Tree.
+//Memory Usage: 4.2 MB, less than 7.16% of Go online submissions for Symmetric Tree.
+//func IsSymmetric101(root *TreeNode) bool {
+//	nodel := []*TreeNode{root}
+//
+//	for len(nodel) != 0{
+//		var temp []*TreeNode
+//		var valsOne, valsTwo string
+//		count := 0
+//		for _, node := range nodel {
+//			if node == nil {
+//				valsOne += "-101,"
+//				valsTwo = "-101," + valsTwo
+//				temp = append(temp, nil)
+//				count ++
+//			} else {
+//				valsOne += fmt.Sprintf("%d,", node.Val)
+//				valsTwo = fmt.Sprintf("%d,", node.Val) + valsTwo
+//				temp = append(temp, node.Left)
+//				temp = append(temp, node.Right)
+//			}
+//
+//		}
+//
+//		if strings.TrimRight(valsOne, ",") != strings.TrimRight(valsTwo, ",") {
+//			return false
+//		}
+//
+//		if count == len(temp) {
+//			break
+//		}
+//		nodel = temp
+//	}
+//
+//
+//	return true
+//}
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Symmetric Tree.
+//Memory Usage: 2.9 MB, less than 30.23% of Go online submissions for Symmetric Tree.
+func IsSymmetric101(root *TreeNode) bool {
+	return IsSameTree100(InvertTree226(root.Left), root.Right)
+}
+// ---------------------------- 101. Symmetric Tree -------------------------
+
+
 // ---------------------------- 104. Maximum Depth of Binary Tree -----------
 // Runtime: 4 ms, faster than 93.06% of Go online submissions for Maximum Depth of Binary Tree.
 //Memory Usage: 4.9 MB, less than 9.48% of Go online submissions for Maximum Depth of Binary Tree.
