@@ -437,6 +437,75 @@ func SumOfLeftLeaves404(root *TreeNode) int {
 
 // ---------------------------- 404. Sum of Left Leaves ---------------------
 
+// ---------------------------- 501. Find Mode in Binary Search Tree --------
+
+// Runtime: 12 ms, faster than 57.45% of Go online submissions for Find Mode in Binary Search Tree.
+//Memory Usage: 6.5 MB, less than 34.04% of Go online submissions for Find Mode in Binary Search Tree.
+//func FindMode501(root *TreeNode) []int {
+//	var res []int
+//	nodel := []*TreeNode{root}
+//	ans := make(map[int]int)
+//
+//	maxNum := 1
+//	for len(nodel) != 0 {
+//		var temp []*TreeNode
+//		for _, node := range nodel {
+//			_, ok := ans[node.Val]
+//			if ok {
+//				ans[node.Val]++
+//			} else {
+//				ans[node.Val] = 1
+//			}
+//			if ans[node.Val] > maxNum {
+//				maxNum = ans[node.Val]
+//				res = []int{node.Val}
+//			} else if ans[node.Val] == maxNum {
+//				res = append(res, node.Val)
+//			}
+//			if node.Left != nil {
+//				temp = append(temp, node.Left)
+//			}
+//			if node.Right != nil {
+//				temp = append(temp, node.Right)
+//			}
+//		}
+//		nodel = temp
+//
+//	}
+//	//for k, v := range ans {
+//	//	if v == maxNum {
+//	//		res = append(res, k)
+//	//	}
+//	//}
+//	return res
+//}
+
+func findMode(root *TreeNode) []int {
+	var mode []int
+	var stack []*TreeNode
+	for max, cnt, prev := 0, 0, 0; root != nil || len(stack) > 0; root = root.Right {
+		for ; root != nil; root = root.Left {
+			stack = append(stack, root)
+		}
+		root = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		if root.Val == prev {
+			cnt++
+		} else {
+			cnt, prev = 1, root.Val
+		}
+		if cnt > max {
+			max = cnt
+			mode = []int{prev}
+		} else if cnt == max {
+			mode = append(mode, prev)
+		}
+	}
+	return mode
+}
+
+// ---------------------------- 501. Find Mode in Binary Search Tree --------
+
 // ---------------------------- 530. Minimum Absolute Difference in BST --------
 
 // Runtime: 8 ms, faster than 93.55% of Go online submissions for Minimum Absolute Difference in BST.
@@ -573,6 +642,7 @@ func IsSubtree572(root *TreeNode, subRoot *TreeNode) bool {
 
 	return false
 }
+
 // ---------------------------- 572. Subtree of Another Tree-----------------
 
 // ---------------------------- Preorder589 ---------------------------------

@@ -196,3 +196,9 @@ func TestIsSubtree572(t *testing.T) {
 	ans := tree.IsSubtree572(root, subRoot)
 	print(572, ans)
 }
+
+func TestFindMode501(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{1})
+	ans := tree.FindMode501(root)
+	print(501, ans)
+}
