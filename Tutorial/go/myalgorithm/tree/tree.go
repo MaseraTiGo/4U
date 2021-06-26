@@ -480,7 +480,7 @@ func SumOfLeftLeaves404(root *TreeNode) int {
 //	return res
 //}
 
-func findMode(root *TreeNode) []int {
+func FindMode501(root *TreeNode) []int {
 	var mode []int
 	var stack []*TreeNode
 	for max, cnt, prev := 0, 0, 0; root != nil || len(stack) > 0; root = root.Right {
