@@ -202,3 +202,9 @@ func TestFindMode501(t *testing.T) {
 	ans := tree.FindMode501(root)
 	print(501, ans)
 }
+
+func TestHasPathSum112(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{1, 2, 15, 3, 4})
+	ans := tree.HasPathSum112(root, 16)
+	print(112, ans)
+}

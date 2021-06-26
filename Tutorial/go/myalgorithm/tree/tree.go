@@ -12,6 +12,7 @@ package tree
 
 import (
 	"bytes"
+	"fmt"
 	"math"
 	"strconv"
 	"strings"
@@ -285,6 +286,57 @@ func IsBalanced110(root *TreeNode) bool {
 //}
 
 // ---------------------------- 110. Balanced Binary Tree -------------------
+
+// ---------------------------- 112. Path Sum -------------------------------
+
+//func helper112(node *TreeNode, target int) bool {
+//	if node != nil {
+//		target -= node.Val
+//		fmt.Println("dong ------------------>", node.Val, target)
+//		if node.Left == nil && node.Right == nil {
+//			if target == 0 {
+//				return true
+//			} else {
+//				target += node.Val
+//			}
+//		}
+//		a := helper112(node.Left, target)
+//		b := helper112(node.Right, target)
+//		if a || b {
+//			return true
+//		}
+//	}
+//	return false
+//}
+
+
+// Runtime: 4 ms, faster than 94.75% of Go online submissions for Path Sum.
+//Memory Usage: 4.7 MB, less than 63.89% of Go online submissions for Path Sum.
+func HasPathSum112(root *TreeNode, targetSum int) bool {
+	if root == nil {
+		return false
+	}
+	//return helper112(root, targetSum)
+	targetSum -= root.Val
+	fmt.Println("dong ------------------>", root.Val, targetSum)
+	if root.Left == nil && root.Right == nil {
+		if targetSum == 0 {
+			return true
+		} else {
+			targetSum += root.Val
+		}
+	}
+	a := HasPathSum112(root.Left, targetSum)
+	b := HasPathSum112(root.Right, targetSum)
+	if a || b {
+		return true
+	} else {
+		return false
+	}
+
+}
+
+// ---------------------------- 112. Path Sum -------------------------------
 
 // --------------- 145. Binary Tree Postorder Traversal ------------------------
 
