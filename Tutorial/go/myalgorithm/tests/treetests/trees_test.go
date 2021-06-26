@@ -189,3 +189,10 @@ func TestIsBalanced110(t *testing.T) {
 	ans := tree.IsBalanced110(root)
 	print(110, ans)
 }
+
+func TestIsSubtree572(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int{3})
+	subRoot := tree.GenerateTreeByArray([]int{3})
+	ans := tree.IsSubtree572(root, subRoot)
+	print(572, ans)
+}

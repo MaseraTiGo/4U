@@ -553,6 +553,28 @@ func FindTilt563(root *TreeNode) int {
 
 // ---------------------------- 563. Binary Tree Tilt -----------------------
 
+// ---------------------------- 572. Subtree of Another Tree-----------------
+
+// Runtime: 16 ms, faster than 78.69% of Go online submissions for Subtree of Another Tree.
+//Memory Usage: 6.8 MB, less than 57.38% of Go online submissions for Subtree of Another Tree.
+func IsSubtree572(root *TreeNode, subRoot *TreeNode) bool {
+	if root == nil {
+		return false
+	}
+
+	bRoot := IsSameTree100(root, subRoot)
+	if bRoot {
+		return bRoot
+	} else {
+		if IsSubtree572(root.Left, subRoot) || IsSubtree572(root.Right, subRoot) {
+			return true
+		}
+	}
+
+	return false
+}
+// ---------------------------- 572. Subtree of Another Tree-----------------
+
 // ---------------------------- Preorder589 ---------------------------------
 func helper589(node *Node, ans *[]int) {
 	if node != nil {
