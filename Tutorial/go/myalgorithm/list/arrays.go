@@ -10,6 +10,11 @@
 // ======================================================
 package list
 
+import (
+	"fmt"
+	"strconv"
+)
+
 func TwoSum(nums []int, target int) []int {
 	mapping := make(map[int]int)
 	for i, num := range nums {
@@ -204,3 +209,45 @@ func (this *OrderedStream) Insert(idKey int, value string) []string {
  */
 
 // ---------------------- 1656. Design an Ordered Stream --------------------
+
+// ---------------------- 9. Palindrome Number ------------------------------
+
+func Helper9(x int) int {
+	newX := 0
+	for x !=0 {
+		temp := x / 10
+		tt := x % 10
+		newX = newX * 10 + tt
+		x = temp
+	}
+	fmt.Println("dong ------------------>", newX)
+	return newX
+}
+
+func hepler9X(x int) bool {
+	value := strconv.Itoa(x)
+	s, e := 0, len(value) - 1
+	for s <= e {
+		if value[s] != value[e] {
+			return false
+		}
+		s++
+		e--
+	}
+	return true
+}
+
+// Runtime: 8 ms, faster than 91.85% of Go online submissions for Palindrome Number.
+//Memory Usage: 5.2 MB, less than 55.13% of Go online submissions for Palindrome Number.
+func IsPalindrome(x int) bool {
+	if x < 0 {
+		return false
+	} else if x < 10 {
+		return true
+	} else {
+		//return strconv.Itoa(x) == strconv.Itoa(Helper9(x))
+		return hepler9X(x)
+	}
+}
+// ---------------------- 9. Palindrome Number ------------------------------
+
