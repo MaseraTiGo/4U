@@ -19,7 +19,7 @@ import "jundong.dong/myalgorithm/utils/common"
 
 func print(num int, ans interface{}) {
 	fmt.Println("*******************************************")
-	fmt.Println("dong-------------------------------------->", num, ans)
+	fmt.Println("dong-------------------------------------->test", num, ans)
 	fmt.Println("*******************************************")
 }
 
@@ -207,4 +207,10 @@ func TestHasPathSum112(t *testing.T) {
 	root := tree.GenerateTreeByArray([]int{1, 2, 15, 3, 4})
 	ans := tree.HasPathSum112(root, 16)
 	print(112, ans)
+}
+
+func TestFindSecondMinimumValue671(t *testing.T) {
+	root := tree.GenerateTreeByArray([]int {})
+	ans := tree.FindSecondMinimumValue671(root)
+	print(671, ans)
 }

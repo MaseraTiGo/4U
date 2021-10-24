@@ -56,10 +56,88 @@ func arrayStringsAreEqual(word1 []string, word2 []string) bool {
 }
 
 
-
 func main() {
 	// go test example: go test ./... -v -test.run 104
-	//fmt.Println(123%10)
-	print(list.IsPalindrome(123321))
+
+	//fmt.Fprint(os.Stdout, "motherfucker!")
+	//fuck, err := os.OpenFile("fuck.txt", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
+	//if err != nil {
+	//	fmt.Println("fucking err happened!", err)
+	//}
+	//
+	//fmt.Fprint(fuck, "ai you fuck you!")
+	//
+	//ss := []string{"fuck you"}
+	//var ii interface{}
+	//ii = ss
+	//fmt.Println(ii)
+	//http.Client{}
+	//testSlice := []int{1, 2, 3, 4}
+	//testSlice = append(testSlice, 0)
+	//x := copy(testSlice[1:], testSlice[:])
+	//testSlice[0] = 0
+	//fmt.Println("dong ----------------->", testSlice, x)
+	//server, err := net.Listen("tcp", ":31046")
+	//if err != nil {
+	//	fmt.Printf("fail 2 start server, %s\n", err)
+	//}
+	//
+	//fmt.Print("server is starting")
+	//
+	//for {
+	//	conn, err := server.Accept()
+	//	if err != nil{
+	//		fmt.Printf("fail to connect, %s\n", err)
+	//	}
+	//	go connHandler(conn)
+	//}
+	//
+	//word1 := []string {"abc", "d", "defg"}
+	//word2 := []string {"abcddefg"}
+	//res := arrayStringsAreEqual(word1, word2)
+	//fmt.Print("dong ---------------->", res)
+	//
+	//// 1656
+	//obj := list.Constructor(5)
+	//res := obj.Insert(3, "ccccc")
+	//fmt.Print("dong -------------->", res)
+	//res = obj.Insert(1, "aaaaa")
+	//fmt.Print("dong -------------->", res)
+	//res = obj.Insert(2, "bbbbb")
+	//fmt.Print("dong -------------->", res)
+	//res = obj.Insert(5, "eeeee")
+	//fmt.Print("dong -------------->", res)
+	//res = obj.Insert(4, "ddddd")
+	//fmt.Print("dong -------------->", res)
+	//// 1656
+	//
+	//root := tree.GenerateTreeByArray([]int{})
+	//ans := tree.MaxDepth104(root)
+	//fmt.Println("dong ------------------>104", ans)
+	//
+	//var res int
+	//fmt.Println("dong -------------->", res)
+	//
+	//var a []int
+	//fmt.Println("dong ------------>", a)
+	//aa := make([]int, 2, 5)
+	//fmt.Println("dong ------------>", aa, len(aa))
+	//
+	//aaa := make([]int, 5)
+	//fmt.Println("dong ------------>", aaa)
+	//
+	//a := []int {1, 2, 3, 4}
+	//b := []int {1, 2, 3}
+	//fmt.Println("dong ---------------->", reflect.DeepEqual(a, b))
+
+	x := -123
+
+	s := 0
+	for x != 0 {
+		t := x % 10
+		x = x / 10
+		s = s*10 + t
+	}
+	println(s)
 
 }

@@ -90,3 +90,14 @@ func TestReverseSeven(t *testing.T) {
 	}
 
 }
+
+// ---------------------- 14. Longest Common Prefix -------------------------
+
+func TestLongestCommonPrefix14(t *testing.T) {
+	strs := []string{"fuck", "iu", "fuck"}
+	ans := list.LongestCommonPrefix(strs)
+	fmt.Printf("dong----------------->14 ans: %#v\n", ans)
+
+}
+
+// ---------------------- 14. Longest Common Prefix -------------------------

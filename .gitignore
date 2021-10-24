@@ -11,4 +11,5 @@ codes/**/.idea
 codes/**/venv
 codes/**/env
 codes/**/venv
+./**/.idea/
 

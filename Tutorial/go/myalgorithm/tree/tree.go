@@ -96,6 +96,17 @@ func convertBinaryToDecimal(number int) int {
 	return decimal
 }
 
+// ---------------------------- 7. Reverse Integer------------------------------
+
+func Reverse7(x int) int {
+	for {
+
+	}
+	return 0
+}
+// ---------------------------- 7. Reverse Integer------------------------------
+
+
 // ---------------------------- 100. Same Tree ---------------------------------
 
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Same Tree.
@@ -853,6 +864,29 @@ func FindTarget653(root *TreeNode, k int) bool {
 }
 
 // ---------------------------- 653. Two Sum IV - Input is a BST ---------------
+
+
+// ---------------------------- 671. Second Minimum Node In a Binary Tree ---
+
+func FindSecondMinimumValue671(root *TreeNode) int {
+	minimum := root.Val
+	if root.Left == nil && root.Right == nil {
+		return -1
+	}
+	if root.Left.Val == minimum {
+
+	}
+	sLeft := FindSecondMinimumValue671(root.Left)
+	sRight := FindSecondMinimumValue671(root.Right)
+	if sLeft > sRight {
+		return sLeft
+	} else {
+		return sRight
+	}
+	//return secondMinimum
+
+}
+// ---------------------------- 671. Second Minimum Node In a Binary Tree ---
 
 // ---------------------------- 872. Leaf-Similar Trees ---------------------
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Leaf-Similar Trees.

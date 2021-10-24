@@ -166,6 +166,42 @@ func ReverseSeven(x int) int {
 	return ans
 }
 
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Longest Common Prefix.
+// Memory Usage: 2.5 MB, less than 28.00% of Go online submissions for Longest Common Prefix.
+// ---------------------- 14. Longest Common Prefix -------------------------
+
+func LongestCommonPrefix(strs []string) string {
+	n := 0
+	breakFlag := false
+	for i := 0; ;i++ {
+		n = i
+		var curValue uint8
+		for _, s := range strs {
+			if i >= len(s) {
+				breakFlag = true
+				break
+			}
+			if curValue == 0 {
+				curValue = s[i]
+				continue
+			}
+			if s[i] != curValue {
+				breakFlag = true
+				break
+			}
+		}
+		if breakFlag {
+			break
+		}
+	}
+	return strs[0][:n]
+
+}
+
+// ---------------------- 14. Longest Common Prefix -------------------------
+
+
+
 // ---------------------- 1656. Design an Ordered Stream --------------------
 
 type OrderedStream struct {
