@@ -91,6 +91,15 @@ func TestReverseSeven(t *testing.T) {
 
 }
 
+// ---------------------- 8. String to Integer (atoi) -----------------------
+
+func TestMyAtoi8(t *testing.T) {
+	ans := list.MyAtoi8("+123-46 fuckyou")
+	fmt.Println("dong ----------------------->8: ", ans)
+}
+// ---------------------- 8. String to Integer (atoi) -----------------------
+
+
 // ---------------------- 14. Longest Common Prefix -------------------------
 
 func TestLongestCommonPrefix14(t *testing.T) {

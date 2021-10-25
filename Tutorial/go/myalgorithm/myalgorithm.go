@@ -15,7 +15,6 @@ import (
 	"net"
 	"runtime"
 	"strings"
-	"jundong.dong/myalgorithm/list"
 )
 
 func a() {
@@ -130,14 +129,19 @@ func main() {
 	//b := []int {1, 2, 3}
 	//fmt.Println("dong ---------------->", reflect.DeepEqual(a, b))
 
-	x := -123
+	//x := -123
+	//
+	//s := 0
+	//for x != 0 {
+	//	t := x % 10
+	//	x = x / 10
+	//	s = s*10 + t
+	//}
+	//println(s)
 
-	s := 0
-	for x != 0 {
-		t := x % 10
-		x = x / 10
-		s = s*10 + t
+	s := "this is just a fucking test"
+	for i, value := range s {
+		println("dong ---------------->", i, value)
 	}
-	println(s)
 
 }

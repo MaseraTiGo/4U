@@ -12,7 +12,10 @@ package list
 
 import (
 	"fmt"
+	"math"
+	"regexp"
 	"strconv"
+	"strings"
 )
 
 func TwoSum(nums []int, target int) []int {
@@ -166,6 +169,32 @@ func ReverseSeven(x int) int {
 	return ans
 }
 
+// ---------------------- 8. String to Integer (atoi) ----------------------
+
+func MyAtoi8(s string) int {
+	min := int(-math.Pow(2.0, 31))
+	max := int(math.Pow(2.0, 31) - 1)
+	newS := strings.TrimLeft(s, " ")
+	reg, err := regexp.Compile(`^[-|+]?\d+`)
+	if err != nil {
+		return 0
+	}
+	if reg == nil {
+		return 0
+	}
+	intStr := reg.FindString(newS)
+	value, _ := strconv.Atoi(intStr)
+	if value < min {
+		return min
+	}
+	if value > max {
+		return max
+	}
+	return value
+}
+
+// ---------------------- 8. String to Integer (atoi) ----------------------
+
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for Longest Common Prefix.
 // Memory Usage: 2.5 MB, less than 28.00% of Go online submissions for Longest Common Prefix.
 // ---------------------- 14. Longest Common Prefix -------------------------
@@ -173,7 +202,7 @@ func ReverseSeven(x int) int {
 func LongestCommonPrefix(strs []string) string {
 	n := 0
 	breakFlag := false
-	for i := 0; ;i++ {
+	for i := 0; ; i++ {
 		n = i
 		var curValue uint8
 		for _, s := range strs {
@@ -200,14 +229,12 @@ func LongestCommonPrefix(strs []string) string {
 
 // ---------------------- 14. Longest Common Prefix -------------------------
 
-
-
 // ---------------------- 1656. Design an Ordered Stream --------------------
 
 type OrderedStream struct {
 	//size int
-	val  []string
-	ptr  int
+	val []string
+	ptr int
 }
 
 func Constructor(n int) OrderedStream {
@@ -250,10 +277,10 @@ func (this *OrderedStream) Insert(idKey int, value string) []string {
 
 func Helper9(x int) int {
 	newX := 0
-	for x !=0 {
+	for x != 0 {
 		temp := x / 10
 		tt := x % 10
-		newX = newX * 10 + tt
+		newX = newX*10 + tt
 		x = temp
 	}
 	fmt.Println("dong ------------------>", newX)
@@ -262,7 +289,7 @@ func Helper9(x int) int {
 
 func hepler9X(x int) bool {
 	value := strconv.Itoa(x)
-	s, e := 0, len(value) - 1
+	s, e := 0, len(value)-1
 	for s <= e {
 		if value[s] != value[e] {
 			return false
@@ -285,5 +312,5 @@ func IsPalindrome(x int) bool {
 		return hepler9X(x)
 	}
 }
-// ---------------------- 9. Palindrome Number ------------------------------
 
+// ---------------------- 9. Palindrome Number ------------------------------
