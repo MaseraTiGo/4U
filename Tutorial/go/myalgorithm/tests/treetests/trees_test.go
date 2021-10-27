@@ -209,6 +209,11 @@ func TestHasPathSum112(t *testing.T) {
 	print(112, ans)
 }
 
+func TestGenerate118(t *testing.T) {
+	ans := tree.Generate118(10)
+	fmt.Println("dong ------------------->118", ans)
+}
+
 func TestFindSecondMinimumValue671(t *testing.T) {
 	root := tree.GenerateTreeByArray([]int {})
 	ans := tree.FindSecondMinimumValue671(root)

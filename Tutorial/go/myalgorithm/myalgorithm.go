@@ -139,9 +139,5 @@ func main() {
 	//}
 	//println(s)
 
-	s := "this is just a fucking test"
-	for i, value := range s {
-		println("dong ---------------->", i, value)
-	}
 
 }

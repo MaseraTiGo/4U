@@ -104,8 +104,8 @@ func Reverse7(x int) int {
 	}
 	return 0
 }
-// ---------------------------- 7. Reverse Integer------------------------------
 
+// ---------------------------- 7. Reverse Integer------------------------------
 
 // ---------------------------- 100. Same Tree ---------------------------------
 
@@ -320,7 +320,6 @@ func IsBalanced110(root *TreeNode) bool {
 //	return false
 //}
 
-
 // Runtime: 4 ms, faster than 94.75% of Go online submissions for Path Sum.
 //Memory Usage: 4.7 MB, less than 63.89% of Go online submissions for Path Sum.
 func HasPathSum112(root *TreeNode, targetSum int) bool {
@@ -348,6 +347,45 @@ func HasPathSum112(root *TreeNode, targetSum int) bool {
 }
 
 // ---------------------------- 112. Path Sum -------------------------------
+
+// ---------------------------- 118. Pascal's Triangle ----------------------
+
+func innerHelper118(lastValue []int) []int {
+	length := len(lastValue)
+	var tmp []int
+	for i:=0; i<length-1;i++{
+		tmp = append(tmp, lastValue[i] + lastValue[i+1])
+	}
+	return tmp
+}
+
+func helper118(ans *[][]int, numRows int) []int {
+	if numRows >= len(*ans) {
+		res := helper118(ans, numRows-1)
+		curValue := innerHelper118(res)
+		res = append([]int{1}, curValue...)
+		res = append(res, 1)
+		*ans = append(*ans, res)
+	}
+	return (*ans)[numRows]
+}
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Pascal's Triangle.
+//Memory Usage: 2.2 MB, less than 46.86% of Go online submissions for Pascal's Triangle.
+func Generate118(numRows int) [][]int {
+	var ans [][]int
+	ans = append(ans, []int{1})
+	ans = append(ans, []int{1, 1})
+	if numRows <= len(ans) {
+		return ans[:numRows]
+	}
+	helper118(&ans, numRows)
+
+	return ans[:numRows]
+
+}
+
+// ---------------------------- 118. Pascal's Triangle ----------------------
 
 // --------------- 145. Binary Tree Postorder Traversal ------------------------
 
@@ -865,7 +903,6 @@ func FindTarget653(root *TreeNode, k int) bool {
 
 // ---------------------------- 653. Two Sum IV - Input is a BST ---------------
 
-
 // ---------------------------- 671. Second Minimum Node In a Binary Tree ---
 
 func FindSecondMinimumValue671(root *TreeNode) int {
@@ -886,6 +923,7 @@ func FindSecondMinimumValue671(root *TreeNode) int {
 	//return secondMinimum
 
 }
+
 // ---------------------------- 671. Second Minimum Node In a Binary Tree ---
 
 // ---------------------------- 872. Leaf-Similar Trees ---------------------
