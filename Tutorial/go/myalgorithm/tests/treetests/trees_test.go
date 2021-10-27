@@ -210,7 +210,7 @@ func TestHasPathSum112(t *testing.T) {
 }
 
 func TestGenerate118(t *testing.T) {
-	ans := tree.Generate118(10)
+	ans := tree.Generate118(0)
 	fmt.Println("dong ------------------->118", ans)
 }
 
