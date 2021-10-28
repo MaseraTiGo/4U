@@ -23,5 +23,10 @@ func TestFib509(t *testing.T) {
 
 func TestClimbStairs70(t *testing.T) {
 	ans := dp.ClimbStairs70(44)
-	fmt.Println("dong -------------------->", ans)
+	fmt.Println("dong -------------------->70: ", ans)
+}
+
+func TestGetMax1646(t *testing.T) {
+	ans := dp.GetMaximumGenerated1646(7)
+	fmt.Println("dong --------------------->1646: ", ans)
 }
