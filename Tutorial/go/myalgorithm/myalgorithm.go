@@ -139,5 +139,12 @@ func main() {
 	//}
 	//println(s)
 
+		a := []int{1, 2, 3, 4, 5}
+		b := make([]int, 5, 8)
+		//b := []int{0, 0, 0, 0, 0}
+		c := copy(b, a)
+		fmt.Println("dong ------------------>", a)
+		fmt.Println("dong ------------------>", b)
+		fmt.Println("dong ------------------>", c)
 
 }

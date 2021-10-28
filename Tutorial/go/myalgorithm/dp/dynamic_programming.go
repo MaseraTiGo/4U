@@ -10,6 +10,42 @@
 // ======================================================
 package dp
 
+// ------------------------------ 70. Climbing Stairs --------------------
+
+func ClimbStairs70Old(n int) int {
+
+	cacheMapping := make(map[int]int)
+	cacheMapping[1] = 1
+	cacheMapping[2] = 2
+	value, ok := cacheMapping[n]
+	if ok {
+		return value
+	}
+	ans := ClimbStairs70(n-1) + ClimbStairs70(n-2)
+	cacheMapping[n] = ans
+	return ans
+}
+
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Climbing Stairs.
+//Memory Usage: 1.9 MB, less than 80.86% of Go online submissions for Climbing Stairs.
+func ClimbStairs70(n int) int {
+	if n <= 2 {
+		return n
+	}
+	if n <= 2 {
+		return n
+	}
+	n1, n2 := 1, 2
+	for i :=3; i<=n;i++{
+		tmp := n2
+		n2 += n1
+		n1 = tmp
+	}
+	return n2
+}
+// ------------------------------ 70. Climbing Stairs --------------------
+
+
 // ------------------------------ 509. Fibonacci Number ------------------
 
 func Fib509(n int) int {

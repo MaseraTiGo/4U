@@ -11,6 +11,7 @@
 package dp
 
 import (
+	"fmt"
 	"jundong.dong/myalgorithm/dp"
 	"testing"
 )
@@ -18,4 +19,9 @@ import (
 func TestFib509(t *testing.T) {
 	ans := dp.Fib509(5)
 	println("dong ----------------------------->509: ", ans)
+}
+
+func TestClimbStairs70(t *testing.T) {
+	ans := dp.ClimbStairs70(44)
+	fmt.Println("dong -------------------->", ans)
 }
