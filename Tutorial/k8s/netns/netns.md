@@ -1,0 +1,9 @@
+- networknamespce
+  - ip netns add test 增加一个ns
+  - ip netns exec test ip link list 查看状态
+  - ip netns exec ip link set dev lo up 启用test的lo
+  - ip link add veth0 type veth peer name veth1 增加一个veth pair
+  - ip link set veth1 netns test 把veth1 移动到test ns
+  - ip netns exec test ifconfig veth1 192.169.1.1/24 up 启用veth1
+  - ifconfig veth0 192.168.1.2/24 up启用veth0
+  - 

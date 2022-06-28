@@ -30,3 +30,8 @@ func TestGetMax1646(t *testing.T) {
 	ans := dp.GetMaximumGenerated1646(7)
 	fmt.Println("dong --------------------->1646: ", ans)
 }
+
+func TestParent(t *testing.T) {
+	ans := dp.Parent(2)
+	fmt.Println("dong ----------------------> parent: ", ans)
+}

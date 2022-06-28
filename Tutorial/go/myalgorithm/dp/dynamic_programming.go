@@ -10,6 +10,18 @@
 // ======================================================
 package dp
 
+import "strings"
+
+// ------------------------------ 22. Generate Parentheses ---------------
+
+func GenerateParenthesis22(n int) []string {
+
+
+	return []string{}
+}
+// ------------------------------ 22. Generate Parentheses ---------------
+
+
 // ------------------------------ 70. Climbing Stairs --------------------
 
 func ClimbStairs70Old(n int) int {
@@ -109,20 +121,14 @@ func GetMaximumGenerated1646NoUse(n int) int {
 		if i%2 == 0 {
 			even := n1
 			n2 = even
-			println("dong ---------------->n : ", i)
-			println("dong ---------------->even : ", even)
-			println("dong ---------------->nums : ", n0, n1, n2)
 			if even > maxValue {
 				maxValue = even
 			}
 		} else {
 			odd := n0 + n1
-			println("dong ---------------->n : ", i)
-			println("dong ---------------->odd : ", odd)
 			n0 = n1
 			n1 = n2
 			n2 = odd
-			println("dong ---------------->nums : ", n0, n1, n2)
 			if odd > maxValue {
 				maxValue = odd
 			}
@@ -132,3 +138,36 @@ func GetMaximumGenerated1646NoUse(n int) int {
 }
 
 // ------------------------------ 1646. Get Maximum in Generated Array ---
+
+// ------------------------------ Not known -------------------------- ---
+func Parent(n int) []string {
+	uniqueMap := make(map[string]int)
+	lastItems := [][]string{[]string{"(", ")"}}
+	if n <= 0 {
+		return []string{}
+	}
+	if n == 1 {
+		return []string{"()"}
+	}
+	pivot := []string{"(", ")"}
+	for i :=2;i <= n;i++{
+		var newItem [][]string
+		for _, item := range lastItems {
+			lastItemsLength := len(item)
+			tmp := make([]string, lastItemsLength+2)
+			for j :=0;j<lastItemsLength-1;j++ {
+				tmp = append(item[:j], pivot...)
+				tmp = append(tmp, item[j+2:]...)
+				uniqueMap[strings.Join(tmp, "")] = 0
+			}
+			newItem = append(newItem, tmp)
+		}
+		lastItems = newItem
+	}
+	var ans []string
+	for k, _ := range uniqueMap {
+		ans = append(ans, k)
+	}
+	return ans
+}
+// ------------------------------ Not known -------------------------- ---

@@ -13,6 +13,7 @@ package main
 import (
 	"fmt"
 	"net"
+	"reflect"
 	"runtime"
 	"strings"
 )
@@ -138,7 +139,14 @@ func main() {
 	//	s = s*10 + t
 	//}
 	//println(s)
+	var a int = 2
+	fmt.Printf("dong ---------------->%T: %v\n", a, a)
+	aType := reflect.TypeOf(a)
+	aValue := reflect.ValueOf(&a)
+	fmt.Printf("dong ---------------->%T: %v\n", aType, aType)
+	fmt.Printf("dong ---------------->%T: %v\n", aValue, aValue)
+	aValue.Elem().SetInt(5)
+	fmt.Println("dong ---------------------->", a)
 
-	fmt.Println("dong -------------------->", 3 / 2)
 
 }

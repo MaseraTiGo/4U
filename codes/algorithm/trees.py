@@ -2518,8 +2518,8 @@ class Solution968:
         return mini_num
 
 
-root_978 = GenTree([[0, 0, None, 0, None, 0, None, None, 0]]).tree
-print(Solution968().minCameraCover(root_978))
+# root_978 = GenTree([[0, 0, None, 0, None, 0, None, None, 0]]).tree
+# print(Solution968().minCameraCover(root_978))
 
 
 # ================================================= 968. Binary Tree Cameras ===========================================
@@ -3575,3 +3575,57 @@ class Solution1609:
 # root_1609 = GenTree([11, 8, 6, 1, 3, 9, 11, 30, 20, 18, 16, 12, 10, 4, 2, 17, None]).tree
 # print(Solution1609().isEvenOddTree(root_1609))
 # ================================================= 1609. Even Odd Tree ================================================
+
+
+# ================================================= 2265. Count Nodes Equal to Average of Subtree ======================
+class Solution2265:
+    def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+
+        # def helper(node) -> tuple:
+        #     vals = []
+        #     nodes = [node]
+        #     while nodes:
+        #         cur_node = nodes.pop(0)
+        #         vals.append(cur_node.val)
+        #         nodes.extend(
+        #             [nd for nd in [cur_node.left, cur_node.right] if nd])
+        #     return sum(vals), len(vals)
+
+        ans = 0
+        caching = {}
+
+        def df(node):
+            if node:
+                yield from df(node.left)
+                yield from df(node.right)
+                yield node
+
+        for n in df(root):
+            num = 1
+            total = n.val
+            if n not in caching:
+                tmp_left = caching.get(n.left, [0])
+                tmp_right = caching.get(n.right, [0])
+                tmp_total = n.val + tmp_left[0] + tmp_right[0]
+                tmp_num = 1 + tmp_left[-1] + tmp_right[-1]
+                caching[n] = (tmp_total, tmp_num)
+            if n.left:
+                total += caching[n.left][0]
+                num += caching[n.left][1]
+            if n.right:
+                total += caching[n.right][0]
+                num += caching[n.right][1]
+            if n.val == int(total / num):
+                ans += 1
+            caching.pop(n.left, None)
+            caching.pop(n.right, None)
+            print(caching)
+        return ans
+
+
+data = [4, 8, 5, 0, 1, None, 6]
+print(f"2265 ----------------------> {Solution2265().averageOfSubtree(GenTree(data).tree)}")
+
+# ================================================= 2265. Count Nodes Equal to Average of Subtree ======================
