@@ -1,0 +1,67 @@
+2022-07-07 08:49:10.808697-ovs-vsctl --may-exist add-br 154941@sw003798 -- set bridge 154941@sw003798 datapath_type=system
+2022-07-07 08:49:11.055431-ovs-vsctl --may-exist add-port 154941@sw003798 154941@sw003798_int -- set interface 154941@sw003798_int type=patch options:peer=int_154941@sw003798 -- --may-exist add-port br-int int_154941@sw003798 -- set interface int_154941@sw003798 type=patch options:peer=154941@sw003798_int
+2022-07-07 09:35:17.165808-ovs-vsctl --may-exist add-br 157692@sw003784 -- set bridge 157692@sw003784 datapath_type=system
+2022-07-07 09:35:17.403418-ovs-vsctl --may-exist add-port 157692@sw003784 157692@sw003784_int -- set interface 157692@sw003784_int type=patch options:peer=int_157692@sw003784 -- --may-exist add-port br-int int_157692@sw003784 -- set interface int_157692@sw003784 type=patch options:peer=157692@sw003784_int
+2022-07-07 09:37:00.595081-ovs-vsctl --if-exists del-br 157692@sw003784
+2022-07-07 09:37:01.269402-ovs-vsctl --if-exists del-port int_157692@sw003784
+2022-07-07 14:54:14.690678-ovs-vsctl --may-exist add-br 176835@sw003784 -- set bridge 176835@sw003784 datapath_type=system
+2022-07-07 14:54:14.936213-ovs-vsctl --may-exist add-port 176835@sw003784 176835@sw003784_int -- set interface 176835@sw003784_int type=patch options:peer=int_176835@sw003784 -- --may-exist add-port br-int int_176835@sw003784 -- set interface int_176835@sw003784 type=patch options:peer=176835@sw003784_int
+2022-07-07 14:54:33.943769-ovs-vsctl --if-exists del-br 176835@sw003784
+2022-07-07 14:54:34.627439-ovs-vsctl --if-exists del-port int_176835@sw003784
+2022-07-07 14:55:27.187371-ovs-vsctl --may-exist add-br 176909@sw003784 -- set bridge 176909@sw003784 datapath_type=system
+2022-07-07 14:55:27.432173-ovs-vsctl --may-exist add-port 176909@sw003784 176909@sw003784_int -- set interface 176909@sw003784_int type=patch options:peer=int_176909@sw003784 -- --may-exist add-port br-int int_176909@sw003784 -- set interface int_176909@sw003784 type=patch options:peer=176909@sw003784_int
+2022-07-07 15:18:32.867821-ovs-vsctl --may-exist add-br 178295@sw003806 -- set bridge 178295@sw003806 datapath_type=system
+2022-07-07 15:18:33.115906-ovs-vsctl --may-exist add-port 178295@sw003806 178295@sw003806_int -- set interface 178295@sw003806_int type=patch options:peer=int_178295@sw003806 -- --may-exist add-port br-int int_178295@sw003806 -- set interface int_178295@sw003806 type=patch options:peer=178295@sw003806_int
+2022-07-07 15:22:26.430000-ovs-vsctl --if-exists del-br 178295@sw003806
+2022-07-07 15:22:26.866571-ovs-vsctl --if-exists del-port int_178295@sw003806
+2022-07-07 15:25:23.731321-ovs-vsctl --may-exist add-br 178706@sw003806 -- set bridge 178706@sw003806 datapath_type=system
+2022-07-07 15:25:23.968739-ovs-vsctl --may-exist add-port 178706@sw003806 178706@sw003806_int -- set interface 178706@sw003806_int type=patch options:peer=int_178706@sw003806 -- --may-exist add-port br-int int_178706@sw003806 -- set interface int_178706@sw003806 type=patch options:peer=178706@sw003806_int
+2022-07-07 15:27:19.209929-ovs-vsctl --if-exists del-br 178706@sw003806
+2022-07-07 15:27:19.625156-ovs-vsctl --if-exists del-port int_178706@sw003806
+2022-07-07 17:04:17.006923-ovs-vsctl --may-exist add-br 184605@sw003822 -- set bridge 184605@sw003822 datapath_type=system
+2022-07-07 17:04:17.253814-ovs-vsctl --may-exist add-port 184605@sw003822 184605@sw003822_int -- set interface 184605@sw003822_int type=patch options:peer=int_184605@sw003822 -- --may-exist add-port br-int int_184605@sw003822 -- set interface int_184605@sw003822 type=patch options:peer=184605@sw003822_int
+2022-07-07 17:04:17.473484-ovs-vsctl --may-exist add-br 184605@sw003832 -- set bridge 184605@sw003832 datapath_type=system
+2022-07-07 17:04:17.799219-ovs-vsctl --may-exist add-port 184605@sw003832 184605@sw003832_int -- set interface 184605@sw003832_int type=patch options:peer=int_184605@sw003832 -- --may-exist add-port br-int int_184605@sw003832 -- set interface int_184605@sw003832 type=patch options:peer=184605@sw003832_int
+2022-07-07 17:05:17.897800-ovs-vsctl --if-exists del-br 184605@sw003822
+2022-07-07 17:05:18.640818-ovs-vsctl --if-exists del-port int_184605@sw003822
+2022-07-07 17:05:18.720551-ovs-vsctl --if-exists del-br 184605@sw003832
+2022-07-07 17:05:19.150012-ovs-vsctl --if-exists del-port int_184605@sw003832
+2022-07-07 17:07:46.819830-ovs-vsctl --if-exists del-br 176909@sw003784
+2022-07-07 17:07:47.262096-ovs-vsctl --if-exists del-port int_176909@sw003784
+2022-07-07 17:07:58.192358-ovs-vsctl --if-exists del-br 154941@sw003798
+2022-07-07 17:07:58.888663-ovs-vsctl --if-exists del-port int_154941@sw003798
+2022-07-07 17:08:09.525815-ovs-vsctl --may-exist add-br 184857@sw003806 -- set bridge 184857@sw003806 datapath_type=system
+2022-07-07 17:08:11.931930-ovs-vsctl --may-exist add-port 184857@sw003806 184857@sw003806_int -- set interface 184857@sw003806_int type=patch options:peer=int_184857@sw003806 -- --may-exist add-port br-int int_184857@sw003806 -- set interface int_184857@sw003806 type=patch options:peer=184857@sw003806_int
+2022-07-07 17:09:13.257023-ovs-vsctl --may-exist add-br 184846@sw003822 -- set bridge 184846@sw003822 datapath_type=system
+2022-07-07 17:09:13.589954-ovs-vsctl --may-exist add-port 184846@sw003822 184846@sw003822_int -- set interface 184846@sw003822_int type=patch options:peer=int_184846@sw003822 -- --may-exist add-port br-int int_184846@sw003822 -- set interface int_184846@sw003822 type=patch options:peer=184846@sw003822_int
+2022-07-07 17:09:13.783058-ovs-vsctl --may-exist add-br 184846@sw003832 -- set bridge 184846@sw003832 datapath_type=system
+2022-07-07 17:09:14.118560-ovs-vsctl --may-exist add-port 184846@sw003832 184846@sw003832_int -- set interface 184846@sw003832_int type=patch options:peer=int_184846@sw003832 -- --may-exist add-port br-int int_184846@sw003832 -- set interface int_184846@sw003832 type=patch options:peer=184846@sw003832_int
+2022-07-07 17:09:41.173710-ovs-vsctl --may-exist add-br 184968@sw003798 -- set bridge 184968@sw003798 datapath_type=system
+2022-07-07 17:09:41.416082-ovs-vsctl --may-exist add-port 184968@sw003798 184968@sw003798_int -- set interface 184968@sw003798_int type=patch options:peer=int_184968@sw003798 -- --may-exist add-port br-int int_184968@sw003798 -- set interface int_184968@sw003798 type=patch options:peer=184968@sw003798_int
+2022-07-07 17:09:41.498777-ovs-vsctl get port tap69d3511f-8d other_config
+2022-07-07 17:09:47.998519-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x3ab action=mod_vlan_vid:19,resubmit(,10)
+2022-07-07 17:09:48.057742-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=19 actions=strip_vlan,load:0x3ab->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-07-07 17:09:57.212409-ovs-vsctl --may-exist add-br 184972@sw003784 -- set bridge 184972@sw003784 datapath_type=system
+2022-07-07 17:09:57.449719-ovs-vsctl --may-exist add-port 184972@sw003784 184972@sw003784_int -- set interface 184972@sw003784_int type=patch options:peer=int_184972@sw003784 -- --may-exist add-port br-int int_184972@sw003784 -- set interface int_184972@sw003784 type=patch options:peer=184972@sw003784_int
+2022-07-07 17:13:29.383327-ovs-vsctl --if-exists del-br 184846@sw003822
+2022-07-07 17:13:29.822262-ovs-vsctl --if-exists del-port int_184846@sw003822
+2022-07-07 17:13:29.902332-ovs-vsctl --if-exists del-br 184846@sw003832
+2022-07-07 17:13:30.326885-ovs-vsctl --if-exists del-port int_184846@sw003832
+2022-07-07 17:30:14.133126-ovs-vsctl --may-exist add-br 186179@sw000070 -- set bridge 186179@sw000070 datapath_type=system
+2022-07-07 17:30:23.606777-ovs-vsctl --may-exist add-port 186179@sw000070 186179@sw000070_int -- set interface 186179@sw000070_int type=patch options:peer=int_186179@sw000070 -- --may-exist add-port br-int int_186179@sw000070 -- set interface int_186179@sw000070 type=patch options:peer=186179@sw000070_int
+2022-07-07 17:41:08.121742-ovs-vsctl --may-exist add-br 186848@sw000065 -- set bridge 186848@sw000065 datapath_type=system
+2022-07-07 17:41:17.266357-ovs-vsctl --may-exist add-port 186848@sw000065 186848@sw000065_int -- set interface 186848@sw000065_int type=patch options:peer=int_186848@sw000065 -- --may-exist add-port br-int int_186848@sw000065 -- set interface int_186848@sw000065 type=patch options:peer=186848@sw000065_int
+2022-07-07 17:41:45.975230-ovs-vsctl --if-exists del-br 186848@sw000065
+2022-07-07 17:41:55.110888-ovs-vsctl --if-exists del-port int_186848@sw000065
+2022-07-07 17:44:49.859160-ovs-vsctl --may-exist add-br 187081@sw000065 -- set bridge 187081@sw000065 datapath_type=system
+2022-07-07 17:44:59.004681-ovs-vsctl --may-exist add-port 187081@sw000065 187081@sw000065_int -- set interface 187081@sw000065_int type=patch options:peer=int_187081@sw000065 -- --may-exist add-port br-int int_187081@sw000065 -- set interface int_187081@sw000065 type=patch options:peer=187081@sw000065_int
+2022-07-07 17:45:08.724057-ovs-vsctl --if-exists del-br 187081@sw000065
+2022-07-07 17:45:17.868631-ovs-vsctl --if-exists del-port int_187081@sw000065
+2022-07-07 17:49:27.307272-ovs-vsctl --may-exist add-br 187348@sw000065 -- set bridge 187348@sw000065 datapath_type=system
+2022-07-07 17:49:36.471372-ovs-vsctl --may-exist add-port 187348@sw000065 187348@sw000065_int -- set interface 187348@sw000065_int type=patch options:peer=int_187348@sw000065 -- --may-exist add-port br-int int_187348@sw000065 -- set interface int_187348@sw000065 type=patch options:peer=187348@sw000065_int
+2022-07-07 17:49:50.708771-ovs-vsctl --if-exists del-br 187348@sw000065
+2022-07-07 17:49:59.859520-ovs-vsctl --if-exists del-port int_187348@sw000065
+2022-07-07 17:51:23.676146-ovs-vsctl --may-exist add-br 187475@sw000065 -- set bridge 187475@sw000065 datapath_type=system
+2022-07-07 17:51:32.835272-ovs-vsctl --may-exist add-port 187475@sw000065 187475@sw000065_int -- set interface 187475@sw000065_int type=patch options:peer=int_187475@sw000065 -- --may-exist add-port br-int int_187475@sw000065 -- set interface int_187475@sw000065 type=patch options:peer=187475@sw000065_int
+2022-07-07 17:51:42.420408-ovs-vsctl --if-exists del-br 187475@sw000065
+2022-07-07 17:51:51.585199-ovs-vsctl --if-exists del-port int_187475@sw000065

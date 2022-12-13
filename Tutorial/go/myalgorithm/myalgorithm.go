@@ -11,9 +11,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net"
-	"reflect"
 	"runtime"
 	"strings"
 )
@@ -53,6 +53,13 @@ func connHandler(conn net.Conn) {
 
 func arrayStringsAreEqual(word1 []string, word2 []string) bool {
 	return strings.Join(word1, "") == strings.Join(word2, "")
+}
+
+type Dante struct {
+	Apple string `json:"apple"`
+	Ball string `json:"ball"`
+	Canada string `json:"canada"`
+	Ing int `json:"ing"`
 }
 
 
@@ -139,14 +146,29 @@ func main() {
 	//	s = s*10 + t
 	//}
 	//println(s)
-	var a int = 2
-	fmt.Printf("dong ---------------->%T: %v\n", a, a)
-	aType := reflect.TypeOf(a)
-	aValue := reflect.ValueOf(&a)
-	fmt.Printf("dong ---------------->%T: %v\n", aType, aType)
-	fmt.Printf("dong ---------------->%T: %v\n", aValue, aValue)
-	aValue.Elem().SetInt(5)
-	fmt.Println("dong ---------------------->", a)
 
+	//var a int = 2
+	//fmt.Printf("dong ---------------->%T: %v\n", a, a)
+	//aType := reflect.TypeOf(a)
+	//aValue := reflect.ValueOf(&a)
+	//fmt.Printf("dong ---------------->%T: %v\n", aType, aType)
+	//fmt.Printf("dong ---------------->%T: %v\n", aValue, aValue)
+	//aValue.Elem().SetInt(5)
+	//fmt.Println("dong ---------------------->", a)
+
+	testStr := "{\"apple\": \"aston\", \"ball\": \"martin\"}"
+	var dante Dante
+	_ = json.Unmarshal([]byte(testStr), &dante)
+	fmt.Println(dante.Apple)
+	fmt.Println(dante.Ball)
+	//fmt.Println(dante.Canada)
+	fmt.Printf("%#v", dante.Canada)
+	fmt.Printf("%#v", dante.Ing)
+
+	marshalStr, err := json.Marshal(testStr)
+	if err != nil {
+		fmt.Printf("%#v", marshalStr)
+	}
+	fmt.Printf("%#v", string(marshalStr))
 
 }

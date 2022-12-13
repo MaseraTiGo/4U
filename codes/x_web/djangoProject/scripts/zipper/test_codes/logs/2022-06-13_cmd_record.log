@@ -1,0 +1,24 @@
+ovs-vsctl --may-exist add-br 089784@sw000258 -- set bridge 089784@sw000258 datapath_type=system
+ovs-vsctl --may-exist add-port 089784@sw000258 089784@sw000258_int -- set interface 089784@sw000258_int type=patch options:peer=int_089784@sw000258 -- --may-exist add-port br-int int_089784@sw000258 -- set interface int_089784@sw000258 type=patch options:peer=089784@sw000258_int
+ovs-vsctl --may-exist add-br 089784@sw000259 -- set bridge 089784@sw000259 datapath_type=system
+ovs-vsctl --may-exist add-port 089784@sw000259 089784@sw000259_int -- set interface 089784@sw000259_int type=patch options:peer=int_089784@sw000259 -- --may-exist add-port br-int int_089784@sw000259 -- set interface int_089784@sw000259 type=patch options:peer=089784@sw000259_int
+ovs-vsctl --if-exists del-br 089784@sw000258
+ovs-vsctl --if-exists del-port int_089784@sw000258
+ovs-vsctl --if-exists del-br 089784@sw000259
+ovs-vsctl --if-exists del-port int_089784@sw000259
+ovs-vsctl --may-exist add-br 090079@sw000258 -- set bridge 090079@sw000258 datapath_type=system
+ovs-vsctl --may-exist add-port 090079@sw000258 090079@sw000258_int -- set interface 090079@sw000258_int type=patch options:peer=int_090079@sw000258 -- --may-exist add-port br-int int_090079@sw000258 -- set interface int_090079@sw000258 type=patch options:peer=090079@sw000258_int
+ovs-vsctl --may-exist add-br 090079@sw000259 -- set bridge 090079@sw000259 datapath_type=system
+ovs-vsctl --may-exist add-port 090079@sw000259 090079@sw000259_int -- set interface 090079@sw000259_int type=patch options:peer=int_090079@sw000259 -- --may-exist add-port br-int int_090079@sw000259 -- set interface int_090079@sw000259 type=patch options:peer=090079@sw000259_int
+ovs-vsctl --if-exists del-br 090079@sw000258
+ovs-vsctl --if-exists del-port int_090079@sw000258
+ovs-vsctl --if-exists del-br 090079@sw000259
+ovs-vsctl --if-exists del-port int_090079@sw000259
+ovs-vsctl --may-exist add-br 090432@sw000258 -- set bridge 090432@sw000258 datapath_type=system
+ovs-vsctl --may-exist add-port 090432@sw000258 090432@sw000258_int -- set interface 090432@sw000258_int type=patch options:peer=int_090432@sw000258 -- --may-exist add-port br-int int_090432@sw000258 -- set interface int_090432@sw000258 type=patch options:peer=090432@sw000258_int
+ovs-vsctl --may-exist add-br 090432@sw000259 -- set bridge 090432@sw000259 datapath_type=system
+ovs-vsctl --may-exist add-port 090432@sw000259 090432@sw000259_int -- set interface 090432@sw000259_int type=patch options:peer=int_090432@sw000259 -- --may-exist add-port br-int int_090432@sw000259 -- set interface int_090432@sw000259 type=patch options:peer=090432@sw000259_int
+ovs-vsctl --if-exists del-br 090432@sw000258
+ovs-vsctl --if-exists del-port int_090432@sw000258
+ovs-vsctl --if-exists del-br 090432@sw000259
+ovs-vsctl --if-exists del-port int_090432@sw000259

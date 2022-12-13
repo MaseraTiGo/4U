@@ -1,0 +1,19 @@
+2022-07-06 18:36:17.147636-ovs-vsctl --may-exist add-br 095957@sw003773 -- set bridge 095957@sw003773 datapath_type=system
+2022-07-06 18:36:17.156743-ovs-vsctl --may-exist add-br 074261@sw003718 -- set bridge 074261@sw003718 datapath_type=system
+2022-07-06 18:36:17.167181-ovs-vsctl --may-exist add-br 101513@sw003798 -- set bridge 101513@sw003798 datapath_type=system
+2022-07-06 18:36:17.173448-ovs-vsctl --may-exist add-br 101062@sw003784 -- set bridge 101062@sw003784 datapath_type=system
+2022-07-06 18:36:17.180943-ovs-vsctl --may-exist add-br 098051@sw003784 -- set bridge 098051@sw003784 datapath_type=system
+2022-07-06 18:36:17.190561-ovs-vsctl --may-exist add-br 095690@sw003718 -- set bridge 095690@sw003718 datapath_type=system
+2022-07-06 18:36:17.197238-ovs-vsctl --may-exist add-br 075085@sw003732 -- set bridge 075085@sw003732 datapath_type=system
+2022-07-06 18:36:17.203626-ovs-vsctl --may-exist add-br 101885@sw003798 -- set bridge 101885@sw003798 datapath_type=system
+2022-07-06 18:36:17.209734-ovs-vsctl --may-exist add-br 102104@sw003798 -- set bridge 102104@sw003798 datapath_type=system
+2022-07-06 18:36:17.220959-ovs-vsctl --may-exist add-br 102582@sw003798 -- set bridge 102582@sw003798 datapath_type=system
+2022-07-06 18:36:17.366256-ovs-vsctl --may-exist add-br 103126@sw003798 -- set bridge 103126@sw003798 datapath_type=system
+2022-07-06 18:36:18.724505-ovs-vsctl --may-exist add-br 103537@sw003798 -- set bridge 103537@sw003798 datapath_type=system
+2022-07-06 18:36:23.710127-ovs-vsctl --may-exist add-port 103537@sw003798 103537@sw003798_int -- set interface 103537@sw003798_int type=patch options:peer=int_103537@sw003798 -- --may-exist add-port br-int int_103537@sw003798 -- set interface int_103537@sw003798 type=patch options:peer=103537@sw003798_int
+2022-07-06 18:38:30.452930-ovs-vsctl --if-exists del-br 103537@sw003798
+2022-07-06 18:38:30.884215-ovs-vsctl --if-exists del-port int_103537@sw003798
+2022-07-06 18:39:04.661467-ovs-vsctl --may-exist add-br 103936@sw003798 -- set bridge 103936@sw003798 datapath_type=system
+2022-07-06 18:39:04.897434-ovs-vsctl --may-exist add-port 103936@sw003798 103936@sw003798_int -- set interface 103936@sw003798_int type=patch options:peer=int_103936@sw003798 -- --may-exist add-port br-int int_103936@sw003798 -- set interface int_103936@sw003798 type=patch options:peer=103936@sw003798_int
+2022-07-06 18:39:27.694283-ovs-vsctl --if-exists del-br 103936@sw003798
+2022-07-06 18:39:28.121852-ovs-vsctl --if-exists del-port int_103936@sw003798

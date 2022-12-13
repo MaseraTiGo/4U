@@ -1,0 +1,32 @@
+2022-07-27 09:11:10.079814-ovs-vsctl --may-exist add-br 884223@sw004431 -- set bridge 884223@sw004431 datapath_type=system
+2022-07-27 09:11:16.623226-ovs-vsctl --may-exist add-port 884223@sw004431 884223@sw004431_int -- set interface 884223@sw004431_int type=patch options:peer=int_884223@sw004431 -- --may-exist add-port br-int int_884223@sw004431 -- set interface int_884223@sw004431 type=patch options:peer=884223@sw004431_int
+2022-07-27 09:11:16.715490-ovs-vsctl --may-exist add-br 884223@sw004437 -- set bridge 884223@sw004437 datapath_type=system
+2022-07-27 09:11:16.965273-ovs-vsctl --may-exist add-port 884223@sw004437 884223@sw004437_int -- set interface 884223@sw004437_int type=patch options:peer=int_884223@sw004437 -- --may-exist add-port br-int int_884223@sw004437 -- set interface int_884223@sw004437 type=patch options:peer=884223@sw004437_int
+2022-07-27 09:19:00.003922-ovs-vsctl --if-exists del-br 884223@sw004431
+2022-07-27 09:19:00.471526-ovs-vsctl --if-exists del-port int_884223@sw004431
+2022-07-27 09:19:00.561728-ovs-vsctl --if-exists del-br 884223@sw004437
+2022-07-27 09:19:01.011549-ovs-vsctl --if-exists del-port int_884223@sw004437
+2022-07-27 09:40:47.002500-ovs-vsctl --may-exist add-br 886006@sw004431 -- set bridge 886006@sw004431 datapath_type=system
+2022-07-27 09:40:47.264036-ovs-vsctl --may-exist add-port 886006@sw004431 886006@sw004431_int -- set interface 886006@sw004431_int type=patch options:peer=int_886006@sw004431 -- --may-exist add-port br-int int_886006@sw004431 -- set interface int_886006@sw004431 type=patch options:peer=886006@sw004431_int
+2022-07-27 09:40:47.357292-ovs-vsctl --may-exist add-br 886006@sw004437 -- set bridge 886006@sw004437 datapath_type=system
+2022-07-27 09:40:47.606970-ovs-vsctl --may-exist add-port 886006@sw004437 886006@sw004437_int -- set interface 886006@sw004437_int type=patch options:peer=int_886006@sw004437 -- --may-exist add-port br-int int_886006@sw004437 -- set interface int_886006@sw004437 type=patch options:peer=886006@sw004437_int
+2022-07-27 10:26:18.161047-ovs-vsctl --if-exists del-br 886006@sw004431
+2022-07-27 10:26:18.605353-ovs-vsctl --if-exists del-port int_886006@sw004431
+2022-07-27 10:26:18.695633-ovs-vsctl --if-exists del-br 886006@sw004437
+2022-07-27 10:26:19.131924-ovs-vsctl --if-exists del-port int_886006@sw004437
+2022-07-27 11:42:28.883930-ovs-vsctl --if-exists del-br 184968@sw003798
+2022-07-27 11:42:29.546003-ovs-vsctl --if-exists del-port int_184968@sw003798
+2022-07-27 11:42:29.630042-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x3ab
+2022-07-27 11:42:29.694694-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=19
+2022-07-27 11:42:36.783342-ovs-vsctl --if-exists del-br 850140@sw003822
+2022-07-27 11:42:37.206922-ovs-vsctl --if-exists del-port int_850140@sw003822
+2022-07-27 11:42:37.295044-ovs-vsctl --if-exists del-br 850140@sw003832
+2022-07-27 11:42:37.728990-ovs-vsctl --if-exists del-port int_850140@sw003832
+2022-07-27 11:43:47.102120-ovs-vsctl --may-exist add-br 893387@sw004431 -- set bridge 893387@sw004431 datapath_type=system
+2022-07-27 11:43:47.350303-ovs-vsctl --may-exist add-port 893387@sw004431 893387@sw004431_int -- set interface 893387@sw004431_int type=patch options:peer=int_893387@sw004431 -- --may-exist add-port br-int int_893387@sw004431 -- set interface int_893387@sw004431 type=patch options:peer=893387@sw004431_int
+2022-07-27 11:43:47.439841-ovs-vsctl --may-exist add-br 893387@sw004437 -- set bridge 893387@sw004437 datapath_type=system
+2022-07-27 11:43:47.687006-ovs-vsctl --may-exist add-port 893387@sw004437 893387@sw004437_int -- set interface 893387@sw004437_int type=patch options:peer=int_893387@sw004437 -- --may-exist add-port br-int int_893387@sw004437 -- set interface int_893387@sw004437 type=patch options:peer=893387@sw004437_int
+2022-07-27 11:43:59.241621-ovs-vsctl --if-exists del-br 893387@sw004431
+2022-07-27 11:43:59.695107-ovs-vsctl --if-exists del-port int_893387@sw004431
+2022-07-27 11:43:59.792184-ovs-vsctl --if-exists del-br 893387@sw004437
+2022-07-27 11:44:00.234452-ovs-vsctl --if-exists del-port int_893387@sw004437

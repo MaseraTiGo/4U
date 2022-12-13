@@ -1,0 +1,24 @@
+ovs-vsctl --may-exist add-br 706779@sw000002 -- set bridge 706779@sw000002 datapath_type=system
+ovs-vsctl --may-exist add-br 706779@sw000002 -- set bridge 706779@sw000002 datapath_type=system
+ovs-vsctl --may-exist add-port 706779@sw000002 706779@sw000002_int -- set interface 706779@sw000002_int type=patch options:peer=int_706779@sw000002 -- --may-exist add-port br-int int_706779@sw000002 -- set interface int_706779@sw000002 type=patch options:peer=706779@sw000002_int
+ovs-vsctl --may-exist add-port 706779@sw000002 706779@sw000002_int -- set interface 706779@sw000002_int type=patch options:peer=int_706779@sw000002 -- --may-exist add-port br-int int_706779@sw000002 -- set interface int_706779@sw000002 type=patch options:peer=706779@sw000002_int
+ovs-vsctl --may-exist add-br 706779@sw000005 -- set bridge 706779@sw000005 datapath_type=system
+ovs-vsctl --may-exist add-br 706779@sw000005 -- set bridge 706779@sw000005 datapath_type=system
+ovs-vsctl --may-exist add-port 706779@sw000005 706779@sw000005_int -- set interface 706779@sw000005_int type=patch options:peer=int_706779@sw000005 -- --may-exist add-port br-int int_706779@sw000005 -- set interface int_706779@sw000005 type=patch options:peer=706779@sw000005_int
+ovs-vsctl --may-exist add-port 706779@sw000005 706779@sw000005_int -- set interface 706779@sw000005_int type=patch options:peer=int_706779@sw000005 -- --may-exist add-port br-int int_706779@sw000005 -- set interface int_706779@sw000005 type=patch options:peer=706779@sw000005_int
+ovs-vsctl --if-exists del-br 706779@sw000002
+ovs-vsctl --if-exists del-br 706779@sw000002
+ovs-vsctl --if-exists del-port int_706779@sw000002
+ovs-vsctl --if-exists del-port int_706779@sw000002
+ovs-vsctl --if-exists del-br 706779@sw000005
+ovs-vsctl --if-exists del-br 706779@sw000005
+ovs-vsctl --if-exists del-port int_706779@sw000005
+ovs-vsctl --if-exists del-port int_706779@sw000005
+ovs-vsctl --may-exist add-br 709423@sw000002 -- set bridge 709423@sw000002 datapath_type=system
+ovs-vsctl --may-exist add-br 709423@sw000002 -- set bridge 709423@sw000002 datapath_type=system
+ovs-vsctl --may-exist add-port 709423@sw000002 709423@sw000002_int -- set interface 709423@sw000002_int type=patch options:peer=int_709423@sw000002 -- --may-exist add-port br-int int_709423@sw000002 -- set interface int_709423@sw000002 type=patch options:peer=709423@sw000002_int
+ovs-vsctl --may-exist add-port 709423@sw000002 709423@sw000002_int -- set interface 709423@sw000002_int type=patch options:peer=int_709423@sw000002 -- --may-exist add-port br-int int_709423@sw000002 -- set interface int_709423@sw000002 type=patch options:peer=709423@sw000002_int
+ovs-vsctl --may-exist add-br 709423@sw000005 -- set bridge 709423@sw000005 datapath_type=system
+ovs-vsctl --may-exist add-br 709423@sw000005 -- set bridge 709423@sw000005 datapath_type=system
+ovs-vsctl --may-exist add-port 709423@sw000005 709423@sw000005_int -- set interface 709423@sw000005_int type=patch options:peer=int_709423@sw000005 -- --may-exist add-port br-int int_709423@sw000005 -- set interface int_709423@sw000005 type=patch options:peer=709423@sw000005_int
+ovs-vsctl --may-exist add-port 709423@sw000005 709423@sw000005_int -- set interface 709423@sw000005_int type=patch options:peer=int_709423@sw000005 -- --may-exist add-port br-int int_709423@sw000005 -- set interface int_709423@sw000005 type=patch options:peer=709423@sw000005_int

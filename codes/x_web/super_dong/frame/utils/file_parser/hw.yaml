@@ -1,0 +1,12 @@
+%YAML 1.1
+---
+affinity:
+  /dante/aston: 2
+  cores: 4
+  minTxQ: 4
+  minRxQ: 4
+  mainTask: '1'
+  rxTask: 2,3
+  otherTask: '1'
+  mwTask: '0'
+  chorplat: 1-3

@@ -1,0 +1,4 @@
+2022-08-09 10:32:37.785247-ovs-vsctl --may-exist add-br 012355@sw000013 -- set bridge 012355@sw000013 datapath_type=system
+2022-08-09 10:32:44.318362-ovs-vsctl --may-exist add-port 012355@sw000013 012355@sw000013_int -- set interface 012355@sw000013_int type=patch options:peer=int_012355@sw000013 -- --may-exist add-port br-int int_012355@sw000013 -- set interface int_012355@sw000013 type=patch options:peer=012355@sw000013_int
+2022-08-09 10:34:56.306762-ovs-vsctl --if-exists del-br 012355@sw000013
+2022-08-09 10:35:02.732049-ovs-vsctl --if-exists del-port int_012355@sw000013

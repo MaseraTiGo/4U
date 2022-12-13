@@ -1,0 +1,480 @@
+2022-06-24 10:32:11.784453-ovs-vsctl --may-exist add-br 037630@sw001203 -- set bridge 037630@sw001203 datapath_type=system
+2022-06-24 10:32:17.868233-ovs-vsctl --may-exist add-port 037630@sw001203 037630@sw001203_int -- set interface 037630@sw001203_int type=patch options:peer=int_037630@sw001203 -- --may-exist add-port br-int int_037630@sw001203 -- set interface int_037630@sw001203 type=patch options:peer=037630@sw001203_int
+2022-06-24 10:32:18.108809-ovs-vsctl --may-exist add-br 037630@sw001204 -- set bridge 037630@sw001204 datapath_type=system
+2022-06-24 10:32:18.543900-ovs-vsctl --may-exist add-port 037630@sw001204 037630@sw001204_int -- set interface 037630@sw001204_int type=patch options:peer=int_037630@sw001204 -- --may-exist add-port br-int int_037630@sw001204 -- set interface int_037630@sw001204 type=patch options:peer=037630@sw001204_int
+2022-06-24 10:34:23.490061-ovs-vsctl --if-exists del-br 037630@sw001203
+2022-06-24 10:34:24.322748-ovs-vsctl --if-exists del-port int_037630@sw001203
+2022-06-24 10:34:24.880218-ovs-vsctl --if-exists del-br 037630@sw001204
+2022-06-24 10:34:25.869667-ovs-vsctl --if-exists del-port int_037630@sw001204
+2022-06-24 10:35:20.755591-ovs-vsctl --may-exist add-br 038094@sw001203 -- set bridge 038094@sw001203 datapath_type=system
+2022-06-24 10:35:21.280570-ovs-vsctl --may-exist add-port 038094@sw001203 038094@sw001203_int -- set interface 038094@sw001203_int type=patch options:peer=int_038094@sw001203 -- --may-exist add-port br-int int_038094@sw001203 -- set interface int_038094@sw001203 type=patch options:peer=038094@sw001203_int
+2022-06-24 10:35:21.579437-ovs-vsctl --may-exist add-br 038094@sw001204 -- set bridge 038094@sw001204 datapath_type=system
+2022-06-24 10:35:21.984518-ovs-vsctl --may-exist add-port 038094@sw001204 038094@sw001204_int -- set interface 038094@sw001204_int type=patch options:peer=int_038094@sw001204 -- --may-exist add-port br-int int_038094@sw001204 -- set interface int_038094@sw001204 type=patch options:peer=038094@sw001204_int
+2022-06-24 11:56:04.666297-ovs-vsctl --if-exists del-br 038094@sw001203
+2022-06-24 11:56:05.305780-ovs-vsctl --if-exists del-port int_038094@sw001203
+2022-06-24 11:56:05.545382-ovs-vsctl --if-exists del-br 038094@sw001204
+2022-06-24 11:56:06.184358-ovs-vsctl --if-exists del-port int_038094@sw001204
+2022-06-24 13:55:23.701730-ovs-vsctl --may-exist add-br 050101@sw001203 -- set bridge 050101@sw001203 datapath_type=system
+2022-06-24 13:55:24.138029-ovs-vsctl --may-exist add-port 050101@sw001203 050101@sw001203_int -- set interface 050101@sw001203_int type=patch options:peer=int_050101@sw001203 -- --may-exist add-port br-int int_050101@sw001203 -- set interface int_050101@sw001203 type=patch options:peer=050101@sw001203_int
+2022-06-24 13:55:24.376111-ovs-vsctl --may-exist add-br 050101@sw001204 -- set bridge 050101@sw001204 datapath_type=system
+2022-06-24 13:55:24.810962-ovs-vsctl --may-exist add-port 050101@sw001204 050101@sw001204_int -- set interface 050101@sw001204_int type=patch options:peer=int_050101@sw001204 -- --may-exist add-port br-int int_050101@sw001204 -- set interface int_050101@sw001204 type=patch options:peer=050101@sw001204_int
+2022-06-24 13:55:52.967627-ovs-vsctl --if-exists del-br 050101@sw001203
+2022-06-24 13:55:53.603221-ovs-vsctl --if-exists del-port int_050101@sw001203
+2022-06-24 13:55:53.922772-ovs-vsctl --if-exists del-br 050101@sw001204
+2022-06-24 13:55:54.458421-ovs-vsctl --if-exists del-port int_050101@sw001204
+2022-06-24 14:00:25.036860-ovs-vsctl --may-exist add-br 050383@sw001203 -- set bridge 050383@sw001203 datapath_type=system
+2022-06-24 14:00:25.471393-ovs-vsctl --may-exist add-port 050383@sw001203 050383@sw001203_int -- set interface 050383@sw001203_int type=patch options:peer=int_050383@sw001203 -- --may-exist add-port br-int int_050383@sw001203 -- set interface int_050383@sw001203 type=patch options:peer=050383@sw001203_int
+2022-06-24 14:00:25.709220-ovs-vsctl --may-exist add-br 050383@sw001204 -- set bridge 050383@sw001204 datapath_type=system
+2022-06-24 14:00:26.147292-ovs-vsctl --may-exist add-port 050383@sw001204 050383@sw001204_int -- set interface 050383@sw001204_int type=patch options:peer=int_050383@sw001204 -- --may-exist add-port br-int int_050383@sw001204 -- set interface int_050383@sw001204 type=patch options:peer=050383@sw001204_int
+2022-06-24 14:00:26.391039-ovs-vsctl get port tap410c96e0-e7 tag
+2022-06-24 14:00:26.623353-ovs-vsctl get port tap410c96e0-e7 other_config
+2022-06-24 14:00:32.944833-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x1a8 action=mod_vlan_vid:137,resubmit(,10)
+2022-06-24 14:00:33.181857-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=137 actions=strip_vlan,load:0x1a8->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:00:33.423262-ovs-vsctl get port tapfe5c6b78-60 tag
+2022-06-24 14:00:33.660484-ovs-vsctl get port tapfe5c6b78-60 other_config
+2022-06-24 14:00:39.982596-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xa7 action=mod_vlan_vid:136,resubmit(,10)
+2022-06-24 14:00:40.229786-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=136 actions=strip_vlan,load:0xa7->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:00:40.499612-ovs-vsctl get port tapa7f0b454-69 tag
+2022-06-24 14:00:40.746536-ovs-vsctl get port tapa7f0b454-69 other_config
+2022-06-24 14:00:47.078760-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x1a8 action=mod_vlan_vid:137,resubmit(,10)
+2022-06-24 14:00:47.327080-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=137 actions=strip_vlan,load:0x1a8->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:03:03.521559-ovs-vsctl --may-exist add-br 050424@sw001203 -- set bridge 050424@sw001203 datapath_type=system
+2022-06-24 14:03:03.957143-ovs-vsctl --may-exist add-port 050424@sw001203 050424@sw001203_int -- set interface 050424@sw001203_int type=patch options:peer=int_050424@sw001203 -- --may-exist add-port br-int int_050424@sw001203 -- set interface int_050424@sw001203 type=patch options:peer=050424@sw001203_int
+2022-06-24 14:03:04.196084-ovs-vsctl --may-exist add-br 050424@sw001204 -- set bridge 050424@sw001204 datapath_type=system
+2022-06-24 14:03:04.633180-ovs-vsctl --may-exist add-port 050424@sw001204 050424@sw001204_int -- set interface 050424@sw001204_int type=patch options:peer=int_050424@sw001204 -- --may-exist add-port br-int int_050424@sw001204 -- set interface int_050424@sw001204 type=patch options:peer=050424@sw001204_int
+2022-06-24 14:03:04.874420-ovs-vsctl get port tap9964fc4d-f1 tag
+2022-06-24 14:03:05.107837-ovs-vsctl get port tap9964fc4d-f1 other_config
+2022-06-24 14:03:11.432597-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x25a action=mod_vlan_vid:139,resubmit(,10)
+2022-06-24 14:03:11.674207-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=139 actions=strip_vlan,load:0x25a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:03:11.918560-ovs-vsctl get port tapa30714d2-a0 tag
+2022-06-24 14:03:12.148582-ovs-vsctl get port tapa30714d2-a0 other_config
+2022-06-24 14:03:18.454436-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xd1 action=mod_vlan_vid:138,resubmit(,10)
+2022-06-24 14:03:18.687417-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=138 actions=strip_vlan,load:0xd1->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:03:18.935233-ovs-vsctl get port tapbfd2520b-d9 tag
+2022-06-24 14:03:19.168289-ovs-vsctl get port tapbfd2520b-d9 other_config
+2022-06-24 14:03:25.479181-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x25a action=mod_vlan_vid:139,resubmit(,10)
+2022-06-24 14:03:25.709873-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=139 actions=strip_vlan,load:0x25a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:07:13.061579-ovs-vsctl --if-exists del-br 050424@sw001203
+2022-06-24 14:07:13.597704-ovs-vsctl --if-exists del-port int_050424@sw001203
+2022-06-24 14:07:13.827435-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x25a
+2022-06-24 14:07:14.055551-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=139
+2022-06-24 14:07:14.289079-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0xd1
+2022-06-24 14:07:14.524091-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=138
+2022-06-24 14:07:14.838984-ovs-vsctl --if-exists del-br 050424@sw001204
+2022-06-24 14:07:15.394631-ovs-vsctl --if-exists del-port int_050424@sw001204
+2022-06-24 14:07:15.628819-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x25a
+2022-06-24 14:07:15.858826-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=139
+2022-06-24 14:08:57.636054-ovs-vsctl --may-exist add-br 050894@sw001203 -- set bridge 050894@sw001203 datapath_type=system
+2022-06-24 14:08:58.961442-ovs-vsctl --may-exist add-port 050894@sw001203 050894@sw001203_int -- set interface 050894@sw001203_int type=patch options:peer=int_050894@sw001203 -- --may-exist add-port br-int int_050894@sw001203 -- set interface int_050894@sw001203 type=patch options:peer=050894@sw001203_int
+2022-06-24 14:08:59.253861-ovs-vsctl --may-exist add-br 050894@sw001204 -- set bridge 050894@sw001204 datapath_type=system
+2022-06-24 14:08:59.749366-ovs-vsctl --may-exist add-port 050894@sw001204 050894@sw001204_int -- set interface 050894@sw001204_int type=patch options:peer=int_050894@sw001204 -- --may-exist add-port br-int int_050894@sw001204 -- set interface int_050894@sw001204 type=patch options:peer=050894@sw001204_int
+2022-06-24 14:09:00.039531-ovs-vsctl get port tap29481aa2-cb tag
+2022-06-24 14:09:00.276339-ovs-vsctl get port tap29481aa2-cb other_config
+2022-06-24 14:09:07.702007-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x2b5 action=mod_vlan_vid:141,resubmit(,10)
+2022-06-24 14:09:08.463683-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=141 actions=strip_vlan,load:0x2b5->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:09:08.748187-ovs-vsctl get port tape4a7c0bb-88 tag
+2022-06-24 14:09:08.989184-ovs-vsctl get port tape4a7c0bb-88 other_config
+2022-06-24 14:09:17.785956-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x2af action=mod_vlan_vid:140,resubmit(,10)
+2022-06-24 14:09:18.031369-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=140 actions=strip_vlan,load:0x2af->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:09:18.278305-ovs-vsctl get port tapcb7f6e2a-56 tag
+2022-06-24 14:09:18.506330-ovs-vsctl get port tapcb7f6e2a-56 other_config
+2022-06-24 14:09:25.864908-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x2b5 action=mod_vlan_vid:141,resubmit(,10)
+2022-06-24 14:09:26.109773-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=141 actions=strip_vlan,load:0x2b5->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:09:52.164228-ovs-vsctl --may-exist add-br 050973@sw003532 -- set bridge 050973@sw003532 datapath_type=system
+2022-06-24 14:09:52.607047-ovs-vsctl --may-exist add-port 050973@sw003532 050973@sw003532_int -- set interface 050973@sw003532_int type=patch options:peer=int_050973@sw003532 -- --may-exist add-port br-int int_050973@sw003532 -- set interface int_050973@sw003532 type=patch options:peer=050973@sw003532_int
+2022-06-24 14:09:52.857797-ovs-vsctl get port tapb226e537-3f tag
+2022-06-24 14:09:53.093697-ovs-vsctl get port tapb226e537-3f other_config
+2022-06-24 14:09:59.453824-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x255 action=mod_vlan_vid:142,resubmit(,10)
+2022-06-24 14:09:59.695638-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=142 actions=strip_vlan,load:0x255->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:09:59.947011-ovs-vsctl get port tap88f0162e-d9 tag
+2022-06-24 14:10:00.184265-ovs-vsctl get port tap88f0162e-d9 other_config
+2022-06-24 14:10:06.604863-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x255 action=mod_vlan_vid:142,resubmit(,10)
+2022-06-24 14:10:06.838598-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=142 actions=strip_vlan,load:0x255->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:10:07.088517-ovs-vsctl get port tap4d611d9d-d1 tag
+2022-06-24 14:10:07.326386-ovs-vsctl get port tap4d611d9d-d1 other_config
+2022-06-24 14:10:13.669358-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x255 action=mod_vlan_vid:142,resubmit(,10)
+2022-06-24 14:10:13.906092-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=142 actions=strip_vlan,load:0x255->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:10:14.159494-ovs-vsctl get port tap71ed0970-7f tag
+2022-06-24 14:10:14.397585-ovs-vsctl get port tap71ed0970-7f other_config
+2022-06-24 14:10:20.802184-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x255 action=mod_vlan_vid:142,resubmit(,10)
+2022-06-24 14:10:21.045554-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=142 actions=strip_vlan,load:0x255->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:10:21.311939-ovs-vsctl get port tape151d81d-37 tag
+2022-06-24 14:10:21.550214-ovs-vsctl get port tape151d81d-37 other_config
+2022-06-24 14:10:30.895659-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x255 action=mod_vlan_vid:142,resubmit(,10)
+2022-06-24 14:10:31.127652-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=142 actions=strip_vlan,load:0x255->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:10:31.667858-ovs-vsctl --if-exists del-br 050973@sw003532
+2022-06-24 14:10:32.205321-ovs-vsctl --if-exists del-port int_050973@sw003532
+2022-06-24 14:10:32.445510-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x255
+2022-06-24 14:10:32.681502-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=142
+2022-06-24 14:21:04.092459-ovs-vsctl --may-exist add-br 051649@sw003532 -- set bridge 051649@sw003532 datapath_type=system
+2022-06-24 14:21:04.530511-ovs-vsctl --may-exist add-port 051649@sw003532 051649@sw003532_int -- set interface 051649@sw003532_int type=patch options:peer=int_051649@sw003532 -- --may-exist add-port br-int int_051649@sw003532 -- set interface int_051649@sw003532 type=patch options:peer=051649@sw003532_int
+2022-06-24 14:21:04.781197-ovs-vsctl get port tapa704863c-83 tag
+2022-06-24 14:21:05.015878-ovs-vsctl get port tapa704863c-83 other_config
+2022-06-24 14:21:11.365252-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x15 action=mod_vlan_vid:143,resubmit(,10)
+2022-06-24 14:21:11.601553-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=143 actions=strip_vlan,load:0x15->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:21:11.866379-ovs-vsctl get port tap807c9ad5-b1 tag
+2022-06-24 14:21:12.104633-ovs-vsctl get port tap807c9ad5-b1 other_config
+2022-06-24 14:21:18.498806-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x15 action=mod_vlan_vid:143,resubmit(,10)
+2022-06-24 14:21:18.744419-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=143 actions=strip_vlan,load:0x15->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:21:19.016629-ovs-vsctl get port tape4762bdb-1c tag
+2022-06-24 14:21:19.251230-ovs-vsctl get port tape4762bdb-1c other_config
+2022-06-24 14:21:25.651256-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x15 action=mod_vlan_vid:143,resubmit(,10)
+2022-06-24 14:21:25.890044-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=143 actions=strip_vlan,load:0x15->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:21:26.162245-ovs-vsctl get port tap91c2451c-fb tag
+2022-06-24 14:21:26.399484-ovs-vsctl get port tap91c2451c-fb other_config
+2022-06-24 14:21:32.806824-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x15 action=mod_vlan_vid:143,resubmit(,10)
+2022-06-24 14:21:33.044486-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=143 actions=strip_vlan,load:0x15->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:21:33.317812-ovs-vsctl get port tapab89aac3-7f tag
+2022-06-24 14:21:33.551927-ovs-vsctl get port tapab89aac3-7f other_config
+2022-06-24 14:21:39.957650-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x15 action=mod_vlan_vid:143,resubmit(,10)
+2022-06-24 14:21:40.195321-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=143 actions=strip_vlan,load:0x15->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:21:40.474748-ovs-vsctl get port tap7f094cb2-78 tag
+2022-06-24 14:21:40.708010-ovs-vsctl get port tap7f094cb2-78 other_config
+2022-06-24 14:21:47.118422-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x15 action=mod_vlan_vid:143,resubmit(,10)
+2022-06-24 14:21:47.354384-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=143 actions=strip_vlan,load:0x15->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:23:33.414538-ovs-vsctl --if-exists del-br 051649@sw003532
+2022-06-24 14:23:33.951674-ovs-vsctl --if-exists del-port int_051649@sw003532
+2022-06-24 14:23:34.188242-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x15
+2022-06-24 14:23:34.424616-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=143
+2022-06-24 14:43:57.035164-ovs-vsctl --may-exist add-br 052932@sw003532 -- set bridge 052932@sw003532 datapath_type=system
+2022-06-24 14:43:57.477459-ovs-vsctl --may-exist add-port 052932@sw003532 052932@sw003532_int -- set interface 052932@sw003532_int type=patch options:peer=int_052932@sw003532 -- --may-exist add-port br-int int_052932@sw003532 -- set interface int_052932@sw003532 type=patch options:peer=052932@sw003532_int
+2022-06-24 14:43:57.731588-ovs-vsctl get port tap2847190a-d4 tag
+2022-06-24 14:43:57.965263-ovs-vsctl get port tap2847190a-d4 other_config
+2022-06-24 14:44:04.351480-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x358 action=mod_vlan_vid:144,resubmit(,10)
+2022-06-24 14:44:04.589476-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=144 actions=strip_vlan,load:0x358->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:44:04.838895-ovs-vsctl get port tap8e611c82-97 tag
+2022-06-24 14:44:05.072750-ovs-vsctl get port tap8e611c82-97 other_config
+2022-06-24 14:44:11.428099-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x358 action=mod_vlan_vid:144,resubmit(,10)
+2022-06-24 14:44:11.664065-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=144 actions=strip_vlan,load:0x358->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:44:11.932096-ovs-vsctl get port tap79efe6b7-f4 tag
+2022-06-24 14:44:12.168329-ovs-vsctl get port tap79efe6b7-f4 other_config
+2022-06-24 14:44:18.552476-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x358 action=mod_vlan_vid:144,resubmit(,10)
+2022-06-24 14:44:18.789006-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=144 actions=strip_vlan,load:0x358->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:44:19.057702-ovs-vsctl get port tap4283b30c-8c tag
+2022-06-24 14:44:19.290426-ovs-vsctl get port tap4283b30c-8c other_config
+2022-06-24 14:44:25.628268-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x358 action=mod_vlan_vid:144,resubmit(,10)
+2022-06-24 14:44:25.879400-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=144 actions=strip_vlan,load:0x358->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:44:26.133266-ovs-vsctl get port tap6977b096-71 tag
+2022-06-24 14:44:26.368428-ovs-vsctl get port tap6977b096-71 other_config
+2022-06-24 14:44:32.745874-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x358 action=mod_vlan_vid:144,resubmit(,10)
+2022-06-24 14:44:32.986894-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=144 actions=strip_vlan,load:0x358->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:44:34.267008-ovs-vsctl --if-exists del-br 052932@sw003532
+2022-06-24 14:44:34.806950-ovs-vsctl --if-exists del-port int_052932@sw003532
+2022-06-24 14:44:35.040254-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x358
+2022-06-24 14:44:35.335848-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=144
+2022-06-24 14:46:14.182774-ovs-vsctl --may-exist add-br 053160@sw003532 -- set bridge 053160@sw003532 datapath_type=system
+2022-06-24 14:46:14.526936-ovs-vsctl --may-exist add-port 053160@sw003532 053160@sw003532_int -- set interface 053160@sw003532_int type=patch options:peer=int_053160@sw003532 -- --may-exist add-port br-int int_053160@sw003532 -- set interface int_053160@sw003532 type=patch options:peer=053160@sw003532_int
+2022-06-24 14:46:14.780194-ovs-vsctl get port tap9a9de78c-a5 tag
+2022-06-24 14:46:15.018130-ovs-vsctl get port tap9a9de78c-a5 other_config
+2022-06-24 14:46:21.415292-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xdd action=mod_vlan_vid:145,resubmit(,10)
+2022-06-24 14:46:21.651358-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=145 actions=strip_vlan,load:0xdd->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:46:21.904156-ovs-vsctl get port tap9fb48ad6-22 tag
+2022-06-24 14:46:22.138774-ovs-vsctl get port tap9fb48ad6-22 other_config
+2022-06-24 14:46:28.478900-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xdd action=mod_vlan_vid:145,resubmit(,10)
+2022-06-24 14:46:28.714006-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=145 actions=strip_vlan,load:0xdd->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:46:28.964945-ovs-vsctl get port tap489cb61f-bc tag
+2022-06-24 14:46:29.202753-ovs-vsctl get port tap489cb61f-bc other_config
+2022-06-24 14:46:35.614783-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xdd action=mod_vlan_vid:145,resubmit(,10)
+2022-06-24 14:46:35.850484-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=145 actions=strip_vlan,load:0xdd->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:46:36.102633-ovs-vsctl get port tapc5e7684e-61 tag
+2022-06-24 14:46:36.337580-ovs-vsctl get port tapc5e7684e-61 other_config
+2022-06-24 14:46:42.675461-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xdd action=mod_vlan_vid:145,resubmit(,10)
+2022-06-24 14:46:42.911470-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=145 actions=strip_vlan,load:0xdd->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:46:43.162807-ovs-vsctl get port tapd0f512f8-7c tag
+2022-06-24 14:46:43.398999-ovs-vsctl get port tapd0f512f8-7c other_config
+2022-06-24 14:46:49.804281-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xdd action=mod_vlan_vid:145,resubmit(,10)
+2022-06-24 14:46:50.039950-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=145 actions=strip_vlan,load:0xdd->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:46:50.979331-ovs-vsctl --if-exists del-br 053160@sw003532
+2022-06-24 14:46:51.617731-ovs-vsctl --if-exists del-port int_053160@sw003532
+2022-06-24 14:46:51.851583-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0xdd
+2022-06-24 14:46:52.085065-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=145
+2022-06-24 14:51:07.765110-ovs-vsctl --may-exist add-br 053448@sw003532 -- set bridge 053448@sw003532 datapath_type=system
+2022-06-24 14:51:08.202381-ovs-vsctl --may-exist add-port 053448@sw003532 053448@sw003532_int -- set interface 053448@sw003532_int type=patch options:peer=int_053448@sw003532 -- --may-exist add-port br-int int_053448@sw003532 -- set interface int_053448@sw003532 type=patch options:peer=053448@sw003532_int
+2022-06-24 14:51:08.454736-ovs-vsctl get port tap77ca9889-61 tag
+2022-06-24 14:51:08.687057-ovs-vsctl get port tap77ca9889-61 other_config
+2022-06-24 14:51:15.040495-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x160 action=mod_vlan_vid:146,resubmit(,10)
+2022-06-24 14:51:15.279083-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=146 actions=strip_vlan,load:0x160->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:51:15.540128-ovs-vsctl get port tapfce4c0ca-a2 tag
+2022-06-24 14:51:15.773010-ovs-vsctl get port tapfce4c0ca-a2 other_config
+2022-06-24 14:51:22.106872-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x160 action=mod_vlan_vid:146,resubmit(,10)
+2022-06-24 14:51:22.340515-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=146 actions=strip_vlan,load:0x160->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:51:22.612652-ovs-vsctl get port tap51d509de-41 tag
+2022-06-24 14:51:22.847200-ovs-vsctl get port tap51d509de-41 other_config
+2022-06-24 14:51:29.233468-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x160 action=mod_vlan_vid:146,resubmit(,10)
+2022-06-24 14:51:29.469829-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=146 actions=strip_vlan,load:0x160->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:51:29.743749-ovs-vsctl get port tap015a1467-c3 tag
+2022-06-24 14:51:29.978981-ovs-vsctl get port tap015a1467-c3 other_config
+2022-06-24 14:51:36.320832-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x160 action=mod_vlan_vid:146,resubmit(,10)
+2022-06-24 14:51:36.557085-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=146 actions=strip_vlan,load:0x160->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:51:36.809402-ovs-vsctl get port tap8c369069-db tag
+2022-06-24 14:51:37.044837-ovs-vsctl get port tap8c369069-db other_config
+2022-06-24 14:51:43.444880-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x160 action=mod_vlan_vid:146,resubmit(,10)
+2022-06-24 14:51:43.680741-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=146 actions=strip_vlan,load:0x160->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:51:44.422418-ovs-vsctl --if-exists del-br 053448@sw003532
+2022-06-24 14:51:44.960746-ovs-vsctl --if-exists del-port int_053448@sw003532
+2022-06-24 14:51:45.194814-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x160
+2022-06-24 14:51:45.428883-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=146
+2022-06-24 14:58:14.589873-ovs-vsctl --may-exist add-br 053871@sw003532 -- set bridge 053871@sw003532 datapath_type=system
+2022-06-24 14:58:15.045312-ovs-vsctl --may-exist add-port 053871@sw003532 053871@sw003532_int -- set interface 053871@sw003532_int type=patch options:peer=int_053871@sw003532 -- --may-exist add-port br-int int_053871@sw003532 -- set interface int_053871@sw003532 type=patch options:peer=053871@sw003532_int
+2022-06-24 14:58:15.312640-ovs-vsctl get port tap0ecea5ba-94 tag
+2022-06-24 14:58:15.565606-ovs-vsctl get port tap0ecea5ba-94 other_config
+2022-06-24 14:58:22.961163-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x17f action=mod_vlan_vid:147,resubmit(,10)
+2022-06-24 14:58:23.495996-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=147 actions=strip_vlan,load:0x17f->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:58:23.756705-ovs-vsctl get port tap7a8d15e2-b5 tag
+2022-06-24 14:58:23.993830-ovs-vsctl get port tap7a8d15e2-b5 other_config
+2022-06-24 14:58:31.211678-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x17f action=mod_vlan_vid:147,resubmit(,10)
+2022-06-24 14:58:31.447940-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=147 actions=strip_vlan,load:0x17f->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:58:31.694074-ovs-vsctl get port tap01eaff0c-d6 tag
+2022-06-24 14:58:31.928924-ovs-vsctl get port tap01eaff0c-d6 other_config
+2022-06-24 14:58:38.268983-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x17f action=mod_vlan_vid:147,resubmit(,10)
+2022-06-24 14:58:38.505056-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=147 actions=strip_vlan,load:0x17f->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:58:38.758017-ovs-vsctl get port tap1ff08394-e1 tag
+2022-06-24 14:58:38.993165-ovs-vsctl get port tap1ff08394-e1 other_config
+2022-06-24 14:58:45.402691-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x17f action=mod_vlan_vid:147,resubmit(,10)
+2022-06-24 14:58:45.635955-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=147 actions=strip_vlan,load:0x17f->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:58:45.884057-ovs-vsctl get port tap4dc4cd1c-1a tag
+2022-06-24 14:58:46.126177-ovs-vsctl get port tap4dc4cd1c-1a other_config
+2022-06-24 14:58:52.465322-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x17f action=mod_vlan_vid:147,resubmit(,10)
+2022-06-24 14:58:52.700294-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=147 actions=strip_vlan,load:0x17f->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 14:58:53.424684-ovs-vsctl --if-exists del-br 053871@sw003532
+2022-06-24 14:58:54.064552-ovs-vsctl --if-exists del-port int_053871@sw003532
+2022-06-24 14:58:54.298710-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x17f
+2022-06-24 14:58:54.531845-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=147
+2022-06-24 15:02:34.312218-ovs-vsctl --may-exist add-br 054135@sw003532 -- set bridge 054135@sw003532 datapath_type=system
+2022-06-24 15:02:34.751872-ovs-vsctl --may-exist add-port 054135@sw003532 054135@sw003532_int -- set interface 054135@sw003532_int type=patch options:peer=int_054135@sw003532 -- --may-exist add-port br-int int_054135@sw003532 -- set interface int_054135@sw003532 type=patch options:peer=054135@sw003532_int
+2022-06-24 15:02:35.022429-ovs-vsctl get port tap24651a5c-77 tag
+2022-06-24 15:02:35.259678-ovs-vsctl get port tap24651a5c-77 other_config
+2022-06-24 15:02:41.641911-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xd4 action=mod_vlan_vid:148,resubmit(,10)
+2022-06-24 15:02:41.876748-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=148 actions=strip_vlan,load:0xd4->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:02:42.148472-ovs-vsctl get port taped071a18-0b tag
+2022-06-24 15:02:42.381622-ovs-vsctl get port taped071a18-0b other_config
+2022-06-24 15:02:48.793722-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xd4 action=mod_vlan_vid:148,resubmit(,10)
+2022-06-24 15:02:49.026033-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=148 actions=strip_vlan,load:0xd4->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:02:49.296643-ovs-vsctl get port tap3245ca25-b8 tag
+2022-06-24 15:02:49.529971-ovs-vsctl get port tap3245ca25-b8 other_config
+2022-06-24 15:02:55.882637-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xd4 action=mod_vlan_vid:148,resubmit(,10)
+2022-06-24 15:02:56.120060-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=148 actions=strip_vlan,load:0xd4->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:02:56.375355-ovs-vsctl get port tap7ccbf3cf-df tag
+2022-06-24 15:02:56.610983-ovs-vsctl get port tap7ccbf3cf-df other_config
+2022-06-24 15:03:02.998854-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xd4 action=mod_vlan_vid:148,resubmit(,10)
+2022-06-24 15:03:03.232994-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=148 actions=strip_vlan,load:0xd4->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:03:03.485384-ovs-vsctl get port tap4f0aafb7-19 tag
+2022-06-24 15:03:03.719342-ovs-vsctl get port tap4f0aafb7-19 other_config
+2022-06-24 15:03:10.059256-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0xd4 action=mod_vlan_vid:148,resubmit(,10)
+2022-06-24 15:03:10.299549-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=148 actions=strip_vlan,load:0xd4->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:03:11.521777-ovs-vsctl --if-exists del-br 054135@sw003532
+2022-06-24 15:03:12.057453-ovs-vsctl --if-exists del-port int_054135@sw003532
+2022-06-24 15:03:12.292844-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0xd4
+2022-06-24 15:03:12.525520-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=148
+2022-06-24 15:06:30.558015-ovs-vsctl --may-exist add-br 054283@sw001246 -- set bridge 054283@sw001246 datapath_type=system
+2022-06-24 15:06:30.994393-ovs-vsctl --may-exist add-port 054283@sw001246 054283@sw001246_int -- set interface 054283@sw001246_int type=patch options:peer=int_054283@sw001246 -- --may-exist add-port br-int int_054283@sw001246 -- set interface int_054283@sw001246 type=patch options:peer=054283@sw001246_int
+2022-06-24 15:08:45.859297-ovs-vsctl --may-exist add-br 054445@sw001232 -- set bridge 054445@sw001232 datapath_type=system
+2022-06-24 15:08:46.300129-ovs-vsctl --may-exist add-port 054445@sw001232 054445@sw001232_int -- set interface 054445@sw001232_int type=patch options:peer=int_054445@sw001232 -- --may-exist add-port br-int int_054445@sw001232 -- set interface int_054445@sw001232 type=patch options:peer=054445@sw001232_int
+2022-06-24 15:08:46.534706-ovs-vsctl --may-exist add-br 054445@sw001233 -- set bridge 054445@sw001233 datapath_type=system
+2022-06-24 15:08:46.963727-ovs-vsctl --may-exist add-port 054445@sw001233 054445@sw001233_int -- set interface 054445@sw001233_int type=patch options:peer=int_054445@sw001233 -- --may-exist add-port br-int int_054445@sw001233 -- set interface int_054445@sw001233 type=patch options:peer=054445@sw001233_int
+2022-06-24 15:09:25.213151-ovs-vsctl --if-exists del-br 054283@sw001246
+2022-06-24 15:09:25.752297-ovs-vsctl --if-exists del-port int_054283@sw001246
+2022-06-24 15:09:31.479847-ovs-vsctl --if-exists del-br 054445@sw001232
+2022-06-24 15:09:32.022923-ovs-vsctl --if-exists del-port int_054445@sw001232
+2022-06-24 15:09:32.264111-ovs-vsctl --if-exists del-br 054445@sw001233
+2022-06-24 15:09:32.804418-ovs-vsctl --if-exists del-port int_054445@sw001233
+2022-06-24 15:09:48.719693-ovs-vsctl --may-exist add-br 054571@sw001232 -- set bridge 054571@sw001232 datapath_type=system
+2022-06-24 15:09:49.159104-ovs-vsctl --may-exist add-port 054571@sw001232 054571@sw001232_int -- set interface 054571@sw001232_int type=patch options:peer=int_054571@sw001232 -- --may-exist add-port br-int int_054571@sw001232 -- set interface int_054571@sw001232 type=patch options:peer=054571@sw001232_int
+2022-06-24 15:09:49.398193-ovs-vsctl --may-exist add-br 054571@sw001233 -- set bridge 054571@sw001233 datapath_type=system
+2022-06-24 15:09:49.836547-ovs-vsctl --may-exist add-port 054571@sw001233 054571@sw001233_int -- set interface 054571@sw001233_int type=patch options:peer=int_054571@sw001233 -- --may-exist add-port br-int int_054571@sw001233 -- set interface int_054571@sw001233 type=patch options:peer=054571@sw001233_int
+2022-06-24 15:11:56.589866-ovs-vsctl --may-exist add-br 054684@sw001246 -- set bridge 054684@sw001246 datapath_type=system
+2022-06-24 15:11:57.030234-ovs-vsctl --may-exist add-port 054684@sw001246 054684@sw001246_int -- set interface 054684@sw001246_int type=patch options:peer=int_054684@sw001246 -- --may-exist add-port br-int int_054684@sw001246 -- set interface int_054684@sw001246 type=patch options:peer=054684@sw001246_int
+2022-06-24 15:12:52.577865-ovs-vsctl --may-exist add-br 054735@sw001232 -- set bridge 054735@sw001232 datapath_type=system
+2022-06-24 15:12:53.012473-ovs-vsctl --may-exist add-port 054735@sw001232 054735@sw001232_int -- set interface 054735@sw001232_int type=patch options:peer=int_054735@sw001232 -- --may-exist add-port br-int int_054735@sw001232 -- set interface int_054735@sw001232 type=patch options:peer=054735@sw001232_int
+2022-06-24 15:12:53.251021-ovs-vsctl --may-exist add-br 054735@sw001233 -- set bridge 054735@sw001233 datapath_type=system
+2022-06-24 15:12:53.851353-ovs-vsctl --may-exist add-port 054735@sw001233 054735@sw001233_int -- set interface 054735@sw001233_int type=patch options:peer=int_054735@sw001233 -- --may-exist add-port br-int int_054735@sw001233 -- set interface int_054735@sw001233 type=patch options:peer=054735@sw001233_int
+2022-06-24 15:13:19.243801-ovs-vsctl --if-exists del-br 054735@sw001232
+2022-06-24 15:13:19.779782-ovs-vsctl --if-exists del-port int_054735@sw001232
+2022-06-24 15:13:20.014068-ovs-vsctl --if-exists del-br 054735@sw001233
+2022-06-24 15:13:20.649467-ovs-vsctl --if-exists del-port int_054735@sw001233
+2022-06-24 15:15:58.905189-ovs-vsctl --may-exist add-br 054800@sw001232 -- set bridge 054800@sw001232 datapath_type=system
+2022-06-24 15:15:59.341624-ovs-vsctl --may-exist add-port 054800@sw001232 054800@sw001232_int -- set interface 054800@sw001232_int type=patch options:peer=int_054800@sw001232 -- --may-exist add-port br-int int_054800@sw001232 -- set interface int_054800@sw001232 type=patch options:peer=054800@sw001232_int
+2022-06-24 15:15:59.579691-ovs-vsctl --may-exist add-br 054800@sw001233 -- set bridge 054800@sw001233 datapath_type=system
+2022-06-24 15:16:00.014798-ovs-vsctl --may-exist add-port 054800@sw001233 054800@sw001233_int -- set interface 054800@sw001233_int type=patch options:peer=int_054800@sw001233 -- --may-exist add-port br-int int_054800@sw001233 -- set interface int_054800@sw001233 type=patch options:peer=054800@sw001233_int
+2022-06-24 15:19:03.648586-ovs-vsctl --if-exists del-br 054800@sw001232
+2022-06-24 15:19:04.284095-ovs-vsctl --if-exists del-port int_054800@sw001232
+2022-06-24 15:19:04.517505-ovs-vsctl --if-exists del-br 054800@sw001233
+2022-06-24 15:19:05.154187-ovs-vsctl --if-exists del-port int_054800@sw001233
+2022-06-24 15:19:08.934219-ovs-vsctl --if-exists del-br 054684@sw001246
+2022-06-24 15:19:09.474155-ovs-vsctl --if-exists del-port int_054684@sw001246
+2022-06-24 15:20:26.779219-ovs-vsctl --if-exists del-br 054571@sw001232
+2022-06-24 15:20:27.345438-ovs-vsctl --if-exists del-port int_054571@sw001232
+2022-06-24 15:20:27.581024-ovs-vsctl --if-exists del-br 054571@sw001233
+2022-06-24 15:20:28.118443-ovs-vsctl --if-exists del-port int_054571@sw001233
+2022-06-24 15:53:12.001614-ovs-vsctl --if-exists del-br 050894@sw001203
+2022-06-24 15:53:12.641332-ovs-vsctl --if-exists del-port int_050894@sw001203
+2022-06-24 15:53:12.874854-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x2af
+2022-06-24 15:53:13.107228-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=140
+2022-06-24 15:53:13.337767-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x2b5
+2022-06-24 15:53:13.571981-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=141
+2022-06-24 15:53:13.807873-ovs-vsctl --if-exists del-br 050894@sw001204
+2022-06-24 15:53:14.344089-ovs-vsctl --if-exists del-port int_050894@sw001204
+2022-06-24 15:53:14.575669-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x2b5
+2022-06-24 15:53:14.809827-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=141
+2022-06-24 15:56:21.426198-ovs-vsctl --may-exist add-br 057362@sw003532 -- set bridge 057362@sw003532 datapath_type=system
+2022-06-24 15:56:21.869279-ovs-vsctl --may-exist add-port 057362@sw003532 057362@sw003532_int -- set interface 057362@sw003532_int type=patch options:peer=int_057362@sw003532 -- --may-exist add-port br-int int_057362@sw003532 -- set interface int_057362@sw003532 type=patch options:peer=057362@sw003532_int
+2022-06-24 15:56:22.124043-ovs-vsctl get port tap97d43a06-11 tag
+2022-06-24 15:56:22.360991-ovs-vsctl get port tap97d43a06-11 other_config
+2022-06-24 15:56:28.707193-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x11a action=mod_vlan_vid:167,resubmit(,10)
+2022-06-24 15:56:28.944997-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=167 actions=strip_vlan,load:0x11a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:56:29.212534-ovs-vsctl get port tapc4091f74-93 tag
+2022-06-24 15:56:29.447587-ovs-vsctl get port tapc4091f74-93 other_config
+2022-06-24 15:56:35.830582-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x11a action=mod_vlan_vid:167,resubmit(,10)
+2022-06-24 15:56:36.068020-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=167 actions=strip_vlan,load:0x11a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:56:36.320616-ovs-vsctl get port tapb2fc1e8f-aa tag
+2022-06-24 15:56:36.554288-ovs-vsctl get port tapb2fc1e8f-aa other_config
+2022-06-24 15:56:42.902594-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x11a action=mod_vlan_vid:167,resubmit(,10)
+2022-06-24 15:56:43.139939-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=167 actions=strip_vlan,load:0x11a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:56:43.411777-ovs-vsctl get port tapa5475e22-44 tag
+2022-06-24 15:56:43.647553-ovs-vsctl get port tapa5475e22-44 other_config
+2022-06-24 15:56:50.031473-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x11a action=mod_vlan_vid:167,resubmit(,10)
+2022-06-24 15:56:50.272268-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=167 actions=strip_vlan,load:0x11a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:56:50.541489-ovs-vsctl get port tap73009d4b-10 tag
+2022-06-24 15:56:50.778809-ovs-vsctl get port tap73009d4b-10 other_config
+2022-06-24 15:56:57.180026-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x11a action=mod_vlan_vid:167,resubmit(,10)
+2022-06-24 15:56:57.420153-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=167 actions=strip_vlan,load:0x11a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 15:56:58.470470-ovs-vsctl --if-exists del-br 057362@sw003532
+2022-06-24 15:56:59.016451-ovs-vsctl --if-exists del-port int_057362@sw003532
+2022-06-24 15:56:59.250104-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x11a
+2022-06-24 15:56:59.482849-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=167
+2022-06-24 16:03:34.275243-ovs-vsctl --may-exist add-br 057795@sw003532 -- set bridge 057795@sw003532 datapath_type=system
+2022-06-24 16:03:34.715561-ovs-vsctl --may-exist add-port 057795@sw003532 057795@sw003532_int -- set interface 057795@sw003532_int type=patch options:peer=int_057795@sw003532 -- --may-exist add-port br-int int_057795@sw003532 -- set interface int_057795@sw003532 type=patch options:peer=057795@sw003532_int
+2022-06-24 16:03:34.969895-ovs-vsctl get port tap26bb2ddb-ef tag
+2022-06-24 16:03:35.204369-ovs-vsctl get port tap26bb2ddb-ef other_config
+2022-06-24 16:03:41.612995-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x22a action=mod_vlan_vid:168,resubmit(,10)
+2022-06-24 16:03:41.849665-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=168 actions=strip_vlan,load:0x22a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:03:42.100657-ovs-vsctl get port tap481ec1df-40 tag
+2022-06-24 16:03:42.338572-ovs-vsctl get port tap481ec1df-40 other_config
+2022-06-24 16:03:48.681626-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x22a action=mod_vlan_vid:168,resubmit(,10)
+2022-06-24 16:03:48.915701-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=168 actions=strip_vlan,load:0x22a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:03:49.168339-ovs-vsctl get port tapaf8f71da-2f tag
+2022-06-24 16:03:49.402792-ovs-vsctl get port tapaf8f71da-2f other_config
+2022-06-24 16:03:55.742827-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x22a action=mod_vlan_vid:168,resubmit(,10)
+2022-06-24 16:03:55.978837-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=168 actions=strip_vlan,load:0x22a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:03:56.225544-ovs-vsctl get port tap94229725-8e tag
+2022-06-24 16:03:56.460445-ovs-vsctl get port tap94229725-8e other_config
+2022-06-24 16:04:02.796555-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x22a action=mod_vlan_vid:168,resubmit(,10)
+2022-06-24 16:04:03.030807-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=168 actions=strip_vlan,load:0x22a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:04:03.284368-ovs-vsctl get port tap7bc3721c-c1 tag
+2022-06-24 16:04:03.520731-ovs-vsctl get port tap7bc3721c-c1 other_config
+2022-06-24 16:04:09.857324-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x22a action=mod_vlan_vid:168,resubmit(,10)
+2022-06-24 16:04:10.093329-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=168 actions=strip_vlan,load:0x22a->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:04:10.526902-ovs-vsctl --if-exists del-br 057795@sw003532
+2022-06-24 16:04:11.083074-ovs-vsctl --if-exists del-port int_057795@sw003532
+2022-06-24 16:04:11.317246-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x22a
+2022-06-24 16:04:11.549002-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=168
+2022-06-24 16:05:02.598544-ovs-vsctl --may-exist add-br 057887@sw003532 -- set bridge 057887@sw003532 datapath_type=system
+2022-06-24 16:05:03.046007-ovs-vsctl --may-exist add-port 057887@sw003532 057887@sw003532_int -- set interface 057887@sw003532_int type=patch options:peer=int_057887@sw003532 -- --may-exist add-port br-int int_057887@sw003532 -- set interface int_057887@sw003532 type=patch options:peer=057887@sw003532_int
+2022-06-24 16:05:03.300603-ovs-vsctl get port tape70ba461-9f tag
+2022-06-24 16:05:03.541482-ovs-vsctl get port tape70ba461-9f other_config
+2022-06-24 16:05:09.924227-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x9 action=mod_vlan_vid:169,resubmit(,10)
+2022-06-24 16:05:10.166280-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=169 actions=strip_vlan,load:0x9->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:05:10.442168-ovs-vsctl get port tapf346e3fe-42 tag
+2022-06-24 16:05:10.677470-ovs-vsctl get port tapf346e3fe-42 other_config
+2022-06-24 16:05:17.084183-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x9 action=mod_vlan_vid:169,resubmit(,10)
+2022-06-24 16:05:17.319211-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=169 actions=strip_vlan,load:0x9->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:05:17.592732-ovs-vsctl get port tap4349667a-73 tag
+2022-06-24 16:05:17.829887-ovs-vsctl get port tap4349667a-73 other_config
+2022-06-24 16:05:24.241888-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x9 action=mod_vlan_vid:169,resubmit(,10)
+2022-06-24 16:05:24.481879-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=169 actions=strip_vlan,load:0x9->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:05:24.757508-ovs-vsctl get port tap553cf89c-50 tag
+2022-06-24 16:05:24.994185-ovs-vsctl get port tap553cf89c-50 other_config
+2022-06-24 16:05:31.403048-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x9 action=mod_vlan_vid:169,resubmit(,10)
+2022-06-24 16:05:31.637697-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=169 actions=strip_vlan,load:0x9->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:05:31.911840-ovs-vsctl get port tap2319a018-8f tag
+2022-06-24 16:05:32.147063-ovs-vsctl get port tap2319a018-8f other_config
+2022-06-24 16:05:38.559423-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x9 action=mod_vlan_vid:169,resubmit(,10)
+2022-06-24 16:05:38.793686-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=169 actions=strip_vlan,load:0x9->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:05:39.558424-ovs-vsctl --if-exists del-br 057887@sw003532
+2022-06-24 16:05:40.200172-ovs-vsctl --if-exists del-port int_057887@sw003532
+2022-06-24 16:05:40.439403-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x9
+2022-06-24 16:05:40.673983-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=169
+2022-06-24 16:15:08.947781-ovs-vsctl --may-exist add-br 058366@sw003532 -- set bridge 058366@sw003532 datapath_type=system
+2022-06-24 16:15:09.386326-ovs-vsctl --may-exist add-port 058366@sw003532 058366@sw003532_int -- set interface 058366@sw003532_int type=patch options:peer=int_058366@sw003532 -- --may-exist add-port br-int int_058366@sw003532 -- set interface int_058366@sw003532 type=patch options:peer=058366@sw003532_int
+2022-06-24 16:15:40.681206-ovs-vsctl --if-exists del-br 058366@sw003532
+2022-06-24 16:15:41.215913-ovs-vsctl --if-exists del-port int_058366@sw003532
+2022-06-24 16:16:38.457807-ovs-vsctl --may-exist add-br 058584@sw003532 -- set bridge 058584@sw003532 datapath_type=system
+2022-06-24 16:16:38.896246-ovs-vsctl --may-exist add-port 058584@sw003532 058584@sw003532_int -- set interface 058584@sw003532_int type=patch options:peer=int_058584@sw003532 -- --may-exist add-port br-int int_058584@sw003532 -- set interface int_058584@sw003532 type=patch options:peer=058584@sw003532_int
+2022-06-24 16:16:57.901329-ovs-vsctl get port tap00b3cf83-87 tag
+2022-06-24 16:16:58.137002-ovs-vsctl get port tap00b3cf83-87 other_config
+2022-06-24 16:17:04.535191-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x2d7 action=mod_vlan_vid:1,resubmit(,10)
+2022-06-24 16:17:04.773935-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=1 actions=strip_vlan,load:0x2d7->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:17:05.034126-ovs-vsctl get port tap6f316807-da tag
+2022-06-24 16:17:05.271627-ovs-vsctl get port tap6f316807-da other_config
+2022-06-24 16:17:11.685560-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x2d7 action=mod_vlan_vid:1,resubmit(,10)
+2022-06-24 16:17:11.922152-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=1 actions=strip_vlan,load:0x2d7->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:17:12.270421-ovs-vsctl --if-exists del-br 058584@sw003532
+2022-06-24 16:17:12.910108-ovs-vsctl --if-exists del-port int_058584@sw003532
+2022-06-24 16:17:13.146199-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x2d7
+2022-06-24 16:17:13.379433-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=1
+2022-06-24 16:18:32.762702-ovs-vsctl --may-exist add-br 058699@sw003532 -- set bridge 058699@sw003532 datapath_type=system
+2022-06-24 16:18:33.100496-ovs-vsctl --may-exist add-port 058699@sw003532 058699@sw003532_int -- set interface 058699@sw003532_int type=patch options:peer=int_058699@sw003532 -- --may-exist add-port br-int int_058699@sw003532 -- set interface int_058699@sw003532 type=patch options:peer=058699@sw003532_int
+2022-06-24 16:18:51.774976-ovs-vsctl get port tapa0312a7c-6c tag
+2022-06-24 16:18:52.009463-ovs-vsctl get port tapa0312a7c-6c other_config
+2022-06-24 16:18:58.340047-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x51 action=mod_vlan_vid:2,resubmit(,10)
+2022-06-24 16:18:58.570569-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=2 actions=strip_vlan,load:0x51->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:19:04.968047-ovs-vsctl get port tap3dfc1d73-0a tag
+2022-06-24 16:19:05.203861-ovs-vsctl get port tap3dfc1d73-0a other_config
+2022-06-24 16:19:11.613574-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x51 action=mod_vlan_vid:2,resubmit(,10)
+2022-06-24 16:19:11.846863-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=2 actions=strip_vlan,load:0x51->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:19:40.630456-ovs-vsctl --if-exists del-br 058699@sw003532
+2022-06-24 16:19:41.275615-ovs-vsctl --if-exists del-port int_058699@sw003532
+2022-06-24 16:19:41.509384-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x51
+2022-06-24 16:19:41.744265-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=2
+2022-06-24 16:26:29.989961-ovs-vsctl --may-exist add-br 059045@sw003532 -- set bridge 059045@sw003532 datapath_type=system
+2022-06-24 16:26:30.426428-ovs-vsctl --may-exist add-port 059045@sw003532 059045@sw003532_int -- set interface 059045@sw003532_int type=patch options:peer=int_059045@sw003532 -- --may-exist add-port br-int int_059045@sw003532 -- set interface int_059045@sw003532 type=patch options:peer=059045@sw003532_int
+2022-06-24 16:26:49.171516-ovs-vsctl get port tap14805bd5-dd tag
+2022-06-24 16:26:49.407510-ovs-vsctl get port tap14805bd5-dd other_config
+2022-06-24 16:26:55.800808-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x138 action=mod_vlan_vid:3,resubmit(,10)
+2022-06-24 16:26:56.036361-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=3 actions=strip_vlan,load:0x138->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 16:27:38.877872-ovs-vsctl --if-exists del-br 059045@sw003532
+2022-06-24 16:27:39.516797-ovs-vsctl --if-exists del-port int_059045@sw003532
+2022-06-24 16:27:39.751702-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x138
+2022-06-24 16:27:39.985154-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=3
+2022-06-24 17:15:58.948702-ovs-vsctl --may-exist add-br 062050@sw003532 -- set bridge 062050@sw003532 datapath_type=system
+2022-06-24 17:15:59.209927-ovs-vsctl --may-exist add-port 062050@sw003532 062050@sw003532_int -- set interface 062050@sw003532_int type=patch options:peer=int_062050@sw003532 -- --may-exist add-port br-int int_062050@sw003532 -- set interface int_062050@sw003532 type=patch options:peer=062050@sw003532_int
+2022-06-24 17:20:43.529520-ovs-vsctl --if-exists del-br 062050@sw003532
+2022-06-24 17:20:44.010181-ovs-vsctl --if-exists del-port int_062050@sw003532
+2022-06-24 17:37:48.552952-ovs-vsctl --may-exist add-br 063311@sw003532 -- set bridge 063311@sw003532 datapath_type=system
+2022-06-24 17:37:48.821739-ovs-vsctl --may-exist add-port 063311@sw003532 063311@sw003532_int -- set interface 063311@sw003532_int type=patch options:peer=int_063311@sw003532 -- --may-exist add-port br-int int_063311@sw003532 -- set interface int_063311@sw003532 type=patch options:peer=063311@sw003532_int
+2022-06-24 17:38:15.700855-ovs-vsctl get port tap90f9b1df-19 tag
+2022-06-24 17:38:15.764613-ovs-vsctl get port tap90f9b1df-19 other_config
+2022-06-24 17:38:22.543097-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x287 action=mod_vlan_vid:9,resubmit(,10)
+2022-06-24 17:38:22.602868-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=9 actions=strip_vlan,load:0x287->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 17:41:42.998231-ovs-vsctl --if-exists del-br 063311@sw003532
+2022-06-24 17:41:43.460294-ovs-vsctl --if-exists del-port int_063311@sw003532
+2022-06-24 17:41:43.534720-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x287
+2022-06-24 17:41:43.596776-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=9
+2022-06-24 17:52:27.483101-ovs-vsctl --may-exist add-br 064212@sw003532 -- set bridge 064212@sw003532 datapath_type=system
+2022-06-24 17:52:27.742959-ovs-vsctl --may-exist add-port 064212@sw003532 064212@sw003532_int -- set interface 064212@sw003532_int type=patch options:peer=int_064212@sw003532 -- --may-exist add-port br-int int_064212@sw003532 -- set interface int_064212@sw003532 type=patch options:peer=064212@sw003532_int
+2022-06-24 17:52:33.210885-ovs-vsctl get port tap62950003-c2 tag
+2022-06-24 17:52:33.274093-ovs-vsctl get port tap62950003-c2 other_config
+2022-06-24 17:52:40.017146-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x1a1 action=mod_vlan_vid:10,resubmit(,10)
+2022-06-24 17:52:40.082582-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=10 actions=strip_vlan,load:0x1a1->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 17:52:50.921795-ovs-vsctl get port tapbd426871-6d tag
+2022-06-24 17:52:50.984483-ovs-vsctl get port tapbd426871-6d other_config
+2022-06-24 17:52:57.772404-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x1a1 action=mod_vlan_vid:10,resubmit(,10)
+2022-06-24 17:52:57.835875-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=10 actions=strip_vlan,load:0x1a1->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 17:54:34.086098-ovs-vsctl --if-exists del-br 064212@sw003532
+2022-06-24 17:54:34.550712-ovs-vsctl --if-exists del-port int_064212@sw003532
+2022-06-24 17:54:34.628206-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x1a1
+2022-06-24 17:54:34.691789-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=10
+2022-06-24 18:03:33.047904-ovs-vsctl --may-exist add-br 064961@sw003532 -- set bridge 064961@sw003532 datapath_type=system
+2022-06-24 18:03:33.486720-ovs-vsctl --may-exist add-port 064961@sw003532 064961@sw003532_int -- set interface 064961@sw003532_int type=patch options:peer=int_064961@sw003532 -- --may-exist add-port br-int int_064961@sw003532 -- set interface int_064961@sw003532 type=patch options:peer=064961@sw003532_int
+2022-06-24 18:03:41.590469-ovs-vsctl get port tap9f4272e2-f6 tag
+2022-06-24 18:03:42.104176-ovs-vsctl get port tap9f4272e2-f6 other_config
+2022-06-24 18:03:49.032252-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x221 action=mod_vlan_vid:11,resubmit(,10)
+2022-06-24 18:03:49.091508-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=11 actions=strip_vlan,load:0x221->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 18:03:54.521503-ovs-vsctl get port tapd3816a50-56 tag
+2022-06-24 18:03:54.602770-ovs-vsctl get port tapd3816a50-56 other_config
+2022-06-24 18:04:01.340044-ovs-ofctl add-flow br-tun table=4,priority=1,tun_id=0x221 action=mod_vlan_vid:11,resubmit(,10)
+2022-06-24 18:04:01.402251-ovs-ofctl add-flow br-tun table=22,priority=1,dl_vlan=11 actions=strip_vlan,load:0x221->NXM_NX_TUN_ID[],output:vxlan-c0a8caf7,vxlan-c0a8ca17
+2022-06-24 18:07:22.292308-ovs-vsctl --if-exists del-br 064961@sw003532
+2022-06-24 18:07:22.751688-ovs-vsctl --if-exists del-port int_064961@sw003532
+2022-06-24 18:07:22.827764-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=4,tun_id=0x221
+2022-06-24 18:07:22.891653-ovs-ofctl del-flows br-tun cookie=0x0/-1,table=22,dl_vlan=11
