@@ -13,7 +13,7 @@
 __all__ = ('AdminApiRepo', 'UserApiRepo', 'placeholder')
 
 from super_dong.apis.admin.account.api import Login
-from super_dong.apis.admin.money.api import Create, QuickCreate
+from super_dong.apis.admin.money.api import Create, QuickCreate, Details
 from super_dong.apis.file_download.api import FileDownload
 from super_dong.apis.file_upload.api import FileUpload
 from super_dong.frame.core.api_repo import BaseRepo
@@ -36,6 +36,7 @@ class UserApiRepo(BaseRepo):
 AdminApiRepo.add(Login)
 AdminApiRepo.add(Create)
 AdminApiRepo.add(QuickCreate)
+AdminApiRepo.add(Details)
 
 
 class FileDownloadRepo(BaseRepo):

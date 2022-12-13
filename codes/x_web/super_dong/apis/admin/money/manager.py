@@ -17,6 +17,7 @@ from django.forms import model_to_dict
 
 from super_dong.frame.contri.manager import BaseManager
 from super_dong.frame.core.exception import BusinessLogicError
+from super_dong.frame.utils.query_tools import TearParts
 from super_dong.model_store.models import MyShit
 
 
@@ -28,7 +29,7 @@ class MyShitManager(BaseManager):
 
     @classmethod
     def create(cls, **data):
-        total = data['amount']
+        cls.MODEL.create(**data)
 
     @classmethod
     def quick_create(cls, **data):
@@ -68,3 +69,33 @@ class MyShitManager(BaseManager):
             cls.MODEL.objects.bulk_create(new_data)
         else:
             raise BusinessLogicError(f'there is no data 2 copy')
+
+    @classmethod
+    def details(cls, search_info, page_info):
+        date = search_info.get('date')
+        qs = cls.search()
+
+        if date:
+            start_ = f'{str(date)} 00:00:00'
+            end_ = f'{str(date)} 23:59:59'
+            qs.filter(create_time__gte=start_, create_time__lte=end_)
+        qs = TearParts(qs, page_info['page_num'], page_info['page_size'])
+        total = 0
+        data = []
+        for item in qs.data:
+            item: MyShit
+            data.append({
+                "id": item.id,
+                "name": item.name,
+                "amount": item.amount,
+                "invest_type": item.get_invest_type_display(),
+                "net_worth": item.net_worth,
+                "status": item.get_status_display(),
+                "app": item.get_app_display(),
+                "ex_info": item.ex_info,
+                "remark": item.remark,
+                "create_time": item.create_time
+
+            })
+            total += item.amount
+        return data, total

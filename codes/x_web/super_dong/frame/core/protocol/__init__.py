@@ -91,6 +91,7 @@ class SuperDongProtocol(object):
             for field_name, attr_obj in r_data_ins._field_attr_mapping.items():
                 if field_name in r_data:
                     setattr(r_data_ins, field_name, r_data[field_name])
+                    r_data[field_name] = getattr(r_data_ins, field_name)
                 else:
                     if attr_obj.is_required:
                         raise DataKeyMissingError(
@@ -98,6 +99,7 @@ class SuperDongProtocol(object):
                         )
                     if attr_obj.default is not None:
                         setattr(r_data_ins, field_name, attr_obj.default)
+
         return api_ins
 
     @classmethod

@@ -50,7 +50,7 @@ def executor(request: WSGIRequest):
             'data': ret_data
         }
         return SuperDongResponse(response_data, ctn_type).data
-    except Exception as e:
+    except IndexError as e:
 
         print(f"{PRINT_PREFIX} exception: {e}")
         response_data = {

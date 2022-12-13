@@ -15,7 +15,7 @@
 __all__ = ("MyShit",)
 
 from django.db.models import CharField, IntegerField, JSONField, \
-    SmallIntegerField, IntegerChoices
+    SmallIntegerField, IntegerChoices, DecimalField
 
 from super_dong.model_store import SuperDong
 from super_dong.model_store.base import BaseModel
@@ -23,9 +23,9 @@ from super_dong.model_store.base import BaseModel
 
 class MyShit(BaseModel):
     class InvestStatus(IntegerChoices):
-        SELL_OUT = 0
-        BUY_IN = 1
-        HOLD = 2
+        SELL_OUT = 0, 'sell out'
+        BUY_IN = 1, 'buy in'
+        HOLD = 2, 'hold'
 
     class InvestType(IntegerChoices):
         SAVING = 0, "saving"
@@ -36,21 +36,20 @@ class MyShit(BaseModel):
         STOCKS = 5, "stocks"
 
     class App(IntegerChoices):
-        ALIPAY = 0
-        WECHAT = 1
-        INVEST_BANK = 2
+        ALIPAY = 0, 'alipay'
+        WECHAT = 1, 'wechat'
+        INVEST_BANK = 2, 'invest bank'
 
     name = CharField(verbose_name="where the money is", max_length=32)
-    amount = IntegerField(verbose_name="how many here is", default=0)
+    amount = DecimalField(verbose_name="how many here is", default=0, max_digits=11, decimal_places=2)
     invest_type = SmallIntegerField(verbose_name="invest type",
-                                    default=InvestType.SAVING)
-    net_worth = IntegerField(verbose_name="net_worth", default=0)
-    status = SmallIntegerField(verbose_name="status", default=InvestStatus.HOLD)
-    total = IntegerField(verbose_name="today's money", default=0)
-    app = SmallIntegerField(verbose_name="money app", default=App.INVEST_BANK)
+                                    default=InvestType.SAVING, choices=InvestType.choices)
+    net_worth = DecimalField(verbose_name="net_worth", default=0, max_digits=11, decimal_places=2)
+    status = SmallIntegerField(verbose_name="status", default=InvestStatus.HOLD, choices=InvestStatus.choices)
+    app = SmallIntegerField(verbose_name="money app", default=App.INVEST_BANK, choices=App.choices)
 
     ex_info = JSONField(verbose_name="ex_info", default=dict)
-    remake = CharField(verbose_name="remark", max_length=128)
+    remark = CharField(verbose_name="remark", max_length=128)
 
     class Meta:
         ordering = ("-create_time",)

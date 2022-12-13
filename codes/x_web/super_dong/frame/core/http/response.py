@@ -31,7 +31,13 @@ class SuperDongResponse(object):
     ctn_type: str
 
     def http_response(self):
-        return HttpResponse(json.dumps(self.rsp_data))
+        resp = HttpResponse(json.dumps(self.rsp_data))
+        resp['Content-Type'] = 'application/json'
+        resp['Access-Control-Allow-Origin'] = '*'  # 处理跨域请求
+        resp['Access-Control-Max-Age'] = 86400
+        resp['Access-Control-Allow-Methods'] = '*'
+        resp['Access-Control-Allow-Headers'] = '*'
+        return resp
 
     def streaming_http_response(self):
         ...

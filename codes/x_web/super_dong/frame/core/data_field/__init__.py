@@ -115,7 +115,8 @@ class CharField(BaseField):
     def __init__(self, max_length: int = None, **kwargs):
         super(CharField, self).__init__(**kwargs)
         if max_length is None:
-            raise ValueError('CharField must have attr: max_length')
+            # raise ValueError('CharField must have attr: max_length')
+            max_length = -1
         if not isinstance(max_length, int):
             raise ValueError('CharField\'s attr: max_length must be integer.')
         if max_length < -1:
@@ -151,17 +152,20 @@ class ListField(BaseField):
                 f'{self._name}\'s value: <{value}> is not iterable.')
 
         tmp_obj = type('list_tmp_cls', (), {'tmp': self._item})()
+
+        new_value = []
         for item in value:
             try:
                 tmp_obj.tmp = item
             except ValueError as e:
                 raise DataError(e)
-        return value
+            new_value.append(tmp_obj.tmp)
+        return new_value
 
 
 class DictField(BaseField):
 
-    def __init__(self, members: dict, strict: bool = False, **kwargs):
+    def __init__(self, members: dict, strict: bool = True, **kwargs):
         super(DictField, self).__init__(**kwargs)
         self._strict = strict
         for _, field_cls in members.items():
@@ -175,10 +179,14 @@ class DictField(BaseField):
             raise DataError(f'{self._name}\'s value is not a dict')
 
         if self._strict:
-            missing_key = set(self._members.keys()) - set(value.keys())
-            if missing_key:
+            missing_keys = set(self._members.keys()) - set(value.keys())
+            if missing_keys:
                 raise DataError(
-                    f'{self._name}\'s keys: \'{", ".join(missing_key)}\' is/are missing.')
+                    f'{self._name}\'s keys: \'{", ".join(missing_keys)}\' is/are missing.')
+            redundant_keys = set(value.keys()) - set(self._members.keys())
+            if redundant_keys:
+                raise DataError(
+                    f'{self._name}\'s keys: \'{", ".join(redundant_keys)}\' is/are not needed.')
 
         tmp_obj = type('dict_tmp_cls', (), self._members)()
 
@@ -187,6 +195,31 @@ class DictField(BaseField):
                 setattr(tmp_obj, key, v)
             except ValueError as e:
                 raise DataError(e)
+        value = tmp_obj.__dict__
+        return value
+
+
+class DateField(BaseField):
+
+    def __init__(self, to_str: bool = False, **kwargs):
+        self._to_str = to_str
+        super(DateField, self).__init__(**kwargs)
+
+    def _parse(self, value) -> Any:
+        if isinstance(value, str):
+            try:
+                value = datetime.datetime.strptime(value, "%Y-%m-%d")
+                value = datetime.date(value.year, value.month, value.day)
+            except Exception as _:
+                raise DataError(
+                    f'{self._name}\'s format must be like: "1992-09-27"')
+        elif isinstance(value, datetime.date):
+            pass
+        else:
+            raise DataError(
+                f'{self._name} must be a str or dateformat, not {type(value)}')
+        if self._to_str:
+            value = value.strftime("%Y-%m-%d")
         return value
 
 
