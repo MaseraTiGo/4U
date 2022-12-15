@@ -18,6 +18,7 @@ from super_dong.frame.core.exception import DataError
 
 
 class BaseField(abc.ABC):
+    INDEX = "    "
 
     def __init__(self, verbose: str = None, validators: List = None,
                  choices: List = None, is_required: bool = True, default=None,
@@ -26,7 +27,7 @@ class BaseField(abc.ABC):
             raise DataError(
                 f'{self.__class__.__name__}\'s verbose can not be empty str or None'
             )
-        self._verbose = verbose
+        self.verbose = verbose
         self._validators = validators if validators is not None else []
         self._choices = choices if choices is not None else []
         self.is_required = is_required
@@ -34,7 +35,18 @@ class BaseField(abc.ABC):
 
     @abc.abstractmethod
     def _parse(self, value) -> Any:
-        pass
+        raise NotImplementedError
+
+    def display(self, level=0) -> any:
+        ret = f'{self.INDEX * level}{self._name}: {self.__class__.__name__} # {self.verbose}'
+
+        if not self.is_required:
+            ret += " | Not Necessary"
+        if self._choices:
+            ret += f" | Choices: {self._choices}"
+        if self.default is not None:
+            ret += f" | Default: {self.default}"
+        return ret
 
     def _validator_perform(self, value):
         for validator in self._validators:
@@ -125,7 +137,7 @@ class CharField(BaseField):
 
         self._max_length = max_length
 
-    def _parse(self, value) -> Any:
+    def _parse(self, value, level=0) -> Any:
         if not isinstance(value, (str, int)):
             raise ValueError(f'"{value}" is not a valid char')
 
@@ -145,22 +157,29 @@ class ListField(BaseField):
             raise DataError(
                 f'{item.__class__.__name__} can not be nested.')
         self._item = item
+        self.inner_field_name = f'...<{self._item.__class__.__name__}>'
+        self._tmp_obj = type('list_tmp_cls', (), {self.inner_field_name: self._item})()
 
     def _parse(self, value) -> Any:
         if not isinstance(value, Iterable):
             raise DataError(
                 f'{self._name}\'s value: <{value}> is not iterable.')
 
-        tmp_obj = type('list_tmp_cls', (), {'tmp': self._item})()
-
         new_value = []
         for item in value:
             try:
-                tmp_obj.tmp = item
+                setattr(self._tmp_obj, self.inner_field_name, item)
             except ValueError as e:
                 raise DataError(e)
-            new_value.append(tmp_obj.tmp)
+            new_value.append(getattr(self._tmp_obj, self.inner_field_name))
         return new_value
+
+    def display(self, level=0) -> any:
+        base_index = self.INDEX * level
+        title = f'{base_index}{self._name}: list[array] # {self.verbose}\n'
+        details = self._item.display(level=level + 1)
+        details = "%s[\n%s\n%s]" % (base_index, details, base_index)
+        return title + details
 
 
 class DictField(BaseField):
@@ -173,6 +192,7 @@ class DictField(BaseField):
                 raise DataError(
                     f'{field_cls.__class__.__name__} can not be nested.')
         self._members = members
+        self._tmp_obj = type('dict_tmp_cls', (), self._members)()
 
     def _parse(self, value: dict) -> Any:
         if not isinstance(value, dict):
@@ -197,6 +217,18 @@ class DictField(BaseField):
                 raise DataError(e)
         value = tmp_obj.__dict__
         return value
+
+    def display(self, level=0) -> any:
+        base_index = self.INDEX * level
+        title = f'{base_index}{self._name}: dict[object] # {self.verbose}\n'
+        details = []
+        for mem in self._members.values():
+            details.append(mem.display(level=level + 1))
+
+        col_info = "\n".join(details)
+
+        details = "%s{\n%s\n%s}" % (base_index, col_info, base_index)
+        return title + details
 
 
 class DateField(BaseField):

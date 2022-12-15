@@ -10,10 +10,12 @@
                                                 |/
 """
 
-__all__ = ('SuperDongProtocol',)
+__all__ = ('SuperDongProtocol', 'initialize_api_repo_files')
 
+import importlib
 from typing import Tuple
 
+from django.conf import settings
 from django.core.handlers.wsgi import WSGIRequest
 
 from super_dong.apis.admin.account.api import Login
@@ -22,10 +24,19 @@ from super_dong.frame.core.api_repo import BaseRepo, CtnManager
 from super_dong.frame.core.data_field.data_type import ResponseData, RequestData
 from super_dong.frame.core.exception import DataKeyMissingError, \
     DataProcessorNotSupportError, HttpMethodNotSupportError, \
-    HttpCtnTypeNotMatchError
-from super_dong.register_center import *
+    HttpCtnTypeNotMatchError, RouteServiceNotFoundError
 
-placeholder()
+
+def initialize_api_repo_files():
+    try:
+        repo_files = settings.API_REGISTER_FILES
+    except AttributeError:
+        repo_files = []
+    if not repo_files:
+        warning = "[no api register file was found.]"
+        print(f"\033[33m {warning:*^88} \033[39m")
+    for file in repo_files:
+        importlib.import_module(file)
 
 
 def get_service_tag_and_api_str(url: str) -> tuple:
@@ -36,7 +47,9 @@ def get_service_tag_and_api_str(url: str) -> tuple:
 
 def get_api_relative_things(request: WSGIRequest) -> Tuple[ApiBase, dict, str]:
     service_tag, api_str = get_service_tag_and_api_str(request.path_info)
-    api_repo = BaseRepo.FULL_API_MAPPING[service_tag]  # type: BaseRepo
+    api_repo = BaseRepo.FULL_API_MAPPING.get(service_tag) # type: BaseRepo
+    if not api_repo:
+        raise RouteServiceNotFoundError(f"service: <{service_tag}> is not exist.")
     if request.content_type != api_repo.ACCEPT:
         raise HttpCtnTypeNotMatchError(f'api requires: {api_repo.ACCEPT}, '
                                        f'but get: {request.content_type}')
@@ -53,6 +66,7 @@ def get_api_relative_things(request: WSGIRequest) -> Tuple[ApiBase, dict, str]:
 
 
 class SuperDongProtocol(object):
+    initialize_api_repo_files()
 
     @staticmethod
     def _parse_data(api_cls: [ApiBase], data: dict,
@@ -78,7 +92,7 @@ class SuperDongProtocol(object):
             )
 
         if attrs and not data:
-            raise DataKeyMissingError(f"tidied data can not be None.")
+            raise DataKeyMissingError(f"request/tidied data can not be None.")
 
         for attr in attrs:
             if attr not in data:

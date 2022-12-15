@@ -11,6 +11,9 @@
                                                  /| 
                                                 |/  
 """
+import datetime
+
+from super_dong.frame.core.exception import BusinessLogicError
 
 
 class BaseManager(object):
@@ -27,3 +30,15 @@ class BaseManager(object):
     @classmethod
     def create(cls, **create_info):
         return cls.MODEL.create(**create_info)
+
+    @classmethod
+    def search_date(cls, date, col="create_time"):
+        if date is None:
+            raise BusinessLogicError(f"date can not be none.")
+        if isinstance(date, datetime.datetime):
+            date = date.date()
+        search_info = {
+            f"{col}__gte": f"{str(date)} 00:00:00",
+            f"{col}__lte": f"{str(date)} 23:59:59"
+        }
+        return cls.search(**search_info)

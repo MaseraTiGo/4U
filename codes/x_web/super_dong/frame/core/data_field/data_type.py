@@ -12,9 +12,20 @@
 
 __all__ = ('RequestData', 'ResponseData')
 
+from super_dong.frame.core.data_field import BaseField
 from super_dong.frame.core.exception import AttrTypeError, AttrNotSupportError, \
     AttrConflictError
 from super_dong.frame.core.http.request import request_access_method
+
+
+@classmethod
+def display(cls, level=0):
+    pivot_index = '    ' * level
+    title = f"{pivot_index}@{cls.__name__} - Dict[object] # {cls.__doc__}\n"
+    fields = [attr for attr in vars(cls).values() if
+              isinstance(attr, BaseField)]
+    details = "\n".join([field.display(level=level+1) for field in fields])
+    return title + "%s{\n%s\n%s}" % (pivot_index, details, pivot_index)
 
 
 class RData(type):
@@ -24,6 +35,7 @@ class RData(type):
         dante = super(RData, mcs).__new__(mcs, *args, **kwargs)
         _attrs = args[-1]  # type: dict
         dante._superDong = args[0]
+        dante.display = display
         dante._field_attr_mapping = {k: v for k, v in _attrs.items() if not k.startswith('__')}
         for attr, value in _attrs.items():
             cls_name = value.__class__.__name__

@@ -1,0 +1,18 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for item, value in data.items %}
+    <p> 服务标识： {{ item }}</p>
+    {% for entry in value %}
+        {% for api, api_info in entry.items %}
+            <h4>接口名：<font color="blue">{{ api }} </font></h4>
+            <pre style="padding:20px;border:2px solid gray;color: mediumslateblue">{{ api_info }}</pre>
+        {% endfor %}
+    {%  endfor %}
+{% endfor %}
+
+</body>
+</html>

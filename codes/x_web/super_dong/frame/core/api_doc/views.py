@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# @File    : __init__.py
-# @Project : djangoProject
-# @Time    : 2022/10/26 16:50
+# @File    : views.py
+# @Project : x_web
+# @Time    : 2022/12/14 13:58
 # once, I want 2 leave my name 2 the history
 # sadly, I find that my hair gets pale
 """                     
@@ -11,30 +11,12 @@
                                                  /| 
                                                 |/  
 """
+from django.http import HttpResponse
+from django.shortcuts import render
 
-import abc
-
-
-class A(abc.ABC):
-    M = {}
-    _N = None
-
-    @classmethod
-    def add(cls, apis):
-        cls._N = cls._N if cls._N else {}
-        cls._N[apis] = apis
+from super_dong.frame.core.api_doc import ApiDocGenerator
 
 
-class B(A):
-    ...
-
-
-class C(A):
-    ...
-
-
-B.add(1)
-print(B._N)
-C.add(2)
-print(B._N)
-print(C._N)
+def api_doc(request):
+    data = ApiDocGenerator.the_doke()
+    return render(request, 'api_doc.html', {"data": data})

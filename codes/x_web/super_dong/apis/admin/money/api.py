@@ -9,6 +9,7 @@
                                                  /| 
                                                 |/  
 """
+from super_dong.frame.core.api_doc import ApiDocGenerator
 from super_dong.apis.admin.money.manager import MyShitManager
 from super_dong.frame.core.api import AuthApi
 from super_dong.frame.core.data_field import CharField, IntField, DateTimeField, \
@@ -18,6 +19,7 @@ from super_dong.frame.core.data_field.data_type import RequestData, ResponseData
 
 class Create(AuthApi):
     class data(RequestData):
+        """create info"""
         name = CharField(
             verbose='fucking name', max_length=-1
         )
@@ -85,7 +87,6 @@ class QuickCreate(AuthApi):
         pass
 
     def execute(self):
-        print(f"dong ------------>: {self.data.as_dict()}")
         MyShitManager.quick_create(**self.data.as_dict())
 
     def tidy(self, *ret):
@@ -148,3 +149,214 @@ class Details(AuthApi):
             'total': {'total': total},
             'data': {'data': data},
         }
+
+
+class Delete(AuthApi):
+    class data(RequestData):
+        id_ = IntField(verbose="id")
+
+    @classmethod
+    def get_desc(cls):
+        pass
+
+    @classmethod
+    def get_author(cls):
+        pass
+
+    @classmethod
+    def get_history(cls):
+        pass
+
+    @classmethod
+    def get_unique_num(cls):
+        pass
+
+    def execute(self):
+        MyShitManager.quick_create(**self.data.id_)
+
+    def tidy(self, *ret):
+        pass
+
+
+class Update(AuthApi):
+    class data(RequestData):
+        id_ = IntField(verbose="id")
+        name = CharField(
+            verbose='fucking name', max_length=-1, is_required=False
+        )
+        amount = FloatField(verbose='fucking age', is_required=False)
+        invest_type = IntField(
+            verbose='invest type',
+            choices=MyShitManager.InvestType_Choices,
+            is_required=False
+        )
+        status = IntField(
+            verbose="invest status",
+            choices=MyShitManager.Status_Choices,
+            is_required=False
+        )
+        app = IntField(
+            verbose='app type',
+            choices=MyShitManager.App_Choices,
+            is_required=False
+        )
+        ex_info = AlmightyField(verbose='ex info', is_required=False)
+        remark = CharField(
+            verbose='actually remark',
+            max_length=128,
+            is_required=False)
+
+    @classmethod
+    def get_desc(cls):
+        pass
+
+    @classmethod
+    def get_author(cls):
+        pass
+
+    @classmethod
+    def get_history(cls):
+        pass
+
+    @classmethod
+    def get_unique_num(cls):
+        pass
+
+    def execute(self):
+        MyShitManager.update(**self.data.as_dict())
+
+    def tidy(self, *ret):
+        pass
+
+
+class CalNetWorth(AuthApi):
+    class data(RequestData):
+        date = DateField(verbose='calculate date', is_required=False)
+
+    @classmethod
+    def get_desc(cls):
+        return "api 4 CalNetWorth"
+
+    @classmethod
+    def get_author(cls):
+        return "superDong"
+
+    @classmethod
+    def get_history(cls):
+        return "Alpha-001"
+
+    @classmethod
+    def get_unique_num(cls):
+        return 100001
+
+    def execute(self):
+        MyShitManager.calculate_net_worth(self.data.as_dict().get('date'))
+
+    def tidy(self, *ret):
+        pass
+
+
+class ShitProfile(AuthApi):
+    class data(ResponseData):
+        profile = AlmightyField(verbose='almighty profile')
+
+    @classmethod
+    def get_desc(cls):
+        return "api 4 ShitProfile"
+
+    @classmethod
+    def get_author(cls):
+        return "superDong"
+
+    @classmethod
+    def get_history(cls):
+        return "Alpha-001"
+
+    @classmethod
+    def get_unique_num(cls):
+        return 100001
+
+    def execute(self):
+        return MyShitManager.shit_profile()
+
+    def tidy(self, *ret):
+        return {
+            "data": {
+                "profile": ret[0]
+            }
+        }
+
+
+class DocTest(AuthApi):
+    class req_data(RequestData):
+        """this is just a request data lalala"""
+
+        data = ListField(
+            verbose='list test',
+            item=DictField(
+                verbose='item detail',
+                members={
+                    'id': IntField(verbose='id'),
+                    'name': CharField(verbose='name'),
+                    "hobbit": ListField(
+                        verbose="hobbits",
+                        item=DictField(
+                            verbose="dict",
+                            members={
+                                "name": CharField(verbose="hobbit name"),
+                                "date": DateTimeField(verbose="love date")
+                            }
+                        )
+                    )
+                }, strict=True)
+        )
+
+        fuck = ListField(verbose='test test', item=CharField(verbose='fuck you'), is_required=False)
+
+    class req_data2(RequestData):
+        """this is just a request data lalala"""
+
+        data = ListField(
+            verbose='list test',
+            item=DictField(
+                verbose='item detail',
+                members={
+                    'id': IntField(verbose='id'),
+                    'name': CharField(verbose='name', is_required=False, choices=[("apple", "APPLE")], default="apple"),
+                    "hobbit": ListField(
+                        verbose="hobbits",
+                        item=DictField(
+                            verbose="dict",
+                            members={
+                                "name": CharField(verbose="hobbit name"),
+                                "date": DateTimeField(verbose="love date")
+                            }
+                        )
+                    )
+                }, strict=True)
+        )
+
+        fuck = ListField(verbose='test test', item=CharField(verbose='fuck you'), is_required=False)
+
+    @classmethod
+    def get_desc(cls):
+        return "api 4 DocTest"
+
+    @classmethod
+    def get_author(cls):
+        return "superDong"
+
+    @classmethod
+    def get_history(cls):
+        return "Alpha-001"
+
+    @classmethod
+    def get_unique_num(cls):
+        return 100001
+
+    def execute(self):
+        ApiDocGenerator.the_doke()
+        pass
+
+    def tidy(self, *ret):
+        pass

@@ -26,6 +26,7 @@ class MyShit(BaseModel):
         SELL_OUT = 0, 'sell out'
         BUY_IN = 1, 'buy in'
         HOLD = 2, 'hold'
+        ON_THE_WAY = 3, 'on the way'
 
     class InvestType(IntegerChoices):
         SAVING = 0, "saving"

@@ -25,19 +25,22 @@ def file_yield(file_path, chunk_size=512):
                 break
 
 
+def add_ex_resp_headers(resp):
+    resp['Content-Type'] = 'application/json'
+    resp['Access-Control-Allow-Origin'] = '*'
+    resp['Access-Control-Max-Age'] = 86400
+    resp['Access-Control-Allow-Methods'] = '*'
+    resp['Access-Control-Allow-Headers'] = '*'
+    return resp
+
+
 @dataclasses.dataclass
 class SuperDongResponse(object):
     rsp_data: dict
     ctn_type: str
 
     def http_response(self):
-        resp = HttpResponse(json.dumps(self.rsp_data))
-        resp['Content-Type'] = 'application/json'
-        resp['Access-Control-Allow-Origin'] = '*'  # 处理跨域请求
-        resp['Access-Control-Max-Age'] = 86400
-        resp['Access-Control-Allow-Methods'] = '*'
-        resp['Access-Control-Allow-Headers'] = '*'
-        return resp
+        return add_ex_resp_headers(HttpResponse(json.dumps(self.rsp_data)))
 
     def streaming_http_response(self):
         ...

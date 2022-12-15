@@ -16,7 +16,9 @@ from django.conf import settings
 from django.core.handlers.wsgi import WSGIRequest
 from django.http.response import HttpResponse
 
-from super_dong.frame.core.http.response import SuperDongResponse
+from super_dong.frame.core.exception import BusinessLogicError
+from super_dong.frame.core.http.response import SuperDongResponse, \
+    add_ex_resp_headers
 from super_dong.frame.core.protocol import SuperDongProtocol
 from super_dong.settings import PRINT_PREFIX
 
@@ -50,12 +52,18 @@ def executor(request: WSGIRequest):
             'data': ret_data
         }
         return SuperDongResponse(response_data, ctn_type).data
-    except IndexError as e:
+    except BusinessLogicError as e:
+        err_msg = f"{e}"
+        print(f"\033[31m {PRINT_PREFIX} exception: {e} \033[39m")
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        err_msg = f"{e}"
+        print(f"\033[31m {PRINT_PREFIX} exception: {e} \033[39m")
 
-        print(f"{PRINT_PREFIX} exception: {e}")
-        response_data = {
-            'msg': str(e),
-            'code': -10000,
-            'data': None
-        }
-    return HttpResponse(json.dumps(response_data))
+    response_data = {
+        'msg': err_msg,
+        'code': -310927,
+        'data': None
+    }
+    return add_ex_resp_headers(HttpResponse(json.dumps(response_data)))

@@ -27,30 +27,30 @@ class ApiBase(ABC):
     @classmethod
     @abstractmethod
     def get_desc(cls):
-        pass
+        raise NotImplementedError
 
     @classmethod
     @abstractmethod
     def get_author(cls):
-        pass
+        raise NotImplementedError
 
     @classmethod
     @abstractmethod
     def get_history(cls):
-        pass
+        raise NotImplementedError
 
     @classmethod
     @abstractmethod
     def get_unique_num(cls):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def execute(self):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def tidy(self, *args, **kwargs):
-        pass
+        raise NotImplementedError
 
 
 class AuthBase(object):

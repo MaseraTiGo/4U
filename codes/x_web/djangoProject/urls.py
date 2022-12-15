@@ -13,16 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, re_path
-
 from django.conf import settings
+from django.urls import re_path
 
+from super_dong.frame.core.api_doc.views import api_doc
 from super_dong.frame.router import executor
 
 re_pattern = f'{settings.API_ROUTER_PREFIX}/.+'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    re_path(re_pattern, executor)
+    # path('admin/', admin.site.urls),
+    re_path(re_pattern, executor),
+    re_path("api_doc", api_doc)
 ]

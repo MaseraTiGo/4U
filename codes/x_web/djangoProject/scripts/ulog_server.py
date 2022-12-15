@@ -106,7 +106,7 @@ import urllib.parse
 from functools import partial
 from http import HTTPStatus
 
-# Default error message template
+# Default error message templates
 import redis
 
 DEFAULT_ERROR_MESSAGE = """\

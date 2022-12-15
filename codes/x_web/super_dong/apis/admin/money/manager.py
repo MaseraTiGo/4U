@@ -11,7 +11,9 @@
                                                  /| 
                                                 |/  
 """
+from collections import defaultdict
 from datetime import datetime, timedelta
+from pprint import pprint
 
 from django.forms import model_to_dict
 
@@ -29,6 +31,8 @@ class MyShitManager(BaseManager):
 
     @classmethod
     def create(cls, **data):
+        if data['status'] == cls.MODEL.InvestStatus.SELL_OUT:
+            data['amount'] = -(abs(data['amount']))
         cls.MODEL.create(**data)
 
     @classmethod
@@ -46,15 +50,16 @@ class MyShitManager(BaseManager):
             )
 
         print(my_shit.create_time)
+        query_date = None
         if yesterday_only:
-            last_day = date + timedelta(days=-1)
-            if last_day.date() != my_shit.create_time.date():
+            query_date = date + timedelta(days=-1)
+            if query_date.date() != my_shit.create_time.date():
                 raise BusinessLogicError(
-                    f'the previous day:{last_day.date()}\' data is not exist.'
+                    f'the previous day:{query_date.date()}\' data is not exist.'
                 )
         qs = cls.MODEL.search(
-            create_time__gte="2022-12-09 00:00:00",
-            create_time__lte="2022-12-10 00:00:00"
+            create_time__gte=f"{str(query_date.date())} 00:00:00",
+            create_time__lte=f"{str(query_date.date())} 23:59:59"
         )
 
         def process(obj):
@@ -78,7 +83,7 @@ class MyShitManager(BaseManager):
         if date:
             start_ = f'{str(date)} 00:00:00'
             end_ = f'{str(date)} 23:59:59'
-            qs.filter(create_time__gte=start_, create_time__lte=end_)
+            qs = qs.filter(create_time__gte=start_, create_time__lte=end_)
         qs = TearParts(qs, page_info['page_num'], page_info['page_size'])
         total = 0
         data = []
@@ -97,5 +102,78 @@ class MyShitManager(BaseManager):
                 "create_time": item.create_time
 
             })
-            total += item.amount
+            if item.status:
+                total += item.amount
         return data, total
+
+    @classmethod
+    def delete(cls, id_: int):
+        shit = cls.search(id=id_).first()
+        if shit:
+            shit.delete()
+
+    @classmethod
+    def update(cls, **update_info):
+        id_ = update_info.pop('id_')
+        shit = cls.search(id=id_).first()
+        if not shit:
+            raise BusinessLogicError(f'id_:{id_} is not existed.')
+        status = update_info.get('status')
+        if status == cls.MODEL.InvestStatus.SELL_OUT:
+            amount = update_info.get('amount')
+            amount = -(abs(amount)) if amount else -(abs(shit.amount))
+            update_info['amount'] = amount
+        shit.update(**update_info)
+
+    @classmethod
+    def calculate_net_worth(cls, date):
+        date = date if date else datetime.today()
+        yesterday = date - timedelta(days=1)
+
+        yesterday_qs = cls.search_date(yesterday)
+        yesterday_mapping = {item.name: item for item in yesterday_qs}
+
+        cur_date_qs = cls.search_date(date)
+        cur_date_mapping = {item.name: item for item in cur_date_qs}
+
+        for name, cur_date in cur_date_mapping.items():
+            if name not in yesterday_mapping:
+                continue
+            cur_date.net_worth = abs(cur_date.amount) - yesterday_mapping[
+                name].amount
+
+        cls.MODEL.objects.bulk_update(cur_date_qs, ['net_worth'])
+
+    @classmethod
+    def shit_profile(cls):
+        qs = cls.search().exclude(status=cls.MODEL.InvestStatus.SELL_OUT)
+        date_mapping = defaultdict(set)
+
+        for item in qs:
+            date = str(item.create_time.date())
+            date_mapping[date].add(item)
+
+        ret = {}
+        for date, item_set in date_mapping.items():
+            ret[date] = {
+                "Total": float(sum([item.amount for item in item_set])),
+                "Net_worth": 0
+            }
+
+        for date, data in ret.items():
+            date_obj = datetime.strptime(date, '%Y-%m-%d')
+
+            days_offset = 1
+            found = False
+            las_date_obj = None
+            while days_offset <= 10:
+                las_date_obj = date_obj - timedelta(days=days_offset)
+                if str(las_date_obj.date()) in ret:
+                    found = True
+                    break
+                days_offset += 1
+            if found:
+                data['Net_worth'] = data['Total'] - \
+                                    ret[str(las_date_obj.date())]['Total']
+                data['Net_worth'] = float("%.2f" % data['Net_worth'])
+        return ret
