@@ -57,13 +57,17 @@ class MyShitManager(BaseManager):
                 raise BusinessLogicError(
                     f'the previous day:{query_date.date()}\' data is not exist.'
                 )
+        else:
+            obj = cls.MODEL.search()[0]
+            query_date = obj.create_time
+
         qs = cls.MODEL.search(
             create_time__gte=f"{str(query_date.date())} 00:00:00",
             create_time__lte=f"{str(query_date.date())} 23:59:59"
-        )
+        ).exclude(status=cls.MODEL.InvestStatus.SELL_OUT)
 
-        def process(obj):
-            entry = model_to_dict(obj)
+        def process(shit):
+            entry = model_to_dict(shit)
             entry.pop('id')
             entry['create_time'] = date
             entry['update_time'] = date

@@ -11,6 +11,8 @@
                                                  /| 
                                                 |/  
 """
+from django.conf import settings
+
 from super_dong.frame.core.data_field.data_type import RequestData, ResponseData
 from super_dong.frame.core.api import AuthApi
 from super_dong.frame.core.api_repo import BaseRepo
@@ -40,7 +42,8 @@ class ApiDocGenerator(object):
             return []
         api_info_list = []
         for name, api_cls in repo.items():
-            api_info_list.append({name.replace('.', '/'): cls.gen_api_details_info(api_cls)})
+            api_name = settings.API_ROUTER_PREFIX + '/' + name.replace('.', '/')
+            api_info_list.append({api_name: cls.gen_api_details_info(api_cls)})
         return api_info_list
 
     @classmethod

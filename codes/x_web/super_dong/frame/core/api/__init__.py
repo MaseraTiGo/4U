@@ -80,32 +80,3 @@ class AuthApi(ApiBase, Authenticate, Authorize, ABC):
         # if isinstance(cls.sup_tags(), str):
         #     pass
         pass
-
-    @classmethod
-    @abstractmethod
-    def get_desc(cls):
-        pass
-
-    @classmethod
-    @abstractmethod
-    def get_author(cls):
-        pass
-
-    @classmethod
-    @abstractmethod
-    def get_history(cls):
-        pass
-
-    @classmethod
-    @abstractmethod
-    def get_unique_num(cls):
-        pass
-
-    @abstractmethod
-    def execute(self):
-        pass
-
-    @abstractmethod
-    def tidy(self, *ret):
-        pass
-
