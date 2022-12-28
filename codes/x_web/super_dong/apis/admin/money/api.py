@@ -9,9 +9,9 @@
                                                  /| 
                                                 |/  
 """
-from super_dong.frame.core.api_doc import ApiDocGenerator
 from super_dong.apis.admin.money.manager import MyShitManager
 from super_dong.frame.core.api import AuthApi
+from super_dong.frame.core.api_doc import ApiDocGenerator
 from super_dong.frame.core.data_field import CharField, IntField, DateTimeField, \
     AlmightyField, BooleanField, DateField, ListField, DictField, FloatField
 from super_dong.frame.core.data_field.data_type import RequestData, ResponseData
@@ -311,7 +311,8 @@ class DocTest(AuthApi):
                 }, strict=True)
         )
 
-        fuck = ListField(verbose='test test', item=CharField(verbose='fuck you'), is_required=False)
+        fuck = ListField(verbose='test test',
+                         item=CharField(verbose='fuck you'), is_required=False)
 
     class req_data2(RequestData):
         """this is just a request data lalala"""
@@ -322,7 +323,9 @@ class DocTest(AuthApi):
                 verbose='item detail',
                 members={
                     'id': IntField(verbose='id'),
-                    'name': CharField(verbose='name', is_required=False, choices=[("apple", "APPLE")], default="apple"),
+                    'name': CharField(verbose='name', is_required=False,
+                                      choices=[("apple", "APPLE")],
+                                      default="apple"),
                     "hobbit": ListField(
                         verbose="hobbits",
                         item=DictField(
@@ -336,7 +339,8 @@ class DocTest(AuthApi):
                 }, strict=True)
         )
 
-        fuck = ListField(verbose='test test', item=CharField(verbose='fuck you'), is_required=False)
+        fuck = ListField(verbose='test test',
+                         item=CharField(verbose='fuck you'), is_required=False)
 
     @classmethod
     def get_desc(cls):
@@ -360,3 +364,37 @@ class DocTest(AuthApi):
 
     def tidy(self, *ret):
         pass
+
+
+class SortByApp(AuthApi):
+    class req_data(RequestData):
+        app = IntField(verbose='app type', choices=MyShitManager.App_Choices, is_required=False)
+
+    class rsp_data(ResponseData):
+        data = AlmightyField(verbose='details')
+
+    @classmethod
+    def get_desc(cls):
+        return "api 4 SortByApp"
+
+    @classmethod
+    def get_author(cls):
+        return "superDong"
+
+    @classmethod
+    def get_history(cls):
+        return "Alpha-001"
+
+    @classmethod
+    def get_unique_num(cls):
+        return 100001
+
+    def execute(self):
+        return MyShitManager.sort_by_app(self.req_data.as_dict())
+
+    def tidy(self, *ret):
+        return {
+            'rsp_data': {
+                'data': ret[0]
+            }
+        }

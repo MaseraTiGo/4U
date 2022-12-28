@@ -13,7 +13,6 @@
 """
 from collections import defaultdict
 from datetime import datetime, timedelta
-from pprint import pprint
 
 from django.forms import model_to_dict
 
@@ -23,11 +22,28 @@ from super_dong.frame.utils.query_tools import TearParts
 from super_dong.model_store.models import MyShit
 
 
+def is_last_day_exist(cur_day: str, mapping, max_offset=10) -> tuple:
+    date_obj = datetime.strptime(cur_day, '%Y-%m-%d')
+
+    days_offset = 1
+    found = False
+    last_date_obj = None
+    while days_offset <= max_offset:
+        last_date_obj = date_obj - timedelta(days=days_offset)
+        if str(last_date_obj.date()) in mapping:
+            found = True
+            break
+        days_offset += 1
+    return last_date_obj, found
+
+
 class MyShitManager(BaseManager):
     MODEL = MyShit
     InvestType_Choices = MODEL.InvestType.choices
     Status_Choices = MODEL.InvestStatus.choices
     App_Choices = MODEL.App.choices
+
+    OffsetDays = 10
 
     @classmethod
     def create(cls, **data):
@@ -139,7 +155,6 @@ class MyShitManager(BaseManager):
 
         cur_date_qs = cls.search_date(date)
         cur_date_mapping = {item.name: item for item in cur_date_qs}
-
         for name, cur_date in cur_date_mapping.items():
             if name not in yesterday_mapping:
                 continue
@@ -165,19 +180,61 @@ class MyShitManager(BaseManager):
             }
 
         for date, data in ret.items():
-            date_obj = datetime.strptime(date, '%Y-%m-%d')
+            last_day_obj, found = is_last_day_exist(date, ret)
 
-            days_offset = 1
-            found = False
-            las_date_obj = None
-            while days_offset <= 10:
-                las_date_obj = date_obj - timedelta(days=days_offset)
-                if str(las_date_obj.date()) in ret:
-                    found = True
-                    break
-                days_offset += 1
             if found:
                 data['Net_worth'] = data['Total'] - \
-                                    ret[str(las_date_obj.date())]['Total']
+                                    ret[str(last_day_obj.date())]['Total']
                 data['Net_worth'] = float("%.2f" % data['Net_worth'])
+        return ret
+
+    @classmethod
+    def sort_by_app(cls, req_data: dict):
+        app_mapping = dict(cls.App_Choices)
+
+        shit_qs = cls.MODEL.search().exclude(
+            status=cls.MODEL.InvestStatus.SELL_OUT
+        )
+
+        day_app_mapping_amount = defaultdict(list)
+
+        for item in shit_qs:
+            key = str(item.create_time.date()) + '_' + str(item.app)
+            day_app_mapping_amount[key].append(item.amount)
+
+        ans = []
+        day_mapping_app_amount = defaultdict(dict)
+        for key, value in day_app_mapping_amount.items():
+            day, app = key.rsplit('_', 1)
+            ans.append({
+                'app': app_mapping[int(app)],
+                'amount': sum(value),
+                'day': day,
+                'net_worth': 0.00
+            })
+            day_mapping_app_amount[day][app_mapping[int(app)]] = sum(value)
+
+        ret = {}
+
+        for day, cur_details in day_mapping_app_amount.items():
+            last_date_obj, found = is_last_day_exist(day,
+                                                     day_mapping_app_amount)
+
+            ret[day] = cur_details
+
+            if found:
+                last_details = day_mapping_app_amount[str(last_date_obj.date())]
+
+                for key, value in last_details.items():
+                    cur_day_amount = cur_details[key]
+                    cur_details[key] = {
+                        'total': float("%.2f" % cur_day_amount),
+                        'net-worth': float("%.2f" % (cur_day_amount - value,))
+                    }
+            else:
+                for key, value in cur_details.items():
+                    cur_details[key] = {
+                        'total': float("%.2f" % cur_details[key]),
+                        'net-worth': 0.00
+                    }
         return ret
