@@ -98,13 +98,13 @@ class MyShitManager(BaseManager):
     @classmethod
     def details(cls, search_info, page_info):
         date = search_info.get('date')
-        qs = cls.search()
+        date = date if date else datetime.today().date()
 
-        if date:
-            start_ = f'{str(date)} 00:00:00'
-            end_ = f'{str(date)} 23:59:59'
-            qs = qs.filter(create_time__gte=start_, create_time__lte=end_)
+        start_ = f'{str(date)} 00:00:00'
+        end_ = f'{str(date)} 23:59:59'
+        qs = cls.MODEL.search(create_time__gte=start_, create_time__lte=end_)
         qs = TearParts(qs, page_info['page_num'], page_info['page_size'])
+
         total = 0
         data = []
         for item in qs.data:
