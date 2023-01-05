@@ -23,7 +23,6 @@ except ImportError:
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -39,12 +38,18 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'super_dong',
+    'wick',
     # 'django.contrib.admin',
     # 'django.contrib.auth',
     # 'django.contrib.contenttypes',
     # 'django.contrib.sessions',
     # 'django.contrib.messages',
     # 'django.contrib.staticfiles',
+]
+
+AUTO_MIGRATE_APPS = [
+    ('wick', 2),
+    ('super_dong', 3),
 ]
 
 MIDDLEWARE = [
@@ -97,6 +102,7 @@ DATABASES = {
 
 DATABASE_APPS_MAPPING = {
     "super_dong": "default",
+    "wick": "default"
 }
 
 # Password validation
@@ -173,3 +179,5 @@ create_db()
 
 # ======================= superDong ============================================
 
+STORE_MIGRATIONS_2_DB = False
+MIGRATION_MGMT_APP = 'wick'

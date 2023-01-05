@@ -14,7 +14,7 @@
 
 __all__ = ("MyShit",)
 
-from django.db.models import CharField, IntegerField, JSONField, \
+from django.db.models import CharField, JSONField, \
     SmallIntegerField, IntegerChoices, DecimalField
 
 from super_dong.model_store import SuperDong
@@ -42,12 +42,17 @@ class MyShit(BaseModel):
         INVEST_BANK = 2, 'invest bank'
 
     name = CharField(verbose_name="where the money is", max_length=32)
-    amount = DecimalField(verbose_name="how many here is", default=0, max_digits=11, decimal_places=2)
+    amount = DecimalField(verbose_name="how many here is", default=0,
+                          max_digits=11, decimal_places=2)
     invest_type = SmallIntegerField(verbose_name="invest type",
-                                    default=InvestType.SAVING, choices=InvestType.choices)
-    net_worth = DecimalField(verbose_name="net_worth", default=0, max_digits=11, decimal_places=2)
-    status = SmallIntegerField(verbose_name="status", default=InvestStatus.HOLD, choices=InvestStatus.choices)
-    app = SmallIntegerField(verbose_name="money app", default=App.INVEST_BANK, choices=App.choices)
+                                    default=InvestType.SAVING,
+                                    choices=InvestType.choices)
+    net_worth = DecimalField(verbose_name="net_worth", default=0, max_digits=11,
+                             decimal_places=2)
+    status = SmallIntegerField(verbose_name="status", default=InvestStatus.HOLD,
+                               choices=InvestStatus.choices)
+    app = SmallIntegerField(verbose_name="money app", default=App.INVEST_BANK,
+                            choices=App.choices)
 
     ex_info = JSONField(verbose_name="ex_info", default=dict)
     remark = CharField(verbose_name="remark", max_length=128)
