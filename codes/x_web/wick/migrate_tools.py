@@ -53,6 +53,7 @@ class MigrationsManager(object):
 
     def _store_helper(self, migrations, block_size=10240):
         for migration in migrations:
+            rel_path = pathlib.Path(migration).relative_to(pathlib.Path(self.BaseDir))
             with open(migration) as shit:
                 index = 0
                 for block in iter(partial(shit.read, block_size), ''):
@@ -60,7 +61,7 @@ class MigrationsManager(object):
                         name=migration.name,
                         content=block,
                         app=self.app,
-                        path=str(migration),
+                        path=str(rel_path),
                         index=index
                     )
                     index += 1
@@ -80,9 +81,9 @@ class MigrationsManager(object):
         for migrations in file_mapping.values():
             self._write_helper(migrations)
 
-    @staticmethod
-    def _write_helper(migrations: Set[Migrations]):
+    def _write_helper(self, migrations: Set[Migrations]):
         migrations = sorted(migrations, key=lambda x: x.index)
         for migration in migrations:
-            with open(migration.path, 'a') as fuck:
+            migration_path = pathlib.Path(self.BaseDir).joinpath(migration.path)
+            with open(migration_path, 'a') as fuck:
                 fuck.write(migration.content)

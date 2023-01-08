@@ -13,6 +13,7 @@
 """
 from collections import defaultdict
 from datetime import datetime, timedelta
+from typing import List
 
 from django.forms import model_to_dict
 
@@ -238,3 +239,135 @@ class MyShitManager(BaseManager):
                         'net-worth': 0.00
                     }
         return ret
+
+    @classmethod
+    def sort_by_net_worth(cls, req: dict):
+        date = req.get('date')
+        date = date if date else datetime.today().date()
+        shit_qs = cls.search_date(date).order_by('-net_worth')
+
+        return [
+            {
+                'name': shit.name,
+                'net_worth': shit.net_worth
+            }
+            for shit in shit_qs
+        ]
+
+    @classmethod
+    def x_project_history(cls, req: dict):
+        show_num = req['show_num']
+        name = req['name']
+
+        shit_qs = cls.MODEL.search(name=name)[:show_num]
+
+        data = [
+            {
+                'name': shit.name,
+                'net_worth': shit.net_worth,
+                'amount': shit.amount,
+                'date': shit.create_time.date(),
+            }
+            for shit in shit_qs
+        ]
+
+        days = (data[0]['date'] - data[-1]['date']).days
+        total_income = sum([item['net_worth'] for item in data])
+        average = float('%.2f' % (total_income / days))
+
+        ex_info = {
+            'total_income': total_income,
+            'days': days,
+            'average': average
+        }
+
+        return data, ex_info
+
+    @classmethod
+    def sort_by_prj(cls, req: dict):
+        show_num = req['show_num']
+
+        shit_qs = cls.MODEL.search()
+
+        name_mapping_shit = defaultdict(list)
+
+        for entry in shit_qs:
+            name_mapping_shit[entry.name].append(entry)
+
+        ret = {}
+
+        for name, shits in name_mapping_shit.items():
+            shits = shits[:show_num]
+            days = (shits[0].create_time.date() - shits[
+                -1].create_time.date()).days
+            total_income = float(
+                '%.2f' % sum([shit.net_worth for shit in shits]))
+            average = float('%.2f' % (total_income / days)) if days else 0.00
+            ret[name] = {
+                'total_income': total_income,
+                'days': days,
+                'average': average,
+                'average_amount': float('%.2f' %
+                                        (sum([shit.amount for shit in
+                                              shits]) / days)
+                                        ) if days else float(shits[0].amount),
+                'start_amount': float(shits[-1].amount),
+                'end_amount': float(shits[0].amount),
+            }
+
+        sort_by = req.get('sort_by')
+        if sort_by is not None:
+            order = True if req['order'] else False
+            ret = sorted(ret.items(), key=lambda x: x[1][sort_by],
+                         reverse=order)
+            ret = dict(ret)
+        return ret
+
+    @classmethod
+    def ten_grand_share(cls, req: dict):
+        show_num = req['show_num']
+        shit_qs = cls.MODEL.search().exclude(
+            status=cls.MODEL.InvestStatus.SELL_OUT
+        )
+
+        name_mapping_shit = defaultdict(list)
+
+        for entry in shit_qs:
+            name_mapping_shit[entry.name].append(entry)
+
+        ret = {}
+
+        for name, shits in name_mapping_shit.items():
+            shits = shits[:show_num]
+
+            average_share, days = cls._share_cal_helper(shits)
+            ret[name] = {
+                "average_net_worth": average_share,
+                "days": days
+            }
+
+        ret = sorted(ret.items(), key=lambda x: x[1]["average_net_worth"],
+                     reverse=True)
+        ret = dict(ret)
+
+        return ret
+
+    @classmethod
+    def _share_cal_helper(cls, shits: List[MyShit]):
+        days = (shits[0].create_time.date() - shits[
+            -1].create_time.date()).days
+
+        average_share_total = []
+        for shit in shits:
+            lots_ten_grand = shit.amount / 10_000
+            if lots_ten_grand < 1:
+                average_share_total.append(0.00)
+                continue
+            if shit.net_worth > 1000:
+                cur_share = 0.00
+            else:
+                cur_share = float(shit.net_worth) / float(lots_ten_grand)
+            average_share_total.append(cur_share)
+        if not days:
+            return 0.00, days
+        return float('%.2f' % (sum(average_share_total) / days)), days
