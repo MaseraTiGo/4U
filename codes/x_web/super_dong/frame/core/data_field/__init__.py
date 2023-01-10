@@ -137,7 +137,7 @@ class CharField(BaseField):
 
         self._max_length = max_length
 
-    def _parse(self, value, level=0) -> Any:
+    def _parse(self, value) -> Any:
         if not isinstance(value, (str, int)):
             raise ValueError(f'"{value}" is not a valid char')
 

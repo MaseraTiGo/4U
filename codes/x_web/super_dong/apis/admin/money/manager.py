@@ -286,6 +286,7 @@ class MyShitManager(BaseManager):
     @classmethod
     def sort_by_prj(cls, req: dict):
         show_num = req['show_num']
+        filter_num = req['filter']
 
         shit_qs = cls.MODEL.search()
 
@@ -303,6 +304,10 @@ class MyShitManager(BaseManager):
             total_income = float(
                 '%.2f' % sum([shit.net_worth for shit in shits]))
             average = float('%.2f' % (total_income / days)) if days else 0.00
+
+            if average >= filter_num or average < -filter_num:
+                continue
+
             ret[name] = {
                 'total_income': total_income,
                 'days': days,
@@ -363,7 +368,7 @@ class MyShitManager(BaseManager):
             if lots_ten_grand < 1:
                 average_share_total.append(0.00)
                 continue
-            if shit.net_worth > 1000:
+            if 1000 < shit.net_worth or shit.net_worth < -1000:
                 cur_share = 0.00
             else:
                 cur_share = float(shit.net_worth) / float(lots_ten_grand)

@@ -11,10 +11,8 @@
 """
 from super_dong.apis.admin.money.manager import MyShitManager
 from super_dong.frame.core.api import AuthApi
-from super_dong.frame.core.api_doc import ApiDocGenerator
 from super_dong.frame.core.data_field import CharField, IntField, DateTimeField, \
-    AlmightyField, BooleanField, DateField, ListField, DictField, FloatField, \
-    FuzzyDictField
+    AlmightyField, BooleanField, DateField, ListField, DictField, FloatField
 from super_dong.frame.core.data_field.data_type import RequestData, ResponseData
 
 
@@ -288,85 +286,6 @@ class ShitProfile(AuthApi):
         }
 
 
-class DocTest(AuthApi):
-    class req_data(RequestData):
-        """this is just a request data lalala"""
-
-        data = ListField(
-            verbose='list test',
-            item=DictField(
-                verbose='item detail',
-                members={
-                    'id': IntField(verbose='id'),
-                    'name': CharField(verbose='name'),
-                    "hobbit": ListField(
-                        verbose="hobbits",
-                        item=DictField(
-                            verbose="dict",
-                            members={
-                                "name": CharField(verbose="hobbit name"),
-                                "date": DateTimeField(verbose="love date")
-                            }
-                        )
-                    )
-                }, strict=True)
-        )
-
-        fuck = ListField(verbose='test test',
-                         item=CharField(verbose='fuck you'), is_required=False)
-
-    class req_data2(RequestData):
-        """this is just a request data lalala"""
-
-        data = ListField(
-            verbose='list test',
-            item=DictField(
-                verbose='item detail',
-                members={
-                    'id': IntField(verbose='id'),
-                    'name': CharField(verbose='name', is_required=False,
-                                      choices=[("apple", "APPLE")],
-                                      default="apple"),
-                    "hobbit": ListField(
-                        verbose="hobbits",
-                        item=DictField(
-                            verbose="dict",
-                            members={
-                                "name": CharField(verbose="hobbit name"),
-                                "date": DateTimeField(verbose="love date")
-                            }
-                        )
-                    )
-                }, strict=True)
-        )
-
-        fuck = ListField(verbose='test test',
-                         item=CharField(verbose='fuck you'), is_required=False)
-
-    @classmethod
-    def get_desc(cls):
-        return "api 4 DocTest"
-
-    @classmethod
-    def get_author(cls):
-        return "superDong"
-
-    @classmethod
-    def get_history(cls):
-        return "Alpha-001"
-
-    @classmethod
-    def get_unique_num(cls):
-        return 100001
-
-    def execute(self):
-        ApiDocGenerator.the_doke()
-        pass
-
-    def tidy(self, *ret):
-        pass
-
-
 class SortByApp(AuthApi):
     class req_data(RequestData):
         app = IntField(verbose='app type', choices=MyShitManager.App_Choices,
@@ -515,6 +434,11 @@ class SortByProject(AuthApi):
             default=1,
             choices=[(0, 'ASC'), (1, 'DESC')]
         )
+        filter = IntField(
+            verbose='filter num',
+            is_required=False,
+            default=100
+        )
 
     class rsp_data(ResponseData):
         data = AlmightyField(verbose='details')
@@ -576,56 +500,5 @@ class TenGrandShare(AuthApi):
         return {
             'rsp_data': {
                 'data': ret[0],
-            }
-        }
-
-
-class TestFuzzyDict(AuthApi):
-    class req_data(RequestData):
-        fuck = FuzzyDictField(
-            verbose="fuzzy dict",
-            key_field=CharField(verbose='key'),
-            value_field=CharField(verbose='value')
-        )
-
-    class rsp_data(ResponseData):
-        damn = FuzzyDictField(
-            verbose="fuzzy dict",
-            key_field=CharField(verbose='key'),
-            value_field=ListField(
-                verbose='value',
-                item=IntField(
-                    verbose='int',
-                    max_value=100
-                )
-            )
-        )
-
-    @classmethod
-    def get_desc(cls):
-        return "api 4 TestFuzzyDict"
-
-    @classmethod
-    def get_author(cls):
-        return "superDong"
-
-    @classmethod
-    def get_history(cls):
-        return "Alpha-001"
-
-    @classmethod
-    def get_unique_num(cls):
-        return 100001
-
-    def execute(self):
-        return {
-            "apple": [1, 2, 3],
-            "banana": [4, 5, 600]
-        }
-
-    def tidy(self, *ret):
-        return {
-            "rsp_data": {
-                "damn": ret[0]
             }
         }
