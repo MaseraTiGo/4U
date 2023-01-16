@@ -208,14 +208,14 @@ class DictField(BaseField):
                 raise DataError(
                     f'{self._name}\'s keys: \'{", ".join(redundant_keys)}\' is/are not needed.')
 
-        tmp_obj = type('dict_tmp_cls', (), self._members)()
+        # tmp_obj = type('dict_tmp_cls', (), self._members)()
 
         for key, v in value.items():
             try:
-                setattr(tmp_obj, key, v)
+                setattr(self._tmp_obj, key, v)
             except ValueError as e:
                 raise DataError(e)
-        value = tmp_obj.__dict__
+        value = self._tmp_obj.__dict__
         return value
 
     def display(self, level=0) -> any:

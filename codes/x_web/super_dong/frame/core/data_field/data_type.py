@@ -28,6 +28,17 @@ def display(cls, level=0):
     return title + "%s{\n%s\n%s}" % (pivot_index, details, pivot_index)
 
 
+def _add_processor_4_rdata(field_obj, r_data_cls):
+    cls_name = field_obj.__class__.__name__
+    if cls_name in r_data_cls._FIELD_PROCESSOR:
+        r_data_cls._FIELD_PROCESSOR[cls_name](field_obj)
+    elif cls_name == 'ListField':
+        _add_processor_4_rdata(field_obj._item, r_data_cls)
+    elif cls_name == 'DictField':
+        for inner_field_obj in field_obj._members.values():
+            _add_processor_4_rdata(inner_field_obj, r_data_cls)
+
+
 class RData(type):
     _FIELD_PROCESSOR = {}
 
@@ -36,11 +47,9 @@ class RData(type):
         _attrs = args[-1]  # type: dict
         dante._superDong = args[0]
         dante.display = display
-        dante._field_attr_mapping = {k: v for k, v in _attrs.items() if not k.startswith('__')}
-        for attr, value in _attrs.items():
-            cls_name = value.__class__.__name__
-            if cls_name in dante._FIELD_PROCESSOR:
-                dante._FIELD_PROCESSOR[cls_name](value)
+        dante._field_mapping_attr = {k: v for k, v in _attrs.items() if not k.startswith('__')}
+        for field_obj in _attrs.values():
+            _add_processor_4_rdata(field_obj, dante)
         return dante
 
 

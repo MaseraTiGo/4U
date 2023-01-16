@@ -47,9 +47,10 @@ def get_service_tag_and_api_str(url: str) -> tuple:
 
 def get_api_relative_things(request: WSGIRequest) -> Tuple[ApiBase, dict, str]:
     service_tag, api_str = get_service_tag_and_api_str(request.path_info)
-    api_repo = BaseRepo.FULL_API_MAPPING.get(service_tag) # type: BaseRepo
+    api_repo = BaseRepo.FULL_API_MAPPING.get(service_tag)  # type: BaseRepo
     if not api_repo:
-        raise RouteServiceNotFoundError(f"service: <{service_tag}> is not exist.")
+        raise RouteServiceNotFoundError(
+            f"service: <{service_tag}> is not exist.")
     if request.content_type != api_repo.ACCEPT:
         raise HttpCtnTypeNotMatchError(f'api requires: {api_repo.ACCEPT}, '
                                        f'but get: {request.content_type}')
@@ -68,11 +69,13 @@ def get_api_relative_things(request: WSGIRequest) -> Tuple[ApiBase, dict, str]:
 class SuperDongProtocol(object):
     initialize_api_repo_files()
 
-    @staticmethod
-    def _parse_data(api_cls: [ApiBase], data: dict,
+    @classmethod
+    def _parse_data(cls, api_cls: [ApiBase], data: dict,
                     data_type: [ResponseData, RequestData], api_ins=None,
                     method: str = 'POST'
                     ):
+        # -------------------- initialize api_ins ------------------------------
+
         api_ins = api_cls() if api_ins is None else api_ins  # type: api_cls
         api_cls = api_cls if api_ins is None else api_ins.__class__
         attrs = []
@@ -86,35 +89,46 @@ class SuperDongProtocol(object):
                 attrs.append(attr)
                 setattr(api_ins, attr, deposit_cls())
 
+        # -------------------- initialize api_ins ------------------------------
+
+        # -------------------- attrs & data check ------------------------------
+
         if not attrs and data:
             raise DataKeyMissingError(
                 f"{data_type.__name__} not defined: [Method: {method}]."
             )
-
-        if attrs and not data:
+        # todo<dong>: execute may not return anything. ---20230113 17:32:00
+        if attrs and data is None:
             raise DataKeyMissingError(f"request/tidied data can not be None.")
+
+        # -------------------- attrs & data check ------------------------------
 
         for attr in attrs:
             if attr not in data:
                 raise DataKeyMissingError(
                     f'{data_type.__name__}: "{attr}" is missing.')
 
-            r_data_ins = getattr(api_ins, attr)
+            r_ins = getattr(api_ins, attr)
             r_data = data[attr]
-
-            for field_name, attr_obj in r_data_ins._field_attr_mapping.items():
-                if field_name in r_data:
-                    setattr(r_data_ins, field_name, r_data[field_name])
-                    r_data[field_name] = getattr(r_data_ins, field_name)
-                else:
-                    if attr_obj.is_required:
-                        raise DataKeyMissingError(
-                            f'key: "{field_name}" in data:[{attr}] is required.'
-                        )
-                    if attr_obj.default is not None:
-                        setattr(r_data_ins, field_name, attr_obj.default)
+            cls._verify_and_process_data(r_ins, r_data, attr)
 
         return api_ins
+
+    @classmethod
+    def _verify_and_process_data(cls, r_ins: [ResponseData, RequestData],
+                                 r_data: dict, attr: str):
+        for field_name, attr_obj in r_ins._field_mapping_attr.items():
+            if field_name in r_data:
+                setattr(r_ins, field_name, r_data[field_name])
+                r_data[field_name] = getattr(r_ins, field_name)
+            else:
+                if attr_obj.is_required:
+                    raise DataKeyMissingError(
+                        f'key: "{field_name}" in data:[{attr}] is required.'
+                    )
+                if attr_obj.default is not None:
+                    r_data[field_name] = attr_obj.default
+                    setattr(r_ins, field_name, attr_obj.default)
 
     @classmethod
     def _gen_api_ins(cls, api_cls: [ApiBase], req_data: dict):

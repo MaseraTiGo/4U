@@ -1,8 +1,7 @@
-from django.core.validators import validate_comma_separated_integer_list
 from django.db import models
 
-
 # Create your models here.
+from super_dong.model_store.base import BaseModel
 
 
 class Migrations(models.Model):
@@ -14,11 +13,3 @@ class Migrations(models.Model):
                             null=False)
     index = models.SmallIntegerField(verbose_name='index', default=0)
     ex_info = models.JSONField(verbose_name='ex info', default=dict)
-
-
-class Test(models.Model):
-    nums = models.CharField(
-        verbose_name='nums',
-        max_length=128,
-        validators=[validate_comma_separated_integer_list]
-    )

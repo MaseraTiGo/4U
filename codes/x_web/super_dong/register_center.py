@@ -16,7 +16,8 @@ from super_dong.apis.admin.account.api import Login
 from super_dong.apis.admin.money.api import Create, QuickCreate, Details, \
     Update, CalNetWorth, ShitProfile, SortByApp, SortByNetWorth, \
     XProjectHistory, SortByProject, TenGrandShare
-from super_dong.apis.admin.test.api import TestFuzzyDict, DocTest
+from super_dong.apis.admin.test.api import TestFuzzyDict, DocTest, TestNoArgs, \
+    TestToStr
 from super_dong.apis.file_download.api import FileDownload
 from super_dong.apis.file_upload.api import FileUpload
 from super_dong.frame.core.api_repo import BaseRepo
@@ -58,6 +59,8 @@ AdminApiRepo.add(TenGrandShare)
 # ------------- load test api --------------------------------------------------
 AdminApiRepo.add(TestFuzzyDict)
 AdminApiRepo.add(DocTest)
+AdminApiRepo.add(TestNoArgs)
+AdminApiRepo.add(TestToStr)
 
 
 # ------------- load test api --------------------------------------------------

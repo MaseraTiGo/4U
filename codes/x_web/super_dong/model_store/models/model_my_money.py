@@ -60,3 +60,11 @@ class MyShit(BaseModel):
     class Meta:
         ordering = ("-create_time",)
         db_table = f"{SuperDong}my_shit"
+
+
+class Test(BaseModel):
+    name = CharField(verbose_name='dante', default='123', max_length=32)
+
+    class Meta:
+        ordering = ("-create_time",)
+        db_table = f"{SuperDong}my_test"

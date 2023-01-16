@@ -11,6 +11,7 @@
                                                  /| 
                                                 |/  
 """
+from datetime import datetime
 
 from super_dong.frame.core.api import AuthApi
 from super_dong.frame.core.api_doc import ApiDocGenerator
@@ -146,4 +147,77 @@ class TestFuzzyDict(AuthApi):
             "rsp_data": {
                 "damn": ret[0]
             }
+        }
+
+
+class TestNoArgs(AuthApi):
+    # class req_data(RequestData):
+    #     pass
+
+    class rsp_data(ResponseData):
+        data = CharField(verbose='test', default='fucking test',
+                         is_required=False)
+
+    @classmethod
+    def get_desc(cls):
+        return "api 4 TestNoArgs"
+
+    @classmethod
+    def get_author(cls):
+        return "superDong"
+
+    @classmethod
+    def get_history(cls):
+        return "Alpha-001"
+
+    @classmethod
+    def get_unique_num(cls):
+        return 100001
+
+    def execute(self):
+        return "fuck"
+
+    def tidy(self, *ret):
+        return {
+            "rsp_data": {
+                # "data": ret[0]
+            }
+        }
+
+
+class TestToStr(AuthApi):
+    # class req_data(RequestData):
+    #     pass
+
+    class rsp_data(ResponseData):
+        day = DateTimeField(
+            verbose='datetime',
+            is_required=False,
+        )
+
+    @classmethod
+    def get_desc(cls):
+        return "api 4 ToStr"
+
+    @classmethod
+    def get_author(cls):
+        return "superDong"
+
+    @classmethod
+    def get_history(cls):
+        return "Alpha-001"
+
+    @classmethod
+    def get_unique_num(cls):
+        return 100001
+
+    def execute(self):
+        return datetime.now()
+
+    def tidy(self, *ret):
+        return {
+            "rsp_data": {
+                "day": ret[0]
+            }
+
         }
