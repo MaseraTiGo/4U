@@ -1,7 +1,7 @@
 from django.db import models
 
+
 # Create your models here.
-from super_dong.model_store.base import BaseModel
 
 
 class Migrations(models.Model):
@@ -13,3 +13,6 @@ class Migrations(models.Model):
                             null=False)
     index = models.SmallIntegerField(verbose_name='index', default=0)
     ex_info = models.JSONField(verbose_name='ex info', default=dict)
+
+    class Meta:
+        db_table = 'migration_store'

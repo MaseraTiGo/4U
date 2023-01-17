@@ -7,9 +7,11 @@ class WickConfig(AppConfig):
 
     def ready(self):
         from django.conf import settings
-        from wick.migrate_tools import MigrationsManager
         from django.core import management
         from django.db import migrations, ProgrammingError
+
+        from wick.migrate_tools import MigrationsManager
+        from wick.app_conf import AppMgmtConf
         from wick.rewrite_cls import MyFuckingMigration
 
         # --------------- migrate relative things ------------------------------
@@ -20,6 +22,10 @@ class WickConfig(AppConfig):
         migrations.Migration = MyFuckingMigration
 
         # --------------- migrate the migrations 2 db ---------------
+
+        settings.AUTO_MIGRATE_APPS = [
+            AppMgmtConf(*args) for args in settings.AUTO_MIGRATE_APPS
+        ]
 
         def migrate_my_models(appoint_app=None, appoint_migration=None):
             for app in sorted(settings.AUTO_MIGRATE_APPS,

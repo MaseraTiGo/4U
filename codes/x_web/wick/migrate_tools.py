@@ -19,7 +19,7 @@ from collections import defaultdict
 from functools import partial
 from typing import Set
 
-from djangoProject import settings
+from django.conf import settings
 from wick.models import Migrations
 
 

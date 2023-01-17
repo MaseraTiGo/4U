@@ -241,18 +241,17 @@ class FuzzyDictField(BaseField):
         super().__init__(**kwargs)
         self.key_field = key_field
         self.value_field = value_field
+        self._key_obj = type('key_cls', (), {'tmp_attr': self.key_field})()
+        self._value_obj = type('value_cls', (), {'tmp_attr': self.value_field})()
 
     def _parse(self, value) -> Any:
         if not isinstance(value, dict):
             raise DataError(f'{self._name}\'s value is not a dict')
 
-        key_obj = type('key_cls', (), {'tmp_attr': self.key_field})()
-        value_obj = type('value_cls', (), {'tmp_attr': self.value_field})()
-
         for k, v in value.items():
             try:
-                setattr(key_obj, 'tmp_attr', k)
-                setattr(value_obj, 'tmp_attr', v)
+                setattr(self._key_obj, 'tmp_attr', k)
+                setattr(self._value_obj, 'tmp_attr', v)
             except Exception as e:
                 raise DataError(e)
         return value

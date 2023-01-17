@@ -12,7 +12,8 @@
 from super_dong.apis.admin.money.manager import MyShitManager
 from super_dong.frame.core.api import AuthApi
 from super_dong.frame.core.data_field import CharField, IntField, DateTimeField, \
-    AlmightyField, BooleanField, DateField, ListField, DictField, FloatField
+    AlmightyField, BooleanField, DateField, ListField, DictField, FloatField, \
+    FuzzyDictField
 from super_dong.frame.core.data_field.data_type import RequestData, ResponseData
 
 
@@ -495,6 +496,60 @@ class TenGrandShare(AuthApi):
 
     def execute(self):
         return MyShitManager.ten_grand_share(self.req_data.as_dict())
+
+    def tidy(self, *ret):
+        return {
+            'rsp_data': {
+                'data': ret[0],
+            }
+        }
+
+
+class XProTrend(AuthApi):
+    class req_data(RequestData):
+        name = CharField(verbose='name')
+        cycle = ListField(
+            verbose='list',
+            item=IntField(
+                verbose='days',
+                max_value=1000
+            )
+        )
+
+    class rsp_data(ResponseData):
+        data = FuzzyDictField(
+            verbose='data',
+            key_field=CharField(verbose='key'),
+            value_field=ListField(
+                verbose='entry',
+                item=DictField(
+                    verbose='item',
+                    members={
+                        'average_net_worth': FloatField(verbose='net worth'),
+                        'days': IntField(verbose='days')
+                    }
+                )
+            )
+        )
+
+    @classmethod
+    def get_desc(cls):
+        return "api 4 XProTrend"
+
+    @classmethod
+    def get_author(cls):
+        return "superDong"
+
+    @classmethod
+    def get_history(cls):
+        return "Alpha-001"
+
+    @classmethod
+    def get_unique_num(cls):
+        return 100001
+
+    def execute(self):
+        return MyShitManager.x_pro_trend(self.req_data.as_dict())
 
     def tidy(self, *ret):
         return {

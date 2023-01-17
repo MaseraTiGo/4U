@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
-from wick.app_conf import AppMgmtConf
-
 try:
     import MySQLdb
 except ImportError:
@@ -50,8 +48,8 @@ INSTALLED_APPS = [
 ]
 
 AUTO_MIGRATE_APPS = [
-    AppMgmtConf('wick', 2, False),
-    AppMgmtConf('super_dong', 3, True),
+    ('wick', 2, False),
+    ('super_dong', 3, True),
 ]
 
 MIDDLEWARE = [
@@ -153,6 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 API_ROUTER_PREFIX = 'apis'
 
 API_REGISTER_FILES = ['super_dong.register_center']
+
 
 # --------------- clear  mysql -------------------------------
 

@@ -376,3 +376,32 @@ class MyShitManager(BaseManager):
         if not days:
             return 0.00, days
         return float('%.2f' % (sum(average_share_total) / days)), days
+
+    @classmethod
+    def x_pro_trend(cls, req: dict):
+        name = req['name']
+        cycle = req['cycle']
+
+        shit_qs = cls.MODEL.search(name=name).exclude(
+            status=cls.MODEL.InvestStatus.SELL_OUT
+        )
+
+        shit_qs = list(shit_qs)
+
+        average_list = []
+
+        for days in cycle:
+            shits = shit_qs[:days]
+            if days == -1:
+                days = (shits[0].create_time.date() - shits[
+                    -1].create_time.date()).days
+            average_share, _ = cls._share_cal_helper(shits)
+            average_list.append(
+                {
+                    "average_net_worth": average_share,
+                    "days": days
+                }
+            )
+        return {
+            name: average_list
+        }
