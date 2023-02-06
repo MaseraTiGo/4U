@@ -87,7 +87,10 @@ class MyShitManager(BaseManager):
             entry = model_to_dict(shit)
             entry.pop('id')
             entry['create_time'] = date
-            entry['update_time'] = date
+            entry['delta'] = 0
+            entry['net_worth'] = 0
+            if shit.status == cls.MODEL.InvestStatus.BUY_IN:
+                entry['status'] = cls.MODEL.InvestStatus.HOLD
             return entry
 
         if qs:
@@ -159,10 +162,16 @@ class MyShitManager(BaseManager):
         for name, cur_date in cur_date_mapping.items():
             if name not in yesterday_mapping:
                 continue
+            if int(cur_date.net_worth):
+                # if net_worth large than 0, in this case, the net worth should
+                # be calculated by me
+                cur_date.delta = abs(cur_date.amount) - yesterday_mapping[
+                    name].amount - cur_date.net_worth
+                continue
             cur_date.net_worth = abs(cur_date.amount) - yesterday_mapping[
-                name].amount
+                name].amount - cur_date.delta
 
-        cls.MODEL.objects.bulk_update(cur_date_qs, ['net_worth'])
+        cls.MODEL.objects.bulk_update(cur_date_qs, ['net_worth', 'delta'])
 
     @classmethod
     def shit_profile(cls):
@@ -359,8 +368,8 @@ class MyShitManager(BaseManager):
 
     @classmethod
     def _share_cal_helper(cls, shits: List[MyShit]):
-        days = (shits[0].create_time.date() - shits[
-            -1].create_time.date()).days
+        days = (shits[0].create_time.date() -
+                shits[-1].create_time.date()).days
 
         average_share_total = []
         for shit in shits:
@@ -393,8 +402,8 @@ class MyShitManager(BaseManager):
         for days in cycle:
             shits = shit_qs[:days]
             if days == -1:
-                days = (shits[0].create_time.date() - shits[
-                    -1].create_time.date()).days
+                days = (shits[0].create_time.date() -
+                        shits[-1].create_time.date()).days
             average_share, _ = cls._share_cal_helper(shits)
             average_list.append(
                 {

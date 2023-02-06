@@ -55,11 +55,10 @@ def write_2_txt(path):
 
 if __name__ == '__main__':
     s = time.time()
-    add_collect('livid')
-    # with open('TOEFL.txt') as shit:
-    #     for m_line in shit.readlines():
-    #         w = m_line.strip('\n')
-    #         print(f"dong -----------> current word: {w}")
-    #         add_collect(w)
-    # write_2_txt('req_fail.txt')
+    with open('TOEFL.txt') as shit:
+        for m_line in shit.readlines():
+            w = m_line.strip('\n')
+            print(f"dong -----------> current word: {w}")
+            add_collect(w)
+    write_2_txt('req_fail.txt')
     print(f"dong ---------> cost: {time.time() - s}")

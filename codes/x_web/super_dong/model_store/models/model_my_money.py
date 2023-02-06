@@ -33,8 +33,11 @@ class MyShit(BaseModel):
         CURRENT_DEPOSIT = 1, "current_deposit"
         FIXED_DEPOSIT = 2, "fixed_deposit"
         STEADY = 3, "steady"
-        FOUND = 4, "found"
-        STOCKS = 5, "stocks"
+        MONETARY_FUND = 4, "monetary fund"
+        BOND_FUND = 5, "bond fund"
+        MIXED_FUND = 6, "mixed fund"
+        EQUITY_FUND = 7, "equity fund"
+        STOCKS = 8, "stocks"
 
     class App(IntegerChoices):
         ALIPAY = 0, 'alipay'
@@ -53,7 +56,10 @@ class MyShit(BaseModel):
                                choices=InvestStatus.choices)
     app = SmallIntegerField(verbose_name="money app", default=App.INVEST_BANK,
                             choices=App.choices)
-
+    delta = DecimalField(verbose_name='delta', default=0, max_digits=11,
+                         decimal_places=2)
+    share = DecimalField(verbose_name='shares', default=0, max_digits=11,
+                         decimal_places=2)
     ex_info = JSONField(verbose_name="ex_info", default=dict)
     remark = CharField(verbose_name="remark", max_length=128)
 
