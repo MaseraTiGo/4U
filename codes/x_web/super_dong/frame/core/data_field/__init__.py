@@ -12,6 +12,7 @@
 
 import abc
 import datetime
+from copy import deepcopy
 from typing import Any, List, Iterable
 
 from super_dong.frame.core.exception import DataError
@@ -171,7 +172,8 @@ class ListField(BaseField):
                 setattr(self._tmp_obj, self.inner_field_name, item)
             except ValueError as e:
                 raise DataError(e)
-            new_value.append(getattr(self._tmp_obj, self.inner_field_name))
+            tmp_val = getattr(self._tmp_obj, self.inner_field_name)
+            new_value.append(deepcopy(tmp_val))
         return new_value
 
     def display(self, level=0) -> any:

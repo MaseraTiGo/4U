@@ -11,30 +11,48 @@
                                                  /| 
                                                 |/  
 """
-
-import abc
-
-
-class A(abc.ABC):
-    M = {}
-    _N = None
-
-    @classmethod
-    def add(cls, apis):
-        cls._N = cls._N if cls._N else {}
-        cls._N[apis] = apis
+import json
 
 
-class B(A):
-    ...
+class Mgmt(object):
+
+    def __init__(self, flag):
+        self.flag = flag
+
+    def __enter__(self):
+        if self.flag == 'fuck':
+            raise ValueError
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(exc_type)
+        print(exc_val)
+        print(exc_tb)
+
+a = [
+        {
+            "group_id": 1,
+            "group": [
+                {
+                    "sche_type": "period_day",
+                    "sche_time": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
+                    "start_time": "14:18",
+                    "end_time": "14:19"
+                }
+            ]
+        },
+        {
+            "group_id": 2,
+            "group": [
+                {
+                    "sche_type": "period_date",
+                    "sche_time": "2021-10-08,2021-10-10",
+                    "start_time": "14:22",
+                    "end_time": "14:23"
+                }
+            ]
+        }
+    ]
 
 
-class C(A):
-    ...
-
-
-B.add(1)
-print(B._N)
-C.add(2)
-print(B._N)
-print(C._N)
+print(len(json.dumps(a, separators=(',', ':'))))

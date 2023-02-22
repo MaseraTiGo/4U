@@ -162,7 +162,7 @@ class MyShitManager(BaseManager):
         for name, cur_date in cur_date_mapping.items():
             if name not in yesterday_mapping:
                 continue
-            if int(cur_date.net_worth):
+            if float(cur_date.net_worth) > 0:
                 # if net_worth large than 0, in this case, the net worth should
                 # be calculated by me
                 cur_date.delta = abs(cur_date.amount) - yesterday_mapping[
@@ -269,7 +269,6 @@ class MyShitManager(BaseManager):
         name = req['name']
 
         shit_qs = cls.MODEL.search(name=name)[:show_num]
-
         data = [
             {
                 'name': shit.name,
@@ -289,7 +288,7 @@ class MyShitManager(BaseManager):
             'days': days,
             'average': average
         }
-
+        print(data)
         return data, ex_info
 
     @classmethod
@@ -317,14 +316,17 @@ class MyShitManager(BaseManager):
             if average >= filter_num or average < -filter_num:
                 continue
 
+            average_amount = float('%.2f' %
+                                   (sum([shit.amount for shit in
+                                         shits]) / days)
+                                   ) if days else float(shits[0].amount)
+
             ret[name] = {
                 'total_income': total_income,
                 'days': days,
                 'average': average,
-                'average_amount': float('%.2f' %
-                                        (sum([shit.amount for shit in
-                                              shits]) / days)
-                                        ) if days else float(shits[0].amount),
+                'average_amount': average_amount,
+                'in_ten': float('%.2f' % ((average / average_amount) * 10_000)) if average_amount else 0.00,
                 'start_amount': float(shits[-1].amount),
                 'end_amount': float(shits[0].amount),
             }

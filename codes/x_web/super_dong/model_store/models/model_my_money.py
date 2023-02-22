@@ -44,7 +44,7 @@ class MyShit(BaseModel):
         WECHAT = 1, 'wechat'
         INVEST_BANK = 2, 'invest bank'
 
-    name = CharField(verbose_name="where the money is", max_length=32)
+    name = CharField(verbose_name="where the money is", max_length=64)
     amount = DecimalField(verbose_name="how many here is", default=0,
                           max_digits=11, decimal_places=2)
     invest_type = SmallIntegerField(verbose_name="invest type",

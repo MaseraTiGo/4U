@@ -10,8 +10,6 @@
 # ===================================
 
 
-import pysnooper
-
 from codes.algorithm.basics import MyNode
 
 node_1 = MyNode(1)
@@ -116,4 +114,21 @@ def find_min_substr(src_list: str, target: str):
     return res
 
 
-print(find_min_substr('abbcdabcefg', 'bd'))
+# print(find_min_substr('abbcdabcefg', 'bd'))
+
+
+# 5. Longest Palindromic Substring
+class Solution:
+    def __init__(self, s: str):
+        ...
+
+    def longest_palindrome(self, s: str) -> str:
+        if not s:
+            return s
+        pivot_h = pivot_t = 0
+
+
+    def _helper(self, sub_str: str):
+        ...
+
+# 5. Longest Palindromic Substring

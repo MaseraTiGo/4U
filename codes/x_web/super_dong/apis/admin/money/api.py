@@ -427,7 +427,8 @@ class SortByProject(AuthApi):
         sort_by = CharField(
             verbose='sort condition',
             is_required=False,
-            choices=[("total_income", "total_income"), ("average", "average")]
+            choices=[("total_income", "total_income"), ("average", "average"),
+                     ("in_ten", "in_ten")]
         )
         order = IntField(
             verbose='sort order',

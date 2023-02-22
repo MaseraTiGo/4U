@@ -15,7 +15,7 @@
 import abc
 import json
 
-from frame.utils.redis import RedisBase
+from super_dong.frame.utils.redis import RedisBase
 
 SEP = '__'
 

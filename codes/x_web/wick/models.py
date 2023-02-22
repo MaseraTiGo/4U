@@ -13,6 +13,7 @@ class Migrations(models.Model):
                             null=False)
     index = models.SmallIntegerField(verbose_name='index', default=0)
     ex_info = models.JSONField(verbose_name='ex info', default=dict)
+    remark = models.JSONField(verbose_name='remark', default=list)
 
     class Meta:
         db_table = 'migration_store'
