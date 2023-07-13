@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @File    : __init__.py
-# @Project : djangoProject
-# @Time    : 2022/12/9 17:40
+# @Project : x_web
+# @Time    : 2023/3/23 16:13
 # once, I want 2 leave my name 2 the history
 # sadly, I find that my hair gets pale
 """                     
@@ -11,8 +11,3 @@
                                                  /| 
                                                 |/  
 """
-# load my shit
-from .model_my_money import MyShit
-from .model_affiliate import *
-from .model_data_set import *
-from .model_account import *

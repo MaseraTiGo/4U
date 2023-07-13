@@ -12,7 +12,8 @@ __all__ = ("BaseModel",)
 import datetime
 
 from django.db.models import DateTimeField, Model, IntegerField, AutoField, \
-    CharField, ForeignKey, BooleanField, TextField, DateField
+    CharField, ForeignKey, BooleanField, TextField, DateField, JSONField, \
+    EmailField, SmallIntegerField, IntegerChoices
 from django.forms import model_to_dict
 from django.utils import timezone
 
@@ -20,11 +21,20 @@ from django.utils import timezone
 class BaseModel(Model):
     update_time = DateTimeField(verbose_name="更新时间", auto_now=True)
     create_time = DateTimeField(verbose_name="创建时间", default=timezone.now)
+    ex_info = JSONField(verbose_name="ex info", default=dict)
 
     class Meta:
         abstract = True
         ordering = ("-create_time",)
         get_latest_by = "create_time"
+
+    @classmethod
+    def select(cls, **kwargs):
+        return cls.search(**kwargs)
+
+    @classmethod
+    def get(cls, **kwargs):
+        return cls.search(**kwargs).first()
 
     @classmethod
     def create(cls, **kwargs):
@@ -137,3 +147,33 @@ class BaseModel(Model):
             field_dict[field.name] = field.verbose_name
 
         return field_dict
+
+
+class Status(IntegerChoices):
+    DISABLE = 0, 'DISABLE'
+    ACTIVE = 1, 'ACTIVE'
+    PENDING = 2, 'PENDING'
+    DELETE = 3, 'DELETE'
+    SUSPEND = 4, 'SUSPEND'
+
+    FAILED = 5, 'FAILED'
+    UNCONVERTED = 6, 'UNCONVERTED'
+    CONVERTED = 7, 'CONVERTED'
+
+
+class BaseAccount(BaseModel):
+
+    username = CharField(verbose_name='affiliate name', max_length=32)
+    password = CharField(verbose_name='password', max_length=32)
+    email = EmailField(verbose_name='email')
+    phone = CharField(verbose_name='phone', max_length=16)
+    remark = CharField(verbose_name='remark', max_length=128)
+
+    status = SmallIntegerField(
+        verbose_name='status',
+        default=Status.ACTIVE,
+        choices=Status.choices
+    )
+
+    class Meta:
+        abstract = True

@@ -13,6 +13,7 @@
 """
 from collections import defaultdict
 from datetime import datetime, timedelta
+from pprint import pprint
 from typing import List
 
 from django.forms import model_to_dict
@@ -36,6 +37,16 @@ def is_last_day_exist(cur_day: str, mapping, max_offset=10) -> tuple:
             break
         days_offset += 1
     return last_date_obj, found
+
+
+# def is_last_day_exist(cur_day: str, mapping, max_offset=10) -> tuple:
+#     date_obj = datetime.fromisoformat(cur_day)
+#
+#     for i in range(max_offset + 1):
+#         last_date_obj = date_obj - timedelta(days=i)
+#         if str(last_date_obj.date()) in mapping:
+#             return last_date_obj, True
+#     return None, False
 
 
 class MyShitManager(BaseManager):
@@ -162,19 +173,20 @@ class MyShitManager(BaseManager):
         for name, cur_date in cur_date_mapping.items():
             if name not in yesterday_mapping:
                 continue
-            if float(cur_date.net_worth) > 0:
+            if float(cur_date.net_worth) != 0:
                 # if net_worth large than 0, in this case, the net worth should
                 # be calculated by me
-                cur_date.delta = abs(cur_date.amount) - yesterday_mapping[
+                cur_date.delta = cur_date.amount - yesterday_mapping[
                     name].amount - cur_date.net_worth
                 continue
-            cur_date.net_worth = abs(cur_date.amount) - yesterday_mapping[
+            cur_date.net_worth = cur_date.amount - yesterday_mapping[
                 name].amount - cur_date.delta
 
         cls.MODEL.objects.bulk_update(cur_date_qs, ['net_worth', 'delta'])
 
     @classmethod
     def shit_profile(cls):
+        from django.db import connection
         qs = cls.search().exclude(status=cls.MODEL.InvestStatus.SELL_OUT)
         date_mapping = defaultdict(set)
 
@@ -196,6 +208,7 @@ class MyShitManager(BaseManager):
                 data['Net_worth'] = data['Total'] - \
                                     ret[str(last_day_obj.date())]['Total']
                 data['Net_worth'] = float("%.2f" % data['Net_worth'])
+        pprint(connection.queries)
         return ret
 
     @classmethod
@@ -204,7 +217,7 @@ class MyShitManager(BaseManager):
 
         shit_qs = cls.MODEL.search().exclude(
             status=cls.MODEL.InvestStatus.SELL_OUT
-        )
+        ).exclude(name="Ali-Huabei")
 
         day_app_mapping_amount = defaultdict(list)
 
@@ -342,7 +355,7 @@ class MyShitManager(BaseManager):
     @classmethod
     def ten_grand_share(cls, req: dict):
         show_num = req['show_num']
-        shit_qs = cls.MODEL.search().exclude(
+        shit_qs = cls.MODEL.search(invest_type=req['invest_level']).exclude(
             status=cls.MODEL.InvestStatus.SELL_OUT
         )
 
@@ -416,3 +429,4 @@ class MyShitManager(BaseManager):
         return {
             name: average_list
         }
+

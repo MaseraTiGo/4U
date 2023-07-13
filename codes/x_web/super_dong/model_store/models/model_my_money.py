@@ -15,10 +15,21 @@
 __all__ = ("MyShit",)
 
 from django.db.models import CharField, JSONField, \
-    SmallIntegerField, IntegerChoices, DecimalField
+    SmallIntegerField, IntegerChoices, DecimalField, DateTimeField, Model
+from django.utils import timezone
 
 from super_dong.model_store import SuperDong
-from super_dong.model_store.base import BaseModel
+# from super_dong.model_store.base import BaseModel
+
+
+class BaseModel(Model):
+    update_time = DateTimeField(verbose_name="更新时间", auto_now=True)
+    create_time = DateTimeField(verbose_name="创建时间", default=timezone.now)
+
+    class Meta:
+        abstract = True
+        ordering = ("-create_time",)
+        get_latest_by = "create_time"
 
 
 class MyShit(BaseModel):
@@ -66,11 +77,3 @@ class MyShit(BaseModel):
     class Meta:
         ordering = ("-create_time",)
         db_table = f"{SuperDong}my_shit"
-
-
-class Test(BaseModel):
-    name = CharField(verbose_name='dante', default='123', max_length=32)
-
-    class Meta:
-        ordering = ("-create_time",)
-        db_table = f"{SuperDong}my_test"

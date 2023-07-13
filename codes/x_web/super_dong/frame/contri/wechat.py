@@ -13,8 +13,11 @@
 """
 
 import datetime
+import ipaddress
 import time
 from enum import Enum
+from functools import wraps
+from pprint import pprint
 
 import requests
 
@@ -44,7 +47,7 @@ class Request(object):
         requests.post(url, json=data)
 
 
-def auto_quick_create(interval=60, timing=10, end_date=None):
+def auto_quick_create(interval=60, timing=9, end_date=None):
     created = {}
 
     while 1:
@@ -65,4 +68,36 @@ def auto_quick_create(interval=60, timing=10, end_date=None):
         print(f"{prefix} do it {interval} secs later......")
 
 
-auto_quick_create()
+# from Crypto.Cipher import AES
+#
+#
+# # data = b'secret data'
+# #
+# # key = get_random_bytes(16)
+#
+#
+# def encrypt_aes(data, key):
+#     data, key = data.encode(), key.encode()
+#     cipher = AES.new(key, AES.MODE_EAX)
+#     ciphertext, tag = cipher.encrypt_and_digest(data)
+#     print(ciphertext, tag)
+#     file_out = open("encrypted.bin", "wb")
+#     [file_out.write(x) for x in (cipher.nonce, tag, ciphertext)]
+#     file_out.close()
+#
+#
+# def decrypt_are(key):
+#     key = key.encode()
+#     file_in = open("encrypted.bin", "rb")
+#     nonce, tag, ciphertext = [file_in.read(x) for x in (16, 16, -1)]
+#     file_in.close()
+#
+#     # let's assume that the key is somehow available again
+#     cipher = AES.new(key, AES.MODE_EAX, nonce)
+#     data = cipher.decrypt_and_verify(ciphertext, tag)
+#     print(data.decode())
+#
+#
+# # aes_key = "fuckyoustupidxxx"
+# # # encrypt_aes("2023-04-17", aes_key)
+# # decrypt_are(aes_key)

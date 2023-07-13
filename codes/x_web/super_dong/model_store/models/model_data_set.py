@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# @File    : __init__.py
-# @Project : djangoProject
-# @Time    : 2022/12/9 17:40
+# @File    : model_data_set
+# @Project : x_web
+# @Time    : 2023/7/11 16:01
 # once, I want 2 leave my name 2 the history
 # sadly, I find that my hair gets pale
 """                     
@@ -11,8 +11,12 @@
                                                  /| 
                                                 |/  
 """
-# load my shit
-from .model_my_money import MyShit
-from .model_affiliate import *
-from .model_data_set import *
-from .model_account import *
+from django.db.models import IntegerField, CharField
+
+from super_dong.model_store.base import BaseModel
+
+
+class WhitePig(BaseModel):
+    db_name = CharField(verbose_name='name of db', max_length=32)
+    pig_id = IntegerField(verbose_name='pig_id')
+    remark = CharField(verbose_name='remark', max_length=32)

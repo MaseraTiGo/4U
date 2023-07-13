@@ -475,6 +475,7 @@ class SortByProject(AuthApi):
 class TenGrandShare(AuthApi):
     class req_data(RequestData):
         show_num = IntField(verbose='sho num', is_required=False, default=1000)
+        invest_level = IntField(verbose='sho num', is_required=False, default=5)
 
     class rsp_data(ResponseData):
         data = AlmightyField(verbose='details')
