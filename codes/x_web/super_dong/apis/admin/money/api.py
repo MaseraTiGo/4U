@@ -54,7 +54,7 @@ class Create(AuthApi):
         pass
 
     def execute(self):
-        MyShitManager.create(**self.data.as_dict())
+        MyShitManager.create(**self.data.as_dict)
 
     def tidy(self, *ret):
         pass
@@ -87,7 +87,7 @@ class QuickCreate(AuthApi):
         pass
 
     def execute(self):
-        MyShitManager.quick_create(**self.data.as_dict())
+        MyShitManager.quick_create(**self.data.as_dict)
 
     def tidy(self, *ret):
         pass
@@ -99,7 +99,7 @@ class Details(AuthApi):
 
     class page_info(RequestData):
         page_num = IntField(verbose='page num', is_required=False, default=1)
-        page_size = IntField(verbose='page size', is_required=False, default=30)
+        page_size = IntField(verbose='page size', is_required=False, default=88)
 
     class total(ResponseData):
         total = FloatField(verbose='total shit')
@@ -115,7 +115,7 @@ class Details(AuthApi):
                 'net_worth': FloatField(verbose='net worth'),
                 'status': CharField(verbose='status'),
                 'app': CharField(verbose='app'),
-                'ex_info': AlmightyField(verbose='ex_info'),
+                'delta': FloatField(verbose='delta'),
                 'remark': CharField(verbose='remark'),
                 'create_time': DateTimeField(
                     verbose='create time', to_str=True),
@@ -139,8 +139,8 @@ class Details(AuthApi):
 
     def execute(self):
         return MyShitManager.details(
-            self.search_info.as_dict(),
-            self.page_info.as_dict()
+            self.search_info.as_dict,
+            self.page_info.as_dict
         )
 
     def tidy(self, *ret):
@@ -185,6 +185,8 @@ class Update(AuthApi):
             verbose='fucking name', max_length=-1, is_required=False
         )
         amount = FloatField(verbose='fucking age', is_required=False)
+        net_worth = FloatField(verbose='net_worth', is_required=False)
+        delta = FloatField(verbose='delta', is_required=False)
         invest_type = IntField(
             verbose='invest type',
             choices=MyShitManager.InvestType_Choices,
@@ -223,7 +225,7 @@ class Update(AuthApi):
         pass
 
     def execute(self):
-        MyShitManager.update(**self.data.as_dict())
+        MyShitManager.update(**self.data.as_dict)
 
     def tidy(self, *ret):
         pass
@@ -250,7 +252,7 @@ class CalNetWorth(AuthApi):
         return 100001
 
     def execute(self):
-        MyShitManager.calculate_net_worth(self.data.as_dict().get('date'))
+        MyShitManager.calculate_net_worth(self.data.as_dict.get('date'))
 
     def tidy(self, *ret):
         pass
@@ -312,7 +314,7 @@ class SortByApp(AuthApi):
         return 100001
 
     def execute(self):
-        return MyShitManager.sort_by_app(self.req_data.as_dict())
+        return MyShitManager.sort_by_app(self.req_data.as_dict)
 
     def tidy(self, *ret):
         return {
@@ -355,7 +357,7 @@ class SortByNetWorth(AuthApi):
         return 100001
 
     def execute(self):
-        return MyShitManager.sort_by_net_worth(self.req_data.as_dict())
+        return MyShitManager.sort_by_net_worth(self.req_data.as_dict)
 
     def tidy(self, *ret):
         return {
@@ -410,7 +412,7 @@ class XProjectHistory(AuthApi):
         return 100001
 
     def execute(self):
-        return MyShitManager.x_project_history(self.req_data.as_dict())
+        return MyShitManager.x_project_history(self.req_data.as_dict)
 
     def tidy(self, *ret):
         return {
@@ -462,7 +464,7 @@ class SortByProject(AuthApi):
         return 100001
 
     def execute(self):
-        return MyShitManager.sort_by_prj(self.req_data.as_dict())
+        return MyShitManager.sort_by_prj(self.req_data.as_dict)
 
     def tidy(self, *ret):
         return {
@@ -497,7 +499,7 @@ class TenGrandShare(AuthApi):
         return 100001
 
     def execute(self):
-        return MyShitManager.ten_grand_share(self.req_data.as_dict())
+        return MyShitManager.ten_grand_share(self.req_data.as_dict)
 
     def tidy(self, *ret):
         return {
@@ -551,7 +553,7 @@ class XProTrend(AuthApi):
         return 100001
 
     def execute(self):
-        return MyShitManager.x_pro_trend(self.req_data.as_dict())
+        return MyShitManager.x_pro_trend(self.req_data.as_dict)
 
     def tidy(self, *ret):
         return {
@@ -559,3 +561,49 @@ class XProTrend(AuthApi):
                 'data': ret[0],
             }
         }
+
+
+class ScheduleInvesting(AuthApi):
+    class req_data(RequestData):
+        code = IntField(verbose="found code")
+        cycle = IntField(
+            verbose="schedule timing",
+            choices=[
+                (0, "daily"),
+                (1, "weekly"),
+                (2, "biweekly"),
+                (3, "monthly")],
+            default=0
+        )
+        day = IntField(
+            verbose="day, or day of week, or day of biweekly, or day of month",
+            is_required=False,
+            default=0
+        )
+        today_trade = BooleanField(
+            verbose="today trade",
+            is_required=False,
+            default=True
+        )
+
+    @classmethod
+    def get_desc(cls):
+        return "api 4 ScheduleInvesting"
+
+    @classmethod
+    def get_author(cls):
+        return "superDong"
+
+    @classmethod
+    def get_history(cls):
+        return "Alpha-001"
+
+    @classmethod
+    def get_unique_num(cls):
+        return 100001
+
+    def execute(self):
+        MyShitManager.schedule_investing(self.req_data.as_dict)
+
+    def tidy(self, *ret):
+        pass

@@ -38,7 +38,8 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'super_dong',
-    'wick',
+    # 'adminer',
+    # 'wick',
     # 'django.contrib.admin',
     # 'django.contrib.auth',
     # 'django.contrib.contenttypes',
@@ -92,7 +93,7 @@ DATABASES = {
     'default': {
 
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aston-martin',
+        'NAME': 'maserati',
         'USER': 'root',
         'PASSWORD': '123918',
         'HOST': 'localhost',

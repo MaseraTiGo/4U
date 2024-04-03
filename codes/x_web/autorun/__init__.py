@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-# @File    : settings
-# @Project : djangoProject
-# @Time    : 2022/10/12 14:59
+# @File    : __init__.py
+# @Project : ez_web
+# @Time    : 2023/9/11 16:18
+# once, I want 2 leave my name 2 the history
+# sadly, I find that my hair gets pale
 """                     
                                       /             
  __.  , , , _  _   __ ______  _    __/  __ ____  _, 
@@ -9,13 +11,3 @@
                                                  /| 
                                                 |/  
 """
-import datetime
-
-
-class MyMeta(type):
-    def __str__(cls):
-        return f'<[D0NG]> At: <[{datetime.datetime.now()}]> {"-" * 33}> '
-
-
-class PRINT_PREFIX(metaclass=MyMeta):
-    ...

@@ -29,7 +29,6 @@ def debug_info(fn):
         if settings.DEBUG:
             prefix = settings.PRINT_PREFIX if \
                 hasattr(settings, 'PRINT_PREFIX') else PRINT_PREFIX
-
             print(
                 f"\n{prefix}request From: "
                 f"{request.META.get('REMOTE_ADDR', '-')} "

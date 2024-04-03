@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @File    : __init__.py
 # @Project : x_web
-# @Time    : 2023/7/12 20:54
+# @Time    : 2023/9/12 10:07
 # once, I want 2 leave my name 2 the history
 # sadly, I find that my hair gets pale
 """                     
@@ -11,3 +11,10 @@
                                                  /| 
                                                 |/  
 """
+
+ip = "192.168.203.51:8000"
+# Sample response data (You can replace this with your API data)
+
+headers = {
+    "Content-Type": "application/json"
+}

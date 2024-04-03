@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        /* Add your CSS styles for visually appealing formatting here */
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+                /* Alternating row colors based on net-worth value */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr.positive {
+            background-color: #ffcccc; /* Light red for positive net-worth */
+        }
+
+        tr.negative {
+            background-color: #ccffcc; /* Light green for negative net-worth */
+        }
+
+        /* Define a class to change the color of a specific cell */
+        .red-cell {
+            background-color: #ffcccc; /* Light red for positive net-worth */
+        }
+
+        /* Define a class to change the color of a specific cell */
+        .green-cell {
+            background-color: #ccffcc; /* Light green for negative net-worth */
+        }
+    </style>
+    <title>superDong, GoFuckThemUp</title>
+</head>
+<body>
+
+<!-- Button to trigger ShowMyMoneyToday request -->
+<button onclick="showMyFuckingMoney4Today()">MyFuckingShit</button>
+
+<!-- Button to trigger CalNetWorth request -->
+<button onclick="calNetWorth()">CalNetWorth</button>
+
+<button onclick="sortByApp()">SortByApp</button>
+
+<!-- Button to trigger ShitProfile request -->
+<button onclick="shitProfile()">ShitProfile</button>
+
+<!-- Container to display the returned data -->
+<div id="resultContainer"></div>
+
+<script>
+    // Function to make AJAX POST request to SortByApp endpoint
+    function showMyFuckingMoney4Today() {
+        const url = "http://192.168.203.51:8000/apis/admin/money/details";
+        const params = {"search_info": {}, "page_info": {}};
+
+        makeRequest(url, params);
+    }
+
+    // Function to make AJAX POST request to SortByApp endpoint
+    function sortByApp() {
+        const url = "http://192.168.203.51:8000/apis/admin/money/sortbyapp";
+        const params = {"req_data": {}};
+
+        makeRequest(url, params);
+    }
+
+    // Function to make AJAX POST request to ShitProfile endpoint
+    function shitProfile() {
+        const url = "http://192.168.203.51:8000/apis/admin/money/shitprofile";
+        const params = {};
+
+        makeRequest(url, params);
+    }
+
+    // Function to make AJAX POST request to ShitProfile endpoint
+    function calNetWorth() {
+        const url = "http://192.168.203.51:8000/apis/admin/money/calnetworth";
+        const params = {"data": {}};
+
+        makeRequest(url, params);
+    }
+
+    // Function to handle AJAX POST request and display data
+    function makeRequest(url, params) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const responseData = JSON.parse(xhr.responseText);
+                if  (url.includes("profile")) {
+                    displayShitProfileData(responseData.data.data.profile);
+                }
+                if (url.includes("sortbyapp")) {
+                    displaySortByAppData(responseData.data.rsp_data.data);
+                }
+                if (url.includes("calnetworth")) {
+                    alert("Fucking Done");
+                }
+                if (url.includes("update")) {
+                    alert("Fucking Updated");
+                }
+                if (url.includes("details")) {
+                    displayMyFuckingMoney(responseData.data.data.data)
+                }
+            }
+        };
+
+        xhr.send(JSON.stringify(params));
+    }
+
+    // Function to display the relevant data section as a table on the page
+    function displayShitProfileData(data) {
+        const resultContainer = document.getElementById("resultContainer");
+        const keys = Object.keys(data);
+        let table = `<table><tr><th>Date</th><th>Total</th><th>Net Worth</th></tr>`;
+
+        keys.forEach(key => {
+            const netWorth = data[key]["Net_worth"];
+            const rowClass = netWorth >= 0 ? "positive" : "negative";
+            table += `<tr class="${rowClass}"><td>${key}</td><td>${data[key].Total}</td><td>${netWorth}</td></tr>`;
+        });
+
+        table += "</table>";
+        resultContainer.innerHTML = table;
+    }
+
+    // Function to display the provided JSON structure as a table with headers Data, App, Total, NetWorth
+    function displaySortByAppData(data) {
+        const resultContainer = document.getElementById("resultContainer");
+        const keys = Object.keys(data);
+        let table = "<table><tr><th>Date</th><th>App</th><th>Total</th><th>NetWorth</th></tr>";
+
+        keys.forEach(date => {
+            let counter = 0;
+            const apps = Object.keys(data[date]);
+            apps.forEach(app => {
+                const netWorth = data[date][app]["net-worth"];
+                const rowClass = netWorth >= 0 ? "red-cell" : "green-cell";
+                if (counter === 0) {
+                    table += `<tr><td>${date}</td><td class="${rowClass}">${app}</td><td class="${rowClass}">${data[date][app].total}</td><td class="${rowClass}">${data[date][app]["net-worth"]}</td></tr>`;
+                    counter++;
+                }
+                else {
+                    table += `<tr><td></td><td class="${rowClass}">${app}</td><td class="${rowClass}">${data[date][app].total}</td><td class="${rowClass}">${data[date][app]["net-worth"]}</td></tr>`;
+                }
+            });
+        });
+
+        table += "</table>";
+        resultContainer.innerHTML = table;
+    }
+
+    // Function to display the provided JSON structure as a table with headers ID,
+    function displayMyFuckingMoney(data) {
+        const resultContainer = document.getElementById("resultContainer");
+        let table = "<table><tr><th>ID</th><th>App</th><th>Name</th><th>Type</th><th>Amount</th><th>NetWorth</th><th>Delta</th><th>Status</th><th>DateTime</th><th>Action</th></tr>";
+
+        data.forEach(item => {
+            const netWorth = item["net_worth"];
+            const rowClass = netWorth >= 0 ? "positive" : "negative";
+            const newTD = "<td contenteditable=\"true\">"
+            table += `<tr class="${rowClass}"><td>${item["id"]}</td><td>${item["app"]}</td><td>${item["name"]}</td><td>${item["invest_type"]}</td>${newTD}${item["amount"]}</td>${newTD}${item["net_worth"]}</td>${newTD}${item["delta"]}</td><td>${item["status"]}</td><td>${item["create_time"]}</td><td><button onclick="submitRow(this)">UPDATE</button></td></tr>`;
+
+        });
+        table += "</table>";
+        resultContainer.innerHTML = table;
+    }
+
+
+    function submitRow(button) {
+        // Get the row containing the clicked button
+        var row = button.parentNode.parentNode;
+
+        // Access the content of editable cells
+        var idNum = row.cells[0].innerText;
+        var amount = row.cells[4].innerText;
+        var networth = row.cells[5].innerText;
+        var delta = row.cells[6].innerText;
+
+        const url = "http://192.168.203.51:8000/apis/admin/money/update";
+        const params = {"data":
+            {
+                "id_": idNum,
+                "amount": amount,
+                "net_worth": networth,
+                "delta": delta
+            }
+        };
+
+        makeRequest(url, params);
+
+    }
+</script>
+
+</body>
+</html>

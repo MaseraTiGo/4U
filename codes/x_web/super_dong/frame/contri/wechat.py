@@ -21,7 +21,7 @@ from pprint import pprint
 
 import requests
 
-prefix = 'dong ------------->'
+from super_dong.settings import PRINT_PREFIX as prefix
 
 
 class WeChatReceiver(object):
@@ -61,7 +61,7 @@ def auto_quick_create(interval=60, timing=9, end_date=None):
         cur_hour = date_time.hour
         if cur_hour == timing and str(date) not in created:
             print(f"{prefix} quick create at: {str(date_time)}")
-            Request.post(MyShitUrl.QUICK_CREATE.value, {"data": {}})
+            Request.post(MyShitUrl.QUICK_CREATE.value, {"data": {"yesterday_only": False}})
             created[str(date)] = 1
 
         time.sleep(interval)

@@ -13,9 +13,9 @@
 """
 from collections import defaultdict
 from datetime import datetime, timedelta
-from pprint import pprint
 from typing import List
 
+from chinese_calendar import is_workday
 from django.forms import model_to_dict
 
 from super_dong.frame.contri.manager import BaseManager
@@ -98,7 +98,8 @@ class MyShitManager(BaseManager):
             entry = model_to_dict(shit)
             entry.pop('id')
             entry['create_time'] = date
-            entry['delta'] = 0
+            entry['delta'] = shit.ex_info.get("regular_invest",
+                                              0) if is_workday(date) else 0
             entry['net_worth'] = 0
             if shit.status == cls.MODEL.InvestStatus.BUY_IN:
                 entry['status'] = cls.MODEL.InvestStatus.HOLD
@@ -117,7 +118,7 @@ class MyShitManager(BaseManager):
 
         start_ = f'{str(date)} 00:00:00'
         end_ = f'{str(date)} 23:59:59'
-        qs = cls.MODEL.search(create_time__gte=start_, create_time__lte=end_)
+        qs = cls.MODEL.search(create_time__gte=start_, create_time__lte=end_).order_by('app', 'priority')
         qs = TearParts(qs, page_info['page_num'], page_info['page_size'])
 
         total = 0
@@ -132,7 +133,7 @@ class MyShitManager(BaseManager):
                 "net_worth": item.net_worth,
                 "status": item.get_status_display(),
                 "app": item.get_app_display(),
-                "ex_info": item.ex_info,
+                "delta": float(item.delta),
                 "remark": item.remark,
                 "create_time": item.create_time
 
@@ -186,7 +187,6 @@ class MyShitManager(BaseManager):
 
     @classmethod
     def shit_profile(cls):
-        from django.db import connection
         qs = cls.search().exclude(status=cls.MODEL.InvestStatus.SELL_OUT)
         date_mapping = defaultdict(set)
 
@@ -197,8 +197,9 @@ class MyShitManager(BaseManager):
         ret = {}
         for date, item_set in date_mapping.items():
             ret[date] = {
-                "Total": float(sum([item.amount for item in item_set])),
-                "Net_worth": 0
+                "Total": float(
+                    "%.2f" % sum([item.amount for item in item_set])),
+                "Net_worth": 0.00
             }
 
         for date, data in ret.items():
@@ -208,7 +209,6 @@ class MyShitManager(BaseManager):
                 data['Net_worth'] = data['Total'] - \
                                     ret[str(last_day_obj.date())]['Total']
                 data['Net_worth'] = float("%.2f" % data['Net_worth'])
-        pprint(connection.queries)
         return ret
 
     @classmethod
@@ -339,7 +339,8 @@ class MyShitManager(BaseManager):
                 'days': days,
                 'average': average,
                 'average_amount': average_amount,
-                'in_ten': float('%.2f' % ((average / average_amount) * 10_000)) if average_amount else 0.00,
+                'in_ten': float('%.2f' % ((
+                                                  average / average_amount) * 10_000)) if average_amount else 0.00,
                 'start_amount': float(shits[-1].amount),
                 'end_amount': float(shits[0].amount),
             }
@@ -430,3 +431,34 @@ class MyShitManager(BaseManager):
             name: average_list
         }
 
+    @classmethod
+    def schedule_investing(cls, req: dict):
+        cls._check_code_validation(req['code'])
+
+        cycle_mapping = {
+            0: cls._deal_daily,
+            1: cls._deal_weekly,
+            2: cls._deal_biweekly,
+            3: cls._deal_monthly
+        }
+        cycle_mapping[req['cycle']](req['day'], req['today_trade'])
+
+    @classmethod
+    def _check_code_validation(cls, code: str):
+        ...
+
+    @classmethod
+    def _deal_daily(cls, day: int, today_trade: bool):
+        ...
+
+    @classmethod
+    def _deal_weekly(cls, day: int, today_trade: bool):
+        ...
+
+    @classmethod
+    def _deal_biweekly(cls, day: int, today_trade: bool):
+        ...
+
+    @classmethod
+    def _deal_monthly(cls, day: int, today_trade: bool):
+        ...

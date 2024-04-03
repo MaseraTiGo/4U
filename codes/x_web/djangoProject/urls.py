@@ -14,15 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.urls import re_path
+from django.urls import re_path, path
 
 from super_dong.frame.core.api_doc.views import api_doc
 from super_dong.frame.router import executor
+from super_dong.views import index, adminer
+from django.views.generic import RedirectView
 
 re_pattern = f'{settings.API_ROUTER_PREFIX}/.+'
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
+    path("adminer-mysql.php", RedirectView.as_view(url='adminer-mysql.php', permanent=False)),
+    path('', index, name='index'),
     re_path(re_pattern, executor),
     re_path("api_doc", api_doc)
 ]

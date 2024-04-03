@@ -63,7 +63,8 @@ class ResponseData(metaclass=RData):
 class RequestData(metaclass=RData):
     _FIELD_PROCESSOR = {}
 
-    def as_dict(self):
+    @property
+    def as_dict(self) -> dict:
         return vars(self)
 
 

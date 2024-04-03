@@ -12,7 +12,4 @@
                                                 |/  
 """
 # load my shit
-from .model_my_money import MyShit
-from .model_affiliate import *
-from .model_data_set import *
-from .model_account import *
+from .model_my_money import MyShit, DollarRate
