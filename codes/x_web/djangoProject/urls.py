@@ -18,16 +18,15 @@ from django.urls import re_path, path
 
 from super_dong.frame.core.api_doc.views import api_doc
 from super_dong.frame.router import executor
-from super_dong.views import index, adminer, shit_trend_line
-from django.views.generic import RedirectView
+from super_dong.views import index, shit_trend_line, shit_per_10_kilo
 
 re_pattern = f'{settings.API_ROUTER_PREFIX}/.+'
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    # path("adminer-mysql.php", RedirectView.as_view(url='adminer-mysql.php', permanent=False)),
     path('', index, name='index'),
     path('line', shit_trend_line, name='line'),
+    path('pt', shit_per_10_kilo, name='pt'),
     re_path(re_pattern, executor),
     re_path("api_doc", api_doc)
 ]
