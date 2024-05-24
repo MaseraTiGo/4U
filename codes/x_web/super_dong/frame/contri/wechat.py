@@ -59,7 +59,7 @@ def auto_quick_create(interval=60, timing=9, end_date=None):
                 break
 
         cur_hour = date_time.hour
-        if cur_hour == timing and str(date) not in created:
+        if cur_hour in [timing, timing+1] and str(date) not in created:
             print(f"{prefix} quick create at: {str(date_time)}")
             Request.post(MyShitUrl.QUICK_CREATE.value, {"data": {"yesterday_only": False}})
             created[str(date)] = 1

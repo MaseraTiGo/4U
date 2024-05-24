@@ -59,8 +59,14 @@ def give_me_the_soup(soup):
 
 def get_dollar():
     url = 'https://fx.cmbchina.com/api/v1/fx/rate'
+
     try:
-        rsp = requests.get(url, headers=headers)
+        proxy = {
+            "http": "127.0.0.1:7890",
+            "https": "127.0.0.1:7890",
+        }
+        rsp = requests.get(url, headers=headers, proxies=proxy)
+        # rsp = requests.get(url, headers=headers)
     except Exception as e:
         print(f"{PRINT_PREFIX} exception: {e}")
         return 0, 0
