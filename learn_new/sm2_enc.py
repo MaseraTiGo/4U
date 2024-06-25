@@ -32,7 +32,7 @@ def verify_keys(data: str = "fuck you".encode()):
 
 def gen_keys():
     global private_key, public_key
-    private_key = func.random_hex(64)
+    private_key = func.random_hex(128)
     sm2_crypt = sm2.CryptSM2(private_key=private_key, public_key='')
     public_key = sm2_crypt._kg(int(private_key, 16), sm2.default_ecc_table['g'])
 
