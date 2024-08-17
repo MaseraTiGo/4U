@@ -21,3 +21,4 @@ def zmq_send_cmd_go(connect_ip_port, command=None, json_dumps=False):
 if __name__ == '__main__':
     zmq_send_cmd_go(INFO_2_LOGMAIN,
                     {"cmd": "set", "name": "logic_switch_level", "value": 14})
+    import minium
