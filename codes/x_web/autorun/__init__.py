@@ -11,58 +11,24 @@
                                                  /| 
                                                 |/  
 """
-
-class X:
-    def __init__(self, id=None, children=None):
-        self.id = id
-        self.children = children
-
-
-
-
-class Node:
-    def __init__(self, id_, children=None):
-        self.id = id_
-        self.children = children if children else []
-
-
-def fucking_tree(qs, p_node):
-    if not qs:
-        return
-    for obj in qs:
-        cur_node = Node(obj.id)
-        p_node.children.append(cur_node)
-        fucking_tree(obj.children, cur_node)
-
-
-def traversal(root_):
-    temp = []
-
-    def dfs_helper(node):
-        if node:
-            dfs_helper(node.left)
-            temp.append(node.val)
-            dfs_helper(node.right)
-
-    dfs_helper(root_)
-    return temp
-
-
 if __name__ == '__main__':
-    root = Node(0)
 
-    node_1, node_2, node_3, node_4, node_5, node_6, node_7, node_8, node_9, node_10 = [
-        X(i) for i in range(1, 11)]
-    node_11, node_12, node_13, node_14 = [X(i) for i in range(11, 15)]
+    import pyotp
 
-    node_1.children = [node_2, node_3, node_4, node_5]
-    node_3.children = [node_6, node_7]
-    node_4.children = [node_8]
-    node_5.children = [node_9, node_10]
-    node_7.children = [node_11]
-    node_8.children = [node_12]
-    node_9.children = [node_13]
-    node_11.children = [node_14]
-    # data = ...
-    fucking_tree(node_1.children, root)
-    traversal(root)
+    # 1. 生成一个基于时间的一次性密码的密钥 (通常你会保存这个密钥)
+    secret = pyotp.random_base32()
+    print(f"密钥: {secret}|{len(secret)}")
+
+    # 2. 创建一个 TOTP 对象
+    totp = pyotp.TOTP(secret)
+
+    # 3. 生成当前时间的动态口令
+    current_otp = totp.now()
+    print(f"当前动态口令: {current_otp}")
+
+    # 4. 验证动态口令
+    input_otp = input("请输入动态口令: ")
+    if totp.verify(input_otp):
+        print("动态口令验证成功！")
+    else:
+        print("动态口令验证失败。")

@@ -195,7 +195,7 @@ class MyShit(BaseModel):
     share = DecimalField(verbose_name='shares', default=0, max_digits=11,
                          decimal_places=2)
     ex_info = JSONField(verbose_name="ex_info", default=dict)
-    remark = CharField(verbose_name="remark", max_length=128)
+    remark = JSONField(verbose_name="remark", default=dict)
     priority = IntegerField(verbose_name="priority", default=0)
 
     class Meta:

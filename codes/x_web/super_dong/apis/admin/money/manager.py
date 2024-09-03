@@ -13,11 +13,13 @@
 """
 from collections import defaultdict
 from datetime import datetime, timedelta
+from pprint import pprint
 from typing import List
 
 from chinese_calendar import is_workday
 from django.forms import model_to_dict
 
+from funds.shit import TodaysShit
 from super_dong.frame.contri.manager import BaseManager
 from super_dong.frame.core.exception import BusinessLogicError
 from super_dong.frame.utils.query_tools import TearParts
@@ -73,6 +75,7 @@ class MyShitManager(BaseManager):
             raise BusinessLogicError(f'there\'s no data in db.')
 
         if my_shit.create_time.date() == date.date():
+            TodaysShit.calculate_shit_4_today()
             raise BusinessLogicError(
                 f'date:{date.date()}\'data is already exist.'
             )
@@ -108,6 +111,7 @@ class MyShitManager(BaseManager):
         if qs:
             new_data = [cls.MODEL(**process(item)) for item in qs]
             cls.MODEL.objects.bulk_create(new_data)
+            TodaysShit.calculate_shit_4_today()
         else:
             raise BusinessLogicError(f'there is no data 2 copy')
 
@@ -462,3 +466,55 @@ class MyShitManager(BaseManager):
     @classmethod
     def _deal_monthly(cls, day: int, today_trade: bool):
         ...
+
+
+class ICareAboutMyShits(BaseManager):
+    MODEL = MyShit
+
+    @classmethod
+    def get_funds_with_returns_in_range(cls, req_data: dict):
+        # above = req_data['above']
+        # below = req_data['below']
+        days = req_data['days']
+        names = req_data['names']
+
+        query_info = {}
+        if names:
+            query_info['name__in'] = names
+
+        today = datetime.today()
+        ret = defaultdict(dict)
+        for day in days:
+            x_days_before = today - timedelta(days=day)
+            query_info['create_time__date__gte'] = x_days_before
+            shit_qs = cls.MODEL.search(
+               **query_info
+            ).exclude(status=cls.MODEL.InvestStatus.SELL_OUT)
+
+            name_mapping = defaultdict(list)
+            for shit in shit_qs:
+                name_mapping[shit.name].append(shit)
+
+            for name, shits in name_mapping.items():
+                returns = sum([shit.net_worth for shit in shits])
+                temp = {
+                    'days': day,
+                    'returns': returns,
+                }
+                ret[name][day] = temp
+        x_ret = []
+        for name, day in ret.items():
+            temp = {
+                'name': name,
+                'detail': [
+                    {
+                        "days": day,
+                        "returns": value['returns']
+                    }
+                    for day, value in day.items()
+                ]
+            }
+            x_ret.append(temp)
+        pprint(x_ret)
+        return x_ret
+

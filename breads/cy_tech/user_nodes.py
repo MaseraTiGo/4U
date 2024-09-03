@@ -11,6 +11,8 @@
                                                  /| 
                                                 |/  
 """
+from copy import deepcopy
+
 # -*- coding: utf-8 -*-
 # @File    : __init__.py
 # @Project : ez_web
@@ -25,12 +27,11 @@
                                                 |/  
 """
 
+
 class X:
     def __init__(self, id=None, children=None):
         self.id = id
         self.children = children
-
-
 
 
 class Node:
@@ -51,13 +52,20 @@ def fucking_tree(qs, p_node):
 def traversal(root_):
     temp = []
 
+    path = []
+
     def dfs_helper(node):
         if node:
-            dfs_helper(node.left)
-            temp.append(node.val)
-            dfs_helper(node.right)
+            path.append(node.id)
+            print(f"current node is:{node.id}--{path}")
+            if not node.children:
+                yield deepcopy(path)
 
-    dfs_helper(root_)
+            for child in node.children:
+                yield from dfs_helper(child)
+            path.pop()
+
+    print(list(dfs_helper(root_)))
     return temp
 
 
@@ -78,4 +86,4 @@ if __name__ == '__main__':
     node_11.children = [node_14]
     # data = ...
     fucking_tree(node_1.children, root)
-    traversal(root)
+    print(traversal(root))

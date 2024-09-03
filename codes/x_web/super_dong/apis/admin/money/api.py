@@ -9,7 +9,7 @@
                                                  /| 
                                                 |/  
 """
-from super_dong.apis.admin.money.manager import MyShitManager
+from super_dong.apis.admin.money.manager import MyShitManager, ICareAboutMyShits
 from super_dong.frame.core.api import AuthApi
 from super_dong.frame.core.data_field import CharField, IntField, DateTimeField, \
     AlmightyField, BooleanField, DateField, ListField, DictField, FloatField, \
@@ -116,7 +116,11 @@ class Details(AuthApi):
                 'status': CharField(verbose='status'),
                 'app': CharField(verbose='app'),
                 'delta': FloatField(verbose='delta'),
-                'remark': CharField(verbose='remark'),
+                'remark': FuzzyDictField(
+                    verbose='remark',
+                    key_field=CharField(verbose='key'),
+                    value_field=CharField(verbose='value')
+                ),
                 'create_time': DateTimeField(
                     verbose='create time', to_str=True),
             }, strict=True))
@@ -607,3 +611,68 @@ class ScheduleInvesting(AuthApi):
 
     def tidy(self, *ret):
         pass
+
+
+class GetFoundsByReturns(AuthApi):
+    class req_data(RequestData):
+        # above = IntField(verbose="above")
+        # below = IntField(verbose="below")
+        days = ListField(
+            verbose="days",
+            item=IntField(verbose="day"),
+            default=[7, 15, 30, 3 * 30, 6 * 30],
+            is_required=False
+        )
+        names = ListField(
+            verbose="names",
+            item=CharField(verbose="name"),
+            default=[],
+            is_required=False
+        )
+
+    class rsp_data(ResponseData):
+        founds = ListField(
+            verbose="founds",
+            item=DictField(
+                verbose="found",
+                members={
+                    'name': CharField(verbose='name'),
+                    'detail': ListField(
+                        verbose="detail",
+                        item=DictField(
+                            verbose="detail",
+                            members={
+                                'days': IntField(verbose='days'),
+                                'returns': FloatField(verbose='return'),
+                            }
+                        )
+                    )
+                }
+            )
+        )
+
+    @classmethod
+    def get_desc(cls):
+        return "api 4 ScheduleInvesting"
+
+    @classmethod
+    def get_author(cls):
+        return "superDong"
+
+    @classmethod
+    def get_history(cls):
+        return "Alpha-001"
+
+    @classmethod
+    def get_unique_num(cls):
+        return 100001
+
+    def execute(self):
+        return ICareAboutMyShits.get_funds_with_returns_in_range(self.req_data.as_dict)
+
+    def tidy(self, *ret):
+        return {
+            'rsp_data': {
+                'founds': ret[0],
+            }
+        }

@@ -73,8 +73,8 @@ def get_dollar():
     data = rsp.json()
     for ccy in data['body']:
         if ccy.get('ccyNbr') == "美元":
-            print(f"{PRINT_PREFIX} sell out: {ccy['rthOfr']}")
-            print(f"{PRINT_PREFIX} buy in: {ccy['rthBid']}")
+            print(f"{PRINT_PREFIX} buy in: {ccy['rthOfr']}")
+            print(f"{PRINT_PREFIX} sell out: {ccy['rthBid']}")
             return ccy['rthOfr'], ccy['rthBid']
     return 0, 0
 

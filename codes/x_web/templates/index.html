@@ -85,7 +85,7 @@
 <script>
     // Function to make AJAX POST request to SortByApp endpoint
     function showMyFuckingMoney4Today() {
-        const url = "http://192.168.203.51:8000/apis/admin/money/details";
+        const url = "http://192.168.203.51:8888/apis/admin/money/details";
         const params = {"search_info": {}, "page_info": {}};
 
         makeRequest(url, params);
@@ -93,7 +93,7 @@
 
     // Function to make AJAX POST request to SortByApp endpoint
     function sortByApp() {
-        const url = "http://192.168.203.51:8000/apis/admin/money/sortbyapp";
+        const url = "http://192.168.203.51:8888/apis/admin/money/sortbyapp";
         const params = {"req_data": {}};
 
         makeRequest(url, params);
@@ -101,7 +101,7 @@
 
     // Function to make AJAX POST request to ShitProfile endpoint
     function shitProfile() {
-        const url = "http://192.168.203.51:8000/apis/admin/money/shitprofile";
+        const url = "http://192.168.203.51:8888/apis/admin/money/shitprofile";
         const params = {};
 
         makeRequest(url, params);
@@ -109,7 +109,7 @@
 
     // Function to make AJAX POST request to ShitProfile endpoint
     function calNetWorth() {
-        const url = "http://192.168.203.51:8000/apis/admin/money/calnetworth";
+        const url = "http://192.168.203.51:8888/apis/admin/money/calnetworth";
         const params = {"data": {}};
 
         makeRequest(url, params);
@@ -214,7 +214,7 @@
         var networth = row.cells[5].innerText;
         var delta = row.cells[6].innerText;
 
-        const url = "http://192.168.203.51:8000/apis/admin/money/update";
+        const url = "http://192.168.203.51:8888/apis/admin/money/update";
         const params = {"data":
             {
                 "id_": idNum,

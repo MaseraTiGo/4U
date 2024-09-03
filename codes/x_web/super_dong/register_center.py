@@ -15,7 +15,7 @@ __all__ = ('AdminApiRepo', 'UserApiRepo')
 from super_dong.apis.admin.account.api import Login
 from super_dong.apis.admin.money.api import Create, QuickCreate, Details, \
     Update, CalNetWorth, ShitProfile, SortByApp, SortByNetWorth, \
-    XProjectHistory, SortByProject, TenGrandShare, XProTrend
+    XProjectHistory, SortByProject, TenGrandShare, XProTrend, GetFoundsByReturns
 from super_dong.apis.admin.test.api import TestFuzzyDict, DocTest, TestNoArgs, \
     TestToStr
 from super_dong.apis.file_download.api import FileDownload
@@ -55,6 +55,7 @@ AdminApiRepo.add(XProjectHistory)
 AdminApiRepo.add(SortByProject)
 AdminApiRepo.add(TenGrandShare)
 AdminApiRepo.add(XProTrend)
+AdminApiRepo.add(GetFoundsByReturns)
 # ------------- load money api -------------------------------------------------
 
 # ------------- load test api --------------------------------------------------

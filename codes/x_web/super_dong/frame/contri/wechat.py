@@ -13,14 +13,13 @@
 """
 
 import datetime
-import ipaddress
+import json
 import time
 from enum import Enum
-from functools import wraps
-from pprint import pprint
 
 import requests
 
+from funds.funds import Founds
 from super_dong.settings import PRINT_PREFIX as prefix
 
 
@@ -37,7 +36,7 @@ class WeChatWatchDog(object):
 
 
 class MyShitUrl(str, Enum):
-    QUICK_CREATE = 'http://192.168.203.51:8000/apis/admin/money/quickcreate'
+    QUICK_CREATE = 'http://192.168.203.51:8888/apis/admin/money/quickcreate'
 
 
 class Request(object):
@@ -49,7 +48,6 @@ class Request(object):
 
 def auto_quick_create(interval=60, timing=9, end_date=None):
     created = {}
-
     while 1:
         date_time = datetime.datetime.now()
         date = date_time.date()
@@ -59,45 +57,35 @@ def auto_quick_create(interval=60, timing=9, end_date=None):
                 break
 
         cur_hour = date_time.hour
-        if cur_hour in [timing, timing+3] and str(date) not in created:
+        if cur_hour in [timing, timing + 5] and str(date) not in created:
             print(f"{prefix} quick create at: {str(date_time)}")
-            Request.post(MyShitUrl.QUICK_CREATE.value, {"data": {"yesterday_only": False}})
+            Request.post(MyShitUrl.QUICK_CREATE.value,
+                         {"data": {"yesterday_only": False}})
             created[str(date)] = 1
 
         time.sleep(interval)
         print(f"{prefix} do it {interval} secs later......")
+    cal_new_amount_and_update()
 
 
-# from Crypto.Cipher import AES
-#
-#
-# # data = b'secret data'
-# #
-# # key = get_random_bytes(16)
-#
-#
-# def encrypt_aes(data, key):
-#     data, key = data.encode(), key.encode()
-#     cipher = AES.new(key, AES.MODE_EAX)
-#     ciphertext, tag = cipher.encrypt_and_digest(data)
-#     print(ciphertext, tag)
-#     file_out = open("encrypted.bin", "wb")
-#     [file_out.write(x) for x in (cipher.nonce, tag, ciphertext)]
-#     file_out.close()
-#
-#
-# def decrypt_are(key):
-#     key = key.encode()
-#     file_in = open("encrypted.bin", "rb")
-#     nonce, tag, ciphertext = [file_in.read(x) for x in (16, 16, -1)]
-#     file_in.close()
-#
-#     # let's assume that the key is somehow available again
-#     cipher = AES.new(key, AES.MODE_EAX, nonce)
-#     data = cipher.decrypt_and_verify(ciphertext, tag)
-#     print(data.decode())
-#
-#
-# # aes_key = "fuckyoustupidxxx"
-# # # encrypt_aes("2023-04-17", aes_key)
-# # decrypt_are(aes_key)
+def cal_new_amount_and_update():
+    today = datetime.datetime.today()
+    from super_dong.models import MyShit
+    my_shits = MyShit.objects.filter(create_time__date=today)
+    founds_code_mapping = {
+        json.loads(item.remark)['fcode']: item
+        for item in my_shits if json.loads(item.remark)
+    }
+    for fcode, shit in founds_code_mapping.items():
+        if shit.ex_info.get('regular_invest'):
+            ... # todo
+        else:
+            process_normal_founds(fcode, shit)
+
+
+def process_normal_founds(fcode, shit):
+    newest_networth = Founds.get_funds(fcode)
+    if not newest_networth:
+        return
+    shit.amount = float('%.2f' % (shit.share * newest_networth))
+    shit.save()
