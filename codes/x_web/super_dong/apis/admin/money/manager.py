@@ -75,7 +75,7 @@ class MyShitManager(BaseManager):
             raise BusinessLogicError(f'there\'s no data in db.')
 
         if my_shit.create_time.date() == date.date():
-            TodaysShit.calculate_shit_4_today()
+            # TodaysShit.calculate_shit_4_today()
             raise BusinessLogicError(
                 f'date:{date.date()}\'data is already exist.'
             )
